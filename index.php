@@ -56,7 +56,7 @@ if(isset($_GET['pesan'])){
             </form>
             <div class="text-center mt-4 kknt"> 
                 Powered By <br>
-                Ancase
+                KKNT STMIK SINUS
             </div>
         </div>
     </body>
