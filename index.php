@@ -55,7 +55,7 @@ if(isset($_GET['pesan'])){
                 <input type="submit" name="masuk" value="Login" class="btn btn-lg btn-primary btn-block"/>
             </form>
             <div class="text-center mt-4 kknt"> 
-                Powered By <br>
+                Powered  <br>
                 KKNT STMIK SINUS
             </div>
         </div>
