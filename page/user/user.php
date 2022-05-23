@@ -170,27 +170,6 @@
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									</div>
 								</form>
-								<script type="text/javascript">
-									function supp_id(str){
-										if (str.length == 0) {
-											document.getElementById("idsupp").innerHTML = "";
-											return;
-										} else {
-							
-											// Creates a new XMLHttpRequest object
-											var xmlhttp = new XMLHttpRequest();
-											xmlhttp.onreadystatechange = function () {
-													document.getElementById("idsupp").innerHTML = this.responseText;
-												}
-											};
-							
-											// xhttp.open("GET", "filename", true);
-											xmlhttp.open("GET", "ajax.php?supp_id=" + str, true);
-											
-											// Sends the request to the server
-											xmlhttp.send();
-									}
-								</script>
 							</div>
 						</div>
 						

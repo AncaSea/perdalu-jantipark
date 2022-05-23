@@ -122,21 +122,37 @@
 				return $format;
 			}
 
-			function supp_id(){
+			function addsupp_id(){
 				include 'db_con.php';
+				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk ORDER BY id ASC");
+				$row = mysqli_fetch_array($sql);
+				$hasil = $row;
 				
-				$nmsupp = $_REQUEST["supp_id"];
+				$urut = substr($hasil['kode_brg'], 2, 3);
+				$tambah = (int) $urut + 1;
+				if(strlen($tambah) == 1){
+					 $format = 'KB00'.$tambah.'';
+				}else if(strlen($tambah) == 2){
+					 $format = 'KB0'.$tambah.'';
+				}else{
+					$ex = explode('KB',$hasil['kode_brg']);
+					$no = (int) $ex[1] + 1;
+					$format = 'BR'.$no.'';
+				}
+				return $format;
+			}
 
-				if ($nmsupp !== "") {
-					$sql = mysqli_query($dbconnect, "SELECT id_supp FROM supplier WHERE nama_supp=$nmsupp");
-					if ($sql -> num_rows > 0) {
-						while ($row = mysqli_fetch_array($sql)) {
-							$hasil = $row;
-							// echo $row;
-							return $hasil;
-						}
+			function getsupp_id(){
+				include 'db_con.php';
+				$sql = mysqli_query($dbconnect, "SELECT admin_acc.*, stok_brg.kode_brg, stok_brg.hrg_beli, stok_brg.nama_brg
+									 FROM brg_kembali INNER JOIN stok_brg on brg_kembali.kode_brg=stok_brg.kode_brg 
+									 ORDER BY nama_brg ASC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r ($hasil);
+						return $hasil;
 					}
-
 				}
 			}
 

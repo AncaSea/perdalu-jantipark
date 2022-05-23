@@ -137,31 +137,15 @@
 											</tr>
 											<tr>
 												<td>Nama Supplier</td>
-												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="supp_id(this.value)" required class="form-control" name="nmsupp"></td>
+												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
 											</tr>
 											<tr>
-												<td>Kode Barang</td>
-												<td><input type="text" readonly="readonly" required value="<?php echo $formatbrg;?>" class="form-control"  name="kdbrg"></td>
+												<td>No. HP</td>
+												<td><input type="number" placeholder="nohp" required class="form-control" name="nohp"></td>
 											</tr>
 											<tr>
-												<td>Nama Barang</td>
-												<td><input type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
-											</tr>
-											<tr>
-												<td>Tanggal Input</td>
-												<td><input class="form-control" type="text" required readonly="readonly" value="<?php echo date("Y-m-d");?>" name="tgl"></td>
-											</tr>
-											<tr>
-												<td>Jumlah</td>
-												<td><input type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
-											</tr>
-											<tr>
-												<td>Harga Beli</td>
-												<td><input type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
-											</tr>
-											<tr>
-												<td>Harga Jual</td>
-												<td><input type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
+												<td>Alamat</td>
+												<td><input type="text" placeholder="alamat" required class="form-control"  name="alamat"></td>
 											</tr>
 										</table>
 									</div>
@@ -170,27 +154,6 @@
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									</div>
 								</form>
-								<script type="text/javascript">
-									function supp_id(str){
-										if (str.length == 0) {
-											document.getElementById("idsupp").innerHTML = "";
-											return;
-										} else {
-							
-											// Creates a new XMLHttpRequest object
-											var xmlhttp = new XMLHttpRequest();
-											xmlhttp.onreadystatechange = function () {
-													document.getElementById("idsupp").innerHTML = this.responseText;
-												}
-											};
-							
-											// xhttp.open("GET", "filename", true);
-											xmlhttp.open("GET", "ajax.php?supp_id=" + str, true);
-											
-											// Sends the request to the server
-											xmlhttp.send();
-									}
-								</script>
 							</div>
 						</div>
 						
