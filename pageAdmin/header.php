@@ -41,8 +41,8 @@
         }
       }
     .header{
-      background:#328f6b;
-      color:#fff;}
+      background:#FCB322;
+      color:#000000;}
 		#main-content{
        background:#fff;}
 		#hidden{
