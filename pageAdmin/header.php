@@ -42,7 +42,7 @@
       }
     .header{
       background:#000000;
-      color:#000010;}
+      color:#F0F8FF;}
 		#main-content{
        background:#fff;}
 		#hidden{
