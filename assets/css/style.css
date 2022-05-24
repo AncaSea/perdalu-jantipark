@@ -238,7 +238,7 @@ ul.top-menu > li > .logout {
     height: 100%;
     position: fixed;
     /* background: #424a5d; */
-    background:#fff000;
+    background:#feb101;
 }
 
 #sidebar h5 {
@@ -1065,7 +1065,7 @@ PANELS CONFIGURATIONS
 /*Green Panel*/
 .green-panel {
 	text-align: center;
-	background: #fff000;
+	background: #feb101;
 }
 .green-panel .green-header {
 	background: #43b1a9;
