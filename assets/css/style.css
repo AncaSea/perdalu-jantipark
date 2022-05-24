@@ -238,7 +238,7 @@ ul.top-menu > li > .logout {
     height: 100%;
     position: fixed;
     /* background: #424a5d; */
-    background:#FCB322;
+    background:#fff000;
 }
 
 #sidebar h5 {
@@ -1065,7 +1065,7 @@ PANELS CONFIGURATIONS
 /*Green Panel*/
 .green-panel {
 	text-align: center;
-	background: #68dff0;
+	background: #fff000;
 }
 .green-panel .green-header {
 	background: #43b1a9;
@@ -2228,7 +2228,7 @@ label {
 
 .site-footer {
     position: relative;
-    background: #285c64;
+    background: #000000;
     color: #fff;
     padding: 12px 0;
     font-size:12pt;
@@ -2238,7 +2238,8 @@ label {
 .go-top {
     margin-right: 1%;
     float: right;
-    background: rgba(255,255,255,.5);
+    /* background: rgba(255,255,255,.5); */
+    background: #fff000 ;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -2246,7 +2247,7 @@ label {
 }
 
 .go-top i {
-    color: #2A3542;
+    color: #000;
 }
 
 .site-min-height {
