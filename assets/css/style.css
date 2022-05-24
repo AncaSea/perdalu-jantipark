@@ -237,11 +237,13 @@ ul.top-menu > li > .logout {
     width: 210px;
     height: 100%;
     position: fixed;
-    background: #424a5d;
+    /* background: #424a5d; */
+    background:#FCB322;
 }
 
 #sidebar h5 {
-	color: #f2f2f2;
+	/* color: #f2f2f2; */
+    color: #000;
 	font-weight: 700;
 }
 
@@ -355,7 +357,8 @@ ul.sidebar-menu li a span{
 }
 
 ul.sidebar-menu li a{
-    color: #aeb2b7;
+    /* color: #aeb2b7; */
+    color: #000;
     text-decoration: none;
     display: block;
     padding: 15px 0 15px 10px;
@@ -419,8 +422,8 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #ffd777;
-    border-bottom: 1px solid #c9aa5f;
+    background: #000000;
+    border-bottom: 1px solid #000000;
 }
 
 .wrapper {
