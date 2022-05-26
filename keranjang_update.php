@@ -35,7 +35,7 @@ if (!empty($_SESSION['cart'])) {
             if ($updatedata) {
                 header('location:transaksi.php');
             } else {
-                header("location:login_kasir.php?pesan=updatefailed");
+                header("location:kasir_page.php?pesan=updatefailed");
             }
         }
         
@@ -77,9 +77,9 @@ if (!empty($_SESSION['cart'])) {
                         //     }
                         // }
                     }
-                    header('location:login_kasir.php');
+                    header('location:kasir_page.php');
                 }
                 
 } else {
-    header("locationlogin_kasir.php?pesan=emptycart");
+    header("location:kasir_page.php?pesan=emptycart");
 }

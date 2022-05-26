@@ -72,7 +72,7 @@ if (isset($_POST['nama_brg'])) {
         
                 $_SESSION['cart'][] = $barang;
                 
-                header('location:login_kasir.php');
+                header('location:kasir_page.php');
                         
             }
         } else {
@@ -89,12 +89,12 @@ if (isset($_POST['nama_brg'])) {
 
             $_SESSION['cart'][] = $barang;
             
-            header('location:login_kasir.php');
+            header('location:kasirpage.php');
             //merubah urutan tampil pada keranjang
             // krsort($_SESSION['cart']);
         }
     }else{
-        header("location:login_kasir.php?pesan=notindatabase");
+        header("location:kasir_page.php?pesan=notindatabase");
     }
 
 }

@@ -1,16 +1,11 @@
 <?php
-				include 'db_con.php';
-				
-				$nmsupp = $_REQUEST["supp_id"];
-
-				if ($nmsupp !== "") {
-					$sql = mysqli_query($dbconnect, "SELECT id_supp FROM supplier WHERE nama_supp=$nmsupp");
-					// if ($sql -> num_rows > 0) {
-						while ($row = mysqli_fetch_array($sql)) {
-							$hasil = $row;
-							// echo $row;
-							echo $hasil;
-						}
-					// }
-				}
-?>
+	include "db_con.php";
+	$query = mysqli_query($dbconnect,"SELECT * FROM supplier WHERE nama_supp='$_GET[nama]'");
+	$user = mysqli_fetch_array($query);
+	$data = array(
+		'idsupp' => $user['id_supp'],
+		'nohp' => $user['no_hp'],
+		'almt'=> $user['alamat'],
+	);
+    echo json_encode($data);
+ ?>

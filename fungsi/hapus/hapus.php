@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(!empty($_SESSION['admin'])){
-	require '../../config.php';
+	include '../../db_con.php';
 	if(!empty($_GET['kategori'])){
 		$id= $_GET['id'];
 		$data[] = $id;
@@ -10,13 +10,26 @@ if(!empty($_SESSION['admin'])){
 		$row -> execute($data);
 		echo '<script>window.location="../../index.php?page=kategori&&remove=hapus-data"</script>';
 	}
-	if(!empty($_GET['barang'])){
-		$id= $_GET['id'];
-		$data[] = $id;
-		$sql = 'DELETE FROM barang WHERE id_barang=?';
-		$row = $config -> prepare($sql);
-		$row -> execute($data);
-		echo '<script>window.location="../../index.php?page=barang&&remove=hapus-data"</script>';
+	if(!empty($_GET['supplier'])){
+		$id= $_SESSION['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM supplier WHERE id='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=supplier/supplier&&remove=hapus-data"</script>';
+	}
+	if(!empty($_GET['barangmsk'])){
+		$id= $_SESSION['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM brg_masuk WHERE id='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&&remove=hapus-data"</script>';
+	}
+	if(!empty($_GET['barangkmbl'])){
+		$id= $_SESSION['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM brg_kembali WHERE id='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['jual'])){
 		

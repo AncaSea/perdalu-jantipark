@@ -67,6 +67,7 @@
 									$hasil = $lihat -> supplier();
 									$no=1;
 									foreach($hasil as $isi) {
+										$_SESSION['id'] = $isi[0];
 								?>
 									<tr>
 										<td><?php echo $no;?></td>
@@ -88,7 +89,7 @@
 										<td>
 											<a href="index.php?page=barang/details&barang=<?php echo $isi[1];?>"><button class="btn btn-primary btn-xs">Details</button></a>
 											<a href="index.php?page=barang/edit&barang=<?php echo $isi[1];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
-											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
+											<a href="../fungsi/hapus/hapus.php?supplier=hapus&id=<?php $_SESSION['id'];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>
 								<?php 
@@ -122,18 +123,18 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Barang</h4>
 								</div>										
-								<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?barang=tambah" method="POST">
+								<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?supplier=tambah" method="POST">
 									<div class="modal-body">
 								
 										<table class="table table-striped bordered">
 											
 											<?php
-												$formatbrg = $lihat -> barang_id();
-												// $formatsupp = $lihat -> supp_id();
+												// $formatbrg = $lihat -> barang_id();
+												// $formatsupp = $lihat -> addsupp_id();
 											?>
 											<tr>
 												<td>ID Supplier</td>
-												<td><input id="idsupp" type="text" readonly="readonly" placeholder="ID Supplier" required class="form-control" name="idsupp" value=""></td>
+												<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp" ></td>
 											</tr>
 											<tr>
 												<td>Nama Supplier</td>

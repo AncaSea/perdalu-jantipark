@@ -8,14 +8,29 @@
 			$this->db = $db;
 		}
 			
-			// function member(){
-			// 	$sql = "select member.*, login.*
-			// 			from member inner join login on member.id_member = login.id_member";
-			// 	$row = $this-> db -> prepare($sql);
-			// 	$row -> execute();
-			// 	$hasil = $row -> fetchAll();
-			// 	return $hasil;
-			// }
+			function useradmin(){
+				include 'db_con.php';
+				$sql = mysqli_query($dbconnect, "SELECT * FROM admin_acc");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
+			function userkasir(){
+				include 'db_con.php';
+				$sql = mysqli_query($dbconnect, "SELECT * FROM kasir_acc");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
 
 			// function member_edit($id){
 			// 	$sql = "select member.*, login.*

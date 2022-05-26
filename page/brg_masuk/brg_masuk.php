@@ -67,6 +67,8 @@
 									$hasil = $lihat -> barangmsk();
 									$no=1;
 									foreach($hasil as $isi) {
+										$_SESSION['id'] = $isi[0];
+										// echo($_SESSION['id']);
 								?>
 									<tr>
 										<td><?php echo $no;?></td>
@@ -86,9 +88,9 @@
 										<td>Rp.<?php echo number_format($isi[7]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[10]);?>,-</td>
 										<td>
-											<a href="index.php?page=barang/details&barang=<?php echo $isi[1];?>"><button class="btn btn-primary btn-xs">Details</button></a>
-											<a href="index.php?page=barang/edit&barang=<?php echo $isi[1];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
-											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
+											<a href="index.php?page=barang/details&barang=<?php echo $isi[2];?>"><button class="btn btn-primary btn-xs">Details</button></a>
+											<a href="index.php?page=barang/edit&barang=<?php echo $isi[2];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
+											<a href="../fungsi/hapus/hapus.php?barangmsk=hapus&id=<?php $_SESSION['id'];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>
 								<?php 
@@ -122,26 +124,26 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Barang</h4>
 								</div>										
-								<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?barang=tambah" method="POST">
+								<form enctype="application/x-www-form-urlencoded" action="../../fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
 									<div class="modal-body">
 								
 										<table class="table table-striped bordered">
 											
 											<?php
-												$formatbrg = $lihat -> barang_id();
+												// $formatbrg = $lihat -> barang_id();
 												// $formatsupp = $lihat -> supp_id();
 											?>
 											<tr>
-												<td>ID Supplier</td>
-												<td><input id="idsupp" type="text" readonly="readonly" placeholder="ID Supplier" required class="form-control" name="idsupp" value=""></td>
+												<td>Nama Supplier</td>
+												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="auto()" required class="form-control" name="nmsupp"></td>
 											</tr>
 											<tr>
-												<td>Nama Supplier</td>
-												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="supp_id(this.value)" required class="form-control" name="nmsupp"></td>
+												<td>ID Supplier</td>
+												<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
 											</tr>
 											<tr>
 												<td>Kode Barang</td>
-												<td><input type="text" readonly="readonly" required value="<?php echo $formatbrg;?>" class="form-control"  name="kdbrg"></td>
+												<td><input type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
 											</tr>
 											<tr>
 												<td>Nama Barang</td>
@@ -170,25 +172,20 @@
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									</div>
 								</form>
+								<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+								<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 								<script type="text/javascript">
-									function supp_id(str){
-										if (str.length == 0) {
-											document.getElementById("idsupp").innerHTML = "";
-											return;
-										} else {
-							
-											// Creates a new XMLHttpRequest object
-											var xmlhttp = new XMLHttpRequest();
-											xmlhttp.onreadystatechange = function () {
-													document.getElementById("idsupp").innerHTML = this.responseText;
-												}
-											};
-							
-											// xhttp.open("GET", "filename", true);
-											xmlhttp.open("GET", "ajax.php?supp_id=" + str, true);
-											
-											// Sends the request to the server
-											xmlhttp.send();
+									function auto(){
+										var nama = $("#nmsupp").val(); 
+										$.ajax({
+											type : "POST",
+											url : '../ajax.php.php', // file proses penginputan
+											data : "nama="+nama,
+										}).success(function (data){
+										var json = data,
+										obj = json;
+										$('#idsupp').val(obj.idsupp);
+										});
 									}
 								</script>
 							</div>

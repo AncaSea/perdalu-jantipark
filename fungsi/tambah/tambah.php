@@ -12,31 +12,71 @@ session_start();
 		$row -> execute($data);
 		echo '<script>window.location="../../index.php?page=kategori&&success=tambah-data"</script>';
 	}
-	if(!empty($_GET['barang'])){
-		$id = $_POST['id'];
-		$kategori = $_POST['kategori'];
-		$nama = $_POST['nama'];
-		$merk = $_POST['merk'];
+	if(!empty($_GET['supplier'])){
+		$idsupp = $_POST['idsupp'];
+		$nmsupp = $_POST['nmsupp'];
+		$nohp = $_POST['nohp'];
+		$almt = $_POST['alamat'];
+
+		$sql = mysqli_query($dbconnect, "INSERT INTO supplier (id, id_supp, nama_supp, no_hp, alamat) 
+		VALUES('', '$idsupp', '$nmsupp', '$nohp', '$almt')");
+
+		echo '<script>window.location="../../admin.php?page=supplier/supplier&success=tambah-data"</script>';
+	}
+	if(!empty($_GET['barangmsk'])){
+		$idsupp = $_POST['idsupp'];
+		$nmsupp = $_POST['nmsupp'];
+		$kodebrg = $_POST['kdbrg'];
+		$nmbrg = $_POST['nmbrg'];
+		$tgl = $_POST['tgl'];
+		$jmlh = $_POST['jmlh'];
 		$beli = $_POST['beli'];
 		$jual = $_POST['jual'];
-		$satuan = $_POST['satuan'];
-		$stok = $_POST['stok'];
-		$tgl = $_POST['tgl'];
+		$ttl = $beli * $jmlh;
+
+		$sql = mysqli_query($dbconnect, "INSERT INTO 
+		brg_masuk (id,kode_brg,id_supp,tgl_masuk,nama_supp,nama_brg,jumlah,hrg_satuan,total) 
+		VALUES ('', '$kodebrg','$idsupp','$tgl','$nmsupp','$nmbrg','$jmlh','$beli','$ttl')");
 		
-		$data[] = $id;
-		$data[] = $kategori;
-		$data[] = $nama;
-		$data[] = $merk;
-		$data[] = $beli;
-		$data[] = $jual;
-		$data[] = $satuan;
-		$data[] = $stok;
-		$data[] = $tgl;
-		$sql = 'INSERT INTO barang (id_barang,id_kategori,nama_barang,merk,harga_beli,harga_jual,satuan_barang,stok,tgl_input) 
-			    VALUES (?,?,?,?,?,?,?,?,?) ';
-		$row = $config -> prepare($sql);
-		$row -> execute($data);
-		echo '<script>window.location="../../index.php?page=barang&success=tambah-data"</script>';
+		$cekdb =  mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrg'");
+		$q = mysqli_fetch_array($cekdb);
+		$kode = $q['kode_brg'];
+		$jum = $q['jumlah'];
+		print_r($kode);
+		
+		if ($kodebrg = $kode) {
+			$tmbh = $jum + $jmlh;
+
+			$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
+		} else {
+			$sql1 = mysqli_query($dbconnect, "INSERT INTO 
+			stok_brg (kode_brg,nama_supp,nama_brg,jumlah,hrg_beli,hrg_jual) 
+			VALUES ('$kodebrg','$nmsupp','$nmbrg','$jmlh','$beli','$jual')");
+		}		
+		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&success=tambah-data"</script>';
+	}	
+	if(!empty($_GET['barangkmbl'])){
+		$idsupp = $_POST['idsupp'];
+		$nmsupp = $_POST['nmsupp'];
+		$kodebrg = $_POST['kdbrg'];
+		$nmbrg = $_POST['nmbrg'];
+		$tgl = $_POST['tgl'];
+		$jmlh = $_POST['jmlh'];
+		$beli = $_POST['beli'];
+		$ttl = $beli * $jmlh;
+
+		$sql = mysqli_query($dbconnect, "INSERT INTO 
+		brg_kembali (id,kode_brg,id_supp,nama_supp,sisa_brg,tgl_kembali) 
+		VALUES ('', '$kodebrg','$idsupp','$nmsupp','$jmlh','$tgl')");
+
+		$cekdb =  mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrg'");
+		$q = mysqli_fetch_array($cekdb);
+		$kode = $q['kode_brg'];
+		$jum = $q['jumlah'];
+		$tmbh = $jum - $jmlh;
+		$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
+
+		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&success=tambah-data"</script>';
 	}
 	if(!empty($_GET['jual'])){
 		$id = $_GET['id'];
