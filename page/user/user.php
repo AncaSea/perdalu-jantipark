@@ -12,6 +12,9 @@
                   <div class="col-lg-12 main-chart">
 						<h3>Data User Admin</h3>
 						<br/>
+						<a href="admin.php?page=user/user" style="margin-right :0.5pc;" 
+								class="btn btn-success btn-md pull-right">
+								<i class="fa fa-refresh"></i> Refresh Data</a>
 						<div class="clearfix"></div>
 						<br/>
 						

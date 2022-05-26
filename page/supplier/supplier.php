@@ -32,7 +32,7 @@
 						
 						<button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
 							<i class="fa fa-plus"></i> Insert Data</button>
-							<a href="admin.php?page=brg_masuk/brg_masuk" style="margin-right :0.5pc;" 
+							<a href="admin.php?page=supplier/supplier" style="margin-right :0.5pc;" 
 								class="btn btn-success btn-md pull-right">
 								<i class="fa fa-refresh"></i> Refresh Data</a>
 						<!-- <a href="login_admin.php?page=barang&stok=yes" style="margin-right :0.5pc;" 
