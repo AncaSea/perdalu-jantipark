@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Bulan Mei 2022 pada 14.48
+-- Waktu pembuatan: 26 Bulan Mei 2022 pada 08.03
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -60,7 +60,8 @@ CREATE TABLE `brg_kembali` (
 --
 
 INSERT INTO `brg_kembali` (`id`, `kode_brg`, `id_supp`, `nama_supp`, `sisa_brg`, `tgl_kembali`) VALUES
-(1, 'kb0015', 'sp0142', 'wakidi', 100, '2022-05-20\r\n');
+(1, 'kb0015', 'sp0142', 'wakidi', 100, '2022-05-20\r\n'),
+(2, 'kb0055', 'sp0001', 'mukidi', 10, '2022-05-26');
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,7 @@ CREATE TABLE `brg_masuk` (
 
 INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_satuan`, `total`) VALUES
 (1, 'kb0015', 'sp0142', '5-10-2022', 'wakidi', 'baju polo', 500, 15000, 1000000),
-(2, 'kb0055', 'sp0001', '05-08-2022', 'mukidi', 'celana pendek', 500, 10000, 1500000);
+(19, 'kb0055', 'sp0001', '2022-05-26', 'mukidi', 'celana pendek', 10, 10000, 100000);
 
 -- --------------------------------------------------------
 
@@ -147,7 +148,9 @@ INSERT INTO `penjualan` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_pe
 (84, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0055', 'celana pendek', 5, 15000, 75000, 255000),
 (85, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0015', 'baju polo', 1, 20000, 20000, 255000),
 (86, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0083', 'jeans', 1, 35000, 35000, 255000),
-(87, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0071', 'sweater', 5, 25000, 125000, 255000);
+(87, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0071', 'sweater', 5, 25000, 125000, 255000),
+(88, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0055', 'celana pendek', 1, 15000, 15000, 35000),
+(89, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0015', 'baju polo', 1, 20000, 20000, 35000);
 
 -- --------------------------------------------------------
 
@@ -169,8 +172,8 @@ CREATE TABLE `stok_brg` (
 --
 
 INSERT INTO `stok_brg` (`kode_brg`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_beli`, `hrg_jual`) VALUES
-('kb0015', 'wakidi', 'baju polo', 99909, 15000, 20000),
-('kb0055', 'mukidi', 'celana pendek', 99874, 10000, 15000),
+('kb0015', 'wakidi', 'baju polo', 99908, 15000, 20000),
+('kb0055', 'mukidi', 'celana pendek', 99940, 10000, 15000),
 ('kb0057', 'odin', 'kaos', 9992, 15000, 20000),
 ('kb0071', 'pudidi', 'sweater', 9978, 20000, 25000),
 ('kb0083', 'yudi', 'jeans', 9992, 30000, 35000);
@@ -255,25 +258,25 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT untuk tabel `brg_kembali`
 --
 ALTER TABLE `brg_kembali`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `brg_masuk`
 --
 ALTER TABLE `brg_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
