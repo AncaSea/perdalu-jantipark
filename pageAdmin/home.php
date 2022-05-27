@@ -21,7 +21,7 @@
                         <center><h1><?php print_r ($supp);?></h1></center>
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=supplier'>Tabel Supplier  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=supplier/supplier'>Tabel Supplier  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div><!--/grey-panel -->
                   </div><!-- /col-md-3-->
@@ -49,7 +49,7 @@
                         <center><h1><?php echo ($jual);?></h1></center>
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;font-weight:700;"><a href='admin.php?page=penjualan'>Tabel laporan  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;font-weight:700;"><a href='admin.php?page=lap_penjualan/penjualan'>Tabel laporan  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div><!--/grey-panel -->
                   </div><!-- /col-md-3-->
@@ -62,7 +62,7 @@
                         <center><h1><?php echo ($income);?></h1></center>
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=penjualan'>Tabel Laporan  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=lap_penjualan/penjualan'>Tabel Laporan  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div><!--/grey-panel -->
                   </div><!-- /col-md-3-->

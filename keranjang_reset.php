@@ -2,5 +2,5 @@
 session_start();
 
 $_SESSION['cart'] = [];
-header('location:kasir_page.php');
+header('location:admin.php?pageAdmin=kasir');
 ?>

@@ -11,7 +11,9 @@ session_start();
         include 'pageAdmin/sidebar.php';
             if(!empty($_GET['page'])){
                 include ('page/'.$_GET['page'].'.php');
-            }else{
+            } else if (!empty($_GET['pageAdmin'])) {
+                include ('pageAdmin/'.$_GET['pageAdmin'].'.php');
+            } else {
                 include 'pageAdmin/home.php';
             }
         include 'pageAdmin/footer.php';

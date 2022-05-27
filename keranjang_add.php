@@ -30,7 +30,7 @@ if (isset($_POST['nama_brg'])) {
             
             if ($key !== false) {
 
-                header("location:login_kasir.php?pesan=sameitem");
+                header("location:admin.php?pageAdmin=kasir&pesan=sameitem");
                 
                 // //jika ada data yang sesuai di keranjang akan ditambahkan jumlah nya
                 // $c_qty = $_SESSION['cart'][$key]['qty'];
@@ -72,7 +72,7 @@ if (isset($_POST['nama_brg'])) {
         
                 $_SESSION['cart'][] = $barang;
                 
-                header('location:kasir_page.php');
+                header('location:admin.php?pageAdmin=kasir');
                         
             }
         } else {
@@ -89,12 +89,12 @@ if (isset($_POST['nama_brg'])) {
 
             $_SESSION['cart'][] = $barang;
             
-            header('location:kasirpage.php');
+            header('location:admin.php?pageAdmin=kasir');
             //merubah urutan tampil pada keranjang
             // krsort($_SESSION['cart']);
         }
     }else{
-        header("location:kasir_page.php?pesan=notindatabase");
+        header("location:admin.php?pageAdmin=kasir?pesan=notindatabase");
     }
 
 }
