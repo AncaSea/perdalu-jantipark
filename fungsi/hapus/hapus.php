@@ -2,14 +2,14 @@
 session_start();
 if(!empty($_SESSION['admin'])){
 	include '../../db_con.php';
-	if(!empty($_GET['kategori'])){
-		$id= $_GET['id'];
-		$data[] = $id;
-		$sql = 'DELETE FROM kategori WHERE id_kategori=?';
-		$row = $config -> prepare($sql);
-		$row -> execute($data);
-		echo '<script>window.location="../../index.php?page=kategori&&remove=hapus-data"</script>';
-	}
+	// if(!empty($_GET['kategori'])){
+	// 	$id= $_GET['id'];
+	// 	$data[] = $id;
+	// 	$sql = 'DELETE FROM kategori WHERE id_kategori=?';
+	// 	$row = $config -> prepare($sql);
+	// 	$row -> execute($data);
+	// 	echo '<script>window.location="../../index.php?page=kategori&&remove=hapus-data"</script>';
+	// }
 	if(!empty($_GET['supplier'])){
 		$id= $_SESSION['id'];
 		// $data[] = $id;

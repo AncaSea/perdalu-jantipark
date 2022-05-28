@@ -10,7 +10,7 @@
 
               <div class="row">
                   <div class="col-lg-12 main-chart">
-						<h3>Data Barang Masuk</h3>
+						<h3>Data Stok Barang</h3>
 						<br/>
 						<?php if(isset($_GET['success-stok'])){?>
 						<div class="alert alert-success">
@@ -30,8 +30,8 @@
 
 						<!-- Trigger the modal with a button -->
 						
-						<button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
-							<i class="fa fa-plus"></i> Insert Data</button>
+						<!-- <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
+							<i class="fa fa-plus"></i> Insert Data</button> -->
 							<a href="admin.php?page=brg_masuk/brg_masuk" style="margin-right :0.5pc;" 
 								class="btn btn-success btn-md pull-right">
 								<i class="fa fa-refresh"></i> Refresh Data</a>

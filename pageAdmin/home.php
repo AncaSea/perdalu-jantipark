@@ -35,7 +35,7 @@
                         <center><h1><?php echo ($stok);?></h1></center>
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=stok'>Tabel Barang  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=stok/stok'>Tabel Barang  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div><!--/grey-panel -->
                   </div><!-- /col-md-3-->
