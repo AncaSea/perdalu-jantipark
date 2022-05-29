@@ -47,12 +47,12 @@
 								<thead>
 									<tr style="background:#DFF0D8;color:#333;">
 										<th>No.</th>
-										<th>ID Supplier</th>
-										<th>Nama Supplier</th>
+										<!-- <th>ID Supplier</th> -->
 										<th>Kode Barang</th>
+										<th>Nama Supplier</th>
 										<th>Nama Barang</th>
-										<th>Tanggal Masuk</th>
-										<th>Jumlah</th>
+										<!-- <th>Tanggal Masuk</th> -->
+										<th>Stok</th>
 										<th>Harga Beli</th>
 										<th>Harga Jual</th>
 										<th>Aksi</th>
@@ -64,46 +64,37 @@
 									$totalBeli = 0;
 									$totalJual = 0;
 									$totalStok = 0;
-									$hasil = $lihat -> barangmsk();
+									$hasil = $lihat -> stok();
 									$no=1;
 									foreach($hasil as $isi) {
 										$_SESSION['id'] = $isi[0];
-										// echo($_SESSION['id']);
+										echo($_SESSION['id']);
 								?>
 									<tr>
 										<td><?php echo $no;?></td>
-										<td><?php echo $isi[2];?></td>
-										<td><?php echo $isi[4];?></td>
+										<td id="kode"><?php echo $isi[0];?></td>
 										<td><?php echo $isi[1];?></td>
-										<td><?php echo $isi[5];?></td>
+										<td><?php echo $isi[2];?></td>
 										<td><?php echo $isi[3];?></td>
-										<td><?php echo $isi[6];?></td>
-										<!-- <td>
-											<?php if($isi[3] == '0'){?>
-												<button class="btn btn-danger"> Habis</button>
-											<?php }else{?>
-												<?php echo $isi[3];?>
-											<?php }?>
-										</td> -->
-										<td>Rp.<?php echo number_format($isi[7]);?>,-</td>
-										<td>Rp.<?php echo number_format($isi[10]);?>,-</td>
+										<td>Rp.<?php echo number_format($isi[4]);?>,-</td>
+										<td>Rp.<?php echo number_format($isi[5]);?>,-</td>
 										<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Edit</button>
-											<!-- <a href="index.php?page=barang/edit&barang=<?php echo $isi[2];?>" data-toggle="modal" data-target="myModal2"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?barangmsk=hapus&id=<?php $_SESSION['id'];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
+										<button id="li-modal" type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2" data-id="<?php echo $isi[0];?>">Edit</button>
+											<!-- <a href="../stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
+											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>
 								<?php 
 										$no++; 
-										$totalBeli += $isi[6] * $isi[7]; 
-										$totalJual += $isi[6] * $isi[10];
+										$totalBeli += $isi[3] * $isi[4]; 
+										$totalJual += $isi[3] * $isi[5];
 										// $totalStok += $isi['3'];
 									}
 								?>
 								</tbody>
 								<tfoot>
 									<tr>
-										<th colspan="7">Total </td>
+										<th colspan="5">Total </td>
 										<th>Rp.<?php echo number_format($totalBeli);?>,-</td>
 										<th>Rp.<?php echo number_format($totalJual);?>,-</td>
 										<th colspan="2" style="background:#ddd"></th>
@@ -115,68 +106,23 @@
 					<!-- end view barang -->
 					<!-- tambah barang MODALS-->
 						<!-- Modal -->
-					
-						<div id="myModal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<!-- Modal content-->
-								<div class="modal-content" style=" border-radius:0px;">
-									<div class="modal-header" style="background:#285c64;color:#fff;">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Barang</h4>
-									</div>										
-									<form enctype="application/x-www-form-urlencoded" action="../../fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
-										<div class="modal-body">
-									
-											<table class="table table-striped bordered">
-												
-												<?php
-													// $formatbrg = $lihat -> barang_id();
-													// $formatsupp = $lihat -> supp_id();
-												?>
-												<tr>
-													<td>Nama Supplier</td>
-													<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="auto()" required class="form-control" name="nmsupp"></td>
-												</tr>
-												<tr>
-													<td>ID Supplier</td>
-													<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
-												</tr>
-												<tr>
-													<td>Kode Barang</td>
-													<td><input type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
-												</tr>
-												<tr>
-													<td>Nama Barang</td>
-													<td><input type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
-												</tr>
-												<tr>
-													<td>Tanggal Input</td>
-													<td><input class="form-control" type="text" required readonly="readonly" value="<?php echo date("Y-m-d");?>" name="tgl"></td>
-												</tr>
-												<tr>
-													<td>Jumlah</td>
-													<td><input type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
-												</tr>
-												<tr>
-													<td>Harga Beli</td>
-													<td><input type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
-												</tr>
-												<tr>
-													<td>Harga Jual</td>
-													<td><input type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
-												</tr>
-											</table>
-										</div>
-										<div class="modal-footer">
-											<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-
-						<div id="myModal2" class="modal fade" role="dialog">
+						<script type="text/javascript">
+							$(document).on("click", "#li-modal", function () {
+								var url = window.location.href; 
+								var kd = $(this).attr('data-id');
+								var all_datas = url.split('?id='+kd); 
+								var id = (all_datas[1]); 
+								$.ajax({
+									type: "POST",
+									url: "../stok/edit.php",
+									data:{id: id},
+									success: function(msg){
+										$(".modal-body #kdbrg").val( kd );
+									}
+								});
+							});
+						</script>
+                        <div id="myModal2" class="modal fade" role="dialog">
 							<div class="modal-dialog">
 								<!-- Modal content-->
 								<div class="modal-content" style=" border-radius:0px;">
@@ -184,73 +130,61 @@
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Barang</h4>
 									</div>										
-									<form enctype="application/x-www-form-urlencoded" action="../../fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
 										<div class="modal-body">
-									
-											<table class="table table-striped bordered">
-												
+											<form enctype="application/x-www-form-urlencoded" action="" method="POST">
+												<table class="table table-striped bordered">
+													
+													<tr>
+														<td>Kode Barang</td>
+														<td><input id="kdbrg" type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
+													</tr>
 												<?php
+												// if (isset($_POST['kd'])) {
+                                                    include ('db_con.php');
 													// $formatbrg = $lihat -> barang_id();
 													// $formatsupp = $lihat -> supp_id();
+                                                    $kode = $_POST['id'];
+													echo $kode;
+                                                    $query_edit = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");
+                                                    while ($row = mysqli_fetch_array($query_edit)) {     
+												// }
 												?>
-												<tr>
-													<td>Nama Supplier</td>
-													<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="auto()" required class="form-control" name="nmsupp"></td>
-												</tr>
-												<tr>
-													<td>ID Supplier</td>
-													<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
-												</tr>
-												<tr>
-													<td>Kode Barang</td>
-													<td><input type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
-												</tr>
-												<tr>
-													<td>Nama Barang</td>
-													<td><input type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
-												</tr>
-												<tr>
-													<td>Tanggal Input</td>
-													<td><input class="form-control" type="text" required readonly="readonly" value="<?php echo date("Y-m-d");?>" name="tgl"></td>
-												</tr>
-												<tr>
-													<td>Jumlah</td>
-													<td><input type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
-												</tr>
-												<tr>
-													<td>Harga Beli</td>
-													<td><input type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
-												</tr>
-												<tr>
-													<td>Harga Jual</td>
-													<td><input type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
-												</tr>
-											</table>
+													<tr>
+														<td>Nama Supplier</td>
+														<td><input id="nmsupp" type="text" placeholder="Nama Supplier" value="<?php echo $row[1]; ?>" required class="form-control" name="nmsupp"></td>
+													</tr>
+													<tr>
+														<td>Nama Barang</td>
+														<td><input type="text" placeholder="Nama Barang" value="" required class="form-control" name="nmbrg"></td>
+													</tr>
+													<tr>
+														<td>Jumlah Stok</td>
+														<td><input type="number" required Placeholder="Jumlah" value="" class="form-control"  name="jmlh"></td>
+													</tr>
+													<tr>
+														<td>Harga Beli</td>
+														<td><input type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
+													</tr>
+													<tr>
+														<td>Harga Jual</td>
+														<td><input type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
+													</tr>
+                                        <?php
+                                         } 
+                                        ?>
+												</table>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												</div>
+											</form>
 										</div>
-										<div class="modal-footer">
-											<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</form>
 								</div>
 							</div>
 						</div>
               		</div>
 				    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 						<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-						<script type="text/javascript">
-							function auto(){
-								var nama = $("#nmsupp").val(); 
-								$.ajax({
-									type : "POST",
-									url : '../ajax.php.php', // file proses penginputan
-									data : "nama="+nama,
-								}).success(function (data){
-								var json = data,
-								obj = json;
-								$('#idsupp').val(obj.idsupp);
-								});
-							}
-					</script>
+
           	</section>
       	</section>

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!empty($_SESSION['admin'])){
+if(!empty($_SESSION['namaadmin'])){
 	include '../../db_con.php';
 	// if(!empty($_GET['kategori'])){
 	// 	$id= $_GET['id'];
@@ -18,18 +18,25 @@ if(!empty($_SESSION['admin'])){
 		echo '<script>window.location="../../admin.php?page=supplier/supplier&&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['barangmsk'])){
-		$id= $_SESSION['id'];
+		 $id= $_GET['id'] ;
 		// $data[] = $id;
 		$sql = "DELETE FROM brg_masuk WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
 		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['barangkmbl'])){
-		$id= $_SESSION['id'];
+		$id= $_GET['id'];
 		// $data[] = $id;
 		$sql = "DELETE FROM brg_kembali WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
 		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&&remove=hapus-data"</script>';
+	}
+	if(!empty($_GET['stok'])){
+		$id= $_GET['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM stok_brg WHERE id='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=supplier/supplier&&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['jual'])){
 		

@@ -87,8 +87,7 @@
 										<!-- <td>Rp.<?php echo number_format($isi[7]);?>,-</td> -->
 										<!-- <td>Rp.<?php echo number_format($isi[10]);?>,-</td> -->
 										<td>
-											<a href="index.php?page=barang/details&barang=<?php echo $isi[1];?>"><button class="btn btn-primary btn-xs">Details</button></a>
-											<a href="index.php?page=barang/edit&barang=<?php echo $isi[1];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
+											<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Edit</button>
 											<a href="../fungsi/hapus/hapus.php?supplier=hapus&id=<?php $_SESSION['id'];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>
@@ -123,42 +122,89 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Barang</h4>
 								</div>										
-								<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?supplier=tambah" method="POST">
-									<div class="modal-body">
-								
-										<table class="table table-striped bordered">
-											
-											<?php
-												// $formatbrg = $lihat -> barang_id();
-												// $formatsupp = $lihat -> addsupp_id();
-											?>
-											<tr>
-												<td>ID Supplier</td>
-												<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp" ></td>
-											</tr>
-											<tr>
-												<td>Nama Supplier</td>
-												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
-											</tr>
-											<tr>
-												<td>No. HP</td>
-												<td><input type="number" placeholder="nohp" required class="form-control" name="nohp"></td>
-											</tr>
-											<tr>
-												<td>Alamat</td>
-												<td><input type="text" placeholder="alamat" required class="form-control"  name="alamat"></td>
-											</tr>
-										</table>
-									</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									</div>
-								</form>
+									<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?supplier=tambah" method="POST">
+										<div class="modal-body">
+									
+											<table class="table table-striped bordered">
+												
+												<?php
+													// $formatbrg = $lihat -> barang_id();
+													// $formatsupp = $lihat -> addsupp_id();
+												?>
+												<tr>
+													<td>ID Supplier</td>
+													<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp" ></td>
+												</tr>
+												<tr>
+													<td>Nama Supplier</td>
+													<td><input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
+												</tr>
+												<tr>
+													<td>No. HP</td>
+													<td><input type="number" placeholder="nohp" required class="form-control" name="nohp"></td>
+												</tr>
+												<tr>
+													<td>Alamat</td>
+													<td><input type="text" placeholder="alamat" required class="form-control"  name="alamat"></td>
+												</tr>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
-						
-					</div>
+
+						<div id="myModal2" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal content-->
+								<div class="modal-content" style=" border-radius:0px;">
+									<div class="modal-header" style="background:#285c64;color:#fff;">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Barang</h4>
+									</div>										
+									<form enctype="application/x-www-form-urlencoded" action="../../fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
+										<div class="modal-body">
+									
+											<table class="table table-striped bordered">
+												
+												<?php
+													// $formatbrg = $lihat -> barang_id();
+													// $formatsupp = $lihat -> supp_id();
+												?>
+												<tr>
+													<td>ID Supplier</td>
+													<td><input type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
+												</tr>
+												<tr>
+													<td>Nama Supplier</td>
+													<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="auto()" required class="form-control" name="nmsupp"></td>
+												</tr>
+												<tr>
+													<td>Nama Barang</td>
+													<td><input type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
+												</tr>
+												<tr>
+													<td>No. HP</td>
+													<td><input type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
+												</tr>
+												<tr>
+													<td>Alamat</td>
+													<td><input type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
+												</tr>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>										
               	</div>
           	</section>
       	</section>

@@ -43,8 +43,7 @@
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
 										<td>
-											<a href="index.php?page=barang/details&barang=<?php echo $isi[1];?>"><button class="btn btn-primary btn-xs">Details</button></a>
-											<a href="index.php?page=barang/edit&barang=<?php echo $isi[1];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
+											<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2<?php echo $isi[0]; ?>">Edit</button>
 											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>
@@ -69,8 +68,48 @@
 					</div>
 				</div>
 
-			  <div class="row">
-                  <div class="col-lg-12 main-chart">
+				<div id="myModal2" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content" style=" border-radius:0px;">
+							<div class="modal-header" style="background:#285c64;color:#fff;">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Barang</h4>
+							</div>										
+							<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?supplier=tambah" method="POST">
+								<div class="modal-body">
+							
+									<table class="table table-striped bordered">
+										
+										<?php
+											// $formatbrg = $lihat -> barang_id();
+											// $formatsupp = $lihat -> addsupp_id();
+										?>
+										<tr>
+											<td>Nama</td>
+											<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp" ></td>
+										</tr>
+										<tr>
+											<td>Username</td>
+											<td><input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
+										</tr>
+										<tr>
+											<td>Password</td>
+											<td><input type="number" placeholder="nohp" required class="form-control" name="nohp"></td>
+										</tr>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+					
+			   <div class="row">
+                   <div class="col-lg-12 main-chart">
 						<h3>Data User Kasir</h3>
 						<br/>
 						<div class="clearfix"></div>
@@ -101,8 +140,7 @@
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
 										<td>
-											<a href="index.php?page=barang/details&barang=<?php echo $isi[1];?>"><button class="btn btn-primary btn-xs">Details</button></a>
-											<a href="index.php?page=barang/edit&barang=<?php echo $isi[1];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
+											<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Edit</button>
 											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>

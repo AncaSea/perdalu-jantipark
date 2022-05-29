@@ -81,9 +81,7 @@
 										<td>Rp.<?php echo number_format($isi[7]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[4] * $isi[7]);?>,-</td>
 										<td class="aksi">
-											<a href="index.php?page=barang/details&barang=<?php echo $isi[1];?>"><button class="btn btn-primary btn-xs">Details</button></a>
-											<a href="index.php?page=barang/edit&barang=<?php echo $isi[1];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
-											<a href="../fungsi/hapus/hapus.php?barangkmbl=hapus&id=<?php $_SESSION['id']; ?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
+											<a href="../fungsi/hapus/hapus.php?barangkmbl=hapus&id=<?php echo $_SESSION['id']; ?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>
 								<?php 
