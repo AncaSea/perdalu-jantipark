@@ -19,7 +19,7 @@
 						<?php }?>
 						<?php if(isset($_GET['success'])){?>
 						<div class="alert alert-success">
-							<p>Tambah Data Berhasil !</p>
+							<p>Edit Data Berhasil !</p>
 						</div>
 						<?php }?>
 						<?php if(isset($_GET['remove'])){?>
@@ -68,11 +68,11 @@
 									$no=1;
 									foreach($hasil as $isi) {
 										$_SESSION['id'] = $isi[0];
-										echo($_SESSION['id']);
+										// echo($_SESSION['id']);
 								?>
 									<tr>
 										<td><?php echo $no;?></td>
-										<td id="kode"><?php echo $isi[0];?></td>
+										<td class="kode"><?php echo $isi[0];?></td>
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
 										<td><?php echo $isi[3];?></td>
@@ -81,7 +81,7 @@
 										<td>
 										<button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal" data-toggle="modal" data-target="#myModal2" >Edit</button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
-											<!-- <a href="../stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
+											<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
 											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
 									</tr>
@@ -117,23 +117,9 @@
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Barang</h4>
 									</div>
 									<div id="modalForm">
-										<form enctype="application/x-www-form-urlencoded" action="" method="POST">
+										<form enctype="application/x-www-form-urlencoded" action="../../fungsi/edit/edit.php" method="POST">
 											<div class="modal-body">
-													<!-- <td><input id="kdbrg" type="hidden" name="kdbrg"></td> -->
-												
 													<table class="table table-striped bordered">
-														
-													<?php
-													// if (isset($_POST['kd'])) {
-														// include ('db_con.php');
-														// $formatbrg = $lihat -> barang_id();
-														// $formatsupp = $lihat -> supp_id();
-														// $kode = $_GET['data-id'];
-														// echo $kode;
-														// $query_edit = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");
-														// while ($row = mysqli_fetch_array($query_edit)) {     
-													// }
-													?>
 														<tr>
 															<td>Kode Barang</td>
 															<td><input id="kdbrg" type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
@@ -148,7 +134,7 @@
 														</tr>
 														<tr>
 															<td>Jumlah Stok</td>
-															<td><input id="jumlah" type="number" required Placeholder="Jumlah" value="" class="form-control"  name="jmlh"></td>
+															<td><input id="jumlah" type="number" required Placeholder="Jumlah" value="" class="form-control"  name="jumlah"></td>
 														</tr>
 														<tr>
 															<td>Harga Beli</td>
@@ -158,12 +144,9 @@
 															<td>Harga Jual</td>
 															<td><input id="jual" type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
 														</tr>
-											<?php
-											//  } 
-											?>
 													</table>
 													<div class="modal-footer">
-														<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
+														<button type="submit" name="update" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 													</div>
 												</div>
@@ -179,38 +162,30 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
-
-				// $('.li-modal').on('click', function () {
-
-				// 	$('#myModal2').modal('show');
-
-				// 	$tr = $(this).closest('tr');
-
-				// 	var data = $tr.children("td").map(function () {
-				// 		return $(this).text();
-				// 	}).get();
-
-				// 	console.log(data);
-
-				// 	$('#kdbrg').val(data[1]);
-				// 	$('#nmsupp').val(data[2]);
-				// 	$('#nmbrg').val(data[3]);
-				// 	$('#jumlah').val(data[4]);
-				// 	$('#beli').val(data[5]);
-				// 	$('#jual').val(data[6]);
-				// });
-
 				$(document).on("click",".li-modal",function(){  
-                var kd = $(this).attr('data-id');  
-                $.ajax({  
-                     url :"edit_ajax.php",  
+                // var kd = $(this).attr('data-id');  
+				var kode = $(this).closest('tr').find('.kode').text();
+						// console.log(kode);
+    
+				$.ajax({  
+                     url :"page/stok/edit_ajax.php",  
                      type:"POST",  
-                     cache:false,  
-                     data:{editId:kd},  
-                     success:function(data){  
-                          $("#modal-body").html(data);  
+                     cache:false,
+					 dataType:'json',  
+                     data:{editId:kode},  
+                     success:function(response){
+						// console.log(response);
+						$.each(response, function (key, value) { 
+							// console.log(value['kode_brg']);
+							$('#kdbrg').val(value['kode_brg']);
+							$('#nmsupp').val(value['nama_supp']);
+							$('#nmbrg').val(value['nama_brg']);
+							$('#jumlah').val(value['jumlah']);
+							$('#beli').val(value['hrg_beli']);
+							$('#jual').val(value['hrg_jual']);
+						});
                      },  
-                });  
-           });
+                });
+           		});
 			});
 		</script>

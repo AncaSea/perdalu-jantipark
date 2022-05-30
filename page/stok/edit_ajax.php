@@ -1,34 +1,21 @@
 <?php  
       // create database connectivity  
-      include('db_con.php');  
+      include('../../db_con.php');  
       if (isset($_POST['editId'])) {  
-           $editId = $_POST['editId'];  
-      }  
+           $editId = $_POST['editId'];
+           $result_array = [];    
       // fetch data from student table..  
-      $sql = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = {$editId}");  
+      $sql = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$editId'");  
     //   $query = $con->query($sql);  
-      if ($sql->num_rows > 0) {  
-      $output = "";  
-      while ($row = mysqli_fetch_all($sql)) {  
-      $output .= "<form>  
-            <div class='modal-body'>  
-                 <input type='hidden' class='form-control' id='editId' value='{$row['id']}'>  
-             <div class='form-group'>  
-               <input type='text' class='form-control' id='editName' value='{$row['name']}'>  
-             </div>  
-             <div class='form-group'>  
-               <input type='text' class='form-control' id='editEmail' value='{$row['email']}'>  
-             </div>  
-             <div class='form-group'>  
-               <input type='text' class='form-control' id='editPassword' value='{$row['password']}'>  
-             </div>  
-            </div>  
-            <div class='modal-footer'>  
-             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>  
-             <button type='button' class='btn btn-info' id='editSubmit'>Save changes</button>  
-            </div>  
-          </form>";            
+      if ($sql->num_rows > 0) {
+        foreach ($sql as $row) {
+          array_push($result_array, $row);
+          header("Content-type: application/json");
+          echo json_encode($result_array);
         }  
-      }  
-      echo $output;  
+      } else {
+        
+        // echo $return; 
+      }
+    }
  ?>  

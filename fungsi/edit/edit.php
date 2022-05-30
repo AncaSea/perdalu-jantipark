@@ -1,23 +1,28 @@
 <?php 
 session_start();
-if(!empty($_SESSION['admin'])){
-	require '../../config.php';
-	if(!empty($_GET['pengaturan'])){
-		$nama= htmlentities($_POST['namatoko']);
-		$alamat = htmlentities($_POST['alamat']);
-		$kontak = htmlentities($_POST['kontak']);
-		$pemilik = htmlentities($_POST['pemilik']);
-		$id = '1';
+if(!empty($_SESSION['namaadmin'])){
+	require '../../db_con.php';
+	if(isset($_POST['update'])){
+		$kdbrg = $_POST['kdbrg'];
+		$nmsupp = $_POST['nmsupp'];
+		$nmbrg = $_POST['nmbrg'];
+		$jmlh = $_POST['jumlah'];
+		$beli = $_POST['beli'];
+		$jual = $_POST['jual'];
 		
-		$data[] = $nama;
-		$data[] = $alamat;
-		$data[] = $kontak;
-		$data[] = $pemilik;
-		$data[] = $id;
-		$sql = 'UPDATE toko SET nama_toko=?, alamat_toko=?, tlp=?, nama_pemilik=? WHERE id_toko = ?';
-		$row = $config -> prepare($sql);
-		$row -> execute($data);
-		echo '<script>window.location="../../index.php?page=pengaturan&success=edit-data"</script>';
+		$updb =  "UPDATE stok_brg SET nama_supp='$nmsupp', nama_brg='$nmbrg', jumlah='$jmlh', hrg_beli='$beli', hrg_jual='$jual' WHERE kode_brg='$kdbrg'";
+		$query = mysqli_query($dbconnect, $updb);
+		// $q = mysqli_fetch_array($cekdb);
+		// $kode = $q['kode_brg'];
+		// $jum = $q['jumlah'];
+		// print_r($kode);
+		
+		if ($query) {
+			echo '<script>window.location="../../admin.php?page=stok/stok&success=edit-data"</script>';
+		} else {
+
+		}		
+		// echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&success=tambah-data"</script>';
 	}
 
 	if(!empty($_GET['kategori'])){
