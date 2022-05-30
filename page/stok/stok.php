@@ -79,7 +79,8 @@
 										<td>Rp.<?php echo number_format($isi[4]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[5]);?>,-</td>
 										<td>
-										<button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button>
+										<button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal" data-toggle="modal" data-target="#myModal2" >Edit</button>
+										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 											<!-- <a href="../stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
 											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
 										</td>
@@ -114,87 +115,102 @@
 									<div class="modal-header" style="background:#285c64;color:#fff;">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Barang</h4>
-									</div>										
-										<div class="modal-body">
-											<form enctype="application/x-www-form-urlencoded" action="" method="POST">
-												<!-- <td><input id="kdbrg" type="hidden" name="kdbrg"></td> -->
-											
-												<table class="table table-striped bordered">
-													
-												<?php
-												// if (isset($_POST['kd'])) {
-                                                    // include ('db_con.php');
-													// $formatbrg = $lihat -> barang_id();
-													// $formatsupp = $lihat -> supp_id();
-                                                    // $kode = $_GET['data-id'];
-													// echo $kode;
-                                                    // $query_edit = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");
-                                                    // while ($row = mysqli_fetch_array($query_edit)) {     
-												// }
-												?>
-													<tr>
-														<td>Kode Barang</td>
-														<td><input id="kdbrg" type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
-													</tr>
-													<tr>
-														<td>Nama Supplier</td>
-														<td><input id="nmsupp" type="text" placeholder="Nama Supplier" value="" required class="form-control" name="nmsupp"></td>
-													</tr>
-													<tr>
-														<td>Nama Barang</td>
-														<td><input id="nmbrg" type="text" placeholder="Nama Barang" value="" required class="form-control" name="nmbrg"></td>
-													</tr>
-													<tr>
-														<td>Jumlah Stok</td>
-														<td><input id="jumlah" type="number" required Placeholder="Jumlah" value="" class="form-control"  name="jmlh"></td>
-													</tr>
-													<tr>
-														<td>Harga Beli</td>
-														<td><input id="beli" type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
-													</tr>
-													<tr>
-														<td>Harga Jual</td>
-														<td><input id="jual" type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
-													</tr>
-                                        <?php
-                                        //  } 
-                                        ?>
-												</table>
-												<div class="modal-footer">
-													<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
-													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+									<div id="modalForm">
+										<form enctype="application/x-www-form-urlencoded" action="" method="POST">
+											<div class="modal-body">
+													<!-- <td><input id="kdbrg" type="hidden" name="kdbrg"></td> -->
+												
+													<table class="table table-striped bordered">
+														
+													<?php
+													// if (isset($_POST['kd'])) {
+														// include ('db_con.php');
+														// $formatbrg = $lihat -> barang_id();
+														// $formatsupp = $lihat -> supp_id();
+														// $kode = $_GET['data-id'];
+														// echo $kode;
+														// $query_edit = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");
+														// while ($row = mysqli_fetch_array($query_edit)) {     
+													// }
+													?>
+														<tr>
+															<td>Kode Barang</td>
+															<td><input id="kdbrg" type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
+														</tr>
+														<tr>
+															<td>Nama Supplier</td>
+															<td><input id="nmsupp" type="text" placeholder="Nama Supplier" value="" required class="form-control" name="nmsupp"></td>
+														</tr>
+														<tr>
+															<td>Nama Barang</td>
+															<td><input id="nmbrg" type="text" placeholder="Nama Barang" value="" required class="form-control" name="nmbrg"></td>
+														</tr>
+														<tr>
+															<td>Jumlah Stok</td>
+															<td><input id="jumlah" type="number" required Placeholder="Jumlah" value="" class="form-control"  name="jmlh"></td>
+														</tr>
+														<tr>
+															<td>Harga Beli</td>
+															<td><input id="beli" type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
+														</tr>
+														<tr>
+															<td>Harga Jual</td>
+															<td><input id="jual" type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
+														</tr>
+											<?php
+											//  } 
+											?>
+													</table>
+													<div class="modal-footer">
+														<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													</div>
 												</div>
 											</form>
-										</div>
+									</div>										
 								</div>
 							</div>
 						</div>
               		</div>
           	</section>
       	</section>
-		  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- 					   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-						<script type="text/javascript">
-        $(document).ready(function () {
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
 
-            $('.li-modal').on('click', function () {
+				// $('.li-modal').on('click', function () {
 
-                $('#myModal2').modal('show');
+				// 	$('#myModal2').modal('show');
 
-                $tr = $(this).closest('tr');
+				// 	$tr = $(this).closest('tr');
 
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
+				// 	var data = $tr.children("td").map(function () {
+				// 		return $(this).text();
+				// 	}).get();
 
-                console.log(data);
+				// 	console.log(data);
 
-                $('#kdbrg').val(data[1]);
-                $('#nmsupp').val(data[2]);
-                $('#nmbrg').val(data[3]);
-                $('#jumlah').val(data[4]);
-                $('#beli').val(data[5]);
-                $('#jual').val(data[6]);
-            });
-        });
-						</script>
+				// 	$('#kdbrg').val(data[1]);
+				// 	$('#nmsupp').val(data[2]);
+				// 	$('#nmbrg').val(data[3]);
+				// 	$('#jumlah').val(data[4]);
+				// 	$('#beli').val(data[5]);
+				// 	$('#jual').val(data[6]);
+				// });
+
+				$(document).on("click",".li-modal",function(){  
+                var kd = $(this).attr('data-id');  
+                $.ajax({  
+                     url :"edit_ajax.php",  
+                     type:"POST",  
+                     cache:false,  
+                     data:{editId:kd},  
+                     success:function(data){  
+                          $("#modal-body").html(data);  
+                     },  
+                });  
+           });
+			});
+		</script>
