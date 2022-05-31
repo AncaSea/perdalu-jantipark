@@ -24,11 +24,13 @@ div.zabuto_calendar .table td {
 
 div.zabuto_calendar .table tr th,
 div.zabuto_calendar .table tr td {
-    background-color:rgb(81, 75, 75);
+    /* background-color:rgb(119, 120, 98); */
+    background-color: white;
 }
 
 div.zabuto_calendar .table tr.calendar-month-header th {
-    background-color:gray;
+    /* background-color:gray; */
+    background-color: white;
 }
 
 div.zabuto_calendar .table tr.calendar-month-header th span {
@@ -39,7 +41,8 @@ div.zabuto_calendar .table tr.calendar-month-header th span {
 }
 
 div.zabuto_calendar .table tr.calendar-dow-header th {
-    background-color: rgb(129, 117, 117);
+    /* background-color: rgb(129, 129, 117); */
+    background-color: white;
 }
 
 div.zabuto_calendar .table tr:last-child {
@@ -112,12 +115,12 @@ div.zabuto_calendar .badge-event {
 }
 
 /* legend */
-div.zabuto_calendar div.legend {
+/* div.zabuto_calendar div.legend {
     margin-top: 15px;
     text-align: right;
 	padding-right:10px;
 	padding-bottom:10px;
-}
+} */
 
 div.zabuto_calendar div.legend span {
     font-size: 10px;
