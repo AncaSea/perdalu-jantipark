@@ -4,7 +4,8 @@
           <div class="row">
             <div class="col-lg-9">
               <div class="row" style="margin-left:1pc;margin-right:1pc;">
-                <h1>DASHBOARD</h1>
+                <h1 style="display: inline-block;">DASHBOARD</h1>
+                <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date("Y/m/d"); ?></h4>
                 <hr>
                 <?php $income = $lihat -> omset();?>
                 <?php $stok = $lihat -> barang_stok_row();?>
@@ -74,6 +75,7 @@
     RIGHT SIDEBAR CONTENT
     *********************************************************************************************************************************************************** -->                  
                 
+<<<<<<< HEAD
             <div class="col-lg-3 ds">
               <div id="calendar" class="mb">
                 <div class="panel green-panel no-margin">
@@ -88,5 +90,7 @@
                 </div>
               </div><!-- / calendar -->
             </div><!-- /col-lg-3 -->
+=======
+>>>>>>> 458e94dd177c83089c16f429742f05021cdb3870
           </div><! --/row -->
         </section>
