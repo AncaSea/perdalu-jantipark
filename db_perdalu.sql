@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Bulan Mei 2022 pada 08.03
+-- Waktu pembuatan: 31 Bulan Mei 2022 pada 16.16
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -172,8 +172,8 @@ CREATE TABLE `stok_brg` (
 --
 
 INSERT INTO `stok_brg` (`kode_brg`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_beli`, `hrg_jual`) VALUES
-('kb0015', 'wakidi', 'baju polo', 99908, 15000, 20000),
-('kb0055', 'mukidi', 'celana pendek', 99940, 10000, 15000),
+('kb0015', 'wakidi', 'baju polo', 9999, 20000, 25000),
+('kb0055', 'mukidi', 'celana pendek', 9999, 10000, 15000),
 ('kb0057', 'odin', 'kaos', 9992, 15000, 20000),
 ('kb0071', 'pudidi', 'sweater', 9978, 20000, 25000),
 ('kb0083', 'yudi', 'jeans', 9992, 30000, 35000);
@@ -264,7 +264,7 @@ ALTER TABLE `brg_kembali`
 -- AUTO_INCREMENT untuk tabel `brg_masuk`
 --
 ALTER TABLE `brg_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
