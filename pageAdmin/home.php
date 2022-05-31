@@ -75,7 +75,6 @@
     RIGHT SIDEBAR CONTENT
     *********************************************************************************************************************************************************** -->                  
                 
-<<<<<<< HEAD
             <div class="col-lg-3 ds">
               <div id="calendar" class="mb">
                 <div class="panel green-panel no-margin">
@@ -90,7 +89,5 @@
                 </div>
               </div><!-- / calendar -->
             </div><!-- /col-lg-3 -->
-=======
->>>>>>> 458e94dd177c83089c16f429742f05021cdb3870
           </div><! --/row -->
         </section>
