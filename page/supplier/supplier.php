@@ -11,7 +11,8 @@
               <div class="row">
                   <div class="col-lg-12 main-chart">
 						<h3>Data Supplier</h3>
-						<br/>
+						<hr>
+					
 						<?php if(isset($_GET['success-stok'])){?>
 						<div class="alert alert-success">
 							<p>Tambah Stok Berhasil !</p>

@@ -37,7 +37,8 @@
 								Data Laporan Penjualan <?= $bulan_tes[date('m')];?> <?= date('Y');?>
 							<?php }?>
 						</h3>
-						<br/>
+						<hr>
+						
 						<h4>Cari Laporan Per Bulan</h4>
 						<form method="post" action="admin.php?page=lap_penjualan/penjualan&cari=ok">
 							<table class="table table-striped">
