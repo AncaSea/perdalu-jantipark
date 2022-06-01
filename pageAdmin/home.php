@@ -5,7 +5,7 @@
             <div class="col-lg-9">
               <div class="row" style="margin-left:1pc;margin-right:1pc;">
                 <h1 style="display: inline-block;">DASHBOARD</h1>
-                <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date("Y/m/d"); ?></h4>
+                <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
                 <hr>
                 <?php $income = $lihat -> omset();?>
                 <?php $stok = $lihat -> barang_stok_row();?>
