@@ -146,7 +146,7 @@
 														</tr>
 													</table>
 													<div class="modal-footer">
-														<button type="submit" name="update" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
+														<button type="submit" name="updateStok" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 													</div>
 												</div>
