@@ -157,7 +157,6 @@
 						</div>
               		</div>
           	</section>
-      	</section>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$(document).on("click",".li-modal",function(){  

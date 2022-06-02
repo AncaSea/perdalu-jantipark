@@ -10,9 +10,9 @@ session_start();
         include 'pageAdmin/header.php';
         include 'pageAdmin/sidebar.php';
             if(!empty($_GET['page'])){
-                include ('page/'.$_GET['page'].'.php');
+                include 'page/'.$_GET['page'].'.php';
             } else if (!empty($_GET['pageAdmin'])) {
-                include ('pageAdmin/'.$_GET['pageAdmin'].'.php');
+                include 'pageAdmin/'.$_GET['pageAdmin'].'.php';
             } else {
                 include 'pageAdmin/home.php';
             }

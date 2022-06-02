@@ -197,7 +197,6 @@
 					</div>
               	</div>
           	</section>
-      	</section>
 		<script type="text/javascript">
 			var rowCount1 = document.getElementById("example1").rows.length;
 			// var rowCount1 = $("#example1").length;
