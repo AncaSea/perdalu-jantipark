@@ -71,7 +71,7 @@
 			   <div class="row">
                    <div class="col-lg-12 main-chart">
 						<h3>Data User Kasir</h3>
-						<br/>
+						<hr/>
 						<div class="clearfix"></div>
 						<br/>
 						

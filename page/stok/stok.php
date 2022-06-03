@@ -17,7 +17,7 @@
 							<p>Tambah Stok Berhasil !</p>
 						</div>
 						<?php }?>
-						<?php if(isset($_GET['success'])){?>
+						<?php if(isset($_GET['success-edit'])){?>
 						<div class="alert alert-success">
 							<p>Edit Data Berhasil !</p>
 						</div>
@@ -32,7 +32,7 @@
 						
 						<!-- <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
 							<i class="fa fa-plus"></i> Insert Data</button> -->
-							<a href="admin.php?page=brg_masuk/brg_masuk" style="margin-right :0.5pc;" 
+							<a href="admin.php?page=stok/stok" style="margin-right :0.5pc;" 
 								class="btn btn-success btn-md pull-right">
 								<i class="fa fa-refresh"></i> Refresh Data</a>
 						<!-- <a href="login_admin.php?page=barang&stok=yes" style="margin-right :0.5pc;" 
@@ -122,19 +122,19 @@
 													<table class="table table-striped bordered">
 														<tr>
 															<td>Kode Barang</td>
-															<td><input id="kdbrg" type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
+															<td><input id="kdbrg" type="text" readonly required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
 														</tr>
 														<tr>
 															<td>Nama Supplier</td>
-															<td><input id="nmsupp" type="text" placeholder="Nama Supplier" value="" required class="form-control" name="nmsupp"></td>
+															<td><input id="nmsupp" type="text" readonly placeholder="Nama Supplier" value="" required class="form-control" name="nmsupp"></td>
 														</tr>
 														<tr>
 															<td>Nama Barang</td>
-															<td><input id="nmbrg" type="text" placeholder="Nama Barang" value="" required class="form-control" name="nmbrg"></td>
+															<td><input id="nmbrg" type="text" readonly placeholder="Nama Barang" value="" required class="form-control" name="nmbrg"></td>
 														</tr>
 														<tr>
 															<td>Jumlah Stok</td>
-															<td><input id="jumlah" type="number" required Placeholder="Jumlah" value="" class="form-control"  name="jumlah"></td>
+															<td><input id="jumlah" type="number" readonly required Placeholder="Jumlah" value="" class="form-control"  name="jumlah"></td>
 														</tr>
 														<tr>
 															<td>Harga Beli</td>

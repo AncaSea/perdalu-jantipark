@@ -26,11 +26,11 @@ if(!empty($_SESSION['namaadmin'])){
 		$nohp = $_POST['nohp2'];
 		$almt = $_POST['almt2'];
 		
-		$updb =  "UPDATE supplier SET nama_supp='$nmsupp', hrg_beli='$nohp', hrg_jual='$almt' WHERE id_supp='$idsupp'";
+		$updb =  "UPDATE supplier SET nama_supp='$nmsupp', no_hp='$nohp', alamat='$almt' WHERE id_supp='$idsupp'";
 		$query = mysqli_query($dbconnect, $updb);
 		
 		if ($query) {
-			echo '<script>window.location="../../admin.php?page=supplier/supplier&success=edit-data"</script>';
+			echo '<script>window.location="../../admin.php?page=supplier/supplier&success-edit=edit-data"</script>';
 		} else {
 
 		}		
@@ -45,7 +45,7 @@ if(!empty($_SESSION['namaadmin'])){
 		$query = mysqli_query($dbconnect, $updb);
 		
 		if ($query) {
-			echo '<script>window.location="../../admin.php?page=user/user&success=edit-data"</script>';
+			echo '<script>window.location="../../admin.php?page=user/user&success-editadmin=edit-data"</script>';
 		} else {
 
 		}		
@@ -60,7 +60,7 @@ if(!empty($_SESSION['namaadmin'])){
 		$query = mysqli_query($dbconnect, $updb);
 		
 		if ($query) {
-			echo '<script>window.location="../../admin.php?page=user/user&success=edit-data"</script>';
+			echo '<script>window.location="../../admin.php?page=user/user&success-editkasir=edit-data"</script>';
 		} else {
 
 		}		

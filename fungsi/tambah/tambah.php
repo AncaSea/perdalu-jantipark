@@ -21,7 +21,7 @@ session_start();
 		$sql = mysqli_query($dbconnect, "INSERT INTO supplier (id, id_supp, nama_supp, no_hp, alamat) 
 		VALUES('', '$idsupp', '$nmsupp', '$nohp', '$almt')");
 
-		echo '<script>window.location="../../admin.php?page=supplier/supplier&success=tambah-data"</script>';
+		echo '<script>window.location="../../admin.php?page=supplier/supplier&success-supp=tambah-data"</script>';
 	}
 	if(!empty($_GET['barangmsk'])){
 		$idsupp = $_POST['idsupp'];

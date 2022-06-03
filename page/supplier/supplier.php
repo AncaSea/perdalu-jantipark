@@ -13,14 +13,14 @@
 						<h3>Data Supplier</h3>
 						<hr>
 					
-						<?php if(isset($_GET['success-stok'])){?>
-						<div class="alert alert-success">
-							<p>Tambah Stok Berhasil !</p>
-						</div>
-						<?php }?>
-						<?php if(isset($_GET['success'])){?>
+						<?php if(isset($_GET['success-supp'])){?>
 						<div class="alert alert-success">
 							<p>Tambah Supplier Berhasil !</p>
+						</div>
+						<?php }?>
+						<?php if(isset($_GET['success-edit'])){?>
+						<div class="alert alert-success">
+							<p>Edit Supplier Berhasil !</p>
 						</div>
 						<?php }?>
 						<?php if(isset($_GET['remove'])){?>
@@ -167,19 +167,19 @@
 											<table class="table table-striped bordered">
 												<tr>
 													<td>ID Supplier</td>
-													<td><input id="idsupp2" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp" ></td>
+													<td><input id="idsupp2" readonly type="text" placeholder="ID Supplier" required class="form-control" name="idsupp2" ></td>
 												</tr>
 												<tr>
 													<td>Nama Supplier</td>
-													<td><input id="nmsupp2" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
+													<td><input id="nmsupp2" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp2"></td>
 												</tr>
 												<tr>
 													<td>No. HP</td>
-													<td><input id="nohp2" type="number" placeholder="nohp" required class="form-control" name="nohp"></td>
+													<td><input id="nohp2" type="number" placeholder="nohp" required class="form-control" name="nohp2"></td>
 												</tr>
 												<tr>
 													<td>Alamat</td>
-													<td><input id="almt2" type="text" placeholder="alamat" required class="form-control"  name="almt"></td>
+													<td><input id="almt2" type="text" placeholder="alamat" required class="form-control"  name="almt2"></td>
 												</tr>
 											</table>
 										</div>
