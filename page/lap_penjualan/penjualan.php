@@ -100,6 +100,70 @@
 								</tr>
 							</table>
 						</form>
+						<div class="clearfix" style="margin-top:1em;"></div>
+						<h4>Cari Laporan Per Minggu</h4>
+						<form method="post" action="admin.php?page=lap_penjualan/penjualan&cari=ok">
+							<table class="table table-striped">
+								<tr>
+									<th>
+										Pilih Tanggal Awal
+									</th>
+									<th>
+										Pilih Tanggal Akhir
+									</th>
+									<th>
+										Aksi
+									</th>
+								</tr>
+								<tr>
+								<td>
+								<select name="bln" class="form-control">
+									<option selected="selected">Bulan</option>
+									<?php
+										$bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+										$jlh_bln=count($bulan);
+										$bln1 = array('01','02','03','04','05','06','07','08','09','10','11','12');
+										$no=1;
+										for($c=0; $c<$jlh_bln; $c+=1){
+											echo"<option value='$bln1[$c]'> $bulan[$c] </option>";
+										$no++;}
+									?>
+									</select>
+								</td>
+								<td>
+								<?php
+									$now=date('Y');
+									echo "<select name='thn' class='form-control'>";
+									echo '
+									<option selected="selected">Tahun</option>';
+									for ($a=2017;$a<=$now;$a++)
+									{
+										echo "<option value='$a'>$a</option>";
+									}
+									echo "</select>";
+									?>
+								</td>
+								<td>
+									<input type="hidden" name="periode" value="ya">
+									<button class="btn btn-primary">
+										<i class="fa fa-search"></i> Cari
+									</button>
+									<a href="admin.php?page=lap_penjualan/penjualan" class="btn btn-success">
+										<i class="fa fa-refresh"></i> Refresh</a>
+										
+									<?php if(!empty($_GET['cari'])){?>
+										<a href="excel.php?cari=yes&bln=<?=$_POST['bln'];?>&thn=<?=$_POST['thn'];?>" class="btn btn-info"><i class="fa fa-download"></i>
+										Excel</a>
+									<?php }else{?>
+										<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
+										Excel</a>
+									<?php }?>
+								</td>
+								</tr>
+							</table>
+						</form>
+						<div class="clearfix" style="margin-top:1em;"></div>
+						<h4>Cari Laporan Per Hari</h4>
 						<form method="post" action="admin.php?page=lap_penjualan/penjualan&hari=cek">
 							<table class="table table-striped">
 								<tr>
@@ -172,11 +236,11 @@
 										}
 									?>
 									<?php 
-										// $bayar = 0;
+										$omset = 0;
 										$jumlah = 0;
-										// $modal = 0;
+										$transaksi = $lihat -> laptrans();	
 										foreach($hasil as $isi){ 
-											// $bayar += $isi['total'];
+											$omset += $isi[9];
 											// $modal += $isi['harga_beli']* $isi['jumlah'];
 											// $jumlah += $isi['jumlah'];
 									?>
@@ -190,20 +254,18 @@
 										<td><?php echo $isi[7];?> </td>
 										<td>Rp.<?php echo number_format($isi[8]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[9]);?>,-</td>
-										<!-- <td><?php echo $isi['nm_member'];?></td>
-										<td><?php echo $isi['tanggal_input'];?></td> -->
 									</tr>
 									<?php $no++; }?>
 								</tbody>
 								<tfoot>
 									<tr>
-										<th colspan="3">Total Terjual</td>
-										<th><?php echo $jumlah;?></td>
+										<th colspan="6">Total Terjual</td>
+										<th><?php echo $transaksi;?></td>
 										<!-- <th>Rp.<?php echo number_format($modal);?>,-</th>
 										<th>Rp.<?php echo number_format($bayar);?>,-</th> -->
-										<th style="background:#0bb365;color:#fff;">Keuntungan</th>
+										<th style="background:#0bb365;color:#fff;">Omset</th>
 										<th style="background:#0bb365;color:#fff;">
-											<!-- Rp.<?php echo number_format($bayar-$modal);?>,-</th> -->
+											Rp.<?php echo number_format($omset);?>,-</th>
 									</tr>
 								</tfoot>
 							</table>
@@ -213,6 +275,5 @@
 				  </div>
               </div>
           </section>
-      </section>
 	
 

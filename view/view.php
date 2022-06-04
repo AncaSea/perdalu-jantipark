@@ -126,13 +126,13 @@
 				$urut = substr($hasil['kode_brg'], 2, 3);
 				$tambah = (int) $urut + 1;
 				if(strlen($tambah) == 1){
-					 $format = 'KB00'.$tambah.'';
+					 $format = 'kb00'.$tambah.'';
 				}else if(strlen($tambah) == 2){
-					 $format = 'KB0'.$tambah.'';
+					 $format = 'kb0'.$tambah.'';
 				}else{
 					$ex = explode('KB',$hasil['kode_brg']);
 					$no = (int) $ex[1] + 1;
-					$format = 'BR'.$no.'';
+					$format = 'kb'.$no.'';
 				}
 				return $format;
 			}
@@ -146,13 +146,13 @@
 				$urut = substr($hasil['kode_brg'], 2, 3);
 				$tambah = (int) $urut + 1;
 				if(strlen($tambah) == 1){
-					 $format = 'KB00'.$tambah.'';
+					 $format = 'sp00'.$tambah.'';
 				}else if(strlen($tambah) == 2){
-					 $format = 'KB0'.$tambah.'';
+					 $format = 'sp0'.$tambah.'';
 				}else{
 					$ex = explode('KB',$hasil['kode_brg']);
 					$no = (int) $ex[1] + 1;
-					$format = 'BR'.$no.'';
+					$format = 'sp'.$no.'';
 				}
 				return $format;
 			}
@@ -272,7 +272,7 @@
 			function lapjual(){
 				include 'db_con.php';
 
-				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan");
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan ORDER BY no_nota ASC");
 				if ($sql -> num_rows > 0) {
 					while ($row = mysqli_fetch_all($sql)) {
 						$hasil = $row;
@@ -280,6 +280,17 @@
 						return $hasil;
 					}
 				}
+			}
+
+			function laptrans(){
+				include 'db_con.php';
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					// print_r($result);
+					$hasil = mysqli_num_rows($result);
+					return $hasil;
+					}
 			}
 
 			function periode_jual($periode){

@@ -2,7 +2,7 @@
 session_start();
 if(!empty($_SESSION['namaadmin'])){
 	require '../../db_con.php';
-	if(isset($_POST['update'])){
+	if(isset($_POST['updateStok'])){
 		$kdbrg = $_POST['kdbrg'];
 		$nmsupp = $_POST['nmsupp'];
 		$nmbrg = $_POST['nmbrg'];
@@ -12,10 +12,6 @@ if(!empty($_SESSION['namaadmin'])){
 		
 		$updb =  "UPDATE stok_brg SET nama_supp='$nmsupp', nama_brg='$nmbrg', jumlah='$jmlh', hrg_beli='$beli', hrg_jual='$jual' WHERE kode_brg='$kdbrg'";
 		$query = mysqli_query($dbconnect, $updb);
-		// $q = mysqli_fetch_array($cekdb);
-		// $kode = $q['kode_brg'];
-		// $jum = $q['jumlah'];
-		// print_r($kode);
 		
 		if ($query) {
 			echo '<script>window.location="../../admin.php?page=stok/stok&success=edit-data"</script>';
@@ -24,7 +20,52 @@ if(!empty($_SESSION['namaadmin'])){
 		}		
 		// echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&success=tambah-data"</script>';
 	}
+	if(isset($_POST['updateSupp'])){
+		$idsupp = $_POST['idsupp2'];
+		$nmsupp = $_POST['nmsupp2'];
+		$nohp = $_POST['nohp2'];
+		$almt = $_POST['almt2'];
+		
+		$updb =  "UPDATE supplier SET nama_supp='$nmsupp', no_hp='$nohp', alamat='$almt' WHERE id_supp='$idsupp'";
+		$query = mysqli_query($dbconnect, $updb);
+		
+		if ($query) {
+			echo '<script>window.location="../../admin.php?page=supplier/supplier&success-edit=edit-data"</script>';
+		} else {
 
+		}		
+		// echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&success=tambah-data"</script>';
+	}
+	if(isset($_POST['updateUserAdmin'])){
+		$nama = $_POST['nama'];
+		$user = $_POST['user'];
+		$pwd = $_POST['pwd'];
+		
+		$updb =  "UPDATE Kasir_acc SET username='$user', password='$pwd' WHERE nama_admin='$nama'";
+		$query = mysqli_query($dbconnect, $updb);
+		
+		if ($query) {
+			echo '<script>window.location="../../admin.php?page=user/user&success-editadmin=edit-data"</script>';
+		} else {
+
+		}		
+		// echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&success=tambah-data"</script>';
+	}
+	if(isset($_POST['updateUserKasir'])){
+		$nama = $_POST['nama2'];
+		$user = $_POST['user2'];
+		$pwd = $_POST['pwd2'];
+		
+		$updb =  "UPDATE Kasir_acc SET username='$user', password='$pwd' WHERE nama_kasir='$nama'";
+		$query = mysqli_query($dbconnect, $updb);
+		
+		if ($query) {
+			echo '<script>window.location="../../admin.php?page=user/user&success-editkasir=edit-data"</script>';
+		} else {
+
+		}		
+		// echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&success=tambah-data"</script>';
+	}
 	if(!empty($_GET['kategori'])){
 		$nama= htmlentities($_POST['kategori']);
 		$id= htmlentities($_POST['id']);

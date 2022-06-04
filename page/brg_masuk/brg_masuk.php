@@ -103,8 +103,9 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<th colspan="7">Total </td>
-										<th>Rp.<?php echo number_format($totalBeli);?>,-</td>
+										<th colspan="6">Total </td>
+										<th style="background:red;color:#fff;">Modal</th>
+										<th style="background:red;color:#fff;">Rp.<?php echo number_format($totalBeli);?>,-</td>
 										<th>Rp.<?php echo number_format($totalJual);?>,-</td>
 										<th colspan="2" style="background:#ddd"></th>
 									</tr>
@@ -115,7 +116,12 @@
 					<!-- end view barang -->
 					<!-- tambah barang MODALS-->
 						<!-- Modal -->
-					
+						<?php 
+							        $rand = mt_rand(0000,9999);
+									$randid = 'sp'.$rand.'';
+        $arrid = array('id_supp'=>"$randid");
+									// print_r($arrid);
+						?>
 						<div id="myModal" class="modal fade" role="dialog">
 							<div class="modal-dialog">
 								<!-- Modal content-->
@@ -126,104 +132,38 @@
 									</div>										
 									<form enctype="application/x-www-form-urlencoded" action="../../fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
 										<div class="modal-body">
-									
 											<table class="table table-striped bordered">
-												
-												<?php
-													// $formatbrg = $lihat -> barang_id();
-													// $formatsupp = $lihat -> supp_id();
-												?>
 												<tr>
 													<td>Nama Supplier</td>
-													<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="auto()" required class="form-control" name="nmsupp"></td>
+													<td><input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
 												</tr>
 												<tr>
 													<td>ID Supplier</td>
-													<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
-												</tr>
-												<tr>
-													<td>Kode Barang</td>
-													<td><input type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
+													<td><input id="idsupp" type="text" readonly placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
 												</tr>
 												<tr>
 													<td>Nama Barang</td>
-													<td><input type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
-												</tr>
-												<tr>
-													<td>Tanggal Input</td>
-													<td><input class="form-control" type="text" required readonly="readonly" value="<?php echo date("Y-m-d");?>" name="tgl"></td>
-												</tr>
-												<tr>
-													<td>Jumlah</td>
-													<td><input type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
-												</tr>
-												<tr>
-													<td>Harga Beli</td>
-													<td><input type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
-												</tr>
-												<tr>
-													<td>Harga Jual</td>
-													<td><input type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
-												</tr>
-											</table>
-										</div>
-										<div class="modal-footer">
-											<button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Insert Data</button>
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-
-						<div id="myModal2" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<!-- Modal content-->
-								<div class="modal-content" style=" border-radius:0px;">
-									<div class="modal-header" style="background:#285c64;color:#fff;">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Barang</h4>
-									</div>										
-									<form enctype="application/x-www-form-urlencoded" action="../../fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
-										<div class="modal-body">
-									
-											<table class="table table-striped bordered">
-												
-												<?php
-													// $formatbrg = $lihat -> barang_id();
-													// $formatsupp = $lihat -> supp_id();
-												?>
-												<tr>
-													<td>Nama Supplier</td>
-													<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="auto()" required class="form-control" name="nmsupp"></td>
-												</tr>
-												<tr>
-													<td>ID Supplier</td>
-													<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
+													<td><input class="nmbrg" id="nmbrg" type="text" placeholder="Nama Barang" required class="form-control" name="nmbrg"></td>
 												</tr>
 												<tr>
 													<td>Kode Barang</td>
-													<td><input type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
-												</tr>
-												<tr>
-													<td>Nama Barang</td>
-													<td><input type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
+													<td><input id="kdbrg" type="text" readonly required placeholder="Kode Barang" class="form-control"  name="kdbrg"></td>
 												</tr>
 												<tr>
 													<td>Tanggal Input</td>
-													<td><input class="form-control" type="text" required readonly="readonly" value="<?php echo date("Y-m-d");?>" name="tgl"></td>
+													<td><input id="tgl" class="form-control" type="text" required readonly="readonly" value="<?php echo date("Y-m-d");?>" name="tgl"></td>
 												</tr>
 												<tr>
 													<td>Jumlah</td>
-													<td><input type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
+													<td><input id="jmlh" type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
 												</tr>
 												<tr>
 													<td>Harga Beli</td>
-													<td><input type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
+													<td><input id="beli" type="number" placeholder="Harga beli" required class="form-control" name="beli"></td>
 												</tr>
 												<tr>
 													<td>Harga Jual</td>
-													<td><input type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
+													<td><input id="jual" type="number" placeholder="Harga Jual" required class="form-control"  name="jual"></td>
 												</tr>
 											</table>
 										</div>
@@ -236,21 +176,43 @@
 							</div>
 						</div>
               		</div>
-				    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-						<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-						<script type="text/javascript">
-							function auto(){
-								var nama = $("#nmsupp").val(); 
-								$.ajax({
-									type : "POST",
-									url : '../ajax.php.php', // file proses penginputan
-									data : "nama="+nama,
-								}).success(function (data){
-								var json = data,
-								obj = json;
-								$('#idsupp').val(obj.idsupp);
-								});
-							}
-					</script>
           	</section>
-      	</section>
+			<script type="text/javascript">
+				$(document).ready(function () {
+						$(document).on("change","#nmsupp",function(){
+						// console.log(nmsp);
+						$.ajax({  
+							url :"page/brg_masuk/get_ajax.php",  
+							type:"POST",  
+							cache:false,
+							dataType:'json',  
+							data:{getNmSupp:$("#nmsupp").val()},
+							success:function(response){
+								console.log(response);
+								$.each(response, function (key, value) { 
+									// console.log(value['id_supp']);
+									$('#idsupp').val(value['id_supp']);
+								});
+							},  
+						});
+						});
+
+						$(document).on("change","#nmbrg",function(){
+						// console.log(kode);
+						$.ajax({  
+							url :"page/brg_masuk/get_ajax.php",  
+							type:"POST",  
+							cache:false,
+							dataType:'json',  
+							data:{getNmBrg:$("#nmbrg").val()},
+							success:function(response){
+								// console.log(response);
+								$.each(response, function (key, value) { 
+									// console.log(value['id_supp']);
+									$('#kdbrg').val(value['kode_brg']);
+								});
+							},  
+						});
+						});
+				});
+		</script>

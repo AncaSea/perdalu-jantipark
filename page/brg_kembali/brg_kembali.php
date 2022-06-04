@@ -117,40 +117,34 @@
 								</div>										
 								<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?barangkmbl=tambah" method="POST">
 									<div class="modal-body">
-								
 										<table class="table table-striped bordered">
-											
-											<?php
-												// $formatbrg = $lihat -> barang_id();
-												// $formatsupp = $lihat -> supp_id();
-											?>
 											<tr>
 												<td>Nama Supplier</td>
-												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" onkeyup="auto()" required class="form-control" name="nmsupp"></td>
+												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
 											</tr>
 											<tr>
 												<td>ID Supplier</td>
-												<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
-											</tr>
-											<tr>
-												<td>Kode Barang</td>
-												<td><input type="text" required placeholder="Kode Barang" value="" class="form-control"  name="kdbrg"></td>
+												<td><input id="idsupp" type="text" readonly placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
 											</tr>
 											<tr>
 												<td>Nama Barang</td>
-												<td><input type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
+												<td><input id="nmbrg" type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
+											</tr>
+											<tr>
+												<td>Kode Barang</td>
+												<td><input id="kdbrg" type="text" required readonly placeholder="Kode Barang" value="" class="form-control" name="kdbrg"></td>
 											</tr>
 											<tr>
 												<td>Tanggal Masuk</td>
-												<td><input class="form-control" type="text" required readonly="readonly" value="<?php echo date("Y-m-d");?>" name="tgl"></td>
+												<td><input id="tgl" class="form-control" type="text" required readonly value="<?php echo date("Y-m-d");?>" name="tgl"></td>
 											</tr>
 											<tr>
 												<td>Sisa Barang</td>
-												<td><input type="number" required Placeholder="Jumlah" class="form-control"  name="jmlh"></td>
+												<td><input id="sisa" type="number" required Placeholder="Jumlah" class="form-control" name="sisa"></td>
 											</tr>
 											<tr>
 												<td>Harga Supplier</td>
-												<td><input type="number" placeholder="Harga Supplier" required class="form-control" name="beli"></td>
+												<td><input id="beli" type="number" placeholder="Harga Supplier" required class="form-control" name="beli"></td>
 											</tr>
 										</table>
 									</div>
@@ -159,31 +153,48 @@
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									</div>
 								</form>
-								<script type="text/javascript">
-									function supp_id(str){
-										if (str.length == 0) {
-											document.getElementById("idsupp").innerHTML = "";
-											return;
-										} else {
-							
-											// Creates a new XMLHttpRequest object
-											var xmlhttp = new XMLHttpRequest();
-											xmlhttp.onreadystatechange = function () {
-													document.getElementById("idsupp").innerHTML = this.responseText;
-												}
-											};
-							
-											// xhttp.open("GET", "filename", true);
-											xmlhttp.open("GET", "ajax.php?supp_id=" + str, true);
-											
-											// Sends the request to the server
-											xmlhttp.send();
-									}
-								</script>
 							</div>
 						</div>
 						
 					</div>
               	</div>
           	</section>
-      	</section>
+			<script type="text/javascript">
+				$(document).ready(function () {
+						$(document).on("change","#nmsupp",function(){
+						// console.log(nmsp);
+						$.ajax({  
+							url :"page/brg_kembali/get_ajax.php",  
+							type:"POST",  
+							cache:false,
+							dataType:'json',  
+							data:{getNmSupp:$("#nmsupp").val()},
+							success:function(response){
+								// console.log(response);
+								$.each(response, function (key, value) { 
+									// console.log(value['id_supp']);
+									$('#idsupp').val(value['id_supp']);
+								});
+							},  
+						});
+						});
+
+						$(document).on("change","#nmbrg",function(){
+						// console.log(kode);
+						$.ajax({  
+							url :"page/brg_kembali/get_ajax.php",  
+							type:"POST",  
+							cache:false,
+							dataType:'json',  
+							data:{getNmBrg:$("#nmbrg").val()},
+							success:function(response){
+								// console.log(response);
+								$.each(response, function (key, value) { 
+									// console.log(value['id_supp']);
+									$('#kdbrg').val(value['kode_brg']);
+								});
+							},  
+						});
+						});
+				});
+			</script>
