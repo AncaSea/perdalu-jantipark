@@ -47,14 +47,17 @@ if(isset($_GET['pesan'])){
 		<?php }
                 $_SESSION['error'] = '';
         ?>
+		
 			<div class="row">
 				<div class="col-md-12">
+				<h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
 					<h1>Kasir</h1>
 					<!-- <h2>Hai <?=$_SESSION['namakasir']?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
 					<a href="keranjang_reset.php">Reset Keranjang</a> |
 					<a href="admin.php?page=lap_penjualan/penjualan">Riwayat Transaksi</a>
 				</div>
+				
 			</div>
 			<hr>
 			<div class="row">
