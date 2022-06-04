@@ -121,7 +121,7 @@
 								<div class="modal-content" style=" border-radius:0px;">
 								<div class="modal-header" style="background:#285c64;color:#fff;">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Barang</h4>
+									<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Supplier</h4>
 								</div>										
 									<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?supplier=tambah" method="POST">
 										<div class="modal-body">
@@ -217,5 +217,23 @@
                      },  
                 });
            		});
+
+				$(document).on("change","#nmsupp",function(){
+					// console.log(nmsp);
+					$.ajax({  
+						url :"page/brg_masuk/get_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{getNmSupp:$("#nmsupp").val()},
+						success:function(response){
+							console.log(response);
+							$.each(response, function (key, value) { 
+								// console.log(value['id_supp']);
+								$('#idsupp').val(value['id_supp']);
+							});
+						},  
+					});
+					});
 			});
 		</script>

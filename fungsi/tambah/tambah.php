@@ -40,11 +40,12 @@ session_start();
 		
 		$cekdb =  mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrg'");
 		$q = mysqli_fetch_array($cekdb);
-		$kode = $q['kode_brg'];
-		$jum = $q['jumlah'];
-		print_r($kode);
+
+		// print_r($kode);
 		
-		if ($kodebrg = $kode) {
+		if ($kodebrg = $q['kode_brg']) {
+			$kode = $q['kode_brg'];
+			$jum = $q['jumlah'];
 			$tmbh = $jum + $jmlh;
 
 			$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
