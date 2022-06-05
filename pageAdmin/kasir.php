@@ -64,7 +64,8 @@ if(isset($_GET['pesan'])){
 				<div class="col-md-8">
 					<form method="post" action="keranjang_add.php">
 						<div class="form-group">
-							<input type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
+							<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
+							<div id="search-result"></div>
 							<input style="margin-top: 1em;" type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 							<button style="margin-top: 1em;" type="submit" class="btn btn-success">Masukan</button>
 						</div>
@@ -84,9 +85,6 @@ if(isset($_GET['pesan'])){
 							<tr>
 								<td>
 									<?=$value['nama']?>
-									<!-- <?php if ($value['diskon'] > 0): ?>
-										<br><small class="label label-danger">Diskon <?=number_format($value['diskon'])?></small>
-									<?php endif;?> -->
 								</td>
 								<td align="right"><?=number_format($value['harga'])?></td>
 								<td class="col-md-2">
@@ -159,5 +157,9 @@ if(isset($_GET['pesan'])){
 			return clean;
 			// console.log(clean);
 		}
+
+		$( "#nama_brg" ).autocomplete({
+       		source: '../fungsi/autocomplete/autocomplete.php',
+     	});
 	</script>
     </section>
