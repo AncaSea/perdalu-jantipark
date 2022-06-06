@@ -54,8 +54,8 @@ if(isset($_GET['pesan'])){
 					<h1>Kasir</h1>
 					<!-- <h2>Hai <?=$_SESSION['namakasir']?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
-					<a href="keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> |  
-					<a href="admin.php?page=lap_penjualan/penjualan"class="btn btn-warning btn-md margin-left 50px">Riwayat Transaksi </a>
+					<a href="keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
+					<a href="admin.php?page=lap_penjualan/penjualan"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
 				
 			</div>

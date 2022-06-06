@@ -63,9 +63,9 @@ if(isset($_GET['pesan'])){
 				<div class="col-md-12">
 					<h1>Kasir</h1>
 					<h2>Hai <?=$_SESSION['namakasir']?></h2>
-					<a href="logout.php">Logout</a> |
-					<a href="keranjang_reset.php">Reset Keranjang</a> |
-					<a href="riwayat.php">Riwayat Transaksi</a>
+					<a href="keranjang_reset.php"class="btn btn-warning btn-md ">Reset Keranjang</a> &ensp;
+					<a href="riwayat.php"class="btn btn-info btn-md">Riwayat Transaksi </a> &ensp;
+					<a href="logout.php"class="btn btn-danger btn-md pull-right">Logout</a> 					
 				</div>
 			</div>
 			<hr>
