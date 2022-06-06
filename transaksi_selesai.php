@@ -31,8 +31,8 @@ $detailbrg = mysqli_query($dbconnect, "SELECT penjualan.*, stok_brg.nama_brg FRO
 		<table width="500" border="0" cellpadding="1" cellspacing="0">
 			<tr>
 				<th>Janti Park<br>
-					Jl Rokan Kiri 28 Bowongan Arjowinangun <br>
-				Pacitan, Jawa Timur, 60822</th>
+				NGENDO, JANTI, KECAMATAN POLANHARJO, <br>
+				KABUPATEN KLATEN, JAWA TENGAH 57474</th>
 			</tr>
 			<tr align="center"><td><hr></td></tr>
 			<tr>
@@ -86,7 +86,8 @@ $detailbrg = mysqli_query($dbconnect, "SELECT penjualan.*, stok_brg.nama_brg FRO
 				<th>===== Layanan Konsumen ====</th>
 			</tr>
 			<tr>
-				<th>SMS/CALL 085895986529 </th>
+				<th>WA : 085895986529 <br> 
+					IG : jantipark_klaten <br></th>
 			</tr>
 		</table>
 	</div>
