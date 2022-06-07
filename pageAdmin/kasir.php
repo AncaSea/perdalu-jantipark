@@ -57,13 +57,15 @@ if(isset($_GET['pesan'])){
 					<a href="keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
 					<a href="admin.php?page=lap_penjualan/penjualan"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
-				
+				&ensp;
 			</div>
-			<hr>
+			&ensp;
+			<br>
 			<div class="row">
 				<div class="col-md-8">
 					<form method="post" action="keranjang_add.php">
 						<div class="form-group">
+						&ensp;
 							<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
 							<div id="search-result"></div>
 							<input style="margin-top: 1em;" type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
