@@ -118,7 +118,7 @@
 								<tr>
 								<td>
 								<select name="bln" class="form-control">
-									<option selected="selected">Bulan</option>
+									<option selected="selected">Tanggal Awal</option>
 									<?php
 										$bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
 										$jlh_bln=count($bulan);
@@ -135,7 +135,7 @@
 									$now=date('Y');
 									echo "<select name='thn' class='form-control'>";
 									echo '
-									<option selected="selected">Tahun</option>';
+									<option selected="selected">Tanggal Akhir</option>';
 									for ($a=2017;$a<=$now;$a++)
 									{
 										echo "<option value='$a'>$a</option>";
@@ -220,16 +220,18 @@
 									<?php 
 										$no=1; 
 										if(!empty($_GET['cari'])){
-											$periode = $_POST['bln'].'-'.$_POST['thn'];
-											$no=1; 
+											$M = $_POST['bln'];
+											$Y = $_POST['thn'];
+											$no=1;
+											$omset = 0;
 											$jumlah = 0;
 											// $bayar = 0;
-											$hasil = $lihat -> periode_jual($periode);
+											$hasil = $lihat -> periode_jual($Y,$M);
 										}elseif(!empty($_GET['hari'])){
 											$hari = $_POST['hari'];
 											$no=1; 
 											$jumlah = 0;
-											$bayar = 0;
+											$omset = 0;
 											$hasil = $lihat -> hari_jual($hari);
 										}else{
 											$hasil = $lihat -> lapjual();
@@ -238,7 +240,7 @@
 									<?php 
 										$omset = 0;
 										$jumlah = 0;
-										$transaksi = $lihat -> laptrans();	
+										$transaksi = $lihat -> laptrans();
 										foreach($hasil as $isi){ 
 											$omset += $isi[9];
 											// $modal += $isi['harga_beli']* $isi['jumlah'];

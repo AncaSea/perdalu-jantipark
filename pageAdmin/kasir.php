@@ -165,9 +165,6 @@ if(isset($_GET['pesan'])){
 			// console.log(clean);
 		}
 
-		// $( "#nama_brg" ).autocomplete({
-       	// 	source: '../fungsi/autocomplete/autocomplete.php',
-     	// });
 	</script>
 	<script>
 		$(document).ready(function(){
@@ -191,38 +188,6 @@ if(isset($_GET['pesan'])){
 					$("#search-result").fadeOut();
 				}
 			});
-
-			// $(document).on("click","li", function(){
-			// 	$('#nama_brg').val($(this).text());
-			// 	$('#search-result').fadeOut("fast");
-			// });
-
-			// $( "#nama_brg" ).autocomplete({
-			// 	source: function( request, response ) {
-			// 		// Fetch data
-			// 		$.ajax({
-			// 			url: "fungsi/autocomplete/autocomplete.php",
-			// 			type: "POST",
-			// 			dataType: "json",
-			// 			data: {search: request.term, type: "nmbrg"},
-			// 			success: function( data ) {
-			// 				console.log(data);
-			// 				response( data );
-			// 			}
-			// 		});
-			// 	},
-			// 	select: function (event, ui) {
-			// 		// Set selection
-			// 		$("#search-result").val(ui.item.label); // display the selected text
-			// 		// $('#selectuser_id').val(ui.item.value); // save selected id to input
-			// 		return false;
-			// 	},
-			// 	focus: function(event, ui){
-			// 		$( "#search-result" ).val( ui.item.label );
-			// 		// $( "#selectuser_id" ).val( ui.item.value );
-			// 		return false;
-			// 	},
-			// });
 		});
 		function selectBarang(val) {
 			$("#nama_brg").val(val);
