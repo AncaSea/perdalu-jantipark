@@ -6,7 +6,6 @@
       $result_array = [];
       // fetch data from student table..  
       $sql = mysqli_query($dbconnect, "SELECT * FROM supplier WHERE nama_supp = '$nmsupp'");
-      // $query = $con->query($sql);
       if ($sql->num_rows == 1) {
         foreach ($sql as $row) {
           array_push($result_array, $row);

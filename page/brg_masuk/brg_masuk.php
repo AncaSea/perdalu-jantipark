@@ -179,8 +179,8 @@
           	</section>
 			<script type="text/javascript">
 				$(document).ready(function () {
-						$(document).on("change","#nmsupp",function(){
-						// console.log(nmsp);
+					$(document).on("change","#nmsupp",function(){
+					// console.log(nmsp);
 						$.ajax({  
 							url :"page/brg_masuk/get_ajax.php",  
 							type:"POST",  
@@ -195,10 +195,10 @@
 								});
 							},  
 						});
-						});
+					});
 
-						$(document).on("change","#nmbrg",function(){
-						// console.log(kode);
+					$(document).on("change","#nmbrg",function(){
+					// console.log(kode);
 						$.ajax({  
 							url :"page/brg_masuk/get_ajax.php",  
 							type:"POST",  
@@ -213,6 +213,6 @@
 								});
 							},  
 						});
-						});
+					});
 				});
 		</script>
