@@ -66,17 +66,26 @@ if(isset($_GET['pesan'])){
 					<form method="post" action="keranjang_add.php">
 						<div class="form-group">
 						&ensp;
-							<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
+						&ensp;
+
+							<div class="col-md-4">
+							
+							<input id="nama_brg" style="margin-left: -1em;" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
 							
 							<!-- KI LHO HEEENNNNNN JATAHMUUU-->
 							<!-- li class = "auto-kasir" -->
-							<ol style="position:absolute; background-color:#fff;" id="search-result"></ol>
+							<ol style="position:absolute; background-color:#feb101;" id="search-result"></ol>
+							</div>
 							
-							
-							<input style="margin-top: 1em;" type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
-							<button style="margin-top: 1em;" type="submit" class="btn btn-success">Masukan</button>
+							<div class="col-md-4">
+							<input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+							</div>
+							<button type="submit" class="btn btn-success">Masukan</button>
 						</div>
 					</form>
+					<br>
+					<br>
+					<br>
 					<br>
 					<form method="post" action="keranjang_update.php">
 					<table class="table table-bordered">
