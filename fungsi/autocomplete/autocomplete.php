@@ -8,13 +8,16 @@
         $response = array();
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_array($result) ){
-              $response = $row['nama_brg'];
+                
+                    echo '<li class="auto-kasir" onClick=\'selectBarang("'.$row["nama_brg"].'")\'>'.$row["nama_brg"].'</li>';
+                
+            //   $response = $row['nama_brg'];
             }
         } else {
             $response = "empty";
         }
        
-        echo json_encode($response);
+        // echo json_encode($response);
     }
     
     // $term = mysqli_real_escape_string($dbconnect,$_GET['term']);

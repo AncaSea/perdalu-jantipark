@@ -1,6 +1,7 @@
 <?php
 $host = 'localhost';
-$user = 'root';
+$user = 'rey';
+// $user = 'root';
 $pass = '';
 $db = 'db_perdalu';
 

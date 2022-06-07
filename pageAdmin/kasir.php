@@ -67,7 +67,12 @@ if(isset($_GET['pesan'])){
 						<div class="form-group">
 						&ensp;
 							<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
-							<div id="search-result"></div>
+							
+							<!-- KI LHO HEEENNNNNN JATAHMUUU-->
+							<!-- li class = "auto-kasir" -->
+							<ol style="position:absolute; background-color:#fff;" id="search-result"></ol>
+							
+							
 							<input style="margin-top: 1em;" type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 							<button style="margin-top: 1em;" type="submit" class="btn btn-success">Masukan</button>
 						</div>
@@ -174,7 +179,6 @@ if(isset($_GET['pesan'])){
 						url :"fungsi/autocomplete/autocomplete.php",  
 						type:"POST",  
 						cache:false,
-						dataType:'json',  
 						data:{kasir:search},
 						success:function(data){
 							console.log(data);
@@ -220,5 +224,9 @@ if(isset($_GET['pesan'])){
 			// 	},
 			// });
 		});
+		function selectBarang(val) {
+			$("#nama_brg").val(val);
+			$("#search-result").hide();
+		}
 	</script>
     </section>
