@@ -70,15 +70,15 @@ if(isset($_GET['pesan'])){
 
 							<div class="col-md-4">
 							
-							<input id="nama_brg" style="margin-left: -1em;" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
+								<input id="nama_brg" style="margin-left: -1em;" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
 							
-							<!-- KI LHO HEEENNNNNN JATAHMUUU-->
-							<!-- li class = "auto-kasir" -->
-							<ol style="position:absolute; background-color:#feb101;" id="search-result"></ol>
+								<!-- KI LHO HEEENNNNNN JATAHMUUU-->
+								<!-- li class = "auto-kasir" -->
+								<ol id="search-result"></ol>
 							</div>
 							
 							<div class="col-md-4">
-							<input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+								<input type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 							</div>
 							<button type="submit" class="btn btn-success">Masukan</button>
 						</div>
@@ -104,7 +104,7 @@ if(isset($_GET['pesan'])){
 								</td>
 								<td align="right"><?=number_format($value['harga'])?></td>
 								<td class="col-md-2">
-									<input type="number" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control" max="<?=$value['stok']?>">
+									<input type="number" min="1" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control" max="<?=$value['stok']?>">
 								</td>
 								<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
 								<td align="right"><?=number_format(($value['qty'] * $value['harga']))?></td>

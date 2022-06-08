@@ -66,6 +66,18 @@
           font-size: 3.5rem;
         }
       }
+
+      .auto-kasir:hover{
+        color: #F0F8FF;
+        background-color:#000000;
+      }
+      #search-result{
+        cursor: pointer;
+        position:absolute; 
+        background-color:#feb101; 
+        width:80%; 
+             
+      }
     .header{
       background:#000000;
       color:#F0F8FF;}
