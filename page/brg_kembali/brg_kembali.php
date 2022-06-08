@@ -120,7 +120,10 @@
 										<table class="table table-striped bordered">
 											<tr>
 												<td>Nama Supplier</td>
-												<td><input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp"></td>
+												<td>
+													<input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp">
+													<ul style="width:50%; padding:0;" id="search-result"></ul>
+												</td>
 											</tr>
 											<tr>
 												<td>ID Supplier</td>
@@ -128,7 +131,10 @@
 											</tr>
 											<tr>
 												<td>Nama Barang</td>
-												<td><input id="nmbrg" type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg"></td>
+												<td>
+													<input id="nmbrg" type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg">
+													<ul style="width:50%; padding:0;" id="search-result2"></ul>
+												</td>
 											</tr>
 											<tr>
 												<td>Kode Barang</td>
@@ -197,4 +203,56 @@
 						});
 						});
 				});
+			</script>
+			<script>
+				$(document).ready(function(){
+					$("#nmsupp").keyup(function(){
+						var search = $(this).val();
+						// console.log(search);
+						if (search !== "") {
+							$.ajax({  
+								url :"fungsi/autocomplete/autocomplete.php",  
+								type:"POST",  
+								cache:false,
+								data:{brgkmbl:search},
+								success:function(data){
+									// console.log(data);
+									$("#search-result").html(data);
+									$("#search-result").fadeIn();
+								},  
+							});
+						} else {
+							$("#search-result").html("");  
+							$("#search-result").fadeOut();
+						}
+					});
+					$("#nmbrg").keyup(function(){
+						var search = $(this).val();
+						// console.log(search);
+						if (search !== "") {
+							$.ajax({  
+								url :"fungsi/autocomplete/autocomplete.php",  
+								type:"POST",  
+								cache:false,
+								data:{brgkmbl2:search},
+								success:function(data){
+									// console.log(data);
+									$("#search-result2").html(data);
+									$("#search-result2").fadeIn();
+								},  
+							});
+						} else {
+							$("#search-result2").html("");  
+							$("#search-result2").fadeOut();
+						}
+					});
+				});
+				function selectSupp(val) {
+					$("#nmsupp").val(val);
+					$("#search").hide();
+				}
+				function selectBarang(val) {
+					$("#nmbrg").val(val);
+					$("#search2").hide();
+				}
 			</script>

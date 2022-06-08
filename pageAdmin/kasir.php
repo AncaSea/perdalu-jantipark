@@ -74,7 +74,7 @@ if(isset($_GET['pesan'])){
 							
 								<!-- KI LHO HEEENNNNNN JATAHMUUU-->
 								<!-- li class = "auto-kasir" -->
-								<ol id="search-result"></ol>
+								<ul id="search-result"></ul>
 							</div>
 							
 							<div class="col-md-4">
