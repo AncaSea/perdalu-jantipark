@@ -47,7 +47,8 @@ if(isset($_GET['pesan'])){
 		<?php }
                 $_SESSION['error'] = '';
         ?>
-			<div class="row">
+		
+			<div class="row" style="margin-bottom: 20px;">
 				<div class="col-md-12">
 				<h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
 					<h1>Kasir</h1>
@@ -58,84 +59,80 @@ if(isset($_GET['pesan'])){
 				</div>
 				&ensp;
 			</div>
-			&ensp;
-			<br>
-			<div class="row">
-				<div class="col-md-8">
-					<form method="post" action="keranjang_add.php">
-						<div class="form-group">
-						&ensp;
-						&ensp;
 
-							<div class="col-md-4">
-							
-								<input id="nama_brg" style="margin-left: -1em;" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
-							
-								<!-- KI LHO HEEENNNNNN JATAHMUUU-->
-								<!-- li class = "auto-kasir" -->
-								<ul id="search-result"></ul>
-							</div>
-							
-							<div class="col-md-4">
-								<input type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
-							</div>
-							<button type="submit" class="btn btn-success">Masukan</button>
+			<div class="row"> 
+				<div class="col-md-8">
+					<div class="form-group" style="margin-bottom: 30px;">
+						<div class="row">
+							<form method="post" action="keranjang_add.php">
+								<div class="col-md-4">
+									<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
+									<!-- KI LHO HEEENNNNNN JATAHMUUU-->
+									<!-- li class = "auto-kasir" -->
+									<ul class="auto-result" id="search-result"></ul>
+								</div>
+								<div class="col-md-4">
+									<input type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+								</div>
+								<div class="col-md-4">
+									<button type="submit" class="btn btn-success">Masukan</button>
+								</div>
+							</form>
 						</div>
-					</form>
-					<br>
-					<br>
-					<br>
-					<br>
+					</div>
+
 					<form method="post" action="keranjang_update.php">
-					<table class="table table-bordered">
-						<tr>
-							<th>Nama</th>
-							<th>Harga</th>
-							<th>Qty</th>
-							<th>Sub Total</th>
-							<th></th>
-						</tr>
-						<?php if (isset($_SESSION['cart'])): ?>
-						<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+						<table class="table table-bordered">
 							<tr>
-								<td>
-									<?=$value['nama']?>
-								</td>
-								<td align="right"><?=number_format($value['harga'])?></td>
-								<td class="col-md-2">
-									<input type="number" min="1" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control" max="<?=$value['stok']?>">
-								</td>
-								<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
-								<td align="right"><?=number_format(($value['qty'] * $value['harga']))?></td>
-								<td>
-									<a href="keranjang_hapus.php?kd=<?=$value['kd']?>">
-										<button type="button" class="btn btn-outline-danger">
-											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 17 20">
-												<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
-											</svg>
-									</button>
-									</a>
-								</td>
+								<th>Nama</th>
+								<th>Harga</th>
+								<th>Qty</th>
+								<th>Sub Total</th>
+								<th>Aksi</th>
 							</tr>
-						<?php } ?>
-						<?php endif; ?>
-					</table>
-					<button type="submit" class="btn btn-success">Perbaruhi</button>
+							<?php if (isset($_SESSION['cart'])): ?>
+							<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+								<tr>
+									<td>
+										<?=$value['nama']?>
+									</td>
+									<td align="right"><?=number_format($value['harga'])?></td>
+									<td class="col-md-2">
+										<input type="number" min="1" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control" max="<?=$value['stok']?>">
+									</td>
+									<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
+									<td align="right"><?=number_format(($value['qty'] * $value['harga']))?></td>
+									<td>
+										<a href="keranjang_hapus.php?kd=<?=$value['kd']?>">
+											<button type="button" class="btn btn-outline-danger">
+												<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 17 20">
+													<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+												</svg>
+										</button>
+										</a>
+									</td>
+								</tr>
+							<?php } ?>
+							<?php endif; ?>
+						</table>
+						<button type="submit" class="btn btn-success">Perbaruhi</button>
 					</form>
 				</div>
 				<div class="col-md-4">
-					<h3>Total Rp. <?=number_format($sum)?></h3>
+					<h3 style="margin:0px 0px 15px 0px">Total Rp. <?=number_format($sum)?></h3>
 					<form action="keranjang_update.php" method="POST">
 						<input type="hidden" name="total" value="<?=$sum?>">
 					<div class="form-group" style="margin-bottom: 1em;">
 						<label>Bayar</label>
-						<input type="text" id="bayar" name="bayar" class="form-control">
+						<input type="text" id="bayar" name="bayar" class="form-control" required>
 					</div>
 					<button type="submit" class="btn btn-primary" onkeypress="" >Selesai</button>
 					</form>
 				</div>
 			</div>
 		</div>
+
+
 	<script type="text/javascript">
 
 		//inisialisasi inputan
@@ -202,4 +199,5 @@ if(isset($_GET['pesan'])){
 			$("#search-result").hide();
 		}
 	</script>
+	
     </section>
