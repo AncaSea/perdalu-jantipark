@@ -287,8 +287,8 @@
 
 				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan GROUP BY no_nota";
 				if ($result = mysqli_query($dbconnect, $sql)) {
-					// print_r($result);
 					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
 					return $hasil;
 					}
 			}
@@ -296,10 +296,10 @@
 			function periode_jual($Y, $M){
 				include 'db_con.php';
 
-				$sql ="SELECT * FROM penjualan WHERE MONTH(tgl_penjualan) = '$M' AND YEAR(tgl_penjualan) = '$Y' ORDER BY no_nota";
-				$row = mysqli_query($dbconnect, $sql);
-				if ($row -> num_rows > 0) {
-					while ($lap = mysqli_fetch_all($row)) {
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE MONTH(tgl_penjualan) = '$M' AND YEAR(tgl_penjualan) = '$Y' ORDER BY no_nota");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
 						$hasil = $lap;
 						// print_r($hasil);
 						return $hasil;

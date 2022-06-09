@@ -19,28 +19,56 @@
 				'11'=>"November",
 				'12'=>"Desember"
 			);
+
+			if(isset($_GET['pesan'])){
+				if($_GET['pesan'] == "error1") {
+						$_SESSION['error'] = 'Pilih Tanggal dan Tahun';
+				}
+			
+				if($_GET['pesan'] == "error2") {
+					$_SESSION['error'] = 'Pilih Tanggal Awal dan Tanggal Akhir';
+				}
+			
+				if($_GET['pesan'] == "updatefailed") {
+					$_SESSION['error'] = 'Gagal Mengupdate Stok Barang';
+				}
+			
+				if($_GET['pesan'] == "emptycart") {
+					$_SESSION['error'] = 'Keranjang Kosong';
+				}
+			}
 		?>
       <section id="main-content">
           <section class="wrapper">
+			<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
+				<script type="text/javascript">
 
+				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error");
+
+				</script>
+			<?php }
+					$_SESSION['error'] = '';
+			?>
               <div class="row">
                   <div class="col-lg-12 main-chart">
 						<h3>
 							<!--<a  style="padding-left:2pc;" href="fungsi/hapus/hapus.php?laporan=jual" onclick="javascript:return confirm('Data Laporan akan di Hapus ?');">
 								<button class="btn btn-danger">RESET</button>
 							</a>-->
-							<?php if(!empty($_GET['cari'])){ ?>
+							<?php if(!empty($_GET['bulan'])){ ?>
 								Data Laporan Penjualan <?= $bulan_tes[$_POST['bln']];?> <?= $_POST['thn'];?>
+							<?php }elseif(!empty($_GET['minggu'])){?>
+								Data Laporan Penjualan <?= $_POST['minggu'];?> <?= date('m');?>
 							<?php }elseif(!empty($_GET['hari'])){?>
 								Data Laporan Penjualan <?= $_POST['hari'];?>
 							<?php }else{?>
-								Data Laporan Penjualan <?= $bulan_tes[date('m')];?> <?= date('Y');?>
+								Data Laporan Penjualan <?= date('Y');?>
 							<?php }?>
 						</h3>
 						<hr>
 						
 						<h4>Cari Laporan Per Bulan</h4>
-						<form method="post" action="admin.php?page=lap_penjualan/penjualan&cari=ok">
+						<form method="post" action="admin.php?page=lap_penjualan/penjualan&bulan=ok">
 							<table class="table table-striped">
 								<tr>
 									<th>
@@ -71,7 +99,7 @@
 								<td>
 								<?php
 									$now=date('Y');
-									echo "<select name='thn' class='form-control'>";
+									echo "<select required name='thn' class='form-control'>";
 									echo '
 									<option selected="selected">Tahun</option>';
 									for ($a=2017;$a<=$now;$a++)
@@ -100,9 +128,11 @@
 								</tr>
 							</table>
 						</form>
+						
 						<div class="clearfix" style="margin-top:1em;"></div>
+
 						<h4>Cari Laporan Per Minggu</h4>
-						<form method="post" action="admin.php?page=lap_penjualan/penjualan&cari=ok">
+						<form method="post" action="admin.php?page=lap_penjualan/penjualan&minggu=ok">
 							<table class="table table-striped">
 								<tr>
 									<th>
@@ -120,12 +150,12 @@
 								<select name="bln" class="form-control">
 									<option selected="selected">Tanggal Awal</option>
 									<?php
-										$bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
-										$jlh_bln=count($bulan);
-										$bln1 = array('01','02','03','04','05','06','07','08','09','10','11','12');
+										$tgl=array();
+										// $jlh_bln=count($tgl);
+										// $bln1 = array('01','02','03','04','05','06','07','08','09','10','11','12');
 										$no=1;
-										for($c=0; $c<$jlh_bln; $c+=1){
-											echo"<option value='$bln1[$c]'> $bulan[$c] </option>";
+										for($c=00; $c<31; $c+=01){
+											echo"<option value='$tgl=$c'> $c </option>";
 										$no++;}
 									?>
 									</select>
@@ -219,21 +249,26 @@
 								<tbody>
 									<?php 
 										$no=1; 
-										if(!empty($_GET['cari'])){
+										if(!empty($_GET['bulan'])){
 											$M = $_POST['bln'];
 											$Y = $_POST['thn'];
-											$no=1;
-											$omset = 0;
-											$jumlah = 0;
-											// $bayar = 0;
-											$hasil = $lihat -> periode_jual($Y,$M);
-										}elseif(!empty($_GET['hari'])){
+											if ($M !== 'Bulan' && $Y !== 'Tahun') {
+												$no=1;
+												$omset = 0;
+												$jumlah = 0;
+												// $bayar = 0;
+												$hasil = $lihat -> periode_jual($Y, $M);
+												// print_r($hasil);
+											} else {
+												header('location:admin.php?page=lap_penjualan/penjualan&pesan=error1');
+											}
+										} else if(!empty($_GET['hari'])){
 											$hari = $_POST['hari'];
 											$no=1; 
 											$jumlah = 0;
 											$omset = 0;
 											$hasil = $lihat -> hari_jual($hari);
-										}else{
+										} else {
 											$hasil = $lihat -> lapjual();
 										}
 									?>
@@ -241,7 +276,8 @@
 										$omset = 0;
 										$jumlah = 0;
 										$transaksi = $lihat -> laptrans();
-										foreach($hasil as $isi){ 
+										error_reporting(E_ERROR | E_PARSE);
+										foreach($hasil as $isi){
 											$omset += $isi[9];
 											// $modal += $isi['harga_beli']* $isi['jumlah'];
 											// $jumlah += $isi['jumlah'];
