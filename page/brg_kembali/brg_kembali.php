@@ -146,7 +146,7 @@
 											</tr>
 											<tr>
 												<td>Sisa Barang</td>
-												<td><input id="sisa" type="number" required Placeholder="Jumlah" class="form-control" name="sisa"></td>
+												<td><input id="sisa" type="number" required Placeholder="Jumlah" min="1" class="form-control" name="sisa"></td>
 											</tr>
 											<tr>
 												<td>Harga Supplier</td>

@@ -1,4 +1,22 @@
+<?php
+if(isset($_GET['pesan'])){
+	if($_GET['pesan'] == "samesupp") {
+			$_SESSION['error'] = 'supplier sudah ada';
+	}
 
+	if($_GET['pesan'] == "notindatabase") {
+		$_SESSION['error'] = 'Barang tidak ada di database';
+	}
+
+	if($_GET['pesan'] == "updatefailed") {
+		$_SESSION['error'] = 'Gagal Mengupdate Stok Barang';
+	}
+
+	if($_GET['pesan'] == "emptycart") {
+		$_SESSION['error'] = 'Keranjang Kosong';
+	}
+}
+?>
  <!--sidebar end-->
       
       <!-- **********************************************************************************************************************************************************
@@ -226,7 +244,7 @@
 				$(document).on("change","#nmsupp",function(){
 					// console.log(nmsp);
 					$.ajax({  
-						url :"page/brg_masuk/get_ajax.php",  
+						url :"page/supplier/get_ajax.php",  
 						type:"POST",  
 						cache:false,
 						dataType:'json',  

@@ -7,11 +7,12 @@
       // fetch data from student table..  
       $sql = mysqli_query($dbconnect, "SELECT * FROM supplier WHERE nama_supp = '$nmsupp'");
       if ($sql->num_rows == 1) {
-        foreach ($sql as $row) {
-          array_push($result_array, $row);
-          header("Content-type: application/json");
-          echo json_encode($result_array);
-        }
+        // foreach ($sql as $row) {
+        //   array_push($result_array, $row);
+        //   header("Content-type: application/json");
+        //   echo json_encode($result_array);
+        // }
+        header("location:admin.php?page=supplier/supplier&pesan=samesupp");
       } else if ($sql->num_rows != 1) {
         $rand = mt_rand(0000,9999);
         $randid = 'sp'.$rand.'';

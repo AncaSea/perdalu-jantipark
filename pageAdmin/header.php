@@ -69,15 +69,32 @@
           font-size: 3.5rem;
         }
       }
+      .auto-kasir{
+        width: 100%;
+        padding: 10px 15px;
+        text-transform: capitalize;
+        transition: 0.3s;
+        /* margin-left: 3em; */
+        color: #000000;
+      }
       .auto-kasir:hover{
         color: #F0F8FF;
         background-color:#000000;
+        padding: 10px 18px;
+        /* margin-left: -4em; */
       }
+
+      .auto-result{
+        padding: 0px;
+        width: auto;
+      }
+
       #search-result, #search-result2{
         cursor: pointer;
         position:absolute; 
-        background-color:#feb101; 
-        width:80%;}
+        background-color:#feb101;
+        /* margin-left: -1em; */
+      }
     .header{
       background:#000000;
       color:#F0F8FF;}
