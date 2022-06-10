@@ -122,7 +122,7 @@
 												<td>Nama Supplier</td>
 												<td>
 													<input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp">
-													<ul style="width:50%; padding:0;" id="search-result"></ul>
+													<ul style=" padding:0;" id="search-result"></ul>
 												</td>
 											</tr>
 											<tr>
@@ -133,7 +133,7 @@
 												<td>Nama Barang</td>
 												<td>
 													<input id="nmbrg" type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg">
-													<ul style="width:50%; padding:0;" id="search-result2"></ul>
+													<ul style=" padding:0;" id="search-result2"></ul>
 												</td>
 											</tr>
 											<tr>
@@ -249,10 +249,10 @@
 				});
 				function selectSupp(val) {
 					$("#nmsupp").val(val);
-					$("#search").hide();
+					$("#search-result").hide();
 				}
 				function selectBarang(val) {
 					$("#nmbrg").val(val);
-					$("#search2").hide();
+					$("#search-result2").hide();
 				}
 			</script>
