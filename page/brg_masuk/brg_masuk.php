@@ -147,7 +147,7 @@
 												</tr>
 												<tr>
 													<td>ID Supplier</td>
-													<td><input id="idsupp" type="text" readonly placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
+													<td><input id="idsupp" type="text" readonly placeholder="ID Supplier" required="on" class="form-control" name="idsupp"></td>
 												</tr>
 												<tr>
 													<td>Nama Barang</td>
@@ -158,7 +158,7 @@
 												</tr>
 												<tr>
 													<td>Kode Barang</td>
-													<td><input id="kdbrg" type="text" readonly required placeholder="Kode Barang" class="form-control"  name="kdbrg"></td>
+													<td><input id="kdbrg" type="text" readonly required="on" placeholder="Kode Barang" class="form-control"  name="kdbrg"></td>
 												</tr>
 												<tr>
 													<td>Tanggal Input</td>
@@ -306,4 +306,8 @@
 						});
 					$("#search-result2").hide();
 				}
+				$(document).click(function(){
+						$("#search-result").hide();
+						$("#search-result2").hide();
+				});
 			</script>

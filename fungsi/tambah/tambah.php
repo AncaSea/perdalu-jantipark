@@ -62,7 +62,7 @@ session_start();
 		$kodebrg = $_POST['kdbrg'];
 		$nmbrg = $_POST['nmbrg'];
 		$tgl = $_POST['tgl'];
-		$jmlh = $_POST['jmlh'];
+		$jmlh = $_POST['sisa'];
 		$beli = $_POST['beli'];
 		$ttl = $beli * $jmlh;
 
