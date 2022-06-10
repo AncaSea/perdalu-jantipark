@@ -13,6 +13,9 @@
                 
             }
         }
+        // else {
+        //     echo '<li class="auto-kasir">Data tidak ditemukan</li>';
+        // }
     }
 
     if (isset($_POST['brgmsk'])) {
@@ -30,9 +33,10 @@
             // }
             //   print_r ($response);
             //   echo json_encode($response);
-        } else {
-            echo '<li class="auto-kasir">Data tidak ditemukan</li>';
         }
+        // else {
+        //     echo '<li class="auto-kasir">Data tidak ditemukan</li>';
+        // }
     }
 
     if (isset($_POST['brgmsk2'])) {
@@ -47,7 +51,10 @@
                 echo '<li class="auto-kasir" onClick=\'selectBarang("'.$row["nama_brg"].'")\'>'.$row["nama_brg"].'</li>';
                 
             }
-        }
+        } 
+        // else {
+        //     echo '<li class="auto-kasir">Data tidak ditemukan</li>';
+        // }
     }
 
     if (isset($_POST['brgkmbl'])) {
@@ -65,9 +72,10 @@
             // }
             //   print_r ($response);
             //   echo json_encode($response);
-        } else {
-            echo '<li class="auto-kasir">Data tidak ditemukan</li>';
-        }
+        } 
+        // else {
+        //     echo '<li class="auto-kasir">Data tidak ditemukan</li>';
+        // }
     }
 
     if (isset($_POST['brgkmbl2'])) {
@@ -82,6 +90,9 @@
                 echo '<li class="auto-kasir" onClick=\'selectBarang("'.$row["nama_brg"].'")\'>'.$row["nama_brg"].'</li>';
                 
             }
-        }
+        } 
+        // else {
+        //     echo '<li class="auto-kasir">Data tidak ditemukan</li>';
+        // }
     }
 ?>

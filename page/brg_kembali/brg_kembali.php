@@ -283,4 +283,8 @@
 					});
 					$("#search-result2").hide();
 				}
+				$(document).click(function(){
+						$("#search-result").hide();
+						$("#search-result2").hide();
+				});
 			</script>
