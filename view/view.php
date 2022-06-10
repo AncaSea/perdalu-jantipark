@@ -257,7 +257,7 @@
 
 			function omset() {
 				include 'db_con.php';
-				$date = date("Y-m-d");
+				// $date = date("Y-m-d");
 				$sql123 = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan where CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE)");
 				$row = mysqli_fetch_array($sql123);
 				// print_r($sql123);
@@ -297,6 +297,23 @@
 				include 'db_con.php';
 
 				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE MONTH(tgl_penjualan) = '$M' AND YEAR(tgl_penjualan) = '$Y' ORDER BY no_nota");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
+			function minggu_jual($tgl1, $tgl2){
+				include 'db_con.php';
+
+				$mnggAwl = date('Y-m-"%'.$tgl1.'%"');
+				$mnggAkhr = date('Y-m-"%'.$tgl2.'%"');
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr' ORDER BY no_nota");
 				// $row =  $sql);
 				if ($sql -> num_rows > 0) {
 					while ($lap = mysqli_fetch_all($sql)) {
