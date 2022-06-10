@@ -122,7 +122,7 @@
 												<td>Nama Supplier</td>
 												<td>
 													<input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp">
-													<ul style="width:50%; padding:0;" id="search-result"></ul>
+													<ul class="auto-result" id="search-result"></ul>
 												</td>
 											</tr>
 											<tr>
@@ -133,7 +133,7 @@
 												<td>Nama Barang</td>
 												<td>
 													<input id="nmbrg" type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg">
-													<ul style="width:50%; padding:0;" id="search-result2"></ul>
+													<ul class="auto-result" id="search-result2"></ul>
 												</td>
 											</tr>
 											<tr>
@@ -168,39 +168,39 @@
 			<script type="text/javascript">
 				$(document).ready(function () {
 						$(document).on("change","#nmsupp",function(){
-						// console.log(nmsp);
-						$.ajax({  
-							url :"page/brg_kembali/get_ajax.php",  
-							type:"POST",  
-							cache:false,
-							dataType:'json',  
-							data:{getNmSupp:$("#nmsupp").val()},
-							success:function(response){
-								// console.log(response);
-								$.each(response, function (key, value) { 
-									// console.log(value['id_supp']);
-									$('#idsupp').val(value['id_supp']);
-								});
-							},  
-						});
+							// console.log(nmsp);
+							$.ajax({  
+								url :"page/brg_kembali/get_ajax.php",  
+								type:"POST",  
+								cache:false,
+								dataType:'json',  
+								data:{getNmSupp:$("#nmsupp").val()},
+								success:function(response){
+									// console.log(response);
+									$.each(response, function (key, value) { 
+										// console.log(value['id_supp']);
+										$('#idsupp').val(value['id_supp']);
+									});
+								},  
+							});
 						});
 
 						$(document).on("change","#nmbrg",function(){
-						// console.log(kode);
-						$.ajax({  
-							url :"page/brg_kembali/get_ajax.php",  
-							type:"POST",  
-							cache:false,
-							dataType:'json',  
-							data:{getNmBrg:$("#nmbrg").val()},
-							success:function(response){
-								// console.log(response);
-								$.each(response, function (key, value) { 
-									// console.log(value['id_supp']);
-									$('#kdbrg').val(value['kode_brg']);
-								});
-							},  
-						});
+							// console.log(kode);
+							$.ajax({  
+								url :"page/brg_kembali/get_ajax.php",  
+								type:"POST",  
+								cache:false,
+								dataType:'json',  
+								data:{getNmBrg:$("#nmbrg").val()},
+								success:function(response){
+									// console.log(response);
+									$.each(response, function (key, value) { 
+										// console.log(value['id_supp']);
+										$('#kdbrg').val(value['kode_brg']);
+									});
+								},  
+							});
 						});
 				});
 			</script>
@@ -249,10 +249,38 @@
 				});
 				function selectSupp(val) {
 					$("#nmsupp").val(val);
-					$("#search").hide();
+					$.ajax({  
+						url :"page/brg_kembali/get_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{getNmSupp:$("#nmsupp").val()},
+						success:function(response){
+							// console.log(response);
+							$.each(response, function (key, value) { 
+								// console.log(value['id_supp']);
+								$('#idsupp').val(value['id_supp']);
+							});
+						},  
+					});
+					$("#search-result").hide();
 				}
 				function selectBarang(val) {
 					$("#nmbrg").val(val);
-					$("#search2").hide();
+					$.ajax({  
+						url :"page/brg_kembali/get_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{getNmBrg:$("#nmbrg").val()},
+						success:function(response){
+							// console.log(response);
+							$.each(response, function (key, value) { 
+								// console.log(value['id_supp']);
+								$('#kdbrg').val(value['kode_brg']);
+							});
+						},  
+					});
+					$("#search-result2").hide();
 				}
 			</script>

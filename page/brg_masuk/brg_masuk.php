@@ -285,6 +285,20 @@
 				}
 				function selectBarang(val) {
 					$("#nmbrg").val(val);
+					$.ajax({  
+							url :"page/brg_masuk/get_ajax.php",  
+							type:"POST",  
+							cache:false,
+							dataType:'json',  
+							data:{getNmBrg:$("#nmbrg").val()},
+							success:function(response){
+								// console.log(response);
+								$.each(response, function (key, value) { 
+									// console.log(value['id_supp']);
+									$('#kdbrg').val(value['kode_brg']);
+								});
+							},  
+						});
 					$("#search-result2").hide();
 				}
 			</script>

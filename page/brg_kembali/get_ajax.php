@@ -13,16 +13,17 @@
           header("Content-type: application/json");
           echo json_encode($result_array);
         }
-      } else if ($sql->num_rows != 1) {
-        $rand = mt_rand(0000,9999);
-        $randid = 'sp'.$rand.'';
-        $arrid = array('id_supp'=>"$randid");
-        foreach ($arrid as $row) {
-          array_push($result_array, array('id_supp'=>"$randid"));
-          header("Content-type: application/json");
-          echo json_encode($result_array);
-        }
-      }
+      } 
+      // else if ($sql->num_rows != 1) {
+      //   $rand = mt_rand(0000,9999);
+      //   $randid = 'sp'.$rand.'';
+      //   $arrid = array('id_supp'=>"$randid");
+      //   foreach ($arrid as $row) {
+      //     array_push($result_array, array('id_supp'=>"$randid"));
+      //     header("Content-type: application/json");
+      //     echo json_encode($result_array);
+      //   }
+      // }
     } else if (isset($_POST['getNmBrg'])) {
       $nmbrg = $_POST['getNmBrg'];
       $result_array = [];    
@@ -35,15 +36,16 @@
           header("Content-type: application/json");
           echo json_encode($result_array);
         }
-      } else if ($sql->num_rows != 1) {
-        $rand = mt_rand(0000,9999);
-        $randid = 'sp'.$rand.'';
-        $arrid = array('kode_brg'=>"$randid");
-        foreach ($arrid as $row) {
-          array_push($result_array, array('kode_brg'=>"$randid"));
-          header("Content-type: application/json");
-          echo json_encode($result_array);
-        }
       }
+      // else if ($sql->num_rows != 1) {
+      //   $rand = mt_rand(0000,9999);
+      //   $randid = 'sp'.$rand.'';
+      //   $arrid = array('kode_brg'=>"$randid");
+      //   foreach ($arrid as $row) {
+      //     array_push($result_array, array('kode_brg'=>"$randid"));
+      //     header("Content-type: application/json");
+      //     echo json_encode($result_array);
+      //   }
+      // }
     }
  ?>  
