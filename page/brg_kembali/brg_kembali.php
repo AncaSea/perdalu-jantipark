@@ -150,7 +150,7 @@
 											</tr>
 											<tr>
 												<td>Harga Supplier</td>
-												<td><input id="beli" type="number" placeholder="Harga Supplier" required class="form-control" name="beli"></td>
+												<td><input id="beli" type="number" readonly placeholder="Harga Supplier" required class="form-control" name="beli"></td>
 											</tr>
 										</table>
 									</div>
@@ -198,6 +198,7 @@
 									$.each(response, function (key, value) { 
 										// console.log(value['id_supp']);
 										$('#kdbrg').val(value['kode_brg']);
+										$('#beli').val(value['hrg_beli']);
 									});
 								},  
 							});

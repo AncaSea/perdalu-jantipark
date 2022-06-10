@@ -150,12 +150,12 @@
 								<select name="bln" class="form-control">
 									<option selected="selected">Tanggal Awal</option>
 									<?php
-										$tgl=array();
-										// $jlh_bln=count($tgl);
+										$tgl=array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31');
+										$jlh_tgl=count($tgl);
 										// $bln1 = array('01','02','03','04','05','06','07','08','09','10','11','12');
 										$no=1;
-										for($c=00; $c<31; $c+=01){
-											echo"<option value='$tgl=$c'> $c </option>";
+										for($c=0; $c<$jlh_tgl; $c+=1){
+											echo"<option value='$tgl[$c]'> $tgl[$c] </option>";
 										$no++;}
 									?>
 									</select>
