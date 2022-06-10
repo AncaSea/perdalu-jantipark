@@ -78,16 +78,13 @@
 										<td><?php echo $isi[3];?></td>
 										<td>Rp.<?php echo number_format($isi[4]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[5]);?>,-</td>
-										<td>
-										<button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal" data-toggle="modal" data-target="#myModal2" >Edit</button>
+										<td  class="text-center">
+										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 											<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
 											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>">
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
-											<button type="button" class="btn btn-outline-danger">
-												<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 17 20">
-													<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
-												</svg>
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
 									</tr>
 								<?php 

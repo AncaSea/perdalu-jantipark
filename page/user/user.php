@@ -22,7 +22,7 @@
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example1">
 								<thead>
-									<tr style="background:#DFF0D8;color:#333;">
+									<tr style="background:#FFF000;color:#333;">
 										<th>No.</th>
 										<th>Nama</th>
 										<th>Username</th>
@@ -42,9 +42,11 @@
 										<td class="nama"><?php echo $isi[0];?></td>
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
-										<td>
-											<button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal" data-toggle="modal" data-target="#myModal2" >Edit</button>
-											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
+										<td class="text-center">
+										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
+											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
+											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 										</td>
 									</tr>
 								<?php 
@@ -79,7 +81,7 @@
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example2">
 								<thead>
-									<tr style="background:#DFF0D8;color:#333;">
+									<tr style="background:#FFF000;color:#333;">
 										<th>No.</th>
 										<th>Nama</th>
 										<th>Username</th>
@@ -99,9 +101,11 @@
 										<td class="nama2"><?php echo $isi[0];?></td>
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
-										<td>
-										<button id="li-modal2" type="button" class="btn btn-primary btn-xs li-modal2" data-toggle="modal" data-target="#myModal3" >Edit</button>
-											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
+										<td class="text-center">
+										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal3" ><i class="fa-solid fa-pen"></i></button>
+											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
+											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 										</td>
 									</tr>
 								<?php 
