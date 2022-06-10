@@ -122,7 +122,11 @@
 												<td>Nama Supplier</td>
 												<td>
 													<input id="nmsupp" type="text" placeholder="Nama Supplier" required class="form-control" name="nmsupp">
+<<<<<<< HEAD
 													<ul class="auto-result" id="search-result"></ul>
+=======
+													<ul style=" padding:0;" id="search-result"></ul>
+>>>>>>> 30ee62cfdb60fdb7ac235b48d66971fe402f8730
 												</td>
 											</tr>
 											<tr>
@@ -133,7 +137,11 @@
 												<td>Nama Barang</td>
 												<td>
 													<input id="nmbrg" type="text" placeholder="Nama Barang" required class="form-control"  name="nmbrg">
+<<<<<<< HEAD
 													<ul class="auto-result" id="search-result2"></ul>
+=======
+													<ul style=" padding:0;" id="search-result2"></ul>
+>>>>>>> 30ee62cfdb60fdb7ac235b48d66971fe402f8730
 												</td>
 											</tr>
 											<tr>
