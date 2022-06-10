@@ -69,6 +69,14 @@
           font-size: 3.5rem;
         }
       }
+      .btn:focus {
+        outline: none;
+      }
+
+      .active{
+        color: #F0F8FF;
+        background-color:#000000;
+      }
       .auto-kasir{
         width: 100%;
         padding: 10px 15px;

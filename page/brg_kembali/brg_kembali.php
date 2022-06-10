@@ -45,7 +45,7 @@
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example1">
 								<thead>
-									<tr style="background:#DFF0D8;color:#333;">
+									<tr style="background:#FFF000;color:#333;">
 										<th>No.</th>
 										<th>ID Supplier</th>
 										<th>Nama Supplier</th>
@@ -80,8 +80,10 @@
 
 										<td>Rp.<?php echo number_format($isi[7]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[4] * $isi[7]);?>,-</td>
-										<td class="aksi">
-											<a href="../fungsi/hapus/hapus.php?barangkmbl=hapus&id=<?php echo $_SESSION['id']; ?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
+										<td class="aksi text-center">
+											<a href="../fungsi/hapus/hapus.php?barangkmbl=hapus&id=<?php echo $_SESSION['id']; ?>">
+											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
 									</tr>
 								<?php 

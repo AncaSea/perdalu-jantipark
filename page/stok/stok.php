@@ -45,7 +45,7 @@
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example1">
 								<thead>
-									<tr style="background:#DFF0D8;color:#333;">
+									<tr style="background:#FFF000;color:#333;">
 										<th>No.</th>
 										<!-- <th>ID Supplier</th> -->
 										<th>Kode Barang</th>
@@ -78,11 +78,13 @@
 										<td><?php echo $isi[3];?></td>
 										<td>Rp.<?php echo number_format($isi[4]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[5]);?>,-</td>
-										<td>
-										<button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal" data-toggle="modal" data-target="#myModal2" >Edit</button>
+										<td  class="text-center">
+										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 											<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
+											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>">
+											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
 									</tr>
 								<?php 

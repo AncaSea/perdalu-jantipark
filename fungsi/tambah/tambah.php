@@ -34,6 +34,7 @@ session_start();
 		$jual = $_POST['jual'];
 		$ttl = $beli * $jmlh;
 
+		// JATAHMU REKKK
 		$sql = mysqli_query($dbconnect, "INSERT INTO 
 		brg_masuk (id,kode_brg,id_supp,tgl_masuk,nama_supp,nama_brg,jumlah,hrg_satuan,total) 
 		VALUES ('', '$kodebrg','$idsupp','$tgl','$nmsupp','$nmbrg','$jmlh','$beli','$ttl')");

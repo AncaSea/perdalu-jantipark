@@ -69,7 +69,7 @@ if(isset($_GET['pesan'])){
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example1">
 								<thead>
-									<tr style="background:#DFF0D8;color:#333;">
+									<tr style="background:#fff000;color:#333;">
 										<th>No.</th>
 										<th>ID Supplier</th>
 										<th>Nama Supplier</th>
@@ -110,9 +110,10 @@ if(isset($_GET['pesan'])){
 										</td> -->
 										<!-- <td>Rp.<?php echo number_format($isi[7]);?>,-</td> -->
 										<!-- <td>Rp.<?php echo number_format($isi[10]);?>,-</td> -->
-										<td>
-											<button type="button" class="btn btn-primary btn-xs li-modal" data-toggle="modal" data-target="#myModal2">Edit</button>
-											<a href="../fungsi/hapus/hapus.php?supplier=hapus&id=<?php $_SESSION['id'];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
+										<td class="text-center">
+										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
+											<a href="../fungsi/hapus/hapus.php?supplier=hapus&id=<?php $_SESSION['id'];?>">
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
 									</tr>
 								<?php 

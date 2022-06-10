@@ -241,7 +241,7 @@
 						<div class="modal-view">
 							<table class="table table-bordered" id="example1">
 								<thead>
-									<tr style="background:#DFF0D8;color:#333;">
+									<tr style="background:#FFF000;color:#333;">
 										<th> No.</th>
 										<th style="width:10%;"> No Nota</th>
 										<th> Nama Kasir</th>

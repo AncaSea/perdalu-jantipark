@@ -45,7 +45,7 @@
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example1">
 								<thead>
-									<tr style="background:#DFF0D8;color:#333;">
+									<tr style="background:#fff000;color:#333;">
 										<th>No.</th>
 										<th>ID Supplier</th>
 										<th>Nama Supplier</th>
@@ -87,10 +87,12 @@
 										</td> -->
 										<td>Rp.<?php echo number_format($isi[7]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[10]);?>,-</td>
-										<td>
+										<td class="text-center">
 										<!-- <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Edit</button> -->
 											<!-- <a href="index.php?page=barang/edit&barang=<?php echo $isi[2];?>" data-toggle="modal" data-target="myModal2"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?barangmsk=hapus&id=<?php echo $isi[0];?>"><button class="btn btn-danger btn-xs">Hapus</button></a>
+											<a href="../fungsi/hapus/hapus.php?barangmsk=hapus&id=<?php echo $isi[0];?>">
+											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
 									</tr>
 								<?php 
