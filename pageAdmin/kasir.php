@@ -195,6 +195,8 @@ if(isset($_GET['pesan'])){
 			$("#nama_brg").val(val);
 			$("#search-result").hide();
 		}
+		$(document).click(function(){
+			$("#search-result").hide();
+		});
 	</script>
-	
     </section>

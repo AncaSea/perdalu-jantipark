@@ -87,7 +87,7 @@
 											<?php }?>
 										</td> -->
 										<td>Rp.<?php echo number_format($isi[7]);?>,-</td>
-										<td>Rp.<?php echo number_format($isi[10]);?>,-</td>
+										<td>Rp.<?php echo number_format($isi[8]);?>,-</td>
 										<td class="text-center">
 										<!-- <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Edit</button> -->
 											<!-- <a href="index.php?page=barang/edit&barang=<?php echo $isi[2];?>" data-toggle="modal" data-target="myModal2"><button class="btn btn-warning btn-xs">Edit</button></a> -->
@@ -99,7 +99,7 @@
 								<?php 
 										$no++; 
 										$totalBeli += $isi[6] * $isi[7]; 
-										$totalJual += $isi[6] * $isi[10];
+										$totalJual += $isi[6] * $isi[8];
 										// $totalStok += $isi['3'];
 									}
 								?>
@@ -257,7 +257,7 @@
 								cache:false,
 								data:{brgmsk2:search},
 								success:function(data){
-									// console.log(data);
+									console.log(data);
 									$("#search-result2").html(data);
 									$("#search-result2").fadeIn();
 								},  
@@ -289,19 +289,19 @@
 				function selectBarang(val) {
 					$("#nmbrg").val(val);
 					$.ajax({  
-							url :"page/brg_masuk/get_ajax.php",  
-							type:"POST",  
-							cache:false,
-							dataType:'json',  
-							data:{getNmBrg:$("#nmbrg").val()},
-							success:function(response){
-								// console.log(response);
-								$.each(response, function (key, value) { 
-									// console.log(value['id_supp']);
-									$('#kdbrg').val(value['kode_brg']);
-								});
-							},  
-						});
+						url :"page/brg_masuk/get_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{getNmBrg:$("#nmbrg").val()},
+						success:function(response){
+							// console.log(response);
+							$.each(response, function (key, value) { 
+								// console.log(value['id_supp']);
+								$('#kdbrg').val(value['kode_brg']);
+							});
+						},  
+					});
 					$("#search-result2").hide();
 				}
 				$(document).click(function(){

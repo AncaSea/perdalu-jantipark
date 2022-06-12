@@ -44,8 +44,8 @@
 										<td><?php echo $isi[2];?></td>
 										<td class="text-center">
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
-											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
-											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
+											<!-- <a href="fungsi/hapus/hapus.php?user=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button> -->
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 										</td>
 									</tr>
@@ -102,9 +102,9 @@
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
 										<td class="text-center">
-										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal3" ><i class="fa-solid fa-pen"></i></button>
-											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
-											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
+										<button id="li-modal2" type="button" class="btn btn-warning btn-md li-modal2" data-toggle="modal" data-target="#myModal3" ><i class="fa-solid fa-pen"></i></button>
+											<!-- <a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button> -->
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 										</td>
 									</tr>

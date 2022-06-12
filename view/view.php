@@ -60,9 +60,10 @@
 
 			function barangmsk(){
 				include 'db_con.php';
-				$sql = mysqli_query($dbconnect, "SELECT brg_masuk.*, stok_brg.kode_brg, stok_brg.hrg_jual
-									 FROM brg_masuk INNER JOIN stok_brg on brg_masuk.kode_brg=stok_brg.kode_brg 
-									 ORDER BY nama_brg ASC");
+				// $sql = mysqli_query($dbconnect, "SELECT brg_masuk.*, stok_brg.kode_brg, stok_brg.hrg_jual
+				// 					 FROM brg_masuk INNER JOIN stok_brg on brg_masuk.kode_brg=stok_brg.kode_brg 
+				// 					 ORDER BY nama_brg ASC");
+				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk ORDER BY nama_brg ASC");
 				if ($sql -> num_rows > 0) {
 					while ($row = mysqli_fetch_all($sql)) {
 						$hasil = $row;
