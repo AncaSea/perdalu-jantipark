@@ -12,7 +12,7 @@ $bayar = preg_replace('/\D/', '', $_SESSION['byr']);
 $tanggal_waktu = date('Y-m-d');
 $nomor = rand(111111,999999);
 $total = $_SESSION['ttl'];
-$nama = $_SESSION['namakasir'];
+$nama = $_SESSION['namaadmin'];
 $kembali = (int)$bayar - (int)$total;
 $_SESSION['kmbl'] = $kembali;
 

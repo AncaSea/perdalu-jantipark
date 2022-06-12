@@ -281,6 +281,7 @@
 							$.each(response, function (key, value) { 
 								// console.log(value['id_supp']);
 								$('#kdbrg').val(value['kode_brg']);
+								$('#beli').val(value['hrg_beli']);
 							});
 						},  
 					});
