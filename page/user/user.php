@@ -22,7 +22,7 @@
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example1">
 								<thead>
-									<tr style="background:#FFF000;color:#333;">
+									<tr style="background:#FFF000 ;color:#333;">
 										<th>No.</th>
 										<th>Nama</th>
 										<th>Username</th>

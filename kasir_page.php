@@ -77,7 +77,7 @@ if(isset($_GET['pesan'])){
 							<input style="margin-top: 1em;" type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 							<button style="margin-top: 1em;" type="submit" class="btn btn-success">Masukan</button>
 						</div>
-					</form>
+					</form> 
 					<br>
 					<form method="post" action="keranjang_update.php">
 					<table class="table table-bordered">

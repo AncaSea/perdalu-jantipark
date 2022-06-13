@@ -10,6 +10,7 @@
 
               <div class="row">
                   <div class="col-lg-12 main-chart">
+				  <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
 						<h3>Data Barang Kembali</h3>
 						<hr/>
 						<?php if(isset($_GET['success-stok'])){?>
