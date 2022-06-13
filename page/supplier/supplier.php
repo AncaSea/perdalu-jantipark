@@ -152,7 +152,7 @@ if(isset($_GET['pesan'])){
 											<table class="table table-striped bordered">
 												<tr>
 													<td>ID Supplier</td>
-													<td><input id="idsupp" type="text" placeholder="ID Supplier" required class="form-control" name="idsupp" ></td>
+													<td><input id="idsupp" readonly type="text" placeholder="ID Supplier" required class="form-control" name="idsupp"></td>
 												</tr>
 												<tr>
 													<td>Nama Supplier</td>
