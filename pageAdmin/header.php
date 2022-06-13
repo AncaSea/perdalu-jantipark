@@ -129,7 +129,7 @@
                 </div>
                 <div class="top-menu">
                   <ul class="nav pull-right top-menu">
-                        <li><a class="logout" onclick="javascript: return confirm('Ingin Logout ?');" href="logout.php">Logout</a></li>
+                        <li><a class="logout" href="logout.php">Logout</a></li>
                   </ul>
                 </div>
             </header>
