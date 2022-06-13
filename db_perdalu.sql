@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Bulan Mei 2022 pada 16.16
+-- Waktu pembuatan: 13 Jun 2022 pada 09.21
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -78,6 +78,7 @@ CREATE TABLE `brg_masuk` (
   `nama_brg` varchar(255) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `hrg_satuan` int(11) NOT NULL,
+  `hrg_jual` int(11) NOT NULL,
   `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -85,9 +86,28 @@ CREATE TABLE `brg_masuk` (
 -- Dumping data untuk tabel `brg_masuk`
 --
 
-INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_satuan`, `total`) VALUES
-(1, 'kb0015', 'sp0142', '5-10-2022', 'wakidi', 'baju polo', 500, 15000, 1000000),
-(19, 'kb0055', 'sp0001', '2022-05-26', 'mukidi', 'celana pendek', 10, 10000, 100000);
+INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_satuan`, `hrg_jual`, `total`) VALUES
+(1, 'kb0015', 'sp0142', '5-10-2022', 'wakidi', 'baju polo', 500, 15000, 0, 1000000),
+(19, 'kb0055', 'sp0001', '2022-05-26', 'mukidi', 'celana pendek', 10, 10000, 0, 100000),
+(26, 'sp4554', 'sp177', '2022-06-04', 'reka', 'arem2', 10, 2000, 0, 20000),
+(27, 'sp9339', 'sp0005', '2022-06-04', 'andika', 'peyek', 10, 2000, 0, 20000),
+(28, 'sp9339', 'sp0005', '2022-06-04', 'andika', 'peyek', 10, 2000, 0, 20000),
+(29, 'sp6664', 'sp0005', '2022-06-04', 'andika', 'peyek', 20, 5000, 0, 100000),
+(30, 'sp6191', 'sp0005', '2022-06-04', 'andika', 'peyek', 20, 5000, 0, 100000),
+(31, 'kb0055', 'sp0001', '2022-06-04', 'mukidi', 'celana pendek', 50, 10000, 0, 500000),
+(32, 'sp7521', 'sp0005', '2022-06-04', 'andika', 'peyek', 20, 5000, 0, 100000),
+(34, 'sp8167', 'sp0001', '2022-06-04', 'mukidi', 'peyek', 10, 5000, 0, 50000),
+(35, 'sp3845', 'sp0005', '2022-06-04', 'andika', 'peyek', 10, 5000, 0, 50000),
+(37, 'sp9316', 'sp0005', '2022-06-04', 'andika', 'peyek', 10, 5000, 0, 50000),
+(42, 'sp9316', 'sp0005', '2022-06-04', 'andika', 'peyek', 10, 6000, 0, 60000),
+(44, 'sp3482', 'sp0009', '2022-06-12', 'reka', 'getuk', 1, 1000, 0, 1000),
+(47, 'sp7761', 'sp0009', '2022-06-12', 'reka', 'arem arem1', 5, 1000, 0, 5000),
+(52, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 2000, 0, 2000),
+(53, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 5000, 0, 5000),
+(54, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 6000, 0, 6000),
+(55, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 5, 6000, 0, 30000),
+(56, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 6000, 7000, 6000),
+(57, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 7000, 8000, 7000);
 
 -- --------------------------------------------------------
 
@@ -107,7 +127,7 @@ CREATE TABLE `kasir_acc` (
 
 INSERT INTO `kasir_acc` (`nama_kasir`, `username`, `password`) VALUES
 ('kasir1', 'kasir', 'kasir1'),
-('kasir2', 'kasirr', 'kasir2');
+('kasir2', 'kasirrr', 'kasir2');
 
 -- --------------------------------------------------------
 
@@ -150,7 +170,8 @@ INSERT INTO `penjualan` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_pe
 (86, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0083', 'jeans', 1, 35000, 35000, 255000),
 (87, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0071', 'sweater', 5, 25000, 125000, 255000),
 (88, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0055', 'celana pendek', 1, 15000, 15000, 35000),
-(89, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0015', 'baju polo', 1, 20000, 20000, 35000);
+(89, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0015', 'baju polo', 1, 20000, 20000, 35000),
+(92, 824005, '', 'admin1', '2022-06-11', 'kb0015', 'baju polo', 1, 25000, 25000, 25000);
 
 -- --------------------------------------------------------
 
@@ -172,11 +193,15 @@ CREATE TABLE `stok_brg` (
 --
 
 INSERT INTO `stok_brg` (`kode_brg`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_beli`, `hrg_jual`) VALUES
-('kb0015', 'wakidi', 'baju polo', 9999, 20000, 25000),
-('kb0055', 'mukidi', 'celana pendek', 9999, 10000, 15000),
+('kb0015', 'wakidi', 'baju polo', 9988, 20000, 25000),
+('kb0055', 'mukidi', 'celana pendek', 10039, 10000, 15000),
 ('kb0057', 'odin', 'kaos', 9992, 15000, 20000),
 ('kb0071', 'pudidi', 'sweater', 9978, 20000, 25000),
-('kb0083', 'yudi', 'jeans', 9992, 30000, 35000);
+('kb0083', 'yudi', 'jeans', 9992, 30000, 35000),
+('sp2854', 'andika', 'arem arem', 50, 7000, 8000),
+('sp3482', 'reka', 'getuk', 1, 1000, 2000),
+('sp7761', 'reka', 'arem arem1', 5, 1000, 2000),
+('sp9316', 'andika', 'peyek', 20, 5000, 7000);
 
 -- --------------------------------------------------------
 
@@ -201,7 +226,9 @@ INSERT INTO `supplier` (`id`, `id_supp`, `nama_supp`, `no_hp`, `alamat`) VALUES
 (2, 'sp0041', 'odin', 81345324562, 'janti\r\n'),
 (3, 'sp0051', 'pudidi', 81532645424, 'delanggu\r\n'),
 (4, 'sp0067', 'yudi', 85463642472, 'tulung\r\n'),
-(5, 'sp0142', 'wakidi', 81351463153, 'cabeyan');
+(5, 'sp0142', 'wakidi', 81351463153, 'cabeyan'),
+(7, 'sp0009', 'reka', 746775735852, 'delanggu'),
+(9, 'sp0005', 'andika', 36454677, 'kts');
 
 --
 -- Indexes for dumped tables
@@ -264,19 +291,19 @@ ALTER TABLE `brg_kembali`
 -- AUTO_INCREMENT untuk tabel `brg_masuk`
 --
 ALTER TABLE `brg_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
