@@ -38,6 +38,7 @@
 				}
 			}
 		?>
+
 		  <script>
 			$(document).ready(function () {
 				$('#demo').daterangepicker({
@@ -148,6 +149,7 @@
 						<div class="clearfix" style="margin-top:1em;"></div>
 
 						<h4>Cari Laporan Per Minggu</h4>
+						
 						<input type="text" id="demo" class="form-control">
 
 						<div class="clearfix" style="margin-top:1em;"></div>
