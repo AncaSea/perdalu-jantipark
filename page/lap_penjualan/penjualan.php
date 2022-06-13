@@ -38,6 +38,21 @@
 				}
 			}
 		?>
+
+		  <script>
+			$(document).ready(function () {
+				$('#demo').daterangepicker({
+					"showDropdowns": true,
+					"autoApply": true,
+					"startDate": "06/04/2022",
+					"endDate": "06/10/2022",
+					"opens": "left",
+					"drops": "auto"
+				}, function(start, end, label) {
+					console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+				});
+			});
+		  </script>
       <section id="main-content">
           <section class="wrapper">
 			<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
@@ -134,6 +149,11 @@
 						<div class="clearfix" style="margin-top:1em;"></div>
 
 						<h4>Cari Laporan Per Minggu</h4>
+						
+						<input type="text" id="demo" class="form-control">
+
+						<div class="clearfix" style="margin-top:1em;"></div>
+
 						<form method="post" action="admin.php?page=lap_penjualan/penjualan&minggu=ok">
 							<table class="table table-striped">
 								<tr>
