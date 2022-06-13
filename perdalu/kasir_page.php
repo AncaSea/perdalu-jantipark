@@ -1,5 +1,5 @@
 <?php
-include 'db_con.php';
+include '../db_con.php';
 session_start();
 // include 'authcheckkasir.php';
 
@@ -65,7 +65,7 @@ if(isset($_GET['pesan'])){
 					<h2>Hai <?=$_SESSION['namakasir']?></h2>
 					<a href="keranjang_reset.php"class="btn btn-warning btn-md ">Reset Keranjang</a> &ensp;
 					<a href="riwayat.php"class="btn btn-info btn-md">Riwayat Transaksi </a> &ensp;
-					<a href="logout.php"class="btn btn-danger btn-md pull-right">Logout</a> 					
+					<a href="../logout.php"class="btn btn-danger btn-md pull-right">Logout</a> 					
 				</div>
 			</div>
 			<hr>

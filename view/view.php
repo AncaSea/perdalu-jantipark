@@ -216,6 +216,27 @@
 			// 	$hasil = $row -> num_rows;
 			// 	return $hasil;
 			// }
+			
+			function jual_lele(){
+				include 'db_con.php';
+				
+				// $sql_paket = "SELECT * FROM penjualan INNER JOIN paket ON penjualan.nama_brg = paket.nama";
+				// if ($result = mysqli_query($dbconnect, $sql_paket)) {
+				// 	$row = mysqli_fetch_array($result);
+				// 	return $row['makanan'];
+				// }
+
+				$sql = "SELECT SUM(jumlah) AS jumlah FROM penjualan WHERE nama_brg='baju polo' GROUP BY nama_brg";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$row = mysqli_fetch_array($result);
+					if ($row['jumlah']<=0) {
+						$hasil = 0;
+					}else{
+						$hasil = $row['jumlah'];
+					}
+					return $hasil;
+				}
+			}
 
 			function supp_row() {
 				include 'db_con.php';
@@ -248,12 +269,12 @@
 
 			function jual_row(){
 				include 'db_con.php';
-				$sql = "SELECT COUNT(id_nota) AS jmlh FROM penjualan where CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY no_nota ";
+				$sql = "SELECT COUNT(id_nota) AS jmlh FROM penjualan WHERE CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY no_nota ";
 				if ($result = mysqli_query($dbconnect, $sql)) {
 					// print_r($result);
 					$hasil = mysqli_num_rows($result);
 					return $hasil;
-					}
+				}
 			}
 
 			function omset() {
