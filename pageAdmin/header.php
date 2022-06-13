@@ -73,6 +73,15 @@
           font-size: 3.5rem;
         }
       }
+      .daterangepicker .input-mini.active {
+      background-color: #faf37b;
+      }
+      .daterangepicker td.in-range {
+      background-color: #faf37b;
+      }
+      .daterangepicker td.active, .daterangepicker td.active:hover {
+      background-color: #feb101;
+      }
       .btn:focus {
         outline: none;
       }
