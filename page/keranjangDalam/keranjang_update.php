@@ -1,5 +1,5 @@
 <?php
-include 'db_con.php';
+include '../../db_con.php';
 session_start();
 // include 'authcheckkasir.php';
 
@@ -7,45 +7,47 @@ session_start();
 
 // print_r($qty);
 
-if (!empty($_SESSION['cart'])) {
-    $cart = $_SESSION['cart'];
+if (!empty($_SESSION['cartdlm'])) {
+    $cart = $_SESSION['cartdlm'];
     if (isset($_POST['bayar'])) {
     
         foreach ($cart as $key => $value) {
-            $kode = $value['kd'];
-            $qty = $value['qty'];
+            // $kode = $value['kd'];
+            // $qty = $value['qty'];
 
-            echo $kode;
+            // echo $kode;
             
-            $cekstok = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");;
-            $getdata = mysqli_fetch_array($cekstok);
+            // $cekstok = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");;
+            // $getdata = mysqli_fetch_array($cekstok);
+
             // $storebrg = mysqli_fetch_assoc($cekstok);
             // $kodebrg = $storebrg['kode_brg'];
             // $namabrg = $storebrg['nama_brg'];
             // $_SESSION['kdbrg'] = $kode;
             // $_SESSION['Qty'] = $qty;
-            $_SESSION['byr'] = $_POST['bayar'];
-            $_SESSION['ttl'] = $_POST['total'];
+
+            // $_SESSION['byr'] = $_POST['bayar'];
+            // $_SESSION['ttl'] = $_POST['total'];
             
-            $stoksekarang = $getdata['jumlah'];
-            $updatestok = $stoksekarang - $qty;
+            // $stoksekarang = $getdata['jumlah'];
+            // $updatestok = $stoksekarang - $qty;
      
-            $updatedata = mysqli_query($dbconnect, "UPDATE stok_brg set jumlah = '$updatestok' WHERE kode_brg='$kode'");
+            // $updatedata = mysqli_query($dbconnect, "UPDATE stok_brg set jumlah = '$updatestok' WHERE kode_brg='$kode'");
             
-            if ($updatedata) {
-                header('location:transaksi.php');
-            } else {
-                header("location:admin.php?pageAdmin=kasir&pesan=updatefailed");
-            }
+            header('location:../../transaksi.php');
+            // if ($updatedata) {
+            // } else {
+            //     header("location:../../../../admin.php?page=kasir/kasirDalam&pesan=updatefailed");
+            // }
         }
         
     } else {
     $qty = $_POST['qty'];
     
     foreach ($cart as $key => $value) {
-        $_SESSION['cart'][$key]['qty'] = $qty[$key];
+        $_SESSION['cartdlm'][$key]['qty'] = $qty[$key];
     
-        $idbarang = $_SESSION['cart'][$key]['kd'];
+        $idbarang = $_SESSION['cartdlm'][$key]['id'];
         // //cek diskon barang
         // $disbarang = mysqli_query($dbconnect, "SELECT * FROM disbarang WHERE barang_id='$idbarang'");
         // $disb = mysqli_fetch_assoc($disbarang);
@@ -77,9 +79,9 @@ if (!empty($_SESSION['cart'])) {
                         //     }
                         // }
                     }
-                    header('location:admin.php?pageAdmin=kasir');
+                    header('location:../../../../admin.php?page=kasir/kasirDalam');
                 }
                 
 } else {
-    header("location:admin.php?pageAdmin=kasir&pesan=emptycart");
+    header("location:../../../../admin.php?page=kasir/kasirDalam&pesan=emptycart");
 }

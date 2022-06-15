@@ -54,8 +54,8 @@ if(isset($_GET['pesan'])){
 					<h1>Kasir</h1>
 					<!-- <h2>Hai <?=$_SESSION['namakasir']?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
-					<a href="keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
-					<a href="admin.php?page=lap_penjualan/penjualan"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
+					<a href="../../page/keranjangLuar/keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
+					<a href="admin.php?page=lap_penjualan/penjualanLuar"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
 				&ensp;
 			</div>
@@ -64,7 +64,7 @@ if(isset($_GET['pesan'])){
 				<div class="col-md-8">
 					<div class="form-group" style="margin-bottom: 30px;">
 						<div class="row">
-							<form method="post" action="keranjang_add.php">
+							<form method="post" action="../page/keranjangLuar/keranjang_add.php">
 								<div class="col-md-4">
 									<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
 									<!-- KI LHO HEEENNNNNN JATAHMUUU-->
@@ -81,7 +81,7 @@ if(isset($_GET['pesan'])){
 						</div>
 					</div>
 
-					<form method="post" action="keranjang_update.php">
+					<form method="post" action="../page/keranjangLuar/keranjang_update.php">
 						<table class="table table-bordered">
 							<tr>
 								<th>Nama</th>
@@ -103,7 +103,7 @@ if(isset($_GET['pesan'])){
 									<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
 									<td align="right"><?=number_format(($value['qty'] * $value['harga']))?></td>
 									<td class="text-center">
-										<a href="keranjang_hapus.php?kd=<?=$value['kd']?>">
+										<a href="../page/keranjangLuar/keranjang_hapus.php?kd=<?=$value['kd']?>">
 										<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</button>
 										</a>
@@ -117,7 +117,7 @@ if(isset($_GET['pesan'])){
 				</div>
 				<div class="col-md-4">
 					<h3 style="margin:0px 0px 15px 0px">Total Rp. <?=number_format($sum)?></h3>
-					<form action="keranjang_update.php" method="POST">
+					<form action="../page/keranjangLuar/keranjang_update.php" method="POST">
 						<input type="hidden" name="total" value="<?=$sum?>">
 					<div class="form-group" style="margin-bottom: 1em;">
 						<label>Bayar</label>
