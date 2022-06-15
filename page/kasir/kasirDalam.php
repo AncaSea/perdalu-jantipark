@@ -4,13 +4,16 @@ session_start();
 // include 'authcheckkasir.php';
 
 
-$barang = mysqli_query($dbconnect, 'SELECT * FROM stok_brg');
+$barangdlm = mysqli_query($dbconnect, 
+"SELECT makanan.id, makanan.nama, makanan.role, makanan.jenis, 1 AS jumlah, makanan.harga FROM makanan UNION
+ SELECT minuman.id, minuman.nama, minuman.role, minuman.jenis, 1 AS jumlah, minuman.harga FROM minuman UNION
+ SELECT * FROM paket_barbar");
 // print_r($_SESSION);
 
 $sum = 0;
-if (isset($_SESSION['cart'])) {
+if (isset($_SESSION['cartdlm'])) {
 	// $kd = $value['kd'];
-    foreach ($_SESSION['cart'] as $key => $value) {
+    foreach ($_SESSION['cartdlm'] as $key => $value) {
 		// line 13 stlh $value['qty']) "- $value['diskon']"
         $sum += ((int)$value['harga'] * (int)$value['qty']);
     }
@@ -54,8 +57,8 @@ if(isset($_GET['pesan'])){
 					<h1>Kasir</h1>
 					<!-- <h2>Hai <?=$_SESSION['namakasir']?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
-					<a href="keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
-					<a href="admin.php?page=lap_penjualan/penjualan"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
+					<a href="../../page/keranjangDalam/keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
+					<a href="admin.php?page=lap_penjualan/penjualanDalam"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
 				&ensp;
 			</div>
@@ -64,9 +67,9 @@ if(isset($_GET['pesan'])){
 				<div class="col-md-8">
 					<div class="form-group" style="margin-bottom: 30px;">
 						<div class="row">
-							<form method="post" action="keranjang_add.php">
+							<form method="post" action="../page/keranjangDalam/keranjang_add.php">
 								<div class="col-md-4">
-									<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
+									<input id="nama_pesan" type="text" name="nama_pesan" class="form-control" placeholder="Masukkan Nama Pesanan" autofocus required>
 									<!-- KI LHO HEEENNNNNN JATAHMUUU-->
 									<!-- li class = "auto-kasir" -->
 									<ul class="auto-result" id="search-result"></ul>
@@ -80,8 +83,16 @@ if(isset($_GET['pesan'])){
 							</form>
 						</div>
 					</div>
-
-					<form method="post" action="keranjang_update.php">
+<?php 
+    // $data = mysqli_query($dbconnect, "SELECT nama FROM makanan UNION SELECT nama FROM minuman");
+	// if ($data -> num_rows > 0) {
+	// 	while ($row = mysqli_fetch_assoc($data)) {
+	// 		$hasil = $row;
+	// 		print_r($hasil);
+	// 	}
+	// }
+?>
+					<form method="post" action="../page/keranjangDalam/keranjang_update.php">
 						<table class="table table-bordered">
 							<tr>
 								<th>Nama</th>
@@ -90,20 +101,20 @@ if(isset($_GET['pesan'])){
 								<th>Sub Total</th>
 								<th>Aksi</th>
 							</tr>
-							<?php if (isset($_SESSION['cart'])): ?>
-							<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+							<?php if (isset($_SESSION['cartdlm'])): ?>
+							<?php foreach ($_SESSION['cartdlm'] as $key => $value) { ?>
 								<tr>
 									<td>
 										<?=$value['nama']?>
 									</td>
 									<td align="right"><?=number_format($value['harga'])?></td>
 									<td class="col-md-2">
-										<input type="number" min="1" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control" max="<?=$value['stok']?>">
+										<input type="number" min="1" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control">
 									</td>
 									<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
 									<td align="right"><?=number_format(($value['qty'] * $value['harga']))?></td>
 									<td class="text-center">
-										<a href="keranjang_hapus.php?kd=<?=$value['kd']?>">
+										<a href="../page/keranjangDalam/keranjang_hapus.php?id=<?=$value['id']?>">
 										<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</button>
 										</a>
@@ -117,7 +128,7 @@ if(isset($_GET['pesan'])){
 				</div>
 				<div class="col-md-4">
 					<h3 style="margin:0px 0px 15px 0px">Total Rp. <?=number_format($sum)?></h3>
-					<form action="keranjang_update.php" method="POST">
+					<form action="../page/keranjangDalam/keranjang_update.php" method="POST">
 						<input type="hidden" name="total" value="<?=$sum?>">
 					<div class="form-group" style="margin-bottom: 1em;">
 						<label>Bayar</label>
@@ -170,7 +181,7 @@ if(isset($_GET['pesan'])){
 	</script>
 	<script>
 		$(document).ready(function(){
-			$("#nama_brg").keyup(function(){
+			$("#nama_pesan").keyup(function(){
 				var search = $(this).val();
 				// console.log(search);
 				if (search !== "") {
@@ -178,7 +189,7 @@ if(isset($_GET['pesan'])){
 						url :"fungsi/autocomplete/autocomplete.php",  
 						type:"POST",  
 						cache:false,
-						data:{kasir:search},
+						data:{kasirdlm:search},
 						success:function(data){
 							console.log(data);
 							$("#search-result").html(data);
@@ -192,7 +203,7 @@ if(isset($_GET['pesan'])){
 			});
 		});
 		function selectBarang(val) {
-			$("#nama_brg").val(val);
+			$("#nama_pesan").val(val);
 			$("#search-result").hide();
 		}
 		$(document).click(function(){

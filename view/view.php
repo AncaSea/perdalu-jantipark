@@ -226,7 +226,60 @@
 				// 	return $row['makanan'];
 				// }
 
-				$sql = "SELECT SUM(jumlah) AS jumlah FROM penjualan WHERE nama_brg='baju polo' GROUP BY nama_brg";
+				// $sql_paket = "SELECT region,SUM(number) AS total
+				// FROM
+				// (
+				// 	select region,number
+				// 	from cash_table
+				// 	union all
+				// 	select region,number
+				// 	from cheque_table
+				// ) t
+				// group by region";
+
+				$penle = mysqli_query($dbconnect, "SELECT nama_pesanan, role, SUM(jumlah) AS jumlah FROM penjualan_dalam GROUP BY nama_pesanan");
+				$getpenle = mysqli_fetch_all($penle);
+					print_r($getpenle);
+
+				if ($getpenle['1'] == '4') {
+					$rolepkt = $getpenle['1'];
+					$paket = mysqli_query($dbconnect, "SELECT nama_pesanan FROM paket_barbar WHERE role='$rolepkt' GROUP BY role");
+
+					$paket = mysqli_query($dbconnect, "SELECT jumlah FROM paket_barbar WHERE role='$rolepkt' GROUP BY role");
+					
+
+					$getjum1 = mysqli_fetch_array($paket);
+					$pkt = $getjum1['jumlah'];
+				}
+
+				$menu = mysqli_query($dbconnect, "SELECT SUM(jumlah) AS jumlah2 FROM penjualan_dalam WHERE role='1' GROUP BY role");
+				
+				$getjum2 = mysqli_fetch_array($menu);
+
+				$mn = $getjum2['jumlah2'];
+
+				$sql = "SELECT SUM(jumlah) AS jumlah FROM penjualan_dalam WHERE role='1' GROUP BY role";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$row = mysqli_fetch_array($result);
+					if ($row['jumlah']<=0) {
+						$hasil = 0;
+					}else{
+						$hasil = $row['jumlah'];
+					}
+					return $hasil;
+				}
+			}
+
+			function jual_nila(){
+				include 'db_con.php';
+				
+				// $sql_paket = "SELECT * FROM penjualan INNER JOIN paket ON penjualan.nama_brg = paket.nama";
+				// if ($result = mysqli_query($dbconnect, $sql_paket)) {
+				// 	$row = mysqli_fetch_array($result);
+				// 	return $row['makanan'];
+				// }
+
+				$sql = "SELECT SUM(jumlah) AS jumlah FROM penjualan WHERE nama_brg='nila' GROUP BY nama_brg";
 				if ($result = mysqli_query($dbconnect, $sql)) {
 					$row = mysqli_fetch_array($result);
 					if ($row['jumlah']<=0) {
@@ -312,7 +365,7 @@
 					$hasil = mysqli_num_rows($result);
 					// print_r($hasil);
 					return $hasil;
-					}
+				}
 			}
 
 			function periode_jual($Y, $M){

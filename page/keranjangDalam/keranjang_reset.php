@@ -1,6 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['cart'] = [];
-header('location:admin.php?pageAdmin=kasir');
+$_SESSION['cartdlm'] = [];
+header('location:../../../../admin.php?page=kasir/kasirDalam');
 ?>
