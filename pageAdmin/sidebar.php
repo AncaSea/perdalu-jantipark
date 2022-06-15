@@ -15,7 +15,7 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a href="">
+                    <a href="javascript:;">
                         <i class="fa fa-desktop"></i>
                         <span> Perdagangan Luar <span style="padding-left:2px;"> <i class="fa fa-angle-down"></i></span></span>
                     </a>
@@ -64,7 +64,7 @@
             <!-- sidebar menu end-->
         </div>
     </aside>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             // Get saved data from sessionStorage
             let selectedCollapse = sessionStorage.getItem('selectedCollapse');
@@ -79,4 +79,4 @@
                 sessionStorage.setItem('selectedCollapse', target);
             });
         });
-    </script>
+    </script> -->

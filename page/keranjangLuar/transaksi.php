@@ -1,5 +1,5 @@
 <?php
-include 'db_con.php';
+include '../../db_con.php';
 session_start();
 // include "authcheckkasir.php";
 
@@ -54,7 +54,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
 $_SESSION['cart'] = [];
 
 //redirect ke halaman transaksi selesai
-header("location:transaksi_selesai.php?idtrx=".$nomor);
+header("location:../../../../page/keranjangLuar/transaksi_selesai.php?idtrx=".$nomor);
 
 
 

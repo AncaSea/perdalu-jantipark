@@ -34,7 +34,7 @@ if (!empty($_SESSION['cartdlm'])) {
      
             // $updatedata = mysqli_query($dbconnect, "UPDATE stok_brg set jumlah = '$updatestok' WHERE kode_brg='$kode'");
             
-            header('location:../../transaksi.php');
+            header('location:../../../../page/keranjangDalam/transaksi.php');
             // if ($updatedata) {
             // } else {
             //     header("location:../../../../admin.php?page=kasir/kasirDalam&pesan=updatefailed");
