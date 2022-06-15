@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jun 2022 pada 09.21
+-- Waktu pembuatan: 15 Jun 2022 pada 12.22
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -38,7 +38,8 @@ CREATE TABLE `admin_acc` (
 --
 
 INSERT INTO `admin_acc` (`nama_admin`, `username`, `password`) VALUES
-('admin1', 'admin', 'admin1');
+('admin1', 'admin', 'admin1'),
+('Danang', 'D1', 'danang');
 
 -- --------------------------------------------------------
 
@@ -107,7 +108,8 @@ INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, 
 (54, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 6000, 0, 6000),
 (55, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 5, 6000, 0, 30000),
 (56, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 6000, 7000, 6000),
-(57, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 7000, 8000, 7000);
+(57, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 7000, 8000, 7000),
+(58, 'kb0015', 'sp0142', '2022-06-13', 'wakidi', 'baju polo', 1, 20000, 25000, 20000);
 
 -- --------------------------------------------------------
 
@@ -127,7 +129,98 @@ CREATE TABLE `kasir_acc` (
 
 INSERT INTO `kasir_acc` (`nama_kasir`, `username`, `password`) VALUES
 ('kasir1', 'kasir', 'kasir1'),
-('kasir2', 'kasirrr', 'kasir2');
+('kasir2', 'kasir2', 'kasir22');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `makanan`
+--
+
+CREATE TABLE `makanan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `makanan`
+--
+
+INSERT INTO `makanan` (`id`, `nama`, `role`, `jenis`, `harga`) VALUES
+(1, 'lele goreng', 1, 'lele', 5000),
+(2, 'lele bakar', 1, 'lele', 6000),
+(3, 'nila goreng', 2, 'nila', 5000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `minuman`
+--
+
+CREATE TABLE `minuman` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `minuman`
+--
+
+INSERT INTO `minuman` (`id`, `nama`, `role`, `jenis`, `harga`) VALUES
+(1, 'es teh', 6, 'teh', 3000),
+(2, 'teh anget', 6, 'teh', 2500);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `paket`
+--
+
+CREATE TABLE `paket` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `makanan` text NOT NULL,
+  `minuman` text NOT NULL,
+  `Harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `paket`
+--
+
+INSERT INTO `paket` (`id`, `nama`, `makanan`, `minuman`, `Harga`) VALUES
+(1, 'Paket 1', '[{\'Kakap Bakar\':1,\'Kakap Goreng\':2}]', '', 39900);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `paket_barbar`
+--
+
+CREATE TABLE `paket_barbar` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `paket_barbar`
+--
+
+INSERT INTO `paket_barbar` (`id`, `nama`, `role`, `jenis`, `jumlah`, `harga`) VALUES
+(1, 'paket lele goreng', 4, 'lele', 6, 20000),
+(2, 'paket nila goreng', 5, 'nila', 4, 25000),
+(3, 'paket lele bakar', 4, 'lele', 6, 22000),
+(4, 'paket nila bakar', 5, 'nila', 4, 27000);
 
 -- --------------------------------------------------------
 
@@ -171,7 +264,67 @@ INSERT INTO `penjualan` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_pe
 (87, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0071', 'sweater', 5, 25000, 125000, 255000),
 (88, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0055', 'celana pendek', 1, 15000, 15000, 35000),
 (89, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0015', 'baju polo', 1, 20000, 20000, 35000),
-(92, 824005, '', 'admin1', '2022-06-11', 'kb0015', 'baju polo', 1, 25000, 25000, 25000);
+(92, 824005, '', 'admin1', '2022-06-11', 'kb0015', 'baju polo', 1, 25000, 25000, 25000),
+(93, 598227, '', 'admin1', '2022-06-15', 'kb0015', 'baju polo', 1, 25000, 25000, 40000),
+(94, 598227, '', 'admin1', '2022-06-15', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
+(95, 400614, '', 'admin1', '2022-06-15', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
+(96, 400614, '', 'admin1', '2022-06-15', 'kb0071', 'sweater', 1, 25000, 25000, 40000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `penjualan_dalam`
+--
+
+CREATE TABLE `penjualan_dalam` (
+  `id_nota` int(11) NOT NULL,
+  `no_nota` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `nama_kasir` varchar(255) NOT NULL,
+  `tgl_penjualan` varchar(255) NOT NULL,
+  `nama_pesanan` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `hrg_jual` int(11) NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penjualan_dalam`
+--
+
+INSERT INTO `penjualan_dalam` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_penjualan`, `nama_pesanan`, `role`, `jenis`, `jumlah`, `hrg_jual`, `total`) VALUES
+(1, 351341, 'admin', 'admin1', '2022-06-13', 'lele bakar', 1, 'lele', 1, 6000, 6000),
+(2, 478426, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 5, 5000, 30000),
+(3, 781931, 'admin', 'admin1', '2022-06-14', 'paket lele goreng', 4, 'lele', 2, 20000, 40000),
+(4, 592931, 'admin', 'admin1', '2022-06-14', 'nila goreng', 2, 'nila', 4, 5000, 20000),
+(5, 748253, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 6, 5000, 30000),
+(6, 849102, 'admin', 'admin1', '2022-06-14', 'paket lele bakar', 4, 'lele', 2, 22000, 44000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `role`
+--
+
+CREATE TABLE `role` (
+  `id_role` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `jenis` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `role`
+--
+
+INSERT INTO `role` (`id_role`, `nama`, `jenis`) VALUES
+(1, 'lele', 'lele'),
+(2, 'nila', 'nila'),
+(3, 'ayam', 'ayam'),
+(4, 'paket lele', 'lele'),
+(5, 'paket nila', 'nila'),
+(6, 'teh', 'teh');
 
 -- --------------------------------------------------------
 
@@ -193,10 +346,10 @@ CREATE TABLE `stok_brg` (
 --
 
 INSERT INTO `stok_brg` (`kode_brg`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_beli`, `hrg_jual`) VALUES
-('kb0015', 'wakidi', 'baju polo', 9988, 20000, 25000),
-('kb0055', 'mukidi', 'celana pendek', 10039, 10000, 15000),
+('kb0015', 'wakidi', 'baju polo', 9986, 20000, 25000),
+('kb0055', 'mukidi', 'celana pendek', 10035, 10000, 15000),
 ('kb0057', 'odin', 'kaos', 9992, 15000, 20000),
-('kb0071', 'pudidi', 'sweater', 9978, 20000, 25000),
+('kb0071', 'pudidi', 'sweater', 9977, 20000, 25000),
 ('kb0083', 'yudi', 'jeans', 9992, 30000, 35000),
 ('sp2854', 'andika', 'arem arem', 50, 7000, 8000),
 ('sp3482', 'reka', 'getuk', 1, 1000, 2000),
@@ -259,11 +412,47 @@ ALTER TABLE `kasir_acc`
   ADD PRIMARY KEY (`username`);
 
 --
+-- Indeks untuk tabel `makanan`
+--
+ALTER TABLE `makanan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `minuman`
+--
+ALTER TABLE `minuman`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `paket`
+--
+ALTER TABLE `paket`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `paket_barbar`
+--
+ALTER TABLE `paket_barbar`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`id_nota`),
   ADD KEY `id_kasir` (`username`);
+
+--
+-- Indeks untuk tabel `penjualan_dalam`
+--
+ALTER TABLE `penjualan_dalam`
+  ADD PRIMARY KEY (`id_nota`);
+
+--
+-- Indeks untuk tabel `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id_role`);
 
 --
 -- Indeks untuk tabel `stok_brg`
@@ -291,13 +480,49 @@ ALTER TABLE `brg_kembali`
 -- AUTO_INCREMENT untuk tabel `brg_masuk`
 --
 ALTER TABLE `brg_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT untuk tabel `makanan`
+--
+ALTER TABLE `makanan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `minuman`
+--
+ALTER TABLE `minuman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `paket`
+--
+ALTER TABLE `paket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `paket_barbar`
+--
+ALTER TABLE `paket_barbar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+
+--
+-- AUTO_INCREMENT untuk tabel `penjualan_dalam`
+--
+ALTER TABLE `penjualan_dalam`
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `role`
+--
+ALTER TABLE `role`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`

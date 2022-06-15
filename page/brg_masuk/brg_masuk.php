@@ -110,11 +110,12 @@
 										<th style="background:red;color:#fff;">Modal</th>
 										<th style="background:red;color:#fff;">Rp.<?php echo number_format($totalBeli);?>,-</td>
 										<th>Rp.<?php echo number_format($totalJual);?>,-</td>
-										<th colspan="2" style="background:#ddd"></th>
+										<th colspan="1" style="background:#ddd"></th>
 									</tr>
 								</tfoot>
 							</table>
 						</div>
+						
 						<div class="clearfix" style="margin-top:7pc;"></div>
 					<!-- end view barang -->
 					<!-- tambah barang MODALS-->

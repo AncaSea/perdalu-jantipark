@@ -1,5 +1,5 @@
 <?php
-include 'db_con.php';
+include '../../db_con.php';
 session_start();
 // include 'authcheckkasir.php';
 
@@ -33,9 +33,9 @@ if (!empty($_SESSION['cart'])) {
             $updatedata = mysqli_query($dbconnect, "UPDATE stok_brg set jumlah = '$updatestok' WHERE kode_brg='$kode'");
             
             if ($updatedata) {
-                header('location:transaksi.php');
+                header('location:../../../../page/keranjangLuar/transaksi.php');
             } else {
-                header("location:admin.php?pageAdmin=kasir&pesan=updatefailed");
+                header("location:../../../../admin.php?page=kasir/kasirLuar&pesan=updatefailed");
             }
         }
         
@@ -77,9 +77,9 @@ if (!empty($_SESSION['cart'])) {
                         //     }
                         // }
                     }
-                    header('location:admin.php?pageAdmin=kasir');
+                    header('location:../../../../admin.php?page=kasir/kasirLuar');
                 }
                 
 } else {
-    header("location:admin.php?pageAdmin=kasir&pesan=emptycart");
+    header("location:../../../../admin.php?page=kasir/kasirLuar&pesan=emptycart");
 }

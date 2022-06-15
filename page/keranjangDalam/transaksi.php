@@ -1,10 +1,10 @@
 <?php
-include 'db_con.php';
+include '../../db_con.php';
 session_start();
 // include "authcheckkasir.php";
 
 //menghilangkan Rp pada nominal
-$bayar = preg_replace('/\D/', '', $_SESSION['byr']);
+$bayar = preg_replace('/\D/', '', $_SESSION['byrdlm']);
 // print_r(preg_replace('/\D/', '', $_POST['total']));
 
 // print_r($_SESSION['cart']) ;

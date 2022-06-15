@@ -1,5 +1,5 @@
 <?php
-include 'db_con.php';
+include '../../db_con.php';
 session_start();
 // include 'authcheckkasir.php';
 
