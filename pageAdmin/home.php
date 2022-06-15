@@ -23,7 +23,7 @@
                         <!-- <center><h1><?php print_r ($supp);?></h1></center> -->
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=dashboard/homeLuar'>Dashboard  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=dashboard/homeLuar&accordion=on'>Dashboard  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div>
                   </div>
@@ -38,7 +38,7 @@
                         <!-- <center><h1><?php echo ($stok);?></h1></center> -->
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=dashboard/homeDalam'>Dashboard  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=dashboard/homeDalam&accordion2=on'>Dashboard  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div>
                   </div>
