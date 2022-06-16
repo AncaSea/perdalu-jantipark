@@ -252,7 +252,7 @@ ul.top-menu > li > .logout {
 }
 
 #sidebar .sub-menu > .sub li  {
-    padding-left: 32px;
+    padding-left: 0.5em;
 }
 
 #sidebar .sub-menu > .sub li:last-child {
@@ -299,10 +299,13 @@ ul.sidebar-menu {
 
 #sidebar > ul > li.active > ul.sub, #sidebar > ul > li > ul.sub > li > a {
     display: block;
+    /* margin-top: 0.1em; */
+    padding-left: 0.5em;
 }
 
 ul.sidebar-menu li ul.sub li{
-    background: #424a5d;
+    /* background: #424a5d; */
+    background: #9b6d02;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
@@ -327,7 +330,7 @@ ul.sidebar-menu li ul.sub li a {
 }
 
 ul.sidebar-menu li ul.sub li a:hover {
-	color: white;
+	color: #feb101;
 	background: transparent;
 }
 
