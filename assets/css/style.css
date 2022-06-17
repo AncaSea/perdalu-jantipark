@@ -253,6 +253,7 @@ ul.top-menu > li > .logout {
 
 #sidebar .sub-menu > .sub li  {
     padding-left: 0.5em;
+    padding-top: 0.5em;
 }
 
 #sidebar .sub-menu > .sub li:last-child {
