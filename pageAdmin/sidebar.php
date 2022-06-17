@@ -52,17 +52,17 @@
                     </a>
                     <ul class="sub">
                         <li>
-                            <a class="<?php echo isset($_GET['page']) ? $_GET['page']=='dashboard/homeLuar' ? 'active' : '' : ''; ?>" href="admin.php?page=dashboard/homeLuar&accordion=on">
+                            <a class="<?php echo isset($_GET['page']) ? $_GET['page']=='dashboard/homeLuar' ? 'active' : '' : ''; ?>" href="admin.php?page=dashboard/homeLuar&accordion=on"style="padding-top: 1px; border-style: ridge;">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='brg_masuk/brg_masuk' ? 'active' : '' : ''; ?>" href="admin.php?page=brg_masuk/brg_masuk&accordion=on"><i class="fa fa-boxes-stacked"></i><span>Barang Masuk</span></a></li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='brg_kembali/brg_kembali' ? 'active' : '' : ''; ?>" href="admin.php?page=brg_kembali/brg_kembali&accordion=on"><i class="fa fa-hand-holding-hand"></i><span>Barang Kembali</span></a></li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='kasir/kasirLuar' ? 'active' : '' : ''; ?>" href="admin.php?page=kasir/kasirLuar&accordion=on"><i class="fa fa-cash-register"></i><span>Kasir</span></a></li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanLuar' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" href="admin.php?page=lap_penjualan/penjualanLuar&&accordion=on&active=yes"><i class="fa-solid fa-clipboard-list"></i><span>Laporan Penjualan</span></a></li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='supplier/supplier' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" href="admin.php?page=supplier/supplier&accordion=on&active=yes"><i class="fa fa-people-carry-box"></i><span>Supplier</span></a></li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='user/user' ? 'active' : '' : ''; ?>" href="admin.php?page=user/user&accordion=on"><i class="fa fa-user-group"></i><span>User</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='brg_masuk/brg_masuk' ? 'active' : '' : ''; ?>" href="admin.php?page=brg_masuk/brg_masuk&accordion=on" style="padding-top: 1px; border-style: ridge;"><i class="fa fa-boxes-stacked"></i><span>Barang Masuk</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='brg_kembali/brg_kembali' ? 'active' : '' : ''; ?>" href="admin.php?page=brg_kembali/brg_kembali&accordion=on"style="padding-top: 1px; border-style: ridge;"><i class="fa fa-hand-holding-hand"></i><span>Barang Kembali</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='kasir/kasirLuar' ? 'active' : '' : ''; ?>" href="admin.php?page=kasir/kasirLuar&accordion=on"style="padding-top: 1px; border-style: ridge;"><i class="fa fa-cash-register"></i><span>Kasir</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanLuar' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" href="admin.php?page=lap_penjualan/penjualanLuar&&accordion=on&active=yes"style="padding-top: 1px; border-style: ridge;"><i class="fa-solid fa-clipboard-list"></i><span>Laporan Penjualan</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='supplier/supplier' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" href="admin.php?page=supplier/supplier&accordion=on&active=yes"style="padding-top: 1px ; border-style: ridge;"><i class="fa fa-people-carry-box"></i><span>Supplier</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='user/user' ? 'active' : '' : ''; ?>" href="admin.php?page=user/user&accordion=on"style="padding-top: 1px; border-style: ridge;"><i class="fa fa-user-group"></i><span>User</span></a></li>
                     </ul>
                 </li>
                   <li class="sub-menu">
@@ -72,14 +72,15 @@
                     </a>
                     <ul class="sub">
                         <li>
-                            <a class="<?php echo isset($_GET['page']) ? $_GET['page']=='dashboard/homeDalam' ? 'active' : '' : ''; ?>" href="admin.php?page=dashboard/homeDalam&accordion2=on">
+                            <a class="<?php echo isset($_GET['page']) ? $_GET['page']=='dashboard/homeDalam' ? 'active' : '' : ''; ?>" href="admin.php?page=dashboard/homeDalam&accordion2=on"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='kasir/kasirDalam' ? 'active' : '' : ''; ?>" href="admin.php?page=kasir/kasirDalam&accordion2=on"><i class="fa fa-cash-register"></i><span>Kasir</span></a></li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='menu/menu' ? 'active' : '' : ''; ?>" href="admin.php?page=menu/menu&accordion2=on"><i class="fa-solid fa-clipboard-list"></i><span>Menu</span></a></li>
-                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanDalam' ? 'active' : '' : ''; ?>" href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on"><i class="fa-solid fa-clipboard-list"></i><span>Laporan Penjualan</span></a></li>
+                    
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='kasir/kasirDalam' ? 'active' : '' : ''; ?>" href="admin.php?page=kasir/kasirDalam&accordion2=on"style="padding-top: 1px; margin-right: 0.5em;  border-style: ridge;"><i class="fa fa-cash-register"></i><span>Kasir</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='menu/menu' ? 'active' : '' : ''; ?>" href="admin.php?page=menu/menu&accordion2=on"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;"><i class="fa-solid fa-clipboard-list"></i><span>Menu</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanDalam' ? 'active' : '' : ''; ?>" href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;"><i class="fa-solid fa-clipboard-list"></i><span>Laporan Penjualan</span></a></li>
                     </ul>
                 </li>
                 <!-- <li class="sub-menu">

@@ -299,8 +299,9 @@ ul.sidebar-menu {
 
 #sidebar > ul > li.active > ul.sub, #sidebar > ul > li > ul.sub > li > a {
     display: block;
-    /* margin-top: 0.1em; */
+    /* margin-top: 0.1em;    */
     padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 ul.sidebar-menu li ul.sub li{
@@ -330,7 +331,7 @@ ul.sidebar-menu li ul.sub li a {
 }
 
 ul.sidebar-menu li ul.sub li a:hover {
-	color: #feb101;
+	color: #ffffff;
 	background: transparent;
 }
 
