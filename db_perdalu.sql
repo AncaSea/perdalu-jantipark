@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jun 2022 pada 12.22
+-- Waktu pembuatan: 17 Jun 2022 pada 07.59
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -268,7 +268,9 @@ INSERT INTO `penjualan` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_pe
 (93, 598227, '', 'admin1', '2022-06-15', 'kb0015', 'baju polo', 1, 25000, 25000, 40000),
 (94, 598227, '', 'admin1', '2022-06-15', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
 (95, 400614, '', 'admin1', '2022-06-15', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
-(96, 400614, '', 'admin1', '2022-06-15', 'kb0071', 'sweater', 1, 25000, 25000, 40000);
+(96, 400614, '', 'admin1', '2022-06-15', 'kb0071', 'sweater', 1, 25000, 25000, 40000),
+(97, 941011, '', 'admin1', '2022-06-17', 'kb0015', 'baju polo', 1, 25000, 25000, 40000),
+(98, 941011, '', 'admin1', '2022-06-17', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000);
 
 -- --------------------------------------------------------
 
@@ -286,7 +288,9 @@ CREATE TABLE `penjualan_dalam` (
   `role` int(11) NOT NULL,
   `jenis` varchar(255) NOT NULL,
   `jumlah` int(11) NOT NULL,
+  `total_pesan` int(11) NOT NULL,
   `hrg_jual` int(11) NOT NULL,
+  `hrg` int(11) NOT NULL,
   `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -294,13 +298,19 @@ CREATE TABLE `penjualan_dalam` (
 -- Dumping data untuk tabel `penjualan_dalam`
 --
 
-INSERT INTO `penjualan_dalam` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_penjualan`, `nama_pesanan`, `role`, `jenis`, `jumlah`, `hrg_jual`, `total`) VALUES
-(1, 351341, 'admin', 'admin1', '2022-06-13', 'lele bakar', 1, 'lele', 1, 6000, 6000),
-(2, 478426, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 5, 5000, 30000),
-(3, 781931, 'admin', 'admin1', '2022-06-14', 'paket lele goreng', 4, 'lele', 2, 20000, 40000),
-(4, 592931, 'admin', 'admin1', '2022-06-14', 'nila goreng', 2, 'nila', 4, 5000, 20000),
-(5, 748253, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 6, 5000, 30000),
-(6, 849102, 'admin', 'admin1', '2022-06-14', 'paket lele bakar', 4, 'lele', 2, 22000, 44000);
+INSERT INTO `penjualan_dalam` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_penjualan`, `nama_pesanan`, `role`, `jenis`, `jumlah`, `total_pesan`, `hrg_jual`, `hrg`, `total`) VALUES
+(1, 351341, 'admin', 'admin1', '2022-06-13', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 6000),
+(2, 478426, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 5, 5, 5000, 30000, 30000),
+(3, 781931, 'admin', 'admin1', '2022-06-14', 'paket lele goreng', 4, 'lele', 2, 12, 20000, 40000, 40000),
+(4, 592931, 'admin', 'admin1', '2022-06-14', 'nila goreng', 2, 'nila', 4, 4, 5000, 20000, 20000),
+(5, 748253, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 6, 6, 5000, 30000, 30000),
+(6, 849102, 'admin', 'admin1', '2022-06-14', 'paket lele bakar', 4, 'lele', 2, 12, 22000, 44000, 44000),
+(49, 317376, 'admin', 'admin1', '2022-06-16', 'paket lele goreng', 4, 'lele', 1, 6, 20000, 120000, 40000),
+(50, 317376, 'admin', 'admin1', '2022-06-16', 'paket lele goreng', 4, 'lele', 1, 1, 20000, 20000, 40000),
+(51, 725270, 'admin', 'admin1', '2022-06-16', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 26000),
+(52, 725270, 'admin', 'admin1', '2022-06-16', 'paket lele goreng', 4, 'lele', 1, 6, 20000, 120000, 26000),
+(53, 655794, 'admin', 'admin1', '2022-06-16', 'lele goreng', 1, 'lele', 1, 1, 5000, 5000, 20000),
+(54, 655794, 'admin', 'admin1', '2022-06-16', 'es teh', 6, 'teh', 5, 5, 3000, 15000, 20000);
 
 -- --------------------------------------------------------
 
@@ -346,8 +356,8 @@ CREATE TABLE `stok_brg` (
 --
 
 INSERT INTO `stok_brg` (`kode_brg`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_beli`, `hrg_jual`) VALUES
-('kb0015', 'wakidi', 'baju polo', 9986, 20000, 25000),
-('kb0055', 'mukidi', 'celana pendek', 10035, 10000, 15000),
+('kb0015', 'wakidi', 'baju polo', 9985, 20000, 25000),
+('kb0055', 'mukidi', 'celana pendek', 10034, 10000, 15000),
 ('kb0057', 'odin', 'kaos', 9992, 15000, 20000),
 ('kb0071', 'pudidi', 'sweater', 9977, 20000, 25000),
 ('kb0083', 'yudi', 'jeans', 9992, 30000, 35000),
@@ -510,13 +520,13 @@ ALTER TABLE `paket_barbar`
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_dalam`
 --
 ALTER TABLE `penjualan_dalam`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`

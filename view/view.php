@@ -222,7 +222,7 @@
 
 				$penle = mysqli_query($dbconnect, "SELECT nama_pesanan, role, SUM(jumlah) AS jumlah FROM penjualan_dalam GROUP BY nama_pesanan");
 				$getpenle = mysqli_fetch_all($penle);
-					// print_r($getpenle);
+					print_r($getpenle);
 
 				if ($getpenle['1'] == '4') {
 					$rolepkt = $getpenle['1'];
