@@ -2,5 +2,5 @@
 session_start();
 
 $_SESSION['cart'] = [];
-header('location:../../../../admin.php?page=kasir/kasirLuar');
+header('location:../../../../admin.php?page=kasir/kasirLuar&accordion=on');
 ?>

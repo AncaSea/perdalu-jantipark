@@ -35,7 +35,7 @@ if (!empty($_SESSION['cart'])) {
             if ($updatedata) {
                 header('location:../../../../page/keranjangLuar/transaksi.php');
             } else {
-                header("location:../../../../admin.php?page=kasir/kasirLuar&pesan=updatefailed");
+                header("location:../../../../admin.php?page=kasir/kasirLuar&pesan=updatefailed&accordion=on");
             }
         }
         
@@ -77,9 +77,9 @@ if (!empty($_SESSION['cart'])) {
                         //     }
                         // }
                     }
-                    header('location:../../../../admin.php?page=kasir/kasirLuar');
+                    header('location:../../../../admin.php?page=kasir/kasirLuar&accordion=on');
                 }
                 
 } else {
-    header("location:../../../../admin.php?page=kasir/kasirLuar&pesan=emptycart");
+    header("location:../../../../admin.php?page=kasir/kasirLuar&pesan=emptycart&accordion=on");
 }

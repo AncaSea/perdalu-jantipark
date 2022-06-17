@@ -12,30 +12,30 @@ if (!empty($_SESSION['cartdlm'])) {
     if (isset($_POST['bayar'])) {
     
         foreach ($cart as $key => $value) {
-            // $kode = $value['kd'];
+            // $id = $value['id'];
             // $qty = $value['qty'];
 
             // echo $kode;
             
-            // $cekstok = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");;
+            // $cekstok = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg='$kode'");
             // $getdata = mysqli_fetch_array($cekstok);
 
             // $storebrg = mysqli_fetch_assoc($cekstok);
             // $kodebrg = $storebrg['kode_brg'];
             // $namabrg = $storebrg['nama_brg'];
-            // $_SESSION['kdbrg'] = $kode;
+            // $_SESSION['idbrg'] = $id;
             // $_SESSION['Qty'] = $qty;
 
-            // $_SESSION['byr'] = $_POST['bayar'];
-            // $_SESSION['ttl'] = $_POST['total'];
+            $_SESSION['byrdlm'] = $_POST['bayar'];
+            $_SESSION['ttl'] = $_POST['total'];
             
             // $stoksekarang = $getdata['jumlah'];
             // $updatestok = $stoksekarang - $qty;
      
             // $updatedata = mysqli_query($dbconnect, "UPDATE stok_brg set jumlah = '$updatestok' WHERE kode_brg='$kode'");
             
-            header('location:../../../../page/keranjangDalam/transaksi.php');
             // if ($updatedata) {
+                header('location:../../../../page/keranjangDalam/transaksi.php');
             // } else {
             //     header("location:../../../../admin.php?page=kasir/kasirDalam&pesan=updatefailed");
             // }
@@ -79,9 +79,9 @@ if (!empty($_SESSION['cartdlm'])) {
                         //     }
                         // }
                     }
-                    header('location:../../../../admin.php?page=kasir/kasirDalam');
+                    header('location:../../../../admin.php?page=kasir/kasirLuar&accordion2=on');
                 }
                 
 } else {
-    header("location:../../../../admin.php?page=kasir/kasirDalam&pesan=emptycart");
+    header("location:../../../../admin.php?page=kasir/kasirDalam&pesan=emptycart&accordion2=on");
 }

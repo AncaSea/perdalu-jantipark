@@ -1,18 +1,19 @@
 <?php
-include 'db_con.php';
+include '../../db_con.php';
 session_start();
 // include 'authcheckkasir.php';
 
 date_default_timezone_set('Asia/Jakarta');
 $datetime = date('d-m-Y H:i:s');
 $id_trx = $_GET['idtrx'];
-$bayar = $_SESSION['byr'];
+$bayar = $_SESSION['byrdlm'];
 $kembali = $_SESSION['kmbl'];
 
-$detail = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE no_nota='$id_trx'");
+$detail = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_nota='$id_trx'");
 $trx = mysqli_fetch_assoc($detail);
 
-$detailbrg = mysqli_query($dbconnect, "SELECT penjualan.*, stok_brg.nama_brg FROM `penjualan` INNER JOIN stok_brg ON penjualan.kode_brg=stok_brg.kode_brg WHERE penjualan.no_nota='$id_trx'");
+// $detailbrg = mysqli_query($dbconnect, "SELECT penjualan_dalam.*, stok_brg.nama_brg FROM `penjualan` INNER JOIN stok_brg ON penjualan.kode_brg=stok_brg.kode_brg WHERE penjualan.no_nota='$id_trx'");
+$detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_nota='$id_trx'");
 
 ?>
 
@@ -44,7 +45,7 @@ $detailbrg = mysqli_query($dbconnect, "SELECT penjualan.*, stok_brg.nama_brg FRO
 			<?php while ($row = mysqli_fetch_array($detailbrg)) { ?>
 			<tr>
 				<td valign="top">
-					<?=$row['nama_brg']?>
+					<?=$row['nama_pesanan']?>
 					<!-- <?php if ($row['diskon'] > 0): ?>
 					<br>
 					<small>Diskon</small>

@@ -84,12 +84,15 @@ if(isset($_GET['pesan'])){
 						</div>
 					</div>
 <?php 
+	// $spesdata = mysqli_query($dbconnect, "SELECT * FROM paket_barbar WHERE role='4'");
+					
     // $data = mysqli_query($dbconnect, "SELECT nama FROM makanan UNION SELECT nama FROM minuman");
 	// if ($data -> num_rows > 0) {
-	// 	while ($row = mysqli_fetch_assoc($data)) {
+		// while ($jum = mysqli_fetch_assoc($spesdata)) {
 	// 		$hasil = $row;
-	// 		print_r($hasil);
-	// 	}
+			// print_r($jum);
+			// print_r ($_SESSION['cartdlm']);
+		// }
 	// }
 ?>
 					<form method="post" action="../page/keranjangDalam/keranjang_update.php">

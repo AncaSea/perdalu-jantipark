@@ -18,20 +18,50 @@ $_SESSION['kmbl'] = $kembali;
 
 //insert ke tabel transaksi
 
-foreach ($_SESSION['cart'] as $key => $value) {
-	$kdbrg = $value['kd'];
-	$nmbrg = $value['nama'];
-	$jmlh = $value['qty'];
+foreach ($_SESSION['cartdlm'] as $key => $value) {
+	$idpsn = $value['id'];
+	$nmpsn = $value['nama'];
+	$role = $value['role'];
+	$jenis = $value['jenis'];
 	$hrgjual = $value['harga'];
-	$hrg = (int)$hrgjual*(int)$jmlh;
+	$jmlh = $value['qty'];
 	
-	$dataksr = mysqli_query($dbconnect, "SELECT * FROM kasir_acc WHERE nama_kasir='$nama'");
-	$getksr = mysqli_fetch_array($dataksr);
-	$user = $getksr['username'];
+	$dataadmin = mysqli_query($dbconnect, "SELECT * FROM admin_acc WHERE nama_admin='$nama'");
+	$getadmin = mysqli_fetch_array($dataadmin);
+	$user = $getadmin['username'];
 
-	mysqli_query($dbconnect, "INSERT INTO penjualan (id_nota, no_nota,username,nama_kasir,tgl_penjualan,kode_brg,nama_brg,jumlah,hrg_jual,hrg,total) 
-	VALUES (NULL,'$nomor','$user','$nama','$tanggal_waktu','$kdbrg','$nmbrg','$jmlh','$hrgjual','$hrg','$total')");
+	$sql = mysqli_query($dbconnect, "SELECT * FROM paket_barbar WHERE role='$role'");
+	// $getrolepkt = mysqli_fetch_assoc($rolepkt);
+	// print_r($getpenle);
 
+	if ($sql -> num_rows > 0) {
+		while ($data = mysqli_fetch_assoc($sql)) {
+			// if ($role = $data['role']) {
+				// $paket = mysqli_query($dbconnect, "SELECT * FROM paket_barbar WHERE role='$role'");
+				// if ($paket -> num_rows > 0) {
+					// while ($row = mysqli_fetch_assoc($paket)) {
+						if ($nmpsn == $data['nama']) {
+							// $spesdata = mysqli_query($dbconnect, "SELECT * FROM paket_barbar WHERE role='$role' AND nama='$nmpsn'");
+							// $data = mysqli_fetch_all($spesdata);
+							// while ($data = mysqli_fetch_all($spesdata)) {
+								$ttlpsn = $jmlh*$data['jumlah'];
+								$hrg = (int)$hrgjual*(int)$ttlpsn;
+		
+								mysqli_query($dbconnect, "INSERT INTO penjualan_dalam (id_nota, no_nota,username,nama_kasir,tgl_penjualan,nama_pesanan,role,jenis,jumlah,total_pesan,hrg_jual,hrg,total) 
+								VALUES (NULL,'$nomor','$user','$nama','$tanggal_waktu','$nmpsn','$role','$jenis','$jmlh','$ttlpsn','$hrgjual','$hrg','$total')");
+							// }	
+						}
+					// }
+				// }
+			// }
+		}
+	} else {
+		$ttlpsn = $jmlh*1;
+		$hrg = (int)$hrgjual*(int)$ttlpsn;
+
+		mysqli_query($dbconnect, "INSERT INTO penjualan_dalam (id_nota, no_nota,username,nama_kasir,tgl_penjualan,nama_pesanan,role,jenis,jumlah,total_pesan,hrg_jual,hrg,total) 
+		VALUES (NULL,'$nomor','$user','$nama','$tanggal_waktu','$nmpsn','$role','$jenis','$jmlh','$ttlpsn','$hrgjual','$hrg','$total')");
+	}
 }
 
 // //mendapatkan id transaksi baru
@@ -51,7 +81,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
 // 	// $sum += $value['harga']*$value['qty'];
 // }
 
-$_SESSION['cart'] = [];
+$_SESSION['cartdlm'] = [];
 
 //redirect ke halaman transaksi selesai
 header("location:transaksi_selesai.php?idtrx=".$nomor);

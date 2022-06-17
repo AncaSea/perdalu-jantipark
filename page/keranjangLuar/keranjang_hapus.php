@@ -21,6 +21,6 @@ foreach ($k as $key => $value) {
 //mengembalikan urutan data
 $_SESSION['cart'] = array_values($_SESSION['cart']);
 
-header('location:../../../../admin.php?page=kasir/kasirLuar');
+header('location:../../../../admin.php?page=kasir/kasirLuar&accordion=on');
 
 ?>
