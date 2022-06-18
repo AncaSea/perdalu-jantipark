@@ -110,7 +110,7 @@
 <section id="container">
       <header class="header black-bg">
                   <div class="sidebar-toggle-box">
-                      <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                      <div class="fa fa-bars tooltips" data-placement="right" data-original-title=""></div>
                   </div>
                 <!--logo start-->
                 <a href="admin.php" class="logo"><b>Janti Park</b> <small style="padding-left:5px;font-size:13px;">Ngendo, Janti, Kecamatan Polanharjo, Kabupaten Klaten, Jawa Tengah 57474</small></a>

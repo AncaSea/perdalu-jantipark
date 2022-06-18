@@ -20,9 +20,9 @@ if(isset($_GET['pesan'])){
 
               <div class="row">
                   <div class="col-lg-12 main-chart">
-				  <button  type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
+				  		<button  type="button" class="btn btn-primary btn-md pull-right" style="margin-top:1em;" data-toggle="modal" data-target="#myModal">
 							<i class="fa fa-plus"></i> Insert Data</button>
-							<a href="admin.php?page=supplier/supplier" style="margin-right :0.5pc;" 
+							<a href="admin.php?page=supplier/supplier" style="margin-right :0.5pc;margin-top: 1em;" 
 								class="btn btn-success btn-md pull-right">
 								<i class="fa fa-refresh"></i> Refresh Data</a>
 						<h3>Data Supplier</h3>
