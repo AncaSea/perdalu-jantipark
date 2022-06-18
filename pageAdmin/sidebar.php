@@ -58,7 +58,8 @@
                     </a>
                     <ul class="sub">
                         <li>
-                            <a class="<?php echo isset($_GET['page']) ? $_GET['page']=='dashboard/homeDalam' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" href="admin.php?page=dashboard/homeDalam&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
+                            <a class="<?php echo isset($_GET['page']) ? $_GET['page']=='dashboard/homeDalam' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>"
+                                href="admin.php?page=dashboard/homeDalam&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>
