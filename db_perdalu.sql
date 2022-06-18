@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jun 2022 pada 07.59
+-- Waktu pembuatan: 18 Jun 2022 pada 18.21
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -305,12 +305,13 @@ INSERT INTO `penjualan_dalam` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `
 (4, 592931, 'admin', 'admin1', '2022-06-14', 'nila goreng', 2, 'nila', 4, 4, 5000, 20000, 20000),
 (5, 748253, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 6, 6, 5000, 30000, 30000),
 (6, 849102, 'admin', 'admin1', '2022-06-14', 'paket lele bakar', 4, 'lele', 2, 12, 22000, 44000, 44000),
-(49, 317376, 'admin', 'admin1', '2022-06-16', 'paket lele goreng', 4, 'lele', 1, 6, 20000, 120000, 40000),
-(50, 317376, 'admin', 'admin1', '2022-06-16', 'paket lele goreng', 4, 'lele', 1, 1, 20000, 20000, 40000),
-(51, 725270, 'admin', 'admin1', '2022-06-16', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 26000),
-(52, 725270, 'admin', 'admin1', '2022-06-16', 'paket lele goreng', 4, 'lele', 1, 6, 20000, 120000, 26000),
-(53, 655794, 'admin', 'admin1', '2022-06-16', 'lele goreng', 1, 'lele', 1, 1, 5000, 5000, 20000),
-(54, 655794, 'admin', 'admin1', '2022-06-16', 'es teh', 6, 'teh', 5, 5, 3000, 15000, 20000);
+(59, 996792, 'admin', 'admin1', '2022-06-17', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 9000),
+(60, 996792, 'admin', 'admin1', '2022-06-17', 'es teh', 6, 'teh', 1, 1, 3000, 3000, 9000),
+(61, 651993, 'admin', 'admin1', '2022-06-17', 'paket lele goreng', 4, 'lele', 1, 6, 20000, 20000, 26000),
+(62, 651993, 'admin', 'admin1', '2022-06-17', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 26000),
+(63, 512226, 'admin', 'admin1', '2022-06-17', 'paket lele goreng', 4, 'lele', 2, 12, 20000, 40000, 115000),
+(64, 512226, 'admin', 'admin1', '2022-06-17', 'paket nila goreng', 5, 'nila', 3, 12, 25000, 75000, 115000),
+(65, 187809, 'admin', 'admin1', '2022-06-18', 'teh anget', 6, 'teh', 1, 1, 2500, 2500, 2500);
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,7 @@ CREATE TABLE `supplier` (
 
 INSERT INTO `supplier` (`id`, `id_supp`, `nama_supp`, `no_hp`, `alamat`) VALUES
 (1, 'sp0001', 'mukidi', 81273154683, 'janti'),
-(2, 'sp0041', 'odin', 81345324562, 'janti\r\n'),
+(2, 'sp0041', 'odin', 81345324562, 'janti'),
 (3, 'sp0051', 'pudidi', 81532645424, 'delanggu\r\n'),
 (4, 'sp0067', 'yudi', 85463642472, 'tulung\r\n'),
 (5, 'sp0142', 'wakidi', 81351463153, 'cabeyan'),
@@ -496,7 +497,7 @@ ALTER TABLE `brg_masuk`
 -- AUTO_INCREMENT untuk tabel `makanan`
 --
 ALTER TABLE `makanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `minuman`
@@ -526,7 +527,7 @@ ALTER TABLE `penjualan`
 -- AUTO_INCREMENT untuk tabel `penjualan_dalam`
 --
 ALTER TABLE `penjualan_dalam`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
@@ -538,7 +539,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -29,9 +29,9 @@ session_start();
 		}
 	}
 	if(!empty($_GET['menu'])){
-		$idsupp = $_POST['idsupp'];
-		$nmsupp = $_POST['nmsupp'];
-		$nohp = $_POST['nohp'];
+		$idsupp = $_POST['idrole'];
+		$nmsupp = $_POST['nmmenu'];
+		$nohp = $_POST['jenis'];
 		$almt = $_POST['alamat'];
 
 		$sql = mysqli_query($dbconnect, "SELECT * FROM supplier WHERE nama_supp = '$nmsupp'");
