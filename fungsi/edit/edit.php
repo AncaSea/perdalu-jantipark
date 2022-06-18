@@ -30,7 +30,7 @@ if(!empty($_SESSION['namaadmin'])){
 		$query = mysqli_query($dbconnect, $updb);
 		
 		if ($query) {
-			echo '<script>window.location="../../admin.php?page=supplier/supplier&success-edit=edit-data"</script>';
+			echo '<script>window.location="../../admin.php?page=supplier/supplier&accordion=on&active=yes&success-edit=edit-data"</script>';
 		} else {
 
 		}		

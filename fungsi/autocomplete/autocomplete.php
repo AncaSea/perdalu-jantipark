@@ -83,6 +83,46 @@
         // }
     }
 
+    if (isset($_POST['jenis'])) {
+        $search = mysqli_real_escape_string($dbconnect,$_POST['jenis']);
+
+        $query = "SELECT * FROM role WHERE nama like'%".$search."%'";
+        $result = mysqli_query($dbconnect,$query);
+        $response = array();
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_array($result) ){
+                echo '<li style="list-item:none" class="auto-kasir" onClick=\'selectJenis("'.$row["nama"].'")\'>'.$row["nama"].'</li>';
+            }
+            // while($row = mysqli_fetch_array($result) ){
+            //     $response[] = array('label'=>$row['nama_supp']);
+            // }
+            //   print_r ($response);
+            //   echo json_encode($response);
+        } else {
+            echo '<li class="auto-kasir">Data tidak ditemukan</li>';
+        }
+    }
+
+    if (isset($_POST['jenispkt'])) {
+        $search = mysqli_real_escape_string($dbconnect,$_POST['jenispkt']);
+
+        $query = "SELECT * FROM role WHERE nama like'%".$search."%'";
+        $result = mysqli_query($dbconnect,$query);
+        $response = array();
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_array($result) ){
+                echo '<li style="list-item:none" class="auto-kasir" onClick=\'selectJenispkt("'.$row["nama"].'")\'>'.$row["nama"].'</li>';
+            }
+            // while($row = mysqli_fetch_array($result) ){
+            //     $response[] = array('label'=>$row['nama_supp']);
+            // }
+            //   print_r ($response);
+            //   echo json_encode($response);
+        } else {
+            echo '<li class="auto-kasir">Data tidak ditemukan</li>';
+        }
+    }
+
     if (isset($_POST['brgmsk'])) {
         $search = mysqli_real_escape_string($dbconnect,$_POST['brgmsk']);
 

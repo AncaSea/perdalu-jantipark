@@ -85,7 +85,7 @@
 						
 
 						<h4>Cari Laporan Per Bulan</h4>
-						<form method="post" action="admin.php?page=lap_penjualan/penjualan&bulan=ok">
+						<form method="post" action="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&bulan=ok">
 							<table class="table table-striped">
 								<tr>
 									<th>
@@ -131,7 +131,7 @@
 									<button class="btn btn-primary">
 										<i class="fa fa-search"></i> Cari
 									</button>
-									<a href="admin.php?page=lap_penjualan/penjualan" class="btn btn-success">
+									<a href="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes" class="btn btn-success">
 										<i class="fa fa-refresh"></i> Refresh</a>
 										
 									<?php if(!empty($_GET['cari'])){?>
@@ -287,7 +287,7 @@
 												$hasil = $lihat -> periode_jual($Y, $M);
 												// print_r($hasil);
 											} else {
-												header('location:admin.php?page=lap_penjualan/penjualan&pesan=error1');
+												header('location:admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&pesan=error1');
 											}
 										} else if(!empty($_GET['minggu'])) {
 											$tgl1 = $_POST['tgl'];

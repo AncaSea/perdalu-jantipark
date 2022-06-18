@@ -217,61 +217,43 @@
 			// 	return $hasil;
 			// }
 			
-			function jual_lele(){
+			function live_lele(){
 				include 'db_con.php';
 
-				$penle = mysqli_query($dbconnect, "SELECT nama_pesanan, role, SUM(jumlah) AS jumlah FROM penjualan_dalam GROUP BY nama_pesanan");
-				$getpenle = mysqli_fetch_all($penle);
-					print_r($getpenle);
-
-				if ($getpenle['1'] == '4') {
-					$rolepkt = $getpenle['1'];
-					$paket = mysqli_query($dbconnect, "SELECT nama_pesanan FROM paket_barbar WHERE role='$rolepkt' GROUP BY role");
-
-					$paket = mysqli_query($dbconnect, "SELECT jumlah FROM paket_barbar WHERE role='$rolepkt' GROUP BY role");
-					
-
-					$getjum1 = mysqli_fetch_array($paket);
-					$pkt = $getjum1['jumlah'];
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE jenis='lele' AND CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY jenis");
+				if ($sql -> num_rows > 0) {
+					$row = mysqli_fetch_array($sql);
+					$hasil = $row['ttlpsn'];
+				} else {
+					$hasil = 0;
 				}
-
-				$menu = mysqli_query($dbconnect, "SELECT SUM(jumlah) AS jumlah2 FROM penjualan_dalam WHERE role='1' GROUP BY role");
-				
-				$getjum2 = mysqli_fetch_array($menu);
-
-				$mn = $getjum2['jumlah2'];
-
-				$sql = "SELECT SUM(jumlah) AS jumlah FROM penjualan_dalam WHERE role='1' GROUP BY role";
-				if ($result = mysqli_query($dbconnect, $sql)) {
-					$row = mysqli_fetch_array($result);
-					if ($row['jumlah']<=0) {
-						$hasil = 0;
-					}else{
-						$hasil = $row['jumlah'];
-					}
-					return $hasil;
-				}
+				return $hasil;
 			}
 
-			function jual_nila(){
+			function live_nila(){
 				include 'db_con.php';
-				
-				// $sql_paket = "SELECT * FROM penjualan INNER JOIN paket ON penjualan.nama_brg = paket.nama";
-				// if ($result = mysqli_query($dbconnect, $sql_paket)) {
-				// 	$row = mysqli_fetch_array($result);
-				// 	return $row['makanan'];
-				// }
 
-				$sql = "SELECT SUM(jumlah) AS jumlah FROM penjualan WHERE nama_brg='nila' GROUP BY nama_brg";
-				if ($result = mysqli_query($dbconnect, $sql)) {
-					$row = mysqli_fetch_array($result);
-					if ($row['jumlah']<=0) {
-						$hasil = 0;
-					}else{
-						$hasil = $row['jumlah'];
-					}
-					return $hasil;
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE jenis='nila' AND CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY jenis");
+				if ($sql -> num_rows > 0) {
+					$row = mysqli_fetch_array($sql);
+					$hasil = $row['ttlpsn'];
+				} else {
+					$hasil = 0;
 				}
+				return $hasil;
+			}
+
+			function live_ayam(){
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE jenis='ayam' AND CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY jenis");
+				if ($sql -> num_rows > 0) {
+					$row = mysqli_fetch_array($sql);
+					$hasil = $row['ttlpsn'];
+				} else {
+					$hasil = 0;
+				}
+				return $hasil;
 			}
 
 			function supp_row() {
@@ -303,6 +285,45 @@
 				}
 			}
 
+			function mnmkn(){
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM makanan ORDER BY nama DESC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
+			function mnmnmn(){
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM minuman ORDER BY nama DESC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
+			function mnpkt(){
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM paket_barbar ORDER BY nama DESC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
 			function jual_row(){
 				include 'db_con.php';
 				$sql = "SELECT COUNT(id_nota) AS jmlh FROM penjualan WHERE CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY no_nota ";
@@ -313,7 +334,7 @@
 				}
 			}
 
-			function omset() {
+			function omsetluar() {
 				include 'db_con.php';
 				// $date = date("Y-m-d");
 				$sql123 = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan where CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE)");
@@ -327,6 +348,20 @@
 				return $hasil;
 			}
 			
+			function omsetdlm() {
+				include 'db_con.php';
+				// $date = date("Y-m-d");
+				$sql123 = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan_dalam where CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE)");
+				$row = mysqli_fetch_array($sql123);
+				// print_r($sql123);
+				if ($row['omset']<=0) {
+					$hasil = 0;
+				}else{
+					$hasil = $row['omset'];
+				}
+				return $hasil;
+			}
+
 			function lapjual(){
 				include 'db_con.php';
 

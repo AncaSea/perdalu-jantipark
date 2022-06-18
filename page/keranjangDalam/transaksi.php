@@ -25,7 +25,8 @@ foreach ($_SESSION['cartdlm'] as $key => $value) {
 	$jenis = $value['jenis'];
 	$hrgjual = $value['harga'];
 	$jmlh = $value['qty'];
-	
+	$hrg = (int)$hrgjual*(int)$jmlh;
+
 	$dataadmin = mysqli_query($dbconnect, "SELECT * FROM admin_acc WHERE nama_admin='$nama'");
 	$getadmin = mysqli_fetch_array($dataadmin);
 	$user = $getadmin['username'];
@@ -45,7 +46,7 @@ foreach ($_SESSION['cartdlm'] as $key => $value) {
 							// $data = mysqli_fetch_all($spesdata);
 							// while ($data = mysqli_fetch_all($spesdata)) {
 								$ttlpsn = $jmlh*$data['jumlah'];
-								$hrg = (int)$hrgjual*(int)$ttlpsn;
+								// $hrg = (int)$hrgjual*(int)$ttlpsn;
 		
 								mysqli_query($dbconnect, "INSERT INTO penjualan_dalam (id_nota, no_nota,username,nama_kasir,tgl_penjualan,nama_pesanan,role,jenis,jumlah,total_pesan,hrg_jual,hrg,total) 
 								VALUES (NULL,'$nomor','$user','$nama','$tanggal_waktu','$nmpsn','$role','$jenis','$jmlh','$ttlpsn','$hrgjual','$hrg','$total')");
@@ -56,8 +57,8 @@ foreach ($_SESSION['cartdlm'] as $key => $value) {
 			// }
 		}
 	} else {
-		$ttlpsn = $jmlh*1;
-		$hrg = (int)$hrgjual*(int)$ttlpsn;
+		$ttlpsn = $jmlh;
+		// $hrg = (int)$hrgjual*(int)$ttlpsn;
 
 		mysqli_query($dbconnect, "INSERT INTO penjualan_dalam (id_nota, no_nota,username,nama_kasir,tgl_penjualan,nama_pesanan,role,jenis,jumlah,total_pesan,hrg_jual,hrg,total) 
 		VALUES (NULL,'$nomor','$user','$nama','$tanggal_waktu','$nmpsn','$role','$jenis','$jmlh','$ttlpsn','$hrgjual','$hrg','$total')");

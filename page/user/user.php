@@ -12,6 +12,11 @@
                   <div class="col-lg-12 main-chart">
 						<h3>Data User Admin</h3>
 						<hr/>
+						<?php if(isset($_GET['success-edit'])){?>
+						<div class="alert alert-success">
+							<p>Edit Supplier Berhasil !</p>
+						</div>
+						<?php }?>
 						<a href="admin.php?page=user/user" style="margin-right :0.5pc;" 
 								class="btn btn-success btn-md pull-right">
 								<i class="fa fa-refresh"></i> Refresh Data</a>
@@ -203,12 +208,12 @@
           	</section>
 		<script type="text/javascript">
 			var rowCount1 = document.getElementById("example1").rows.length;
-			// var rowCount1 = $("#example1").length;
+			// console.log(rowCount1);
 			var rowCount2 = document.getElementById("example2").rows.length;
 
 			document.getElementById("rowcount1").innerHTML = rowCount1-2;
 			document.getElementById("rowcount2").innerHTML = rowCount2-2;
-		</script> 
+		</script>
 		<script type="text/javascript">
 		$(document).ready(function () {
 			$(document).on("click",".li-modal",function(){  

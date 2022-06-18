@@ -4,16 +4,8 @@ if(isset($_GET['pesan'])){
 			$_SESSION['error'] = 'supplier sudah ada';
 	}
 
-	if($_GET['pesan'] == "notindatabase") {
-		$_SESSION['error'] = 'Barang tidak ada di database';
-	}
-
 	if($_GET['pesan'] == "updatefailed") {
 		$_SESSION['error'] = 'Gagal Mengupdate Stok Barang';
-	}
-
-	if($_GET['pesan'] == "emptycart") {
-		$_SESSION['error'] = 'Keranjang Kosong';
 	}
 }
 ?>
@@ -35,7 +27,15 @@ if(isset($_GET['pesan'])){
 								<i class="fa fa-refresh"></i> Refresh Data</a>
 						<h3>Data Supplier</h3>
 						<hr>
-					
+						<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
+							<script type="text/javascript">
+
+							swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error");
+
+							</script>
+						<?php }
+							$_SESSION['error'] = '';
+						?>
 						<?php if(isset($_GET['success-supp'])){?>
 						<div class="alert alert-success">
 							<p>Tambah Supplier Berhasil !</p>
@@ -214,7 +214,7 @@ if(isset($_GET['pesan'])){
 									</form>
 								</div>
 							</div>
-						</div>										
+						</div>								
               	</div>
           	</section>
 		  <script type="text/javascript">

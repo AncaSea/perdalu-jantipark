@@ -79,7 +79,7 @@ if (!empty($_SESSION['cartdlm'])) {
                         //     }
                         // }
                     }
-                    header('location:../../../../admin.php?page=kasir/kasirLuar&accordion2=on');
+                    header('location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on');
                 }
                 
 } else {

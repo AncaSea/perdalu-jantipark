@@ -18,10 +18,15 @@ session_start();
 		$nohp = $_POST['nohp'];
 		$almt = $_POST['alamat'];
 
-		$sql = mysqli_query($dbconnect, "INSERT INTO supplier (id, id_supp, nama_supp, no_hp, alamat) 
-		VALUES('', '$idsupp', '$nmsupp', '$nohp', '$almt')");
+		$sql = mysqli_query($dbconnect, "SELECT * FROM supplier WHERE nama_supp = '$nmsupp'");
+		if ($sql->num_rows == 1) {
+			header("location:../../admin.php?page=supplier/supplier&accordion=on&active=yes&pesan=samesupp");
+		} else if ($sql->num_rows != 1) {
+			$sql = mysqli_query($dbconnect, "INSERT INTO supplier (id, id_supp, nama_supp, no_hp, alamat) 
+			VALUES('', '$idsupp', '$nmsupp', '$nohp', '$almt')");
 
-		echo '<script>window.location="../../admin.php?page=supplier/supplier&success-supp=tambah-data"</script>';
+			echo '<script>window.location="../../admin.php?page=supplier/supplier&success-supp=tambah-data"</script>';
+		}
 	}
 	if(!empty($_GET['barangmsk'])){
 		$idsupp = $_POST['idsupp'];
