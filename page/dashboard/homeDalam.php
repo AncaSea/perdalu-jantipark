@@ -7,26 +7,19 @@
                 <h1 style="display: inline-block;">DASHBOARD PERDAGANGAN DALAM</h1>
                 <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
                 <hr>
-                <?php $income = $lihat -> omset();?>
-                <?php $stok = $lihat -> barang_stok_row();?>
-                <?php $jual = $lihat -> jual_lele();?>
-                <?php $supp = $lihat -> supp_row();?>
+                <?php $income = $lihat -> omsetdlm();?>
+                <?php $livelele = $lihat -> live_lele();?>
+                <?php $livenila = $lihat -> live_nila();?>
+                <?php $liveayam = $lihat -> live_ayam();?>
                 <div class="row">
                   <!--STATUS PANELS -->
                   <div class="col-md-3">
-                      <?php
-                        // $json = '[{"nama":"rey", "Makan":"Kakap"}]';
-                        // $data = json_decode($json);
-                        // foreach($data as $x){
-                        //     echo $x;
-                        // }
-                      ?>
                     <div class="panel panel-primary">
                       <div class="panel-heading">
                         <h5><i class="fa fa-desktop"></i> Penjualan Lele</h5>
                       </div>
                       <div class="panel-body">
-                        <center><h1><?php echo ($jual);?></h1></center>
+                        <center><h1><?php echo ($livelele);?></h1></center>
                       </div>
                       <div class="panel-footer">
                         <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=supplier/supplier'>Tabel Supplier  <i class='fa fa-angle-double-right'></i></a></h4>
@@ -40,7 +33,7 @@
                         <h5><i class="fa fa-desktop"></i> Penjualan Nila</h5>
                       </div>
                       <div class="panel-body">
-                        <center><h1><?php echo ($stok);?></h1></center>
+                        <center><h1><?php echo ($livenila);?></h1></center>
                       </div>
                       <div class="panel-footer">
                         <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=stok/stok&accordion2=on'>Tabel Barang  <i class='fa fa-angle-double-right'></i></a></h4>
@@ -54,7 +47,7 @@
                         <h5><i class="fa fa-desktop"></i> Penjualan Ayam</h5>
                       </div>
                       <div class="panel-body">
-                        <center><h1><?php echo ($jual);?></h1></center>
+                        <center><h1><?php echo ($liveayam);?></h1></center>
                       </div>
                       <div class="panel-footer">
                         <h4 style="font-size:15px;font-weight:700;font-weight:700;"><a href='admin.php?page=lap_penjualan/penjualan&accordion2=on'>Tabel laporan  <i class='fa fa-angle-double-right'></i></a></h4>

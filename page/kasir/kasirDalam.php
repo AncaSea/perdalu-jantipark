@@ -12,7 +12,6 @@ $barangdlm = mysqli_query($dbconnect,
 
 $sum = 0;
 if (isset($_SESSION['cartdlm'])) {
-	// $kd = $value['kd'];
     foreach ($_SESSION['cartdlm'] as $key => $value) {
 		// line 13 stlh $value['qty']) "- $value['diskon']"
         $sum += ((int)$value['harga'] * (int)$value['qty']);
@@ -83,18 +82,6 @@ if(isset($_GET['pesan'])){
 							</form>
 						</div>
 					</div>
-<?php 
-	// $spesdata = mysqli_query($dbconnect, "SELECT * FROM paket_barbar WHERE role='4'");
-					
-    // $data = mysqli_query($dbconnect, "SELECT nama FROM makanan UNION SELECT nama FROM minuman");
-	// if ($data -> num_rows > 0) {
-		// while ($jum = mysqli_fetch_assoc($spesdata)) {
-	// 		$hasil = $row;
-			// print_r($jum);
-			// print_r ($_SESSION['cartdlm']);
-		// }
-	// }
-?>
 					<form method="post" action="../page/keranjangDalam/keranjang_update.php">
 						<table class="table table-bordered">
 							<tr>

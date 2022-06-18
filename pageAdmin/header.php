@@ -6,7 +6,8 @@
     <title>Kasir PHP</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     
     <!--external css-->
     <link href="assets/font-awesome/css/all.css" rel="stylesheet" />
@@ -114,8 +115,8 @@
                 <!--logo start-->
                 <a href="admin.php" class="logo"><b>Janti Park</b> <small style="padding-left:5px;font-size:13px;">Ngendo, Janti, Kecamatan Polanharjo, Kabupaten Klaten, Jawa Tengah 57474</small></a>
                 <!--logo end-->
-                <div class="nav notify-row" id="top_menu">
-                </div>
+                <!-- <div class="nav notify-row" id="top_menu">
+                </div> -->
                 <div class="top-menu">
                   <ul class="nav pull-right top-menu">
                         <li><a class="logout" href="logout.php">Logout</a></li>

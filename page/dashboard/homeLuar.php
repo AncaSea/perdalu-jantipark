@@ -7,7 +7,7 @@
                 <h1 style="display: inline-block;">DASHBOARD PERDAGANGAN LUAR</h1>
                 <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
                 <hr>
-                <?php $income = $lihat -> omset();?>
+                <?php $income = $lihat -> omsetluar();?>
                 <?php $stok = $lihat -> barang_stok_row();?>
                 <?php $jual = $lihat -> jual_row();?>
                 <?php $supp = $lihat -> supp_row();?>

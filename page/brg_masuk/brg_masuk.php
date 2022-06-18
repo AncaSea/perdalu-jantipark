@@ -198,7 +198,7 @@
 							dataType:'json',  
 							data:{getNmSupp:$("#nmsupp").val()},
 							success:function(response){
-								console.log(response);
+								// console.log(response);
 								$.each(response, function (key, value) { 
 									// console.log(value['id_supp']);
 									$('#idsupp').val(value['id_supp']);

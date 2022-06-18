@@ -38,9 +38,21 @@
 		$(function () {
 			$("#example1").DataTable();
 			$('#example2').DataTable();
+			$('#example3').DataTable();
 		});
         // document.addEventListener("mousewheel", this.mousewheel.bind(this), { passive: false });
-	</script>	
+        
+        //angka 500 dibawah ini artinya pesan akan muncul dalam 0,5 detik setelah document ready
+        $(document).ready(function(){setTimeout(function(){$(".alert-danger").fadeIn('slow');}, 500);});
+		//angka 3000 dibawah ini artinya pesan akan hilang dalam 3 detik setelah muncul
+		setTimeout(function(){$(".alert-danger").fadeOut('slow');}, 5000);
+
+		$(document).ready(function(){setTimeout(function(){$(".alert-success").fadeIn('slow');}, 500);});
+		setTimeout(function(){$(".alert-success").fadeOut('slow');}, 5000);
+
+		$(document).ready(function(){setTimeout(function(){$(".alert-warning").fadeIn('slow');}, 500);});
+		setTimeout(function(){$(".alert-success").fadeOut('slow');}, 5000);
+    </script>	
     <script>
         $(".modal-create").hide();
         $(".bg-shadow").hide();
