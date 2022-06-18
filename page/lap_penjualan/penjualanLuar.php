@@ -65,7 +65,7 @@
 					$_SESSION['error'] = '';
 			?>
               <div class="row">
-                  <div class="col-lg-12 main-chart">
+                  <div class="col-lg-12 main-chart"><h4 style="float: right; display: inline-block;margin-top:1em"><?php echo date('d F Y'); ?></h4>
 						<h3>
 							<!--<a  style="padding-left:2pc;" href="fungsi/hapus/hapus.php?laporan=jual" onclick="javascript:return confirm('Data Laporan akan di Hapus ?');">
 								<button class="btn btn-danger">RESET</button>
