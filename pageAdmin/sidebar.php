@@ -34,7 +34,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
 
-                <p class="centered"><a><img src="assets/img/user/kk.png" class="img-circle" width="100" height="100"></a></p>
+                <p class="centered"><a><img src="assets/img/user/logo.png" class="img-circle" width="100px" height="100px"></a></p>
                 <h5 class="centered">Admin</h5>
                 <h5 class="centered"><?=$_SESSION['namaadmin']?></h5>
                   
