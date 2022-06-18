@@ -15,17 +15,11 @@
 							  <i class="fa fa-refresh"></i> Refresh Data</a>
 						<h3>Data User Admin</h3>
 						<hr/>
-<<<<<<< HEAD
 						<?php if(isset($_GET['success-edit'])){?>
 						<div class="alert alert-success">
 							<p>Edit Supplier Berhasil !</p>
 						</div>
 						<?php }?>
-						<a href="admin.php?page=user/user" style="margin-right :0.5pc;" 
-								class="btn btn-success btn-md pull-right">
-								<i class="fa fa-refresh"></i> Refresh Data</a>
-=======
->>>>>>> 3e66fcd4ca6644054ce842fc3209935b95c146a3
 						<div class="clearfix"></div>
 						<br/>
 						
