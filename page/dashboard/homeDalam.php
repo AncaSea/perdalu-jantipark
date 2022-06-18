@@ -2,7 +2,7 @@
         <section class="wrapper">
 
           <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
               <div class="row" style="margin-left:1pc;margin-right:1pc;">
                 <h1 style="display: inline-block;">DASHBOARD PERDAGANGAN DALAM</h1>
                 <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
