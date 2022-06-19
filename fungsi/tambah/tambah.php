@@ -29,19 +29,48 @@ session_start();
 		}
 	}
 	if(!empty($_GET['menu'])){
-		$idsupp = $_POST['idrole'];
-		$nmsupp = $_POST['nmmenu'];
-		$nohp = $_POST['jenis'];
-		$almt = $_POST['alamat'];
+		$idrole = $_POST['idrole'];
+		$nmmenu = $_POST['nmmenu'];
+		$jenis = $_POST['jenis'];
+		$hrg = $_POST['hrg'];
+		$branch = $_POST['menu'];
 
-		$sql = mysqli_query($dbconnect, "SELECT * FROM supplier WHERE nama_supp = '$nmsupp'");
-		if ($sql->num_rows == 1) {
-			header("location:../../admin.php?page=supplier/supplier&accordion=on&active=yes&pesan=samesupp");
-		} else if ($sql->num_rows != 1) {
-			$sql = mysqli_query($dbconnect, "INSERT INTO supplier (id, id_supp, nama_supp, no_hp, alamat) 
-			VALUES('', '$idsupp', '$nmsupp', '$nohp', '$almt')");
+		$cluster = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$jenis'");
+		if ($cluster->num_rows == 1) {
+			if ($branch == 'mkn') {
+				$sql = mysqli_query($dbconnect, "INSERT INTO makanan (id, nama, role, jenis, harga) 
+				VALUES('', '$nmmenu', '$idrole', '$jenis', '$hrg')");
+	
+				echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&success-menu=tambah-data"</script>';
+			} else if ($branch == 'mnm') {
+				$sql = mysqli_query($dbconnect, "INSERT INTO minuman (id, nama, role, jenis, harga) 
+				VALUES('', '$nmmenu', '$idrole', '$jenis', '$hrg')");
+	
+				echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&success-menu=tambah-data"</script>';
+			} else {
+				header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&&pesan=nullcheckbox");
+			}
+		} else {
+			header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&&pesan=nullrole");
+		}
+	}
+	if(!empty($_GET['menupkt'])){
+		$idrole = $_POST['idrolepkt'];
+		$nmmenu = $_POST['nmpkt'];
+		$jenis = $_POST['jenispkt'];
+		$jumlah = $_POST['jmlh'];
+		$hrg = $_POST['hrgpkt'];
 
-			echo '<script>window.location="../../admin.php?page=supplier/supplier&success-supp=tambah-data"</script>';
+		$cluster = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$nmmenu'");
+		if ($cluster->num_rows == 1) {
+			if ($branch == 'mkn') {
+				$sql = mysqli_query($dbconnect, "INSERT INTO paket_barbar (id, nama, role, jenis, jumlah, harga) 
+				VALUES('', '$nmmenu', '$idrole', '$jenis', '$jumlah', '$harga')");
+	
+				echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&success-menupkt=tambah-data"</script>';
+			}
+		} else {
+			header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&pesan=nullrole");
 		}
 	}
 	if(!empty($_GET['barangmsk'])){

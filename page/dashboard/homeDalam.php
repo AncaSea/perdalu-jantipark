@@ -22,7 +22,7 @@
                         <center><h1><?php echo ($livelele);?></h1></center>
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=supplier/supplier'>Tabel Supplier  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=supplier/supplier&accordion2=on&active=yes'>Tabel Supplier  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div><!--/grey-panel -->
                   </div><!-- /col-md-3-->
@@ -36,7 +36,7 @@
                         <center><h1><?php echo ($livenila);?></h1></center>
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=stok/stok&accordion2=on'>Tabel Barang  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=stok/stok&accordion2=on&active=yes'>Tabel Barang  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div><!--/grey-panel -->
                   </div><!-- /col-md-3-->
@@ -63,7 +63,7 @@
                         <center><h1><?php echo ($income);?></h1></center>
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=lap_penjualan/penjualan&accordion2=on'>Tabel Laporan  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=lap_penjualan/penjualan&accordion2=on&active=yes'>Tabel Laporan  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div><!--/grey-panel -->
                   </div><!-- /col-md-3-->

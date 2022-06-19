@@ -7,35 +7,56 @@ if(!empty($_SESSION['namaadmin'])){
 		// $data[] = $id;
 		$sql = "DELETE FROM supplier WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
-		echo '<script>window.location="../../admin.php?page=supplier/supplier&&remove=hapus-data"</script>';
+		echo '<script>window.location="../../admin.php?page=supplier/supplier&accordion2=on&active=yes&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['barangmsk'])){
 		 $id= $_GET['id'] ;
 		// $data[] = $id;
 		$sql = "DELETE FROM brg_masuk WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
-		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&&remove=hapus-data"</script>';
+		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['barangkmbl'])){
 		$id= $_GET['id'];
 		// $data[] = $id;
 		$sql = "DELETE FROM brg_kembali WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
-		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&&remove=hapus-data"</script>';
+		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['stok'])){
 		$id= $_GET['id'];
 		// $data[] = $id;
 		$sql = "DELETE FROM stok_brg WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
-		echo '<script>window.location="../../admin.php?page=supplier/supplier&&remove=hapus-data"</script>';
+		echo '<script>window.location="../../admin.php?page=stok/stok&accordion=on&active=yes&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['user'])){
 		$id= $_GET['id'];
 		// $data[] = $id;
 		$sql = "DELETE FROM stok_brg WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
-		echo '<script>window.location="../../admin.php?page=supplier/supplier&&remove=hapus-data"</script>';
+		echo '<script>window.location="../../admin.php?page=user/user&accordion=on&active=yes&remove=hapus-data"</script>';
+	}
+	if(!empty($_GET['mkn'])){
+		$id= $_GET['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM makanan WHERE id='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&remove=hapus-data"</script>';
+	}
+	if(!empty($_GET['mnm'])){
+		$id= $_GET['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM minuman WHERE id='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&remove=hapus-data"</script>';
+	}
+	if(!empty($_GET['pkt'])){
+		$id= $_GET['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM paket_barbar WHERE id='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&remove=hapus-data"</script>';
 	}
 	// if(!empty($_GET['jual'])){
 		

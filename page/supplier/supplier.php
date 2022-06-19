@@ -22,7 +22,7 @@ if(isset($_GET['pesan'])){
                   <div class="col-lg-12 main-chart">
 				  		<button  type="button" class="btn btn-primary btn-md pull-right" style="margin-top:1em;" data-toggle="modal" data-target="#myModal">
 							<i class="fa fa-plus"></i> Insert Data</button>
-							<a href="admin.php?page=supplier/supplier" style="margin-right :0.5pc;margin-top: 1em;" 
+							<a href="admin.php?page=supplier/supplier&accordion=on&active=yes" style="margin-right :0.5pc;margin-top: 1em;" 
 								class="btn btn-success btn-md pull-right">
 								<i class="fa fa-refresh"></i> Refresh Data</a>
 						<h3>Data Supplier</h3>
@@ -30,7 +30,9 @@ if(isset($_GET['pesan'])){
 						<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
 							<script type="text/javascript">
 
-							swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error");
+							swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
+								window.location = "admin.php?page=supplier/supplier&accordion2=on&active=yes";
+							});
 
 							</script>
 						<?php }

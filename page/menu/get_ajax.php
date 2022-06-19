@@ -5,12 +5,21 @@
       $nmjenis = $_POST['getJenis'];
       $result_array = [];
       // fetch data from student table..  
-      $mkn = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$nmjenis'");
+      $menu = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$nmjenis'");
       // $mnm = mysqli_query($dbconnect, "SELECT * FROM minuman WHERE jenis = '$jenis'");
       // $query = $con->query($sql);
-      if ($mkn->num_rows == 1) {
-        foreach ($mkn as $row) {
+      if ($menu->num_rows == 1) {
+        foreach ($menu as $row) {
           array_push($result_array, $row);
+          header("Content-type: application/json");
+          echo json_encode($result_array);
+        }
+      } else if ($menu->num_rows != 1) {
+        $rand = mt_rand(0,9999);
+        // $randid = 'sp'.$rand.'';
+        $arrid = array('id_role'=>"$rand");
+        foreach ($arrid as $row) {
+          array_push($result_array, array('id_role'=>"$rand"));
           header("Content-type: application/json");
           echo json_encode($result_array);
         }
@@ -24,6 +33,16 @@
       if ($pkt->num_rows == 1) {
         foreach ($pkt as $row) {
           array_push($result_array, $row);
+          header("Content-type: application/json");
+          echo json_encode($result_array);
+        }
+      } 
+      else if ($pkt->num_rows != 1) {
+        $rand = mt_rand(0,9999);
+        // $randid = 'sp'.$rand.'';
+        $arrid = array('id_role'=>"$rand");
+        foreach ($arrid as $row) {
+          array_push($result_array, array('id_role'=>"$rand"));
           header("Content-type: application/json");
           echo json_encode($result_array);
         }

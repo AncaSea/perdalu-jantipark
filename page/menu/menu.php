@@ -5,19 +5,47 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
+<?php
+
+if(isset($_GET['pesan'])){
+    if($_GET['pesan'] == "nullrole"){
+            $_SESSION['error'] = 'Masukkan Role Terlebih Dahulu';
+    }
+	if($_GET['pesan'] == "nullcheckbox"){
+		$_SESSION['error'] = 'Pilih Jenis Terlebih Dahulu';
+	}
+}
+
+?>
       <section id="main-content">
           <section class="wrapper">
 
               	<div class="row">
                   	<div class="col-lg-12 main-chart">
-						  <a href="admin.php?page=menu/menu&accordion2=on" style="margin-right :0.5pc;" 
+						  <a href="admin.php?page=menu/menu&accordion2=on&active=yes" style="margin-right :0.5pc;" 
 							  class="btn btn-success btn-md pull-right">
 							  <i class="fa fa-refresh"></i>Refresh Data</a>
 						<h3>Data Menu Makanan & Data Menu Minuman</h3>
 						<hr/>
-						<?php if(isset($_GET['success-stok'])){?>
+						<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
+							<script type="text/javascript">
+
+							swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
+								window.location = "admin.php?page=menu/menu&accordion2=on&active=yes";
+							});
+							
+							</script>
+						<?php }
+							$_SESSION['error'] = '';
+						?>
+						<?php if(isset($_GET['success-menu'])){?>
 						<div class="alert alert-success">
-							<p>Tambah Stok Berhasil !</p>
+							<p>Tambah Menu Berhasil !</p>
+						</div>
+						<?php }?>
+						<?php if(isset($_GET['success-menupkt'])){?>
+						<div class="alert alert-success">
+							<p>Tambah Menu Paket Berhasil !</p>
 						</div>
 						<?php }?>
 						<?php if(isset($_GET['success-edit'])){?>
@@ -74,7 +102,7 @@
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 											<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>">
+											<a href="../fungsi/hapus/hapus.php?mkn=hapus&id=<?php echo $isi[0];?>">
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
@@ -144,7 +172,7 @@
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 											<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>">
+											<a href="../fungsi/hapus/hapus.php?mnm=hapus&id=<?php echo $isi[0];?>">
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
@@ -216,7 +244,7 @@
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#pktModal2" ><i class="fa-solid fa-pen"></i></button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 											<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>">
+											<a href="../fungsi/hapus/hapus.php?pkt=hapus&id=<?php echo $isi[0];?>">
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
@@ -268,6 +296,26 @@
 												<tr>
 													<td>Harga</td>
 													<td><input id="hrg" type="number" placeholder="Harga" required class="form-control"  name="hrg"></td>
+												</tr>
+												<tr>
+													<td class="text-center" colspan="2">
+														<div class="checkbox-group required">
+															<div class="pretty p-icon p-round p-jelly">
+																<input type="checkbox" class="menu" name="menu" value="mkn"/>
+																<div class="state p-success">
+																<i class="icon fa fa-check"></i>
+																	<label>Makanan</label>
+																</div>
+															</div>
+															<div class="pretty p-icon p-round p-jelly">
+																<input type="checkbox" class="menu" name="menu" value="mnm"/>
+																<div class="state p-success">
+																<i class="icon fa fa-check"></i>
+																	<label>Minuman</label>
+																</div>
+															</div>
+														</div>
+													</td>
 												</tr>
 											</table>
 										</div>
@@ -417,12 +465,6 @@
 			document.getElementById("rowcount2").innerHTML = rowCount2-2;
 			document.getElementById("rowcount3").innerHTML = rowCount3-2;
 		</script>
-		<!-- <script  type="text/javascript">
-		$(document).ready(function () {
-
-
-		});
-		</script> -->
 		<script>
 		$(document).ready(function () {
 			$(document).on("click",".li-modal",function(){  
@@ -571,8 +613,12 @@
 				$("#search-result2").hide();
 			}
 
+			$('input.menu').on('change', function() {
+				$('input.menu').not(this).prop('checked', false);  
+			});
+
 			$(document).click(function(){
-					$("#search-result").hide();
-					$("#search-result2").hide();
+				$("#search-result").hide();
+				$("#search-result2").hide();
 			});
 		</script>
