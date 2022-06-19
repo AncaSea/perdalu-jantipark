@@ -67,6 +67,9 @@
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='menu/menu' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
                                 href="admin.php?page=menu/menu&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
                                     <i class="fa-solid fa-clipboard-list"></i><span>Menu</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='role/role' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
+                                href="admin.php?page=role/role&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
+                                    <i class="fa-solid fa-clipboard-list"></i><span>Role</span></a></li>
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanDalam' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ;?>" 
                                 href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;border-width:1px;border-color: #9b6d02;border-radius: 0px 0px 5px 5px">
                                     <i class="fa-solid fa-clipboard-list"></i><span>Laporan Penjualan</span></a></li>

@@ -185,6 +185,19 @@
 				}
 			}
 
+			function role() {
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM role");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
 			// function kategori_edit($id){
 			// 	$sql = "select*from kategori where id_kategori=?";
 			// 	$row = $this-> db -> prepare($sql);
