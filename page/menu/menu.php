@@ -24,7 +24,7 @@ if(isset($_GET['pesan'])){
                   	<div class="col-lg-12 main-chart">
 						  <a href="admin.php?page=menu/menu&accordion2=on&active=yes" style="margin-right :0.5pc;" 
 							  class="btn btn-success btn-md pull-right">
-							  <i class="fa fa-refresh"></i>Refresh Data</a>
+							  <i class="fa fa-refresh"></i> Refresh Data</a>
 						<h3>Data Menu Makanan & Data Menu Minuman</h3>
 						<hr/>
 						<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
@@ -68,7 +68,6 @@ if(isset($_GET['pesan'])){
 							<i class="fa fa-list"></i> Sortir Stok Kurang</a> -->
 						<div class="clearfix"></div>
 						<br/>
-						
 						<!-- view barang -->	
 						<div class="modal-view">
 							<table class="table table-bordered table-striped" id="example1">
