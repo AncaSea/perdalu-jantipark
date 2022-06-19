@@ -7,7 +7,7 @@
                 <h1 style="display: inline-block;">DASHBOARD</h1>
                 <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
                 <hr>
-                <div class="row">
+                <div class="row sat">
 
                   <div class="col-md-3">
                     <div class="panel panel-primary">

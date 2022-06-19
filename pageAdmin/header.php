@@ -104,6 +104,7 @@
       #search-result, #search-result2{
         cursor: pointer;
         position:absolute; 
+        z-index: 2;
         background-color:#feb101;
         /* margin-left: -1em; */}
       .header{
