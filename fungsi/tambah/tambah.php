@@ -31,11 +31,13 @@ session_start();
 	if(!empty($_GET['menu'])){
 		$idrole = $_POST['idrole'];
 		$nmmenu = $_POST['nmmenu'];
-		$jenis = $_POST['jenis'];
+		$nmjenis = $_POST['jenis'];
 		$hrg = $_POST['hrg'];
 		$branch = $_POST['menu'];
 
-		$cluster = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$jenis'");
+		$cluster = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$nmjenis'");
+		$clust = mysqli_fetch_assoc($cluster);
+		$jenis = $clust['jenis'];
 		if ($cluster->num_rows == 1) {
 			if ($branch == 'mkn') {
 				$sql = mysqli_query($dbconnect, "INSERT INTO makanan (id, nama, role, jenis, harga) 
@@ -48,27 +50,28 @@ session_start();
 	
 				echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&success-menu=tambah-data"</script>';
 			} else {
-				header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&&pesan=nullcheckbox");
+				header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&pesan=nullcheckbox");
 			}
 		} else {
-			header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&&pesan=nullrole");
+			header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&pesan=nullrole");
 		}
 	}
 	if(!empty($_GET['menupkt'])){
 		$idrole = $_POST['idrolepkt'];
 		$nmmenu = $_POST['nmpkt'];
-		$jenis = $_POST['jenispkt'];
+		$nmjenis = $_POST['jenispkt'];
 		$jumlah = $_POST['jmlh'];
 		$hrg = $_POST['hrgpkt'];
 
-		$cluster = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$nmmenu'");
+		$cluster = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$nmjenis'");
+		$clust = mysqli_fetch_assoc($cluster);
+		$jenis = $clust['jenis'];
 		if ($cluster->num_rows == 1) {
-			if ($branch == 'mkn') {
 				$sql = mysqli_query($dbconnect, "INSERT INTO paket_barbar (id, nama, role, jenis, jumlah, harga) 
-				VALUES('', '$nmmenu', '$idrole', '$jenis', '$jumlah', '$harga')");
+				VALUES('', '$nmmenu', '$idrole', '$jenis', '$jumlah', '$hrg')");
 	
 				echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&success-menupkt=tambah-data"</script>';
-			}
+
 		} else {
 			header("location:../../admin.php?page=menu/menu&accordion2=on&active=yes&pesan=nullrole");
 		}
