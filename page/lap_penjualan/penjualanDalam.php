@@ -266,8 +266,8 @@
 										<th style="width:10%;"> No Nota</th>
 										<th> Nama Kasir</th>
 										<th> Tgl Penjualan</th>
-										<th style="width:10%;"> Kode Barang</th>
-										<th> Nama Barang</th>
+										<th> Nama Pesanan</th>
+										<th style="width:10%;"> jenis</th>
 										<th style="width:10%;"> Jumlah</th>
 										<th> Harga Jual</th>
 										<th> Harga</th>
@@ -310,16 +310,17 @@
 											$omset = 0;
 											$hasil = $lihat -> hari_jual($hari);
 										} else {
-											$hasil = $lihat -> lapjual();
+											$hasil = $lihat -> lapjualdlm();
+											$transaksi = $lihat -> laptransdlm();
 										}
 									?>
 									<?php 
 										$omset = 0;
 										$jumlah = 0;
-										$transaksi = $lihat -> laptrans();
 										error_reporting(E_ERROR | E_PARSE);
 										foreach($hasil as $isi){
-											$omset += $isi[9];
+											// print_r($isi);
+											$omset += $isi[10];
 											// $modal += $isi['harga_beli']* $isi['jumlah'];
 											// $jumlah += $isi['jumlah'];
 									?>
@@ -330,9 +331,9 @@
 										<td><?php echo $isi[4];?> </td>
 										<td><?php echo $isi[5];?> </td>
 										<td><?php echo $isi[6];?> </td>
-										<td><?php echo $isi[7];?> </td>
-										<td>Rp.<?php echo number_format($isi[8]);?>,-</td>
-										<td>Rp.<?php echo number_format($isi[9]);?>,-</td>
+										<td><?php echo $isi[8];?> </td>
+										<td>Rp.<?php echo number_format($isi[10]);?>,-</td>
+										<td>Rp.<?php echo number_format($isi[11]);?>,-</td>
 									</tr>
 									<?php $no++; }?>
 								</tbody>

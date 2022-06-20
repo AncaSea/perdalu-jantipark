@@ -398,7 +398,7 @@
 					return $hasil;
 				}
 			}
-
+			
 			function periode_jual($Y, $M){
 				include 'db_con.php';
 
@@ -412,6 +412,18 @@
 					}
 				}
 			}
+			
+			function laptransperiode($Y, $M){
+				include 'db_con.php';
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan WHERE MONTH(tgl_penjualan) = '$M' AND YEAR(tgl_penjualan) = '$Y' GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
+				}
+			}
+
 
 			function minggu_jual($tgl1, $tgl2){
 				include 'db_con.php';
@@ -427,6 +439,30 @@
 						// print_r($hasil);
 						return $hasil;
 					}
+				}
+			}
+
+			function lapjualdlm(){
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam ORDER BY no_nota ASC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
+			function laptransdlm(){
+				include 'db_con.php';
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan_dalam GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
 				}
 			}
 
