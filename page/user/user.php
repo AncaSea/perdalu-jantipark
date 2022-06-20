@@ -32,7 +32,7 @@
 										<th>Nama</th>
 										<th>Username</th>
 										<th>Password</th>
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -91,7 +91,7 @@
 										<th>Nama</th>
 										<th>Username</th>
 										<th>Password</th>
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>

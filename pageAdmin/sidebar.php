@@ -34,11 +34,11 @@
                                 href="admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
                                     <i class="fa fa-hand-holding-hand"></i><span>Barang Kembali</span></a></li>
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='kasir/kasirLuar' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
-                                href="admin.php?page=kasir/kasirLuar&accordion=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
+                                href="admin.php?page=kasir/kasirLuar& accordion=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
                                     <i class="fa fa-cash-register"></i><span>Kasir</span></a></li>
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanLuar' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
                                 href="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
-                                    <i class="fa-solid fa-clipboard-list"></i><span>Laporan Penjualan</span></a></li>
+                                    <i class='fas fa-balance-scale'></i><span>Laporan Penjualan</span></a></li>
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='supplier/supplier' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
                                 href="admin.php?page=supplier/supplier&accordion=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
                                     <i class="fa fa-people-carry-box"></i><span>Supplier</span></a></li>
@@ -69,10 +69,10 @@
                                     <i class="fa-solid fa-clipboard-list"></i><span>Menu</span></a></li>
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='role/role' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
                                 href="admin.php?page=role/role&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
-                                    <i class="fa-solid fa-clipboard-list"></i><span>Role</span></a></li>
+                                    <i class="fas fa-layer-group fa-3x"></i><span>Role</span></a></li>
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanDalam' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ;?>" 
                                 href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;border-width:1px;border-color: #9b6d02;border-radius: 0px 0px 5px 5px">
-                                    <i class="fa-solid fa-clipboard-list"></i><span>Laporan Penjualan</span></a></li>
+                                    <i class='fas fa-balance-scale'></i><span>Laporan Penjualan</span></a></li>
                     </ul>
                 </li>
                 <!-- <li class="sub-menu">

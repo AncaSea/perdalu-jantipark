@@ -60,6 +60,55 @@ if(isset($_GET['pesan'])){
 					<a href="admin.php?page=lap_penjualan/penjualanDalam"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
 				&ensp;
+				<tr>
+					<td class="text-center" colspan="2">
+						<div class="checkbox-group required">
+							<div class="pretty p-icon p-round p-jelly">
+							<input type="checkbox" class="menu" name="menu" value="mkn"/>
+								<div class="state p-success">
+									<i class="icon fa fa-check"></i>
+								<label>Makanan</label>
+								</div>
+							</div>
+							<div class="pretty p-icon p-round p-jelly">
+							<input type="checkbox" class="menu" name="menu" value="mnm"/>
+								<div class="state p-success">
+									<i class="icon fa fa-check"></i>
+								<label>Minuman</label>
+								</div>
+							</div>
+							<div class="pretty p-icon p-round p-jelly">
+							<input type="checkbox" class="menu" name="menu" value="mnm"/>
+								<div class="state p-success">
+									<i class="icon fa fa-check"></i>
+								<label>Minuman</label>
+								</div>
+							</div>
+							<br>
+							<div class="pretty p-icon p-round p-jelly">
+							<input type="checkbox" class="menu" name="menu" value="mnm"/>
+								<div class="state p-success">
+									<i class="icon fa fa-check"></i>
+								<label>Minuman</label>
+								</div>
+							</div>
+							<div class="pretty p-icon p-round p-jelly">
+							<input type="checkbox" class="menu" name="menu" value="mnm"/>
+								<div class="state p-success">
+									<i class="icon fa fa-check"></i>
+								<label>Minuman</label>
+								</div>
+							</div>
+							<div class="pretty p-icon p-round p-jelly">
+							<input type="checkbox" class="menu" name="menu" value="mnm"/>
+								<div class="state p-success">
+									<i class="icon fa fa-check"></i>
+								<label>Minuman</label>
+								</div>
+							</div>
+						</div>
+					</td>
+												</tr>
 			</div>
 
 			<div class="row"> 
