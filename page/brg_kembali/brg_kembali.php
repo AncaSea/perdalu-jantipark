@@ -56,7 +56,7 @@
 										<th>Sisa Barang</th>
 										<th>Harga Supplier</th>
 										<th>Total</th>
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>

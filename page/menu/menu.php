@@ -77,7 +77,7 @@ if(isset($_GET['pesan'])){
 										<th>Nama Makanan</th>
 										<th>Jenis</th>
 										<th>Harga</th>
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -147,7 +147,7 @@ if(isset($_GET['pesan'])){
 										<th>Nama Minuman</th>
 										<th>Jenis</th>
 										<th>Harga</th>
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -218,7 +218,7 @@ if(isset($_GET['pesan'])){
 										<th>Jenis</th>
 										<th>Jumlah Isi</th>
 										<th>Harga</th>
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>

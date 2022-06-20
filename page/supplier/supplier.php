@@ -81,7 +81,7 @@ if(isset($_GET['pesan'])){
 										<th>Jumlah</th>
 										<th>Harga Beli</th>
 										<th>Harga Jual</th> -->
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>

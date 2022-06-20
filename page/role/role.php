@@ -76,7 +76,7 @@ if(isset($_GET['pesan'])){
 										<th>ID Role</th>
 										<th>Nama Role</th>
 										<th>Jenis</th>
-										<th>Aksi</th>
+										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
