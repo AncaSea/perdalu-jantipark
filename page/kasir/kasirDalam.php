@@ -248,5 +248,8 @@ if(isset($_GET['pesan'])){
 		$(document).click(function(){
 			$("#search-result").hide();
 		});
+		$('input.menu').on('change', function() {
+			$('input.menu').not(this).prop('checked', false);  
+		});
 	</script>
     </section>

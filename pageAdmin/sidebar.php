@@ -72,7 +72,7 @@
                                     <i class="fas fa-layer-group fa-3x"></i><span>Role</span></a></li>
                         <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='lap_penjualan/penjualanDalam' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ;?>" 
                                 href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;border-width:1px;border-color: #9b6d02;border-radius: 0px 0px 5px 5px">
-                                    <i class='fas fa-balance-scale'></i><span>Laporan Penjualan</span></a></li>
+                                    <i class='fas fa-balance-scale fa-fade'></i><span>Laporan Penjualan</span></a></li>
                     </ul>
                 </li>
                 <!-- <li class="sub-menu">
