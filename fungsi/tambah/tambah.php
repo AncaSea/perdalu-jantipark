@@ -2,16 +2,16 @@
 session_start();
 // if(!empty($_SESSION['admin'])){
 	require '../../db_con.php';
-	if(!empty($_GET['kategori'])){
-		$nama= $_POST['kategori'];
-		$tgl= date("j F Y, G:i");
-		$data[] = $nama;
-		$data[] = $tgl;
-		$sql = 'INSERT INTO kategori (nama_kategori,tgl_input) VALUES(?,?)';
-		$row = $config -> prepare($sql);
-		$row -> execute($data);
-		echo '<script>window.location="../../index.php?page=kategori&&success=tambah-data"</script>';
-	}
+	// if(!empty($_GET['kategori'])){
+	// 	$nama= $_POST['kategori'];
+	// 	$tgl= date("j F Y, G:i");
+	// 	$data[] = $nama;
+	// 	$data[] = $tgl;
+	// 	$sql = 'INSERT INTO kategori (nama_kategori,tgl_input) VALUES(?,?)';
+	// 	$row = $config -> prepare($sql);
+	// 	$row -> execute($data);
+	// 	echo '<script>window.location="../../index.php?page=kategori&success=tambah-data"</script>';
+	// }
 	if(!empty($_GET['supplier'])){
 		$idsupp = $_POST['idsupp'];
 		$nmsupp = $_POST['nmsupp'];
@@ -25,7 +25,25 @@ session_start();
 			$sql = mysqli_query($dbconnect, "INSERT INTO supplier (id, id_supp, nama_supp, no_hp, alamat) 
 			VALUES('', '$idsupp', '$nmsupp', '$nohp', '$almt')");
 
-			echo '<script>window.location="../../admin.php?page=supplier/supplier&success-supp=tambah-data"</script>';
+			echo '<script>window.location="../../admin.php?page=supplier/supplier&accordion=on&active=yes&success-supp=tambah-data"</script>';
+		}
+	}
+	if(!empty($_GET['role'])){
+		$idrole = $_POST['idrole'];
+		$nmrole = $_POST['nmrole'];
+		$jenis = $_POST['jenis'];
+
+		$cek = mysqli_query($dbconnect, "SELECT * FROM role WHERE nama = '$nmrole'");
+		// $data = mysqli_fetch_assoc($cluster);
+		// $jenis = $clust['jenis'];
+		if ($cek->num_rows !== 1) {
+				$sql = mysqli_query($dbconnect, "INSERT INTO role (id_role, nama, jenis) 
+				VALUES('$idrole', '$nmrole', '$jenis')");
+	
+				echo '<script>window.location="../../admin.php?page=role/role&accordion2=on&active=yes&success-role=tambah-data"</script>';
+
+		} else {
+			header("location:../../admin.php?page=role/role&accordion2=on&active=yes&pesan=samerole");
 		}
 	}
 	if(!empty($_GET['menu'])){
@@ -97,10 +115,10 @@ session_start();
 
 		// print_r($kode);
 		
-		if ($kodebrg == $q['kode_brg']) {
+		if ($kodebrg == $q['kode_brg'] && $nmsupp == $q['nama_supp']) {
 			$kode = $q['kode_brg'];
-			$jum = $q['jumlah'];
-			$j = $q['hrg_jual'];
+			// $jum = $q['jumlah'];
+			// $j = $q['hrg_jual'];
 			$tmbh = $jum + $jmlh;
 			
 			$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh', hrg_beli='$beli', hrg_jual='$jual' WHERE kode_brg='$kode'");
@@ -111,12 +129,14 @@ session_start();
 			// 	$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh', hrg_beli='$beli', hrg_jual='$jual' WHERE kode_brg='$kode'");
 			// }
 
+		} else if ($kodebrg == $q['kode_brg'] && $nmsupp !== $q['nama_supp']) {
+			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&pesan=unique"</script>';
 		} else {
 			$sql1 = mysqli_query($dbconnect, "INSERT INTO 
 			stok_brg (kode_brg,nama_supp,nama_brg,jumlah,hrg_beli,hrg_jual) 
 			VALUES ('$kodebrg','$nmsupp','$nmbrg','$jmlh','$beli','$jual')");
 		}		
-		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&success=tambah-data"</script>';
+		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&accordion=on&active=yes&success=tambah-data"</script>';
 	}	
 	if(!empty($_GET['barangkmbl'])){
 		$idsupp = $_POST['idsupp'];
@@ -139,39 +159,40 @@ session_start();
 		$tmbh = $jum - $jmlh;
 		$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
 
-		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&success=tambah-data"</script>';
+		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&success-kmbl=tambah-data"</script>';
 	}
-	if(!empty($_GET['jual'])){
-		$id = $_GET['id'];
+
+	// if(!empty($_GET['jual'])){
+	// 	$id = $_GET['id'];
 		
-		// get tabel barang id_barang 
-		$sql = 'SELECT * FROM barang WHERE id_barang = ?';
-		$row = $config->prepare($sql);
-		$row->execute(array($id));
-		$hsl = $row->fetch();
+	// 	// get tabel barang id_barang 
+	// 	$sql = 'SELECT * FROM barang WHERE id_barang = ?';
+	// 	$row = $config->prepare($sql);
+	// 	$row->execute(array($id));
+	// 	$hsl = $row->fetch();
 
-		if($hsl['stok'] > 0)
-		{
-			$kasir =  $_GET['id_kasir'];
-			$jumlah = 1;
-			$total = $hsl['harga_jual'];
-			$tgl = date("j F Y, G:i");
+	// 	if($hsl['stok'] > 0)
+	// 	{
+	// 		$kasir =  $_GET['id_kasir'];
+	// 		$jumlah = 1;
+	// 		$total = $hsl['harga_jual'];
+	// 		$tgl = date("j F Y, G:i");
 			
-			$data1[] = $id;
-			$data1[] = $kasir;
-			$data1[] = $jumlah;
-			$data1[] = $total;
-			$data1[] = $tgl;
+	// 		$data1[] = $id;
+	// 		$data1[] = $kasir;
+	// 		$data1[] = $jumlah;
+	// 		$data1[] = $total;
+	// 		$data1[] = $tgl;
 			
-			$sql1 = 'INSERT INTO penjualan (id_barang,id_member,jumlah,total,tanggal_input) VALUES (?,?,?,?,?)';
-			$row1 = $config -> prepare($sql1);
-			$row1 -> execute($data1);
+	// 		$sql1 = 'INSERT INTO penjualan (id_barang,id_member,jumlah,total,tanggal_input) VALUES (?,?,?,?,?)';
+	// 		$row1 = $config -> prepare($sql1);
+	// 		$row1 -> execute($data1);
 
-			echo '<script>window.location="../../index.php?page=jual&success=tambah-data"</script>';
+	// 		echo '<script>window.location="../../index.php?page=jual&success=tambah-data"</script>';
 
-		}else{
-			echo '<script>alert("Stok Barang Anda Telah Habis !");
-					window.location="../../index.php?page=jual#keranjang"</script>';
-		}
-	}
+	// 	}else{
+	// 		echo '<script>alert("Stok Barang Anda Telah Habis !");
+	// 				window.location="../../index.php?page=jual#keranjang"</script>';
+	// 	}
+	// }
 // }

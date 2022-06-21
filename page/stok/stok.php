@@ -12,11 +12,7 @@
                   <div class="col-lg-12 main-chart">
 						<h3>Data Stok Barang</h3>
 						<hr/>
-						<?php if(isset($_GET['success-stok'])){?>
-						<div class="alert alert-success">
-							<p>Tambah Stok Berhasil !</p>
-						</div>
-						<?php }?>
+
 						<?php if(isset($_GET['success-edit'])){?>
 						<div class="alert alert-success">
 							<p>Edit Data Berhasil !</p>

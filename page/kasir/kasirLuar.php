@@ -41,7 +41,9 @@ if(isset($_GET['pesan'])){
         <?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
             <script type="text/javascript">
 
-            swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error");
+				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
+					window.location = "admin.php?page=kasir/kasirLuar&accordion=on&active=yes";
+				});
 
             </script>
 		<?php }
@@ -55,7 +57,7 @@ if(isset($_GET['pesan'])){
 					<!-- <h2>Hai <?=$_SESSION['namakasir']?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
 					<a href="../../page/keranjangLuar/keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
-					<a href="admin.php?page=lap_penjualan/penjualanLuar"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
+					<a href="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
 				&ensp;
 			</div>

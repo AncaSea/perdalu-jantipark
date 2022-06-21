@@ -13,12 +13,8 @@
 				  <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
 						<h3>Data Barang Kembali</h3>
 						<hr/>
-						<?php if(isset($_GET['success-stok'])){?>
-						<div class="alert alert-success">
-							<p>Tambah Stok Berhasil !</p>
-						</div>
-						<?php }?>
-						<?php if(isset($_GET['success'])){?>
+
+						<?php if(isset($_GET['success-kmbl'])){?>
 						<div class="alert alert-success">
 							<p>Tambah Data Berhasil !</p>
 						</div>

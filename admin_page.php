@@ -139,7 +139,7 @@ session_start();
               <div class="row" style="margin-left:1pc;margin-right:1pc;">
                 <h1>DASHBOARD</h1>
                 <hr>
-                <?php $income = $lihat -> omset();?>
+                <?php $income = $lihat -> omsetdlm();?>
                 <?php $stok = $lihat -> barang_stok_row();?>
                 <?php $jual = $lihat -> jual_row();?>
                 <?php $supp = $lihat -> supp_row();?>

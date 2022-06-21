@@ -61,7 +61,9 @@
 			<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
 				<script type="text/javascript">
 
-				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error");
+					swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
+						window.location = "admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes";
+					});
 
 				</script>
 			<?php }
@@ -75,8 +77,8 @@
 							</a>-->
 							<?php if(!empty($_GET['bulan'])){ ?>
 								Data Laporan Penjualan <?= $bulan_tes[$_POST['bln']];?> <?= $_POST['thn'];?>
-							<?php }elseif(!empty($_GET['minggu'])){?>
-								Data Laporan Penjualan tanggal <?= $_POST['minggu'];?>
+							<?php }elseif(!empty($_GET['cari'])){?>
+								Data Laporan Penjualan <?= $_POST['cari'];?>
 							<?php }elseif(!empty($_GET['hari'])){?>
 								Data Laporan Penjualan tanggal <?= $_POST['hari'];?>
 							<?php }else{?>
@@ -87,7 +89,7 @@
 						
 						
 
-						<h4>Cari Laporan Per Bulan</h4>
+						<!-- <h4>Cari Laporan Per Bulan</h4>
 						<form method="post" action="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&bulan=ok">
 							<table class="table table-striped">
 								<tr>
@@ -147,16 +149,16 @@
 								</td>
 								</tr>
 							</table>
-						</form>
+						</form> -->
 						
 						<div class="clearfix" style="margin-top:1em;"></div>
 
-						<h4>Cari Laporan Per Minggu</h4>
-						<form method="post" action="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&minggu=ok">
+						<h4>Cari Laporan</h4>
+						<form method="post" action="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&cari=ok">
 							<table class="table table-striped">
 								<tr>
 									<th>
-										Pilih Tanggal Awal & Tanggal Akhir
+										Pilih Tanggal
 									</th>
 									<!-- <th>
 										Pilih Tanggal Akhir
@@ -167,9 +169,7 @@
 								</tr>
 								<tr>
 									<td>
-										<input name="minggu" type="text" id="demo" class="form-control">
-										<input name="tgl1" type="text" id="demo" class="form-control">
-										<input name="tgl2" type="text" id="demo" class="form-control">
+										<input name="cari" type="text" id="demo" class="form-control">
 										<!-- <select name="tgl" class="form-control">
 										<option selected="selected">Tanggal Awal</option>
 										<?php
@@ -202,11 +202,11 @@
 										<button class="btn btn-primary">
 											<i class="fa fa-search"></i> Cari
 										</button>
-										<a href="admin.php?page=lap_penjualan/penjualan" class="btn btn-success">
+										<a href="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes" class="btn btn-success">
 											<i class="fa fa-refresh"></i> Refresh</a>
 											
 										<?php if(!empty($_GET['cari'])){?>
-											<a href="excel.php?cari=yes&bln=<?=$_POST['bln'];?>&thn=<?=$_POST['thn'];?>" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="excel.php?cari=yes&bln=" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }else{?>
 											<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
@@ -219,7 +219,7 @@
 
 						<div class="clearfix" style="margin-top:1em;"></div>
 						
-						<h4>Cari Laporan Per Hari</h4>
+						<!-- <h4>Cari Laporan Per Hari</h4>
 						<form method="post" action="admin.php?page=lap_penjualan/penjualan&hari=cek">
 							<table class="table table-striped">
 								<tr>
@@ -252,7 +252,7 @@
 								</td>
 								</tr>
 							</table>
-						</form>
+						</form> -->
 						
 						<div class="clearfix" style="border-top:1px solid #ccc;"></div>
 	
@@ -269,7 +269,7 @@
 										<th> Tgl Penjualan</th>
 										<th style="width:10%;"> Kode Barang</th>
 										<th> Nama Barang</th>
-										<th style="width:10%;"> Jumlah</th>
+										<th style="width:1%;"> Jumlah</th>
 										<th> Harga Jual</th>
 										<th> Harga</th>
 									</tr>
@@ -277,50 +277,70 @@
 								<tbody>
 									<?php 
 										$no=1; 
-										if(!empty($_GET['bulan'])){
-											$M = $_POST['bln'];
-											$Y = $_POST['thn'];
-											if ($M !== 'Bulan' && $Y !== 'Tahun') {
-												$no=1;
-												$omset = 0;
-												$jumlah = 0;
-												// $bayar = 0;
-												$hasil = $lihat -> periode_jual($Y, $M);
-												$transaksi = $lihat -> laptransperiode($Y, $M);
-												// print_r($hasil);
-											} else {
-												header('location:admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&pesan=error1');
-											}
-										} else if(!empty($_GET['minggu'])) {
-											$ranges = explode(' - ', $_POST['minggu']);
+										// if(!empty($_GET['bulan'])){
+										// 	$M = $_POST['bln'];
+										// 	$Y = $_POST['thn'];
+										// 	if ($M !== 'Bulan' && $Y !== 'Tahun') {
+										// 		$no=1;
+										// 		$omset = 0;
+										// 		$jumlah = 0;
+										// 		// $bayar = 0;
+										// 		$hasil = $lihat -> periode_jual($Y, $M);
+										// 		$transaksi = $lihat -> laptransperiode($Y, $M);
+										// 		// print_r($hasil);
+										// 	} else {
+										// 		header('location:admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&pesan=error1');
+										// 	}
+										// } else 
+										if(!empty($_GET['cari'])) {
+											$ranges = explode(' - ', $_POST['cari']);
 											$tgl1 = $ranges[0];
 											$tgl2 = $ranges[1];
+											$D1 = date("d",strtotime($tgl1));
+											$D2 = date("d",strtotime($tgl2));
+											$M1 = date("m",strtotime($tgl1));
+											$M2 = date("m",strtotime($tgl2));
+											$Y = date("Y",strtotime($tgl1));
 											// echo $tgl1;
-											// if ($tgl1 !== 'Tanggal Awal' && $tgl2 !== 'Tanggal Akhir') {
-											// 	$no=1;
-											// 	$omset = 0;
-											// 	$jumlah = 0;
-											// 	// $bayar = 0;
-											// 	$hasil = $lihat -> minggu_jual($tgl1, $tgl2);
-											// 	// print_r($hasil);
-											// } else {
-											// 	header('location:admin.php?page=lap_penjualan/penjualan&pesan=error2');
-											// }
-										} else if(!empty($_GET['hari'])){
-											$hari = $_POST['hari'];
-											$no=1; 
-											$jumlah = 0;
-											$omset = 0;
-											$hasil = $lihat -> hari_jual($hari);
+												if ($D1 !== $D2) {
+														$no=1;
+														$omset = 0;
+														$jumlah = 0;
+														// $bayar = 0;
+														$cekdata = $lihat -> minggu_jual($tgl1, $tgl2);
+														if (!empty($cekdata)) {
+															$hasil = $cekdata;
+														} else {
+															$hasil = [];
+														}
+														$transaksi = $lihat -> laptransminggu($tgl1, $tgl2);
+												} else {
+													$no=1; 
+													$jumlah = 0;
+													$omset = 0;
+													$cekdata = $lihat -> hari_jual($tgl1);
+													// print_r($cekdata);
+													if (!empty($cekdata)) {
+														$hasil = $cekdata;
+													} else {
+														$hasil = [];
+													}
+													$transaksi = $lihat -> laptranshari($tgl1);
+												}
 										} else {
-											$hasil = $lihat -> lapjual();
+											$cekdata = $lihat -> lapjual();
+											if (!empty($cekdata)) {
+												$hasil = $cekdata;
+											} else {
+												$hasil = [];
+											}
 											$transaksi = $lihat -> laptrans();
 										}
 									?>
 									<?php 
 										$omset = 0;
 										$jumlah = 0;
-										error_reporting(E_ERROR | E_PARSE);
+										// error_reporting(E_ERROR | E_PARSE);
 										foreach($hasil as $isi){
 											$omset += $isi[9];
 											// $modal += $isi['harga_beli']* $isi['jumlah'];

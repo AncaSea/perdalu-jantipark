@@ -39,14 +39,17 @@
 			}
 		?>
 
-		  <script>
+		<script>
 			$(document).ready(function () {
 				$('#demo').daterangepicker({
+					// locale: {
+            		// 	format: 'YYYY-MM-DD'
+        			// },
 					"showDropdowns": true,
 					"autoApply": true,
-					"startDate": "06/04/2022",
-					"endDate": "06/10/2022",
-					"opens": "left",
+					"startDate": new Date(),
+					"endDate": new Date(),
+					"opens": "right",
 					"drops": "auto"
 				}, function(start, end, label) {
 					console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
@@ -58,7 +61,9 @@
 			<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
 				<script type="text/javascript">
 
-				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error");
+					swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
+						window.location = "admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes";
+					});
 
 				</script>
 			<?php }
@@ -70,12 +75,8 @@
 							<!--<a  style="padding-left:2pc;" href="fungsi/hapus/hapus.php?laporan=jual" onclick="javascript:return confirm('Data Laporan akan di Hapus ?');">
 								<button class="btn btn-danger">RESET</button>
 							</a>-->
-							<?php if(!empty($_GET['bulan'])){ ?>
-								Data Laporan Penjualan <?= $bulan_tes[$_POST['bln']];?> <?= $_POST['thn'];?>
-							<?php }elseif(!empty($_GET['minggu'])){?>
-								Data Laporan Penjualan tanggal <?= $_POST['tgl'];?> sampai <?= $_POST['tgl2'];?> <?= $bulan_tes[date('m')];?>
-							<?php }elseif(!empty($_GET['hari'])){?>
-								Data Laporan Penjualan tanggal <?= $_POST['hari'];?>
+							<?php if(!empty($_GET['cari'])){?>
+								Data Laporan Penjualan <?= $_POST['cari'];?>
 							<?php }else{?>
 								Data Laporan Penjualan <?= date('Y');?>
 							<?php }?>
@@ -84,7 +85,7 @@
 						
 						
 
-						<h4>Cari Laporan Per Bulan</h4>
+						<!-- <h4>Cari Laporan Per Bulan</h4>
 						<form method="post" action="admin.php?page=lap_penjualan/penjualan&bulan=ok">
 							<table class="table table-striped">
 								<tr>
@@ -144,81 +145,51 @@
 								</td>
 								</tr>
 							</table>
-						</form>
+						</form> -->
 						
 						<div class="clearfix" style="margin-top:1em;"></div>
-
-						<h4>Cari Laporan Per Minggu</h4>
 						
-						<input type="text" id="demo" class="form-control">
-
-						<div class="clearfix" style="margin-top:1em;"></div>
-
-						<form method="post" action="admin.php?page=lap_penjualan/penjualan&minggu=ok">
+						<h4>Cari Laporan</h4>
+						<form method="post" action="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes&cari=ok">
 							<table class="table table-striped">
 								<tr>
 									<th>
-										Pilih Tanggal Awal
+										Pilih Tanggal
 									</th>
-									<th>
+									<!-- <th>
 										Pilih Tanggal Akhir
-									</th>
+									</th> -->
 									<th>
 										Aksi
 									</th>
 								</tr>
 								<tr>
-								<td>
-								<select name="tgl" class="form-control">
-									<option selected="selected">Tanggal Awal</option>
-									<?php
-										$tgl=array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31');
-										$jlh_tgl=count($tgl);
-										// $bln1 = array('01','02','03','04','05','06','07','08','09','10','11','12'); 
-										$no=1;
-										for($c=0; $c<$jlh_tgl; $c+=1){
-											echo"<option value='$tgl[$c]'> $tgl[$c] </option>";
-										$no++;}
-									?>
-									</select>
-								</td>
-								<td>
-								<select name="tgl2" class="form-control">
-									<option selected="selected">Tanggal Akhir</option>
-									<?php
-										$tgl2=array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31');
-										$jlh_tgl2=count($tgl2);
-										// $bln1 = array('01','02','03','04','05','06','07','08','09','10','11','12');
-										$no=1;
-										for($c2=0; $c2<$jlh_tgl2; $c2+=1){
-											echo"<option value='$tgl2[$c2]'> $tgl2[$c2] </option>";
-										$no++;}
-									?>
-									</select>
-								</td>
-								<td>
-									<input type="hidden" name="periode" value="ya">
-									<button class="btn btn-primary">
-										<i class="fa fa-search"></i> Cari
-									</button>
-									<a href="admin.php?page=lap_penjualan/penjualan" class="btn btn-success">
-										<i class="fa fa-refresh"></i> Refresh</a>
-										
-									<?php if(!empty($_GET['cari'])){?>
-										<a href="excel.php?cari=yes&bln=<?=$_POST['bln'];?>&thn=<?=$_POST['thn'];?>" class="btn btn-info"><i class="fa fa-download"></i>
-										Excel</a>
-									<?php }else{?>
-										<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
-										Excel</a>
-									<?php }?>
-								</td>
+									<td>
+										<input name="cari" type="text" id="demo" class="form-control">
+									</td>
+									<td>
+										<input type="hidden" name="periode" value="ya">
+										<button class="btn btn-primary">
+											<i class="fa fa-search"></i> Cari
+										</button>
+										<a href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes" class="btn btn-success">
+											<i class="fa fa-refresh"></i> Refresh</a>
+											
+										<?php if(!empty($_GET['cari'])){?>
+											<a href="excel.php?cari=yes&bln=" class="btn btn-info"><i class="fa fa-download"></i>
+											Excel</a>
+										<?php }else{?>
+											<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
+											Excel</a>
+										<?php }?>
+									</td>
 								</tr>
 							</table>
 						</form>
 
 						<div class="clearfix" style="margin-top:1em;"></div>
 						
-						<h4>Cari Laporan Per Hari</h4>
+						<!-- <h4>Cari Laporan Per Hari</h4>
 						<form method="post" action="admin.php?page=lap_penjualan/penjualan&hari=cek">
 							<table class="table table-striped">
 								<tr>
@@ -251,7 +222,7 @@
 								</td>
 								</tr>
 							</table>
-						</form>
+						</form> -->
 						
 						<div class="clearfix" style="border-top:1px solid #ccc;"></div>
 	
@@ -276,48 +247,55 @@
 								<tbody>
 									<?php 
 										$no=1; 
-										if(!empty($_GET['bulan'])){
-											$M = $_POST['bln'];
-											$Y = $_POST['thn'];
-											if ($M !== 'Bulan' && $Y !== 'Tahun') {
-												$no=1;
-												$omset = 0;
-												$jumlah = 0;
-												// $bayar = 0;
-												$hasil = $lihat -> periode_jual($Y, $M);
-												// print_r($hasil);
-											} else {
-												header('location:admin.php?page=lap_penjualan/penjualan&pesan=error1');
-											}
-										} else if(!empty($_GET['minggu'])) {
-											$tgl1 = $_POST['tgl'];
-											$tgl2 = $_POST['tgl2'];
-											echo $tgl1;
-											if ($tgl1 !== 'Tanggal Awal' && $tgl2 !== 'Tanggal Akhir') {
-												$no=1;
-												$omset = 0;
-												$jumlah = 0;
-												// $bayar = 0;
-												$hasil = $lihat -> minggu_jual($tgl1, $tgl2);
-												// print_r($hasil);
-											} else {
-												header('location:admin.php?page=lap_penjualan/penjualan&pesan=error2');
-											}
-										} else if(!empty($_GET['hari'])){
-											$hari = $_POST['hari'];
-											$no=1; 
-											$jumlah = 0;
-											$omset = 0;
-											$hasil = $lihat -> hari_jual($hari);
+										if(!empty($_GET['cari'])) {
+											$ranges = explode(' - ', $_POST['cari']);
+											$tgl1 = $ranges[0];
+											$tgl2 = $ranges[1];
+											$D1 = date("d",strtotime($tgl1));
+											$D2 = date("d",strtotime($tgl2));
+											$M1 = date("m",strtotime($tgl1));
+											$M2 = date("m",strtotime($tgl2));
+											$Y = date("Y",strtotime($tgl1));
+											// echo $tgl1;
+												if ($D1 !== $D2) {
+														$no=1;
+														$omset = 0;
+														$jumlah = 0;
+														// $bayar = 0;
+														$cekdata = $lihat -> minggu_jualdlm($tgl1, $tgl2);
+														if (!empty($cekdata)) {
+															$hasil = $cekdata;
+														} else {
+															$hasil = [];
+														}
+														$transaksi = $lihat -> laptransminggudlm($tgl1, $tgl2);
+												} else {
+													$no=1; 
+													$jumlah = 0;
+													$omset = 0;
+													$cekdata = $lihat -> hari_jualdlm($tgl1);
+													// print_r($cekdata);
+													if (!empty($cekdata)) {
+														$hasil = $cekdata;
+													} else {
+														$hasil = [];
+													}
+													$transaksi = $lihat -> laptransharidlm($tgl1);
+												}
 										} else {
-											$hasil = $lihat -> lapjualdlm();
+											$cekdata = $lihat -> lapjualdlm();
+											if (!empty($cekdata)) {
+												$hasil = $cekdata;
+											} else {
+												$hasil = [];
+											}
 											$transaksi = $lihat -> laptransdlm();
 										}
 									?>
 									<?php 
 										$omset = 0;
 										$jumlah = 0;
-										error_reporting(E_ERROR | E_PARSE);
+										// error_reporting(E_ERROR | E_PARSE);
 										foreach($hasil as $isi){
 											// print_r($isi);
 											$omset += $isi[10];
@@ -330,7 +308,7 @@
 										<td><?php echo $isi[3];?></td>
 										<td><?php echo $isi[4];?> </td>
 										<td><?php echo $isi[5];?> </td>
-										<td><?php echo $isi[6];?> </td>
+										<td><?php echo $isi[7];?> </td>
 										<td><?php echo $isi[8];?> </td>
 										<td>Rp.<?php echo number_format($isi[10]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[11]);?>,-</td>

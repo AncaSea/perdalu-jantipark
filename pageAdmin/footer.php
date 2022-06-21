@@ -5,7 +5,7 @@
               <footer class="footer">
                 <div class="site-footer">
                   <div class="text-center">
-                      <?php echo date('Y');?> - Sistem Penjualan Barang Berbasis Web | Perdangan Luar Janti Park
+                      <?php echo date('Y');?> - Sistem Penjualan Berbasis Web | Aplikasi Perdagangan Janti Park
                       <a href="#" class="go-top">
                           <i class="fa fa-angle-up"></i>
                       </a>

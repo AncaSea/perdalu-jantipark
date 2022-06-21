@@ -16,7 +16,7 @@ $trx = mysqli_fetch_assoc($data);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Kasir Selesai</title>
+	<!-- <title>Kasir Selesai</title> -->
 	<style type="text/css">
 		body{
 			color: #a7a7a7;

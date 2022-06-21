@@ -1,11 +1,7 @@
 <?php
 if(isset($_GET['pesan'])){
-	if($_GET['pesan'] == "samesupp") {
-			$_SESSION['error'] = 'supplier sudah ada';
-	}
-
-	if($_GET['pesan'] == "updatefailed") {
-		$_SESSION['error'] = 'Gagal Mengupdate Stok Barang';
+	if($_GET['pesan'] == "samerole") {
+			$_SESSION['error'] = 'Role Sudah Ada';
 	}
 }
 ?>
@@ -31,26 +27,26 @@ if(isset($_GET['pesan'])){
 							<script type="text/javascript">
 
 							swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
-								window.location = "admin.php?page=supplier/supplier&accordion2=on&active=yes";
+								window.location = "admin.php?page=role/role&accordion2=on&active=yes";
 							});
 
 							</script>
 						<?php }
 							$_SESSION['error'] = '';
 						?>
-						<?php if(isset($_GET['success-supp'])){?>
+						<?php if(isset($_GET['success-role'])){?>
 						<div class="alert alert-success">
-							<p>Tambah Supplier Berhasil !</p>
+							<p>Tambah Role Berhasil !</p>
 						</div>
 						<?php }?>
 						<?php if(isset($_GET['success-edit'])){?>
 						<div class="alert alert-success">
-							<p>Edit Supplier Berhasil !</p>
+							<p>Edit Role Berhasil !</p>
 						</div>
 						<?php }?>
 						<?php if(isset($_GET['remove'])){?>
 						<div class="alert alert-danger">
-							<p>Hapus Supplier Berhasil !</p>
+							<p>Hapus Role Berhasil !</p>
 						</div>
 						<?php }?>
 

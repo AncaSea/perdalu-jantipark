@@ -10,16 +10,23 @@
 
               <div class="row">
                   <div class="col-lg-12 main-chart">
-					  <a href="admin.php?page=user/user" style="margin-right :0.5pc;margin-top:1em;" 
+					  <a href="admin.php?page=user/user&accordion=on&active=yes" style="margin-right :0.5pc;margin-top:1em;" 
 							  class="btn btn-success btn-md pull-right">
 							  <i class="fa fa-refresh"></i> Refresh Data</a>
 						<h3>Data User Admin</h3>
 						<hr/>
-						<?php if(isset($_GET['success-edit'])){?>
+
+						<?php if(isset($_GET['success-editadmin'])){?>
 						<div class="alert alert-success">
-							<p>Edit Supplier Berhasil !</p>
+							<p>Edit User Admin Berhasil !</p>
 						</div>
 						<?php }?>
+						<?php if(isset($_GET['success-editkasir'])){?>
+						<div class="alert alert-success">
+							<p>Edit User Kasir Berhasil !</p>
+						</div>
+						<?php }?>
+						
 						<div class="clearfix"></div>
 						<br/>
 						

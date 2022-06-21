@@ -25,9 +25,9 @@ foreach ($_SESSION['cart'] as $key => $value) {
 	$hrgjual = $value['harga'];
 	$hrg = (int)$hrgjual*(int)$jmlh;
 	
-	$dataksr = mysqli_query($dbconnect, "SELECT * FROM kasir_acc WHERE nama_kasir='$nama'");
-	$getksr = mysqli_fetch_array($dataksr);
-	$user = $getksr['username'];
+	$dataadmin = mysqli_query($dbconnect, "SELECT * FROM admin_acc WHERE nama_admin='$nama'");
+	$getadmin = mysqli_fetch_array($dataadmin);
+	$user = $getadmin['username'];
 
 	mysqli_query($dbconnect, "INSERT INTO penjualan (id_nota, no_nota,username,nama_kasir,tgl_penjualan,kode_brg,nama_brg,jumlah,hrg_jual,hrg,total) 
 	VALUES (NULL,'$nomor','$user','$nama','$tanggal_waktu','$kdbrg','$nmbrg','$jmlh','$hrgjual','$hrg','$total')");

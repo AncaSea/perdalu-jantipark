@@ -399,10 +399,10 @@
 				}
 			}
 			
-			function periode_jual($Y, $M){
+			function periode_jual($Y, $M1){
 				include 'db_con.php';
 
-				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE MONTH(tgl_penjualan) = '$M' AND YEAR(tgl_penjualan) = '$Y' ORDER BY no_nota");
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE MONTH(tgl_penjualan) = '$M1' AND YEAR(tgl_penjualan) = '$Y' ORDER BY no_nota");
 				// $row =  $sql);
 				if ($sql -> num_rows > 0) {
 					while ($lap = mysqli_fetch_all($sql)) {
@@ -413,10 +413,10 @@
 				}
 			}
 			
-			function laptransperiode($Y, $M){
+			function laptransperiode($Y, $M1){
 				include 'db_con.php';
 
-				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan WHERE MONTH(tgl_penjualan) = '$M' AND YEAR(tgl_penjualan) = '$Y' GROUP BY no_nota";
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan WHERE MONTH(tgl_penjualan) = '$M1' AND YEAR(tgl_penjualan) = '$Y' GROUP BY no_nota";
 				if ($result = mysqli_query($dbconnect, $sql)) {
 					$hasil = mysqli_num_rows($result);
 					// print_r($hasil);
@@ -428,8 +428,10 @@
 			function minggu_jual($tgl1, $tgl2){
 				include 'db_con.php';
 
-				$mnggAwl = date('Y-m-"%'.$tgl1.'%"');
-				$mnggAkhr = date('Y-m-"%'.$tgl2.'%"');
+				$mnggAwl = date('Y-m-d', strtotime($tgl1));
+				// $mnggAwl = date('Y-m-"%'.$tgl1.'%"');
+				// $mnggAkhr = date('Y-m-"%'.$tgl2.'%"');
+				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
 
 				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr' ORDER BY no_nota");
 				// $row =  $sql);
@@ -439,6 +441,143 @@
 						// print_r($hasil);
 						return $hasil;
 					}
+				}
+			}
+
+			function laptransminggu($tgl1, $tgl2){
+				include 'db_con.php';
+
+				$mnggAwl = date('Y-m-d', strtotime($tgl1));
+				// $mnggAwl = date('Y-m-"%'.$tgl1.'%"');
+				// $mnggAkhr = date('Y-m-"%'.$tgl2.'%"');
+				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr' GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
+				}
+			}
+			
+			function hari_jual($tgl1){
+				include 'db_con.php';
+
+				$now = date('Y-m-d', strtotime($tgl1));
+				// $mnggAwl = date('Y-m-"%'.$tgl1.'%"');
+				// $mnggAkhr = date('Y-m-"%'.$tgl2.'%"');
+				// $mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE tgl_penjualan = '$now' GROUP BY no_nota");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
+			function laptranshari($tgl1){
+				include 'db_con.php';
+
+				$now = date('Y-m-d', strtotime($tgl1));
+				// $mnggAwl = date('Y-m-"%'.$tgl1.'%"');
+				// $mnggAkhr = date('Y-m-"%'.$tgl2.'%"');
+				// $mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan WHERE tgl_penjualan = '$now' GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
+				}
+			}
+
+			function periode_jualdlm($Y, $M1){
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE MONTH(tgl_penjualan) = '$M1' AND YEAR(tgl_penjualan) = '$Y' ORDER BY no_nota");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+			
+			function laptransperiodedlm($Y, $M1){
+				include 'db_con.php';
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan_dalam WHERE MONTH(tgl_penjualan) = '$M1' AND YEAR(tgl_penjualan) = '$Y' GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
+				}
+			}
+
+
+			function minggu_jualdlm($tgl1, $tgl2){
+				include 'db_con.php';
+
+				$mnggAwl = date('Y-m-d', strtotime($tgl1));
+				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr' ORDER BY no_nota");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
+			function laptransminggudlm($tgl1, $tgl2){
+				include 'db_con.php';
+
+				$mnggAwl = date('Y-m-d', strtotime($tgl1));
+				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan_dalam WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr' GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
+				}
+			}
+			
+			function hari_jualdlm($tgl1){
+				include 'db_con.php';
+
+				$now = date('Y-m-d', strtotime($tgl1));
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE tgl_penjualan = '$now' GROUP BY no_nota");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
+			function laptransharidlm($tgl1){
+				include 'db_con.php';
+
+				$now = date('Y-m-d', strtotime($tgl1));
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan_dalam WHERE tgl_penjualan = '$now' GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
 				}
 			}
 
@@ -457,6 +596,30 @@
 
 			function laptransdlm(){
 				include 'db_con.php';
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan_dalam GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
+				}
+			}
+
+			function lapjualksrdlm(){
+				include '../db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam ORDER BY no_nota ASC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
+			function laptransksrdlm(){
+				include '../db_con.php';
 
 				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan_dalam GROUP BY no_nota";
 				if ($result = mysqli_query($dbconnect, $sql)) {

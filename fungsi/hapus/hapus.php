@@ -37,6 +37,13 @@ if(!empty($_SESSION['namaadmin'])){
 		$del = mysqli_query($dbconnect, $sql);
 		echo '<script>window.location="../../admin.php?page=user/user&accordion=on&active=yes&remove=hapus-data"</script>';
 	}
+	if(!empty($_GET['role'])){
+		$id= $_GET['id'];
+		// $data[] = $id;
+		$sql = "DELETE FROM role WHERE id_role='$id'";
+		$del = mysqli_query($dbconnect, $sql);
+		echo '<script>window.location="../../admin.php?page=user/user&accordion2=on&active=yes&remove=hapus-data"</script>';
+	}
 	if(!empty($_GET['mkn'])){
 		$id= $_GET['id'];
 		// $data[] = $id;

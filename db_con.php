@@ -14,3 +14,4 @@ if ($dbconnect-> connect_error) {
 }
 
 $view = 'view/view.php';
+$viewksrdlm = '../view/view.php';
