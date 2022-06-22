@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jun 2022 pada 18.21
+-- Waktu pembuatan: 22 Jun 2022 pada 12.59
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -30,16 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin_acc` (
   `nama_admin` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `admin_acc`
 --
 
-INSERT INTO `admin_acc` (`nama_admin`, `username`, `password`) VALUES
-('admin1', 'admin', 'admin1'),
-('Danang', 'D1', 'danang');
+INSERT INTO `admin_acc` (`nama_admin`, `username`, `password`, `role`) VALUES
+('admin1', 'admin', 'admin1', 'admin'),
+('Danang', 'D1', 'danang', 'boss');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ CREATE TABLE `brg_masuk` (
 --
 
 INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_satuan`, `hrg_jual`, `total`) VALUES
-(1, 'kb0015', 'sp0142', '5-10-2022', 'wakidi', 'baju polo', 500, 15000, 0, 1000000),
+(1, 'kb0015', 'sp0142', '2022-05-10', 'wakidi', 'baju polo', 500, 15000, 0, 1000000),
 (19, 'kb0055', 'sp0001', '2022-05-26', 'mukidi', 'celana pendek', 10, 10000, 0, 100000),
 (26, 'sp4554', 'sp177', '2022-06-04', 'reka', 'arem2', 10, 2000, 0, 20000),
 (27, 'sp9339', 'sp0005', '2022-06-04', 'andika', 'peyek', 10, 2000, 0, 20000),
@@ -109,7 +110,13 @@ INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, 
 (55, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 5, 6000, 0, 30000),
 (56, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 6000, 7000, 6000),
 (57, 'sp2854', 'sp0005', '2022-06-12', 'andika', 'arem arem', 1, 7000, 8000, 7000),
-(58, 'kb0015', 'sp0142', '2022-06-13', 'wakidi', 'baju polo', 1, 20000, 25000, 20000);
+(58, 'kb0015', 'sp0142', '2022-06-13', 'wakidi', 'baju polo', 1, 20000, 25000, 20000),
+(59, 'sp9316', 'sp0005', '2022-06-20', 'andika', 'peyek', 1, 5000, 10000, 5000),
+(60, 'sp9316', 'sp0005', '2022-06-20', 'andika', 'peyek', 1, 5000, 6000, 5000),
+(61, 'sp9316', 'sp0005', '2022-06-20', 'andika', 'peyek', 1, 6000, 7000, 6000),
+(62, 'kb0015', 'sp0005', '2022-06-20', 'andika', 'baju polo', 1, 10000, 21000, 10000),
+(63, 'sp3482', 'sp0005', '2022-06-20', 'andika', 'getuk', 1, 2000, 4000, 2000),
+(64, 'sp3482', 'sp0005', '2022-06-20', 'andika', 'getuk', 1, 1000, 2000, 1000);
 
 -- --------------------------------------------------------
 
@@ -120,16 +127,17 @@ INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, 
 CREATE TABLE `kasir_acc` (
   `nama_kasir` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kasir_acc`
 --
 
-INSERT INTO `kasir_acc` (`nama_kasir`, `username`, `password`) VALUES
-('kasir1', 'kasir', 'kasir1'),
-('kasir2', 'kasir2', 'kasir22');
+INSERT INTO `kasir_acc` (`nama_kasir`, `username`, `password`, `role`) VALUES
+('kasir1', 'kasir', 'kasir1', 'kasir luar'),
+('kasir2', 'kasir2', 'kasir22', 'kasir dalam');
 
 -- --------------------------------------------------------
 
@@ -152,7 +160,8 @@ CREATE TABLE `makanan` (
 INSERT INTO `makanan` (`id`, `nama`, `role`, `jenis`, `harga`) VALUES
 (1, 'lele goreng', 1, 'lele', 5000),
 (2, 'lele bakar', 1, 'lele', 6000),
-(3, 'nila goreng', 2, 'nila', 5000);
+(3, 'nila goreng', 2, 'nila', 5000),
+(6, 'lele kukus', 1, 'lele', 5000);
 
 -- --------------------------------------------------------
 
@@ -173,8 +182,9 @@ CREATE TABLE `minuman` (
 --
 
 INSERT INTO `minuman` (`id`, `nama`, `role`, `jenis`, `harga`) VALUES
-(1, 'es teh', 6, 'teh', 3000),
-(2, 'teh anget', 6, 'teh', 2500);
+(2, 'teh anget', 6, 'teh', 2500),
+(4, 'es teh', 6, 'teh', 3000),
+(5, 'lemon tea', 6, 'teh', 5000);
 
 -- --------------------------------------------------------
 
@@ -220,7 +230,8 @@ INSERT INTO `paket_barbar` (`id`, `nama`, `role`, `jenis`, `jumlah`, `harga`) VA
 (1, 'paket lele goreng', 4, 'lele', 6, 20000),
 (2, 'paket nila goreng', 5, 'nila', 4, 25000),
 (3, 'paket lele bakar', 4, 'lele', 6, 22000),
-(4, 'paket nila bakar', 5, 'nila', 4, 27000);
+(4, 'paket nila bakar', 5, 'nila', 4, 27000),
+(6, 'paket lele kukus', 4, 'lele', 5, 26000);
 
 -- --------------------------------------------------------
 
@@ -264,13 +275,9 @@ INSERT INTO `penjualan` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_pe
 (87, 457530, 'kasir', 'kasir1', '2022-05-17', 'kb0071', 'sweater', 5, 25000, 125000, 255000),
 (88, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0055', 'celana pendek', 1, 15000, 15000, 35000),
 (89, 167436, 'kasir', 'kasir1', '2022-05-23', 'kb0015', 'baju polo', 1, 20000, 20000, 35000),
-(92, 824005, '', 'admin1', '2022-06-11', 'kb0015', 'baju polo', 1, 25000, 25000, 25000),
-(93, 598227, '', 'admin1', '2022-06-15', 'kb0015', 'baju polo', 1, 25000, 25000, 40000),
-(94, 598227, '', 'admin1', '2022-06-15', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
-(95, 400614, '', 'admin1', '2022-06-15', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
-(96, 400614, '', 'admin1', '2022-06-15', 'kb0071', 'sweater', 1, 25000, 25000, 40000),
-(97, 941011, '', 'admin1', '2022-06-17', 'kb0015', 'baju polo', 1, 25000, 25000, 40000),
-(98, 941011, '', 'admin1', '2022-06-17', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000);
+(100, 560801, 'admin', 'admin1', '2022-06-20', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
+(101, 885626, 'admin', 'admin1', '2022-06-20', 'kb0015', 'baju polo', 1, 25000, 25000, 40000),
+(102, 885626, 'admin', 'admin1', '2022-06-20', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000);
 
 -- --------------------------------------------------------
 
@@ -340,6 +347,27 @@ INSERT INTO `role` (`id_role`, `nama`, `jenis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `role_akun`
+--
+
+CREATE TABLE `role_akun` (
+  `id_role` int(11) NOT NULL,
+  `role` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `role_akun`
+--
+
+INSERT INTO `role_akun` (`id_role`, `role`) VALUES
+(1, 'boss'),
+(2, 'admin'),
+(3, 'kasir luar'),
+(4, 'kasir dalam');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `stok_brg`
 --
 
@@ -357,15 +385,15 @@ CREATE TABLE `stok_brg` (
 --
 
 INSERT INTO `stok_brg` (`kode_brg`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_beli`, `hrg_jual`) VALUES
-('kb0015', 'wakidi', 'baju polo', 9985, 20000, 25000),
-('kb0055', 'mukidi', 'celana pendek', 10034, 10000, 15000),
+('kb0015', 'wakidi', 'baju polo', 9984, 10000, 21000),
+('kb0055', 'mukidi', 'celana pendek', 10032, 10000, 15000),
 ('kb0057', 'odin', 'kaos', 9992, 15000, 20000),
 ('kb0071', 'pudidi', 'sweater', 9977, 20000, 25000),
 ('kb0083', 'yudi', 'jeans', 9992, 30000, 35000),
 ('sp2854', 'andika', 'arem arem', 50, 7000, 8000),
-('sp3482', 'reka', 'getuk', 1, 1000, 2000),
+('sp3482', 'reka', 'getuk', 2, 2000, 4000),
 ('sp7761', 'reka', 'arem arem1', 5, 1000, 2000),
-('sp9316', 'andika', 'peyek', 20, 5000, 7000);
+('sp9316', 'andika', 'peyek', 23, 6000, 7000);
 
 -- --------------------------------------------------------
 
@@ -466,6 +494,12 @@ ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`);
 
 --
+-- Indeks untuk tabel `role_akun`
+--
+ALTER TABLE `role_akun`
+  ADD PRIMARY KEY (`id_role`);
+
+--
 -- Indeks untuk tabel `stok_brg`
 --
 ALTER TABLE `stok_brg`
@@ -491,19 +525,19 @@ ALTER TABLE `brg_kembali`
 -- AUTO_INCREMENT untuk tabel `brg_masuk`
 --
 ALTER TABLE `brg_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT untuk tabel `makanan`
 --
 ALTER TABLE `makanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `minuman`
 --
 ALTER TABLE `minuman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `paket`
@@ -515,13 +549,13 @@ ALTER TABLE `paket`
 -- AUTO_INCREMENT untuk tabel `paket_barbar`
 --
 ALTER TABLE `paket_barbar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_dalam`
@@ -534,6 +568,12 @@ ALTER TABLE `penjualan_dalam`
 --
 ALTER TABLE `role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `role_akun`
+--
+ALTER TABLE `role_akun`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
