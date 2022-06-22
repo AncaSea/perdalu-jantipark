@@ -88,6 +88,9 @@ if(isset($_GET['pesan'])){
         color: #F0F8FF;
         background-color:#000000;
       } */
+	  .col-md-4 {
+		float: left;
+	  }
       .auto-kasir{
         width: 100%;
         padding: 10px 15px;
@@ -154,17 +157,17 @@ if(isset($_GET['pesan'])){
 					<div class="form-group" style="margin-bottom: 30px;">
 						<div class="row">
 							<form method="post" action="fungsi/keranjang_add.php">
-								<div>
+								<div class="col-md-4">
 									<input id="nama_brg" type="text" name="nama_brg" class="form-control" placeholder="Masukkan Nama Barang" autofocus required>
 									<!-- KI LHO HEEENNNNNN JATAHMUUU-->
 									<!-- li class = "auto-kasir" -->
 									<ul class="auto-result" id="search-result"></ul>
 								</div>
-								<div>
-									<input style="margin-top: 1em;" type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
-								</div>
 								<div class="col-md-4">
-									<button style="margin-top: 1em;" type="submit" class="btn btn-success">Masukan</button>
+									<input type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+								</div>
+								<div class="col-md-1">
+									<button type="submit" class="btn btn-success">Masukan</button>
 								</div>
 							</form>
 						</div>

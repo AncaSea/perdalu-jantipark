@@ -14,7 +14,7 @@ session_start();
             } else if (!empty($_GET['pageAdmin'])) {
                 include 'pageAdmin/'.$_GET['pageAdmin'].'.php';
             } else {
-                include 'pageAdmin/home.php';
+                // include 'pageAdmin/home.php';
             }
         include 'pageAdmin/footer.php';
     // end admin

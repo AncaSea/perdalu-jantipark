@@ -35,7 +35,7 @@ if (isset($_POST['masuk'])) {
                 $_SESSION['user'] = $data['username'];
                 $_SESSION['pwd'] = $data['password'];
         
-                header('location:admin.php');
+                header('location:admin.php?page=dashboard/home');
             // }
         } else {
             $query = mysqli_query($dbconnect, "SELECT * FROM admin_acc WHERE username='$username' and password='$password'");
