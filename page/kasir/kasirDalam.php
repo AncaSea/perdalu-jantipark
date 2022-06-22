@@ -59,7 +59,7 @@ if(isset($_GET['pesan'])){
 					<!-- <h2>Hai <?=$_SESSION['namakasir']?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
 					<a href="../../page/keranjangDalam/keranjang_reset.php"class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;  
-					<a href="admin.php?page=lap_penjualan/penjualanDalam"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
+					<a href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes"class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
 				&ensp;
 				<tr>
