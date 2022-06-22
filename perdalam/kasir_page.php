@@ -205,16 +205,16 @@ if(isset($_GET['pesan'])){
 				<div class="col-md-8">
 						<div class="row">
 							<form method="post" action="fungsi/keranjang_add.php">
-								<div>
+								<div class="col-md-4">
 									<input id="nama_pesan" type="text" name="nama_pesan" class="form-control" placeholder="Masukkan Nama Pesanan" autofocus required>
 									<!-- KI LHO HEEENNNNNN JATAHMUUU-->
 									<!-- li class = "auto-kasir" -->
 									<ul class="auto-result" id="search-result"></ul>
 								</div>
-								<div>
+								<div class="col-md-4">
 									<input style="margin-top: 1em;" type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 								</div>
-								<div>
+								<div class="col-md-4">
 									<button style="margin-top: 1em;" type="submit" class="btn btn-success">Masukan</button>
 								</div>
 							</form>
@@ -334,6 +334,9 @@ if(isset($_GET['pesan'])){
 		}
 		$(document).click(function(){
 			$("#search-result").hide();
+		});
+			$('input.menu').on('change', function() {
+			$('input.menu').not(this).prop('checked', false);  
 		});
 	</script>
 	<script>
