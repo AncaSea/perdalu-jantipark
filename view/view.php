@@ -629,6 +629,30 @@
 				}
 			}
 
+			function lapjualksrluar(){
+				include '../db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan ORDER BY no_nota ASC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
+			function laptransksrluar(){
+				include '../db_con.php';
+
+				$sql = "SELECT COUNT(id_nota) AS trans FROM penjualan GROUP BY no_nota";
+				if ($result = mysqli_query($dbconnect, $sql)) {
+					$hasil = mysqli_num_rows($result);
+					// print_r($hasil);
+					return $hasil;
+				}
+			}
+
 			// function hari_jual($hari){
 			// 	$ex = explode('-', $hari);
 			// 	$monthNum  = $ex[1];

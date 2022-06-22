@@ -39,6 +39,7 @@
 										<th>Nama</th>
 										<th>Username</th>
 										<th>Password</th>
+										<th>Role</th>
 										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
@@ -54,6 +55,7 @@
 										<td class="nama"><?php echo $isi[0];?></td>
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
+										<td><?php echo $isi[3];?></td>
 										<td class="text-center">
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
 											<!-- <a href="fungsi/hapus/hapus.php?user=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
@@ -71,7 +73,7 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<th colspan="3">Jumlah </td>
+										<th colspan="4">Jumlah </td>
 										<th id="rowcount1"></td>
 										<th colspan="1" style="background:#ddd"></th>
 									</tr>
@@ -98,6 +100,7 @@
 										<th>Nama</th>
 										<th>Username</th>
 										<th>Password</th>
+										<th>Role</th>
 										<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 									</tr>
 								</thead>
@@ -113,6 +116,7 @@
 										<td class="nama2"><?php echo $isi[0];?></td>
 										<td><?php echo $isi[1];?></td>
 										<td><?php echo $isi[2];?></td>
+										<td><?php echo $isi[3];?></td>
 										<td class="text-center">
 										<button id="li-modal2" type="button" class="btn btn-warning btn-md li-modal2" data-toggle="modal" data-target="#myModal3" ><i class="fa-solid fa-pen"></i></button>
 											<!-- <a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi[1];?>" onclick="javascript:return confirm('Hapus Data barang ?');">
@@ -130,7 +134,7 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<th colspan="3">Jumlah </td>
+										<th colspan="4">Jumlah </td>
 										<th id="rowcount2"></td>
 										<th colspan="1" style="background:#ddd"></th>
 									</tr>
@@ -162,6 +166,10 @@
 													<tr>
 														<td>Password</td>
 														<td><input id="pwd" type="text" placeholder="Password" value="" required class="form-control" name="pwd"></td>
+													</tr>
+													<tr>
+														<td>Role</td>
+														<td><input id="role" type="text" placeholder="Role" value="" required class="form-control" name="role"></td>
 													</tr>
 												</table>
 												<div class="modal-footer">
@@ -198,6 +206,10 @@
 													<tr>
 														<td>Password</td>
 														<td><input id="pwd2" type="text" placeholder="Password" value="" required class="form-control" name="pwd2"></td>
+													</tr>
+													<tr>
+														<td>Role</td>
+														<td><input id="role2" type="text" placeholder="Role" value="" required class="form-control" name="role2"></td>
 													</tr>
 												</table>
 												<div class="modal-footer">
@@ -240,6 +252,7 @@
 						$('#nama').val(value['nama_admin']);
 						$('#user').val(value['username']);
 						$('#pwd').val(value['password']);
+						$('#role').val(value['role']);
 					});
 				},  
 			});
@@ -262,6 +275,7 @@
 						$('#nama2').val(value['nama_kasir']);
 						$('#user2').val(value['username']);
 						$('#pwd2').val(value['password']);
+						$('#role2').val(value['role']);
 					});
 				},  
 			});

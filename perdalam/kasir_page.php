@@ -305,7 +305,7 @@ if(isset($_GET['pesan'])){
 		}
 
 	</script>
-		<script>
+	<script>
 		$(document).ready(function(){
 			$("#nama_pesan").keyup(function(){
 				var search = $(this).val();
