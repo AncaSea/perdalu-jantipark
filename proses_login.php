@@ -69,27 +69,21 @@ if (isset($_POST['masuk'])) {
             // return var_dump($data);
         
             //mendapatkan nilai jumlah data
-            // $check = mysqli_num_rows($query);
+            $check = mysqli_num_rows($query);
             // return var_dump($check);
         
-            // if (!$check) {
-            //     // $_SESSION['error'] = 'Username & password salah';
-            //     header("location:index.php?pesan=gagal");
-            // } else {
-                // if ($data['username'] == 'kasir') {
+            if (!$check) {
+                // $_SESSION['error'] = 'Username & password salah';
+                header("location:index.php?pesan=gagal");
+            } else {
+                if ($data['username'] == 'kasir') {
                     $_SESSION['namakasir'] = $data['nama_kasir'];
                     $_SESSION['user'] = $data['username'];
                     $_SESSION['pwd'] = $data['password'];
             
                     header('location:perdalu/kasir_page.php');
-                // } else {
-                //     $_SESSION['namakasir'] = $data['nama_kasir'];
-                //     $_SESSION['user'] = $data['username'];
-                //     $_SESSION['pwd'] = $data['password'];
-            
-                //     header('location:perdalu/kasir_page.php');
-                // }
-            // }
+                }
+            }
         } else {
             $query = mysqli_query($dbconnect, "SELECT * FROM kasir_acc WHERE username='$username' and password='$password'");
         
@@ -98,19 +92,19 @@ if (isset($_POST['masuk'])) {
             // return var_dump($data);
         
             //mendapatkan nilai jumlah data
-            // $check = mysqli_num_rows($query);
+            $check = mysqli_num_rows($query);
             // return var_dump($check);
         
-            // if (!$check) {
-            //     // $_SESSION['error'] = 'Username & password salah';
-            //     header("location:index.php?pesan=gagal");
-            // } else {
+            if (!$check) {
+                // $_SESSION['error'] = 'Username & password salah';
+                header("location:index.php?pesan=gagal");
+            } else {
                 $_SESSION['namakasir'] = $data['nama_kasir'];
                 $_SESSION['user'] = $data['username'];
                 $_SESSION['pwd'] = $data['password'];
         
                 header('location:perdalam/kasir_page.php');
-            // }
+            }
         }
     } else {
         header("location:index.php?pesan=gagal");
