@@ -211,7 +211,7 @@ if(isset($_GET['pesan'])){
 					</form>
 				</div>
 				<div class="col-md-4">
-					<h3>Total Rp. <?=number_format($sum)?></h3>
+					<h3 style="margin:0px 0px 38px 0px">Total Rp. <?=number_format($sum)?></h3>
 					<form action="fungsi/keranjang_update.php" method="POST">
 						<input type="hidden" name="total" value="<?=$sum?>">
 					<div class="form-group" style="margin-bottom: 1em;">
