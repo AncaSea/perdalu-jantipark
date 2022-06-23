@@ -262,6 +262,7 @@ $lihat = new view($dbconnect);
 							</tr>
 						</tfoot>
 					</table>
+					<a href="kasir_page.php"class="btn btn-warning btn-md">Kembali</a> &ensp;
 				</div>
 				<div class="clearfix" style="padding-top:5pc;"></div>
 			</div>

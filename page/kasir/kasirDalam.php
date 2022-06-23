@@ -93,14 +93,14 @@ if(isset($_GET['pesan'])){
 									<i class="icon fa fa-check"></i>
 								<label>Porsi Lele Bakar</label>
 								</div>
-							</div>
+							</div>&ensp;	
 							<div class="pretty p-icon p-round p-jelly">
 								<input type="radio" id="menupkt" class="menu" name="menu" value="kakap bakar"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
 									<label>Porsi Kakap Bakar</label>
 								</div>
-							</div>
+							</div>&ensp;&ensp;
 							<div class="pretty p-icon p-round p-jelly">
 							<input type="radio" id="menupkt" class="menu" name="menu" value="ayam bakar"/>
 								<div class="state p-success">
@@ -140,7 +140,7 @@ if(isset($_GET['pesan'])){
 								<th>Harga</th>
 								<th>Qty</th>
 								<th>Sub Total</th>
-								<th>Aksi</th>
+								<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 							</tr>
 							<?php if (isset($_SESSION['cartdlm'])): ?>
 							<?php foreach ($_SESSION['cartdlm'] as $key => $value) { ?>
