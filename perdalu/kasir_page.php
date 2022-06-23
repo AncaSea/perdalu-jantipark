@@ -164,10 +164,10 @@ if(isset($_GET['pesan'])){
 									<ul class="auto-result" id="search-result"></ul>
 								</div>
 								<div class="col-md-4">
-									<input type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+									<input style="margin-left: 1em;" type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 								</div>
-								<div class="col-md-1">
-									<button type="submit" class="btn btn-success">Masukan</button>
+								<div class="col-md-4">
+									<button style="margin-left: 1.5em;" type="submit" class="btn btn-success">Masukan</button>
 								</div>
 							</form>
 						</div>
@@ -180,7 +180,7 @@ if(isset($_GET['pesan'])){
 							<th>Harga</th>
 							<th>Qty</th>
 							<th>Sub Total</th>
-							<th></th>
+							<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 						</tr>
 						<?php if (isset($_SESSION['cart'])): ?>
 						<?php foreach ($_SESSION['cart'] as $key => $value) { ?>

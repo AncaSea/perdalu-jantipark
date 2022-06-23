@@ -110,6 +110,10 @@ if(isset($_GET['pesan'])){
         width: auto;
       }
 
+	  .col-md-4{
+		float: left;
+	  }
+
       #search-result, #search-result2{
         cursor: pointer;
         position:absolute; 
@@ -181,14 +185,14 @@ if(isset($_GET['pesan'])){
 									<i class="icon fa fa-check"></i>
 								<label>Paket Lele Bakar</label>
 								</div>
-							</div>
+							</div>&ensp;
 							<div class="pretty p-icon p-round p-jelly">
 								<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket kakap bakar"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
 									<label>Paket Kakap Bakar</label>
 								</div>
-							</div>
+							</div> &ensp;&ensp;
 							<div class="pretty p-icon p-round p-jelly">
 							<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket ayam bakar"/>
 								<div class="state p-success">
@@ -212,10 +216,10 @@ if(isset($_GET['pesan'])){
 									<ul class="auto-result" id="search-result"></ul>
 								</div>
 								<div class="col-md-4">
-									<input style="margin-top: 1em;" type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+									<input style="margin-left: 1em;" type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 								</div>
 								<div class="col-md-4">
-									<button style="margin-top: 1em;" type="submit" class="btn btn-success">Masukan</button>
+									<button style="margin-left: 1.5em;"type="submit" class="btn btn-success">Masukan</button>
 								</div>
 							</form>
 						</div>
@@ -227,7 +231,7 @@ if(isset($_GET['pesan'])){
 								<th>Harga</th>
 								<th>Qty</th>
 								<th>Sub Total</th>
-								<th>Aksi</th>
+								<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
 							</tr>
 							<?php if (isset($_SESSION['cartdlm'])): ?>
 							<?php foreach ($_SESSION['cartdlm'] as $key => $value) { ?>
