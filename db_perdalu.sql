@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jun 2022 pada 12.59
+-- Waktu pembuatan: 23 Jun 2022 pada 14.29
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -158,10 +158,9 @@ CREATE TABLE `makanan` (
 --
 
 INSERT INTO `makanan` (`id`, `nama`, `role`, `jenis`, `harga`) VALUES
-(1, 'lele goreng', 1, 'lele', 5000),
-(2, 'lele bakar', 1, 'lele', 6000),
-(3, 'nila goreng', 2, 'nila', 5000),
-(6, 'lele kukus', 1, 'lele', 5000);
+(1, 'lele goreng', 1, 'lele', 6000),
+(3, 'kakap goreng', 2, 'kakap', 5000),
+(7, 'lele bakar', 1, 'lele', 4000);
 
 -- --------------------------------------------------------
 
@@ -183,8 +182,10 @@ CREATE TABLE `minuman` (
 
 INSERT INTO `minuman` (`id`, `nama`, `role`, `jenis`, `harga`) VALUES
 (2, 'teh anget', 6, 'teh', 2500),
-(4, 'es teh', 6, 'teh', 3000),
-(5, 'lemon tea', 6, 'teh', 5000);
+(4, 'es teh', 6, 'teh', 5000),
+(5, 'lemon tea', 6, 'teh', 5000),
+(6, 'tea jus', 6, 'teh', 2000),
+(9, 'teh tawar', 6, 'teh', 1000);
 
 -- --------------------------------------------------------
 
@@ -228,10 +229,10 @@ CREATE TABLE `paket_barbar` (
 
 INSERT INTO `paket_barbar` (`id`, `nama`, `role`, `jenis`, `jumlah`, `harga`) VALUES
 (1, 'paket lele goreng', 4, 'lele', 6, 20000),
-(2, 'paket nila goreng', 5, 'nila', 4, 25000),
+(2, 'paket kakap goreng', 5, 'kakap', 4, 25000),
 (3, 'paket lele bakar', 4, 'lele', 6, 22000),
-(4, 'paket nila bakar', 5, 'nila', 4, 27000),
-(6, 'paket lele kukus', 4, 'lele', 5, 26000);
+(4, 'paket kakap bakar', 5, 'kakap', 4, 27000),
+(7, 'paket ayam goreng', 50, 'ayam', 1, 15000);
 
 -- --------------------------------------------------------
 
@@ -309,7 +310,7 @@ INSERT INTO `penjualan_dalam` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `
 (1, 351341, 'admin', 'admin1', '2022-06-13', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 6000),
 (2, 478426, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 5, 5, 5000, 30000, 30000),
 (3, 781931, 'admin', 'admin1', '2022-06-14', 'paket lele goreng', 4, 'lele', 2, 12, 20000, 40000, 40000),
-(4, 592931, 'admin', 'admin1', '2022-06-14', 'nila goreng', 2, 'nila', 4, 4, 5000, 20000, 20000),
+(4, 592931, 'admin', 'admin1', '2022-06-14', 'kakap goreng', 2, 'kakap', 4, 4, 5000, 20000, 20000),
 (5, 748253, 'admin', 'admin1', '2022-06-14', 'lele goreng', 1, 'lele', 6, 6, 5000, 30000, 30000),
 (6, 849102, 'admin', 'admin1', '2022-06-14', 'paket lele bakar', 4, 'lele', 2, 12, 22000, 44000, 44000),
 (59, 996792, 'admin', 'admin1', '2022-06-17', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 9000),
@@ -317,8 +318,9 @@ INSERT INTO `penjualan_dalam` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `
 (61, 651993, 'admin', 'admin1', '2022-06-17', 'paket lele goreng', 4, 'lele', 1, 6, 20000, 20000, 26000),
 (62, 651993, 'admin', 'admin1', '2022-06-17', 'lele bakar', 1, 'lele', 1, 1, 6000, 6000, 26000),
 (63, 512226, 'admin', 'admin1', '2022-06-17', 'paket lele goreng', 4, 'lele', 2, 12, 20000, 40000, 115000),
-(64, 512226, 'admin', 'admin1', '2022-06-17', 'paket nila goreng', 5, 'nila', 3, 12, 25000, 75000, 115000),
-(65, 187809, 'admin', 'admin1', '2022-06-18', 'teh anget', 6, 'teh', 1, 1, 2500, 2500, 2500);
+(64, 512226, 'admin', 'admin1', '2022-06-17', 'paket kakap goreng', 5, 'kakap', 3, 12, 25000, 75000, 115000),
+(65, 187809, 'admin', 'admin1', '2022-06-18', 'teh anget', 6, 'teh', 1, 1, 2500, 2500, 2500),
+(67, 748776, 'admin', 'admin1', '2022-06-23', 'paket kakap kukus', 5, 'kakap', 1, 2, 10000, 10000, 10000);
 
 -- --------------------------------------------------------
 
@@ -338,11 +340,12 @@ CREATE TABLE `role` (
 
 INSERT INTO `role` (`id_role`, `nama`, `jenis`) VALUES
 (1, 'lele', 'lele'),
-(2, 'nila', 'nila'),
+(2, 'kakap', 'kakap'),
 (3, 'ayam', 'ayam'),
 (4, 'paket lele', 'lele'),
-(5, 'paket nila', 'nila'),
-(6, 'teh', 'teh');
+(5, 'paket kakap', 'kakap'),
+(6, 'teh', 'teh'),
+(50, 'paket ayam', 'ayam');
 
 -- --------------------------------------------------------
 
@@ -531,13 +534,13 @@ ALTER TABLE `brg_masuk`
 -- AUTO_INCREMENT untuk tabel `makanan`
 --
 ALTER TABLE `makanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `minuman`
 --
 ALTER TABLE `minuman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `paket`
@@ -549,7 +552,7 @@ ALTER TABLE `paket`
 -- AUTO_INCREMENT untuk tabel `paket_barbar`
 --
 ALTER TABLE `paket_barbar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
@@ -561,13 +564,13 @@ ALTER TABLE `penjualan`
 -- AUTO_INCREMENT untuk tabel `penjualan_dalam`
 --
 ALTER TABLE `penjualan_dalam`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT untuk tabel `role_akun`
