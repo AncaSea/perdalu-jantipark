@@ -76,7 +76,7 @@
 						<hr>
 						
 						<h4>Cari Laporan</h4>
-						<form method="post" action="scout.php?page=lap_scout/penjualanDalam">
+						<form method="post" action="scout.php?page=lap_scout/penjualanDalam&cari=ok">
 							<table class="table table-striped">
 								<tr>
 									<th>

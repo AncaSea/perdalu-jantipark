@@ -1,13 +1,13 @@
 <?php  
       // create database connectivity  
       include('../../db_con.php');  
-      if (isset($_POST['editNm'])) {  
-           $editNm = $_POST['editNm'];
+      if (isset($_POST['editId'])) {  
+           $editId = $_POST['editId'];
            $result_array = [];    
       // fetch data from student table..  
-      $mkn = mysqli_query($dbconnect, "SELECT * FROM makanan WHERE nama = '$editNm'");  
-      $mnm = mysqli_query($dbconnect, "SELECT * FROM minuman WHERE nama = '$editNm'");  
-      $pkt = mysqli_query($dbconnect, "SELECT * FROM paket_barbar WHERE nama = '$editNm'");  
+      $mkn = mysqli_query($dbconnect, "SELECT * FROM makanan WHERE nama = '$editId'");  
+      $mnm = mysqli_query($dbconnect, "SELECT * FROM minuman WHERE nama = '$editId'");  
+      $pkt = mysqli_query($dbconnect, "SELECT * FROM paket_barbar WHERE nama = '$editId'");  
     //   $query = $con->query($sql);  
       if ($mkn->num_rows > 0) {
         foreach ($mkn as $row) {

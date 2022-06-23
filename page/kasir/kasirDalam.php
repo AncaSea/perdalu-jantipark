@@ -66,46 +66,46 @@ if(isset($_GET['pesan'])){
 					<td class="text-center" colspan="2">
 						<div id="checkcont" class="checkbox-group required">
 							<div class="pretty p-icon p-round p-jelly">
-							<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket lele goreng"/>
+							<input type="radio" id="menupkt" class="menu" name="menu" value="lele goreng"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
-								<label>Paket Lele Goreng</label>
+								<label>Porsi Lele Goreng</label>
 								</div>
 							</div>
 							<div class="pretty p-icon p-round p-jelly">
-								<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket kakap goreng"/>
+								<input type="radio" id="menupkt" class="menu" name="menu" value="kakap goreng"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
-									<label>Paket Kakap Goreng</label>
+									<label>Porsi Kakap Goreng</label>
 								</div>
 							</div>
 							<div class="pretty p-icon p-round p-jelly">
-							<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket ayam goreng"/>
+							<input type="radio" id="menupkt" class="menu" name="menu" value="ayam goreng"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
-								<label>Paket Ayam Goreng</label>
+								<label>Porsi Ayam Goreng</label>
 								</div>
 							</div>
 							<br>
 							<div class="pretty p-icon p-round p-jelly">
-							<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket lele bakar"/>
+							<input type="radio" id="menupkt" class="menu" name="menu" value="lele bakar"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
-								<label>Paket Lele Bakar</label>
+								<label>Porsi Lele Bakar</label>
 								</div>
 							</div>&ensp;	
 							<div class="pretty p-icon p-round p-jelly">
-								<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket kakap bakar"/>
+								<input type="radio" id="menupkt" class="menu" name="menu" value="kakap bakar"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
-									<label>Paket Kakap Bakar</label>
+									<label>Porsi Kakap Bakar</label>
 								</div>
 							</div>&ensp;&ensp;
 							<div class="pretty p-icon p-round p-jelly">
-							<input type="checkbox" id="menupkt" class="menu" name="menu" value="paket ayam bakar"/>
+							<input type="radio" id="menupkt" class="menu" name="menu" value="ayam bakar"/>
 								<div class="state p-success">
 									<i class="icon fa fa-check"></i>
-								<label>Paket Ayam Bakar</label>
+								<label>Porsi Ayam Bakar</label>
 								</div>
 							</div>
 						</div>
@@ -250,15 +250,12 @@ if(isset($_GET['pesan'])){
 		$(document).click(function(){
 			$("#search-result").hide();
 		});
-		$('input.menu').on('change', function() {
-			$('input.menu').not(this).prop('checked', false);  
-		});
 	</script>
 	<script>
 		$(document).ready(function(){
 			$("#checkcont").click(function(){
 				// var search = $(this).val();
-				$('input[type="checkbox"]:checked').each(function() {        // $(':checkbox:checked')
+				$('input[type="radio"]:checked').each(function() {        // $(':checkbox:checked')
 					$('#nama_pesan').val(this.value);
                     // $(this).val()
     			});

@@ -53,6 +53,11 @@ if(isset($_GET['pesan'])){
 							<p>Edit Data Berhasil !</p>
 						</div>
 						<?php }?>
+						<?php if(isset($_GET['error-edit'])){?>
+						<div class="alert alert-success">
+							<p>Edit Data Gagal !</p>
+						</div>
+						<?php }?>
 						<?php if(isset($_GET['remove'])){?>
 						<div class="alert alert-danger">
 							<p>Hapus Data Berhasil !</p>
@@ -94,7 +99,8 @@ if(isset($_GET['pesan'])){
 								?>
 									<tr>
 										<td><?php echo $no;?></td>
-										<td class='nama'><?php echo $isi[1];?></td>
+										<td hidden><?php echo $isi[0];?></td>
+										<td  class='id'><?php echo $isi[1];?></td>
 										<td><?php echo $isi[3];?></td>
 										<td>Rp.<?php echo number_format($isi[4]);?>,-</td>
 										<td  class="text-center">
@@ -164,7 +170,8 @@ if(isset($_GET['pesan'])){
 								?>
 									<tr>
 										<td><?php echo $no;?></td>
-										<td class='nama'><?php echo $isi[1];?></td>
+										<td hidden><?php echo $isi[0];?></td>
+										<td  class='id'><?php echo $isi[1];?></td>
 										<td><?php echo $isi[3];?></td>
 										<td>Rp.<?php echo number_format($isi[4]);?>,-</td>
 										<td  class="text-center">
@@ -235,7 +242,8 @@ if(isset($_GET['pesan'])){
 								?>
 									<tr>
 										<td><?php echo $no;?></td>
-										<td class='nama'><?php echo $isi[1];?></td>
+										<td hidden><?php echo $isi[0];?></td>
+										<td class='id'><?php echo $isi[1];?></td>
 										<td><?php echo $isi[3];?></td>
 										<td><?php echo $isi[4];?></td>
 										<td>Rp.<?php echo number_format($isi[5]);?>,-</td>
@@ -384,6 +392,10 @@ if(isset($_GET['pesan'])){
 										<div class="modal-body">
 									
 											<table class="table table-striped bordered">
+												<tr hidden>
+													<td>ID</td>
+													<td><input id="idpkt" type="number" class="form-control" name="idpkt"></td>
+												</tr>	
 												<tr>
 													<td>ID Role</td>
 													<td><input id="idrolepkt2" readonly type="text" placeholder="ID Role" required class="form-control" name="idrolepkt2"></td>
@@ -394,7 +406,10 @@ if(isset($_GET['pesan'])){
 												</tr>
 												<tr>
 													<td>Jenis</td>
-													<td><input id="jenispkt2" type="text" placeholder="Jenis" required class="form-control" name="jenis2"></td>
+													<td>
+														<input id="jenispkt2" type="text" placeholder="Jenis" required class="form-control" name="jenispkt2">
+														<ul class="auto-result" id="search-result4"></ul>
+													</td>
 												</tr>
 												<tr>
 													<td>Jumlah</td>
@@ -402,12 +417,12 @@ if(isset($_GET['pesan'])){
 												</tr>
 												<tr>
 													<td>Harga</td>
-													<td><input id="hrgpkt2" type="number" placeholder="Harga" required class="form-control"  name="hrg2"></td>
+													<td><input id="hrgpkt2" type="number" placeholder="Harga" required class="form-control"  name="hrgpkt2"></td>
 												</tr>
 											</table>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" name="updateSupp" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
+											<button type="submit" name="updateMenupkt" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
 											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										</div>
 									</form>
@@ -427,6 +442,10 @@ if(isset($_GET['pesan'])){
 										<div class="modal-body">
 									
 											<table class="table table-striped bordered">
+												<tr hidden>
+													<td>ID</td>
+													<td><input id="id" type="number" class="form-control" name="id"></td>
+												</tr>
 												<tr>
 													<td>ID Role</td>
 													<td><input id="idrole2" readonly type="text" placeholder="ID Role" required class="form-control" name="idrole2"></td>
@@ -437,16 +456,39 @@ if(isset($_GET['pesan'])){
 												</tr>
 												<tr>
 													<td>Jenis</td>
-													<td><input id="jenis2" type="text" placeholder="Jenis" required class="form-control" name="jenis2"></td>
+													<td>
+														<input id="jenis2" type="text" placeholder="Jenis" required class="form-control" name="jenis2">
+														<ul class="auto-result" id="search-result3"></ul>
+													</td>
 												</tr>
 												<tr>
 													<td>Harga</td>
 													<td><input id="hrg2" type="number" placeholder="Harga" required class="form-control"  name="hrg2"></td>
 												</tr>
+												<tr>
+													<td class="text-center" colspan="2">
+														<div class="checkbox-group required">
+															<div class="pretty p-icon p-round p-jelly">
+																<input type="checkbox" class="menu" name="menu" value="mkn"/>
+																<div class="state p-success">
+																<i class="icon fa fa-check"></i>
+																	<label>Makanan</label>
+																</div>
+															</div>
+															<div class="pretty p-icon p-round p-jelly">
+																<input type="checkbox" class="menu" name="menu" value="mnm"/>
+																<div class="state p-success">
+																<i class="icon fa fa-check"></i>
+																	<label>Minuman</label>
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
 											</table>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" name="updateSupp" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
+											<button type="submit" name="updateMenu" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
 											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										</div>
 									</form>
@@ -465,132 +507,195 @@ if(isset($_GET['pesan'])){
 			document.getElementById("rowcount3").innerHTML = rowCount3-2;
 		</script>
 		<script>
-		$(document).ready(function () {
-			$(document).on("click",".li-modal",function(){  
-				// var kd = $(this).attr('data-id');  
-				var nmmenu = $(this).closest('tr').find('.nama').text();
-						// console.log(kode);
-				$.ajax({  
-					url :"page/menu/edit_ajax.php",  
-					type:"POST",  
-					cache:false,
-					dataType:'json',  
-					data:{editNm:nmmenu},  
-					success:function(response){
-					// console.log(response);
-						$.each(response, function (key, value) { 
-							// console.log(value['nama']);
-								$('#idrolepkt2').val(value['role']);
-								$('#nmpkt2').val(value['nama']);
-								$('#jenis2').val(value['jenis']);
-								$('#hrg2').val(value['harga']);
-								$('#idrole2').val(value['role']);
-								$('#nmmenu2').val(value['nama']);
-								$('#jenispkt2').val(value['jenis']);
-								$('#jmlh2').val(value['jumlah']);
-								$('#hrgpkt2').val(value['harga']);
-						});
-					},  
-				});
-			});
-
-			$(document).on("change","#jenis",function(){
-				var nmsp = $("#jenis").val();
-				console.log(nmsp);
-				$.ajax({  
-					url :"page/menu/get_ajax.php",  
-					type:"POST",  
-					cache:false,
-					dataType:'json',  
-					data:{getJenis:$("#jenis").val()},
-					success:function(response){
+			$(document).ready(function () {
+				$(document).on("click",".li-modal",function(){  
+					// var kd = $(this).attr('data-id');  
+					var idmenu = $(this).closest('tr').find('.id').text();
+							// console.log(kode);
+					$.ajax({  
+						url :"page/menu/edit_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{editId:idmenu},  
+						success:function(response){
 						console.log(response);
-						$.each(response, function (key, value) { 
-							// console.log(value['id_supp']);
-							$('#idrole').val(value['id_role']);
+							$.each(response, function (key, value) { 
+								// console.log(value['nama']);
+									$('#id').val(value['id']);
+									$('#idrole2').val(value['role']);
+									$('#nmmenu2').val(value['nama']);
+									$('#jenis2').val(value['jenis']);
+									$('#hrg2').val(value['harga']);
+									$('#idpkt').val(value['id']);
+									$('#idrolepkt2').val(value['role']);
+									$('#nmpkt2').val(value['nama']);
+									$('#jenispkt2').val(value['jenis']);
+									$('#jmlh2').val(value['jumlah']);
+									$('#hrgpkt2').val(value['harga']);
+							});
+						},  
+					});
+				});
+
+				$(document).on("change","#jenis",function(){
+					var nmsp = $("#jenis").val();
+					console.log(nmsp);
+					$.ajax({  
+						url :"page/menu/get_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{getJenis:$("#jenis").val()},
+						success:function(response){
+							console.log(response);
+							$.each(response, function (key, value) { 
+								// console.log(value['id_supp']);
+								$('#idrole').val(value['id_role']);
+							});
+						},
+					});
+				});
+
+				$(document).on("change","#jenispkt",function(){
+					// console.log(nmsp);
+					$.ajax({  
+						url :"page/menu/get_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{getJenispkt:$("#jenispkt").val()},
+						success:function(response){
+							// console.log(response);
+							$.each(response, function (key, value) { 
+								// console.log(value['id_supp']);
+								$('#idrolepkt').val(value['id_role']);
+							});
+						}, 
+					});
+				});
+
+				$("#jenis").keyup(function(){
+					var search = $(this).val();
+					// console.log(search);
+					if (search !== "") {
+						$.ajax({  
+							url :"fungsi/autocomplete/autocomplete.php",  
+							type:"POST",  
+							cache:false,
+							data:{jenis:search},
+							success:function(data){
+								console.log(data);
+								$("#search-result").html(data);
+								$("#search-result").fadeIn();
+							},  
 						});
-					},
+					} else {
+						$("#search-result").html("");  
+						$("#search-result").fadeOut();
+					}
+				});
+
+				$("#jenis2").keyup(function(){
+					var search = $(this).val();
+					// console.log(search);
+					if (search !== "") {
+						$.ajax({  
+							url :"fungsi/autocomplete/autocomplete.php",  
+							type:"POST",  
+							cache:false,
+							data:{jenisEdit:search},
+							success:function(data){
+								console.log(data);
+								$("#search-result3").html(data);
+								$("#search-result3").fadeIn();
+							},  
+						});
+					} else {
+						$("#search-result3").html("");  
+						$("#search-result3").fadeOut();
+					}
+				});
+
+				$("#jenispkt").keyup(function(){
+					var search = $(this).val();
+					// console.log(search);
+					if (search !== "") {
+						$.ajax({  
+							url :"fungsi/autocomplete/autocomplete.php",  
+							type:"POST",  
+							cache:false,
+							data:{jenispkt:search},
+							success:function(data){
+								// console.log(data);
+								$("#search-result2").html(data);
+								$("#search-result2").fadeIn();
+							},  
+						});
+					} else {
+						$("#search-result2").html("");  
+						$("#search-result2").fadeOut();
+					}
+				});
+
+				$("#jenispkt2").keyup(function(){
+					var search = $(this).val();
+					// console.log(search);
+					if (search !== "") {
+						$.ajax({  
+							url :"fungsi/autocomplete/autocomplete.php",  
+							type:"POST",  
+							cache:false,
+							data:{jenispktEdit:search},
+							success:function(data){
+								// console.log(data);
+								$("#search-result4").html(data);
+								$("#search-result4").fadeIn();
+							},  
+						});
+					} else {
+						$("#search-result4").html("");  
+						$("#search-result4").fadeOut();
+					}
 				});
 			});
+			
+			function selectJenis(val) {
+					$("#jenis").val(val);
+					$.ajax({  
+						url :"page/menu/get_ajax.php",  
+						type:"POST",  
+						cache:false,
+						dataType:'json',  
+						data:{getJenis:$("#jenis").val()},
+						success:function(response){
+						console.log(response);
+							$.each(response, function (key, value) { 
+								// console.log(value['id_supp']);
+								$('#idrole').val(value['id_role']);
+							});
+						},  
+					});
+					$("#search-result").hide();
+			}
 
-			$(document).on("change","#jenispkt",function(){
-				// console.log(nmsp);
+			function selectJenisEdit(val) {
+				$("#jenis2").val(val);
 				$.ajax({  
 					url :"page/menu/get_ajax.php",  
 					type:"POST",  
 					cache:false,
 					dataType:'json',  
-					data:{getJenispkt:$("#jenispkt").val()},
-					success:function(response){
-						// console.log(response);
-						$.each(response, function (key, value) { 
-							// console.log(value['id_supp']);
-							$('#idrolepkt').val(value['id_role']);
-						});
-					}, 
-				});
-			});
-
-			$("#jenis").keyup(function(){
-				var search = $(this).val();
-				// console.log(search);
-				if (search !== "") {
-					$.ajax({  
-						url :"fungsi/autocomplete/autocomplete.php",  
-						type:"POST",  
-						cache:false,
-						data:{jenis:search},
-						success:function(data){
-							// console.log(data);
-							$("#search-result").html(data);
-							$("#search-result").fadeIn();
-						},  
-					});
-				} else {
-					$("#search-result").html("");  
-					$("#search-result").fadeOut();
-				}
-			});
-
-			$("#jenispkt").keyup(function(){
-				var search = $(this).val();
-				// console.log(search);
-				if (search !== "") {
-					$.ajax({  
-						url :"fungsi/autocomplete/autocomplete.php",  
-						type:"POST",  
-						cache:false,
-						data:{jenispkt:search},
-						success:function(data){
-							// console.log(data);
-							$("#search-result2").html(data);
-							$("#search-result2").fadeIn();
-						},  
-					});
-				} else {
-					$("#search-result2").html("");  
-					$("#search-result2").fadeOut();
-				}
-			});
-		});
-		
-		function selectJenis(val) {
-				$("#jenis").val(val);
-				$.ajax({  
-					url :"page/menu/get_ajax.php",  
-					type:"POST",  
-					cache:false,
-					dataType:'json',  
-					data:{getJenis:$("#jenis").val()},
+					data:{getJenis:$("#jenis2").val()},
 					success:function(response){
 					console.log(response);
 						$.each(response, function (key, value) { 
 							// console.log(value['id_supp']);
-							$('#idrole').val(value['id_role']);
+							$('#idrole2').val(value['id_role']);
 						});
 					},  
 				});
-				$("#search-result").hide();
+				$("#search-result3").hide();
 			}
 
 			function selectJenispkt(val) {
@@ -612,6 +717,25 @@ if(isset($_GET['pesan'])){
 				$("#search-result2").hide();
 			}
 
+			function selectJenispktEdit(val) {
+				$("#jenispkt2").val(val);
+				$.ajax({  
+					url :"page/menu/get_ajax.php",  
+					type:"POST",  
+					cache:false,
+					dataType:'json',  
+					data:{getJenispkt:$("#jenispkt2").val()},
+					success:function(response){
+						// console.log(response);
+						$.each(response, function (key, value) { 
+						// console.log(value['id_supp']);
+							$('#idrolepkt2').val(value['id_role']);
+						});
+					},  
+				});
+				$("#search-result2").hide();
+			}
+
 			$('input.menu').on('change', function() {
 				$('input.menu').not(this).prop('checked', false);  
 			});
@@ -619,5 +743,7 @@ if(isset($_GET['pesan'])){
 			$(document).click(function(){
 				$("#search-result").hide();
 				$("#search-result2").hide();
+				$("#search-result3").hide();
+				$("#search-result4").hide();
 			});
 		</script>

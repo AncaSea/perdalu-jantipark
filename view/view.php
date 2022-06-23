@@ -243,10 +243,10 @@
 				return $hasil;
 			}
 
-			function live_nila(){
+			function live_kakap(){
 				include 'db_con.php';
 
-				$sql = mysqli_query($dbconnect, "SELECT SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE jenis='nila' AND CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY jenis");
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE jenis='kakap' AND CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE) GROUP BY jenis");
 				if ($sql -> num_rows > 0) {
 					$row = mysqli_fetch_array($sql);
 					$hasil = $row['ttlpsn'];

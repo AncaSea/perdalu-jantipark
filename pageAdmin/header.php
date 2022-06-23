@@ -97,7 +97,7 @@
         width: auto;
       }
 
-      #search-result, #search-result2{
+      #search-result, #search-result2, #search-result3, #search-result4{
         cursor: pointer;
         position:absolute; 
         z-index: 2;
