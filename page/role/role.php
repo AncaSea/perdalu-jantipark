@@ -174,7 +174,7 @@ if(isset($_GET['pesan'])){
 											</table>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" name="updateSupp" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
+											<button type="submit" name="updateRole" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
 											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										</div>
 									</form>

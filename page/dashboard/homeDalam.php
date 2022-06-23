@@ -9,7 +9,7 @@
                 <hr>
                 <?php $income = $lihat -> omsetdlm();?>
                 <?php $livelele = $lihat -> live_lele();?>
-                <?php $livenila = $lihat -> live_nila();?>
+                <?php $livenila = $lihat -> live_kakap();?>
                 <?php $liveayam = $lihat -> live_ayam();?>
                 <div class="row">
                   <!--STATUS PANELS -->
