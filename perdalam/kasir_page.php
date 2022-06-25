@@ -231,7 +231,7 @@ if(isset($_GET['pesan'])){
 								<th>Harga</th>
 								<th>Qty</th>
 								<th>Sub Total</th>
-								<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
+								<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>		
 							</tr>
 							<?php if (isset($_SESSION['cartdlm'])): ?>
 							<?php foreach ($_SESSION['cartdlm'] as $key => $value) { ?>
@@ -259,7 +259,7 @@ if(isset($_GET['pesan'])){
 					</form>
 				</div>
 				<div class="col-md-4">
-					<h3 style="margin:0px 0px 15px 0px">Total Rp. <?=number_format($sum)?></h3>
+					<h3 style="margin:0px 0px 8px 0px">Total Rp. <?=number_format($sum)?></h3>
 					<form action="fungsi/keranjang_update.php" method="POST">
 						<input type="hidden" name="total" value="<?=$sum?>">
 					<div class="form-group" style="margin-bottom: 1em;">
