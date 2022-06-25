@@ -7,16 +7,17 @@
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.5/css/fixedHeader.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.2.4/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css">
     
     <!--external css-->
     <link href="assets/font-awesome/css/all.css" rel="stylesheet" />
     <link href="assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/datatables/dataTables.bootstrap.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="assets/datatables/dataTables.bootstrap.css"/> -->
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
     
     <!-- SweetAlert Popup -->
@@ -27,13 +28,18 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <!-- <link href="assets/css/style-responsive.css" rel="stylesheet"> -->
         
-        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="assets/datatables/jquery.dataTables.js"></script>
-        <script type="text/javascript" src="assets/datatables/dataTables.bootstrap.js"></script>
-        <script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
+        <!-- <script type="text/javascript" src="assets/js/bootstrap.min.js"></script> -->
+        <!-- <script type="text/javascript" src="assets/datatables/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="assets/datatables/dataTables.bootstrap.js"></script> -->
+        <!-- <script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script> -->
 
     <!--  jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.2.4/js/dataTables.fixedHeader.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
     
     <!-- Date Range Picker -->
     <!-- Include Required Prerequisites -->
