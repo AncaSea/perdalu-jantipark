@@ -36,9 +36,18 @@
 	<script type="text/javascript">
 		// datatable
 		$(function () {
-			$("#example1").DataTable();
-			$('#example2').DataTable();
-			$('#example3').DataTable();
+			var table1 = $("#example1").DataTable({
+				responsive: true
+			});
+            new $.fn.dataTable.FixedHeader( table1 );
+			var table2 = $('#example2').DataTable({
+				responsive: true
+			});
+            new $.fn.dataTable.FixedHeader( table2 );
+			var table3 = $('#example3').DataTable({
+				responsive: true
+			});
+            new $.fn.dataTable.FixedHeader( table3 );
 		});
         // document.addEventListener("mousewheel", this.mousewheel.bind(this), { passive: false });
         

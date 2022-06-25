@@ -113,7 +113,7 @@
 
 						<!-- view barang -->	
 						<div class="modal-view">
-							<table class="table table-bordered" id="example1">
+							<table class="table table-striped table-bordered nowrap" style="width: 100%;" id="example1">
 								<thead>
 									<tr style="background:#FFF000;color:#333;">
 										<th> No.</th>

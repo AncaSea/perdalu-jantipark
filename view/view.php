@@ -653,6 +653,19 @@
 				}
 			}
 
+			function livejualdlm(){
+				include 'db_con.php';
+
+				$sql = mysqli_query($dbconnect, "SELECT jenis,  FROM penjualan_dalam ORDER BY no_nota ASC");
+				if ($sql -> num_rows > 0) {
+					while ($row = mysqli_fetch_all($sql)) {
+						$hasil = $row;
+						// print_r($row);
+						return $hasil;
+					}
+				}
+			}
+
 			// function hari_jual($hari){
 			// 	$ex = explode('-', $hari);
 			// 	$monthNum  = $ex[1];

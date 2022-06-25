@@ -332,9 +332,15 @@ $lihat = new view($dbconnect);
 	<script type="text/javascript">
 		// datatable
 		$(function () {
-			$("#example1").DataTable();
-			$('#example2').DataTable();
-			$('#example3').DataTable();
+			$("#example1").DataTable({
+				responsive: true
+			});
+			$('#example2').DataTable({
+				responsive: true
+			});
+			$('#example3').DataTable({
+				responsive: true
+			});
 		});
     </script>
 	<script>
