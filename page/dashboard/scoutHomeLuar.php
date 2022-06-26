@@ -71,7 +71,7 @@ if(isset($_GET['pesan'])){
                   <!-- /col-md-3-->
               
                     <h4>Cari Laporan</h4>
-                    <form method="post" action="scout.php?page=dashboard/scoutHomeDalam&cari=ok">
+                    <form method="post" action="scout.php?page=dashboard/scoutHomeLuar&cari=ok">
                         <table class="table table-striped">
                         <tr>
                             <th>
@@ -90,7 +90,7 @@ if(isset($_GET['pesan'])){
                             <button class="btn btn-primary">
                                 <i class="fa fa-search"></i> Cari
                             </button>
-                            <a href="scout.php?page=dashboard/scoutHomeDalam" class="btn btn-success">
+                            <a href="scout.php?page=dashboard/scoutHomeLuar" class="btn btn-success">
                                 <i class="fa fa-refresh"></i> Refresh</a>
                             </td>
                         </tr>

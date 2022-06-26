@@ -676,7 +676,7 @@
 				}
 			}
 
-			function liveScoutminggu_jual($tgl1, $tgl2){
+			function liveScoutModalMinggu($tgl1, $tgl2){
 				include 'db_con.php';
 
 				$mnggAwl = date('Y-m-d', strtotime($tgl1));
@@ -684,65 +684,62 @@
 
 				$sql = mysqli_query($dbconnect, "SELECT SELECT SUM(total) AS modal FROM brg_masuk WHERE tgl_masuk BETWEEN '$mnggAwl' AND '$mnggAkhr'");
 				// $row =  $sql);
-				if ($sql -> num_rows > 0) {
-					while ($lap = mysqli_fetch_all($sql)) {
-						$hasil = $lap;
-						// print_r($hasil);
-						return $hasil;
-					}
+				$row = mysqli_fetch_array($sql);
+				// print_r($sql123);
+				if ($row['modal']<=0) {
+					$hasil = 0;
+				}else{
+					$hasil = $row['modal'];
 				}
+				return $hasil;
 			}
 
-			function liveScoutlaptransminggu($tgl1, $tgl2){
+			function liveScoutIncomeMinggu($tgl1, $tgl2){
 				include 'db_con.php';
 
 				$mnggAwl = date('Y-m-d', strtotime($tgl1));
 				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
 
-				$sql = "SELECT SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr'";
-				if ($result = mysqli_query($dbconnect, $sql)) {
-					$ttlpsn = mysqli_fetch_assoc($result);
-					if (!empty($ttlpsn['ttlpsn'])) {
-						$hasil = $ttlpsn['ttlpsn'];
-					} else {
-						$hasil = 0;
-					}
-					return $hasil;
-					// print_r($hasil);
+				$sql = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr'");
+				$row = mysqli_fetch_array($sql);
+				// print_r($sql123);
+				if ($row['omset']<=0) {
+					$hasil = 0;
+				}else{
+					$hasil = $row['omset'];
 				}
+				return $hasil;
 			}
 			
-			function liveScouthari_jual($tgl1){
+			function liveScoutModalHari($tgl1){
 				include 'db_con.php';
 
 				$now = date('Y-m-d', strtotime($tgl1));
 
-				$sql = mysqli_query($dbconnect, "SELECT jenis, SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE tgl_penjualan = '$now' GROUP BY jenis ASC");
-				// $row =  $sql);
-				if ($sql -> num_rows > 0) {
-					while ($lap = mysqli_fetch_all($sql)) {
-						$hasil = $lap;
-						// print_r($hasil);
-						return $hasil;
-					}
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total) AS modal FROM brg_masuk WHERE tgl_masuk = '$now'");
+				$row = mysqli_fetch_array($sql);
+				// print_r($sql123);
+				if ($row['modal']<=0) {
+					$hasil = 0;
+				}else{
+					$hasil = $row['modal'];
 				}
+				return $hasil;
 			}
 
-			function liveScoutlaptranshari($tgl1){
+			function liveScoutIncomeHari($tgl1){
 				include 'db_con.php';
 
 				$now = date('Y-m-d', strtotime($tgl1));
 
-				$sql = "SELECT SUM(total_pesan) AS ttlpsn FROM penjualan_dalam WHERE tgl_penjualan = '$now'";
-				if ($result = mysqli_query($dbconnect, $sql)) {
-					$ttlpsn = mysqli_fetch_assoc($result);
-					if (!empty($ttlpsn['ttlpsn'])) {
-						$hasil = $ttlpsn['ttlpsn'];
-					} else {
-						$hasil = 0;
-					}
-					return $hasil;
-					// print_r($hasil);
+				$sql = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan WHERE tgl_penjualan = '$now'");
+				$row = mysqli_fetch_array($sql);
+				// print_r($sql123);
+				if ($row['omset']<=0) {
+					$hasil = 0;
+				}else{
+					$hasil = $row['omset'];
 				}
+				return $hasil;
 			}
 	 }

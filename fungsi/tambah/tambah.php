@@ -111,13 +111,13 @@ session_start();
 		$q = mysqli_fetch_array($cekdb);
 
 		$ceksupp =  mysqli_query($dbconnect, "SELECT * FROM supplier WHERE id_supp = '$idsupp'");
-		$s = mysqli_fetch_array($cekdb);
+		$s = mysqli_fetch_array($ceksupp);
 
 		// print_r($kode);
 		
 		if ($kodebrg == $q['kode_brg'] && $nmsupp == $s['nama_supp']) {
 			$kode = $q['kode_brg'];
-			// $jum = $q['jumlah'];
+			$jum = $q['jumlah'];
 			// $j = $q['hrg_jual'];
 			$tmbh = $jum + $jmlh;
 			
