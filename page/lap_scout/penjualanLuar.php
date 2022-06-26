@@ -235,7 +235,7 @@
 									</tr>
 								</tfoot>
 							</table>
-							<a href="scout.php" class="btn btn-warning btn-md">Kembali</a>
+							<a href="scout.php?page=dashboard/scoutHomeLuar" class="btn btn-warning btn-md">Kembali</a>
 						</div>
 						<div class="clearfix" style="padding-top:5pc;"></div>
 					</div>

@@ -127,7 +127,7 @@ if(isset($_GET['pesan'])){
                   <div class="col-md-3">
                     <div class="panel panel-info">
                       <div class="panel-heading">
-                        <h5><i class="fa fa-desktop"></i> Penjualan Hari ini</h5>
+                        <h5><i class="fa fa-desktop"></i> Modal</h5>
                       </div>
                       <div class="panel-body">
                         <center><h1><?php echo ($modal);?></h1></center>
@@ -140,7 +140,7 @@ if(isset($_GET['pesan'])){
                   <div class="col-md-3">
                     <div class="panel panel-danger">
                       <div class="panel-heading">
-                        <h5><i class="fa fa-desktop"></i> Income Hari ini</h5>
+                        <h5><i class="fa fa-desktop"></i> Income</h5>
                       </div>
                       <div class="panel-body">
                         <center><h1><?php echo ($income);?></h1></center>
