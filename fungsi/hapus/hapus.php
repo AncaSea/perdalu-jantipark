@@ -26,7 +26,7 @@ if(!empty($_SESSION['namaadmin'])){
 	if(!empty($_GET['stok'])){
 		$id= $_GET['id'];
 		// $data[] = $id;
-		$sql = "DELETE FROM stok_brg WHERE id='$id'";
+		$sql = "DELETE FROM stok_brg WHERE kode_brg='$id'";
 		$del = mysqli_query($dbconnect, $sql);
 		echo '<script>window.location="../../admin.php?page=stok/stok&accordion=on&active=yes&remove=hapus-data"</script>';
 	}

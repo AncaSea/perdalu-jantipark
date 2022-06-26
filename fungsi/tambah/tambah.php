@@ -106,37 +106,39 @@ session_start();
 		$ttl = $beli * $jmlh;
 
 		// JATAHMU REKKK
-		$sql = mysqli_query($dbconnect, "INSERT INTO 
-		brg_masuk (id,kode_brg,id_supp,tgl_masuk,nama_supp,nama_brg,jumlah,hrg_satuan, hrg_jual, total) 
-		VALUES ('', '$kodebrg','$idsupp','$tgl','$nmsupp','$nmbrg','$jmlh','$beli','$jual','$ttl')");
 		
 		$cekdb =  mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrg'");
 		$q = mysqli_fetch_array($cekdb);
 
+		$ceksupp =  mysqli_query($dbconnect, "SELECT * FROM supplier WHERE id_supp = '$idsupp'");
+		$s = mysqli_fetch_array($ceksupp);
+
 		// print_r($kode);
 		
-		if ($kodebrg == $q['kode_brg'] && $nmsupp == $q['nama_supp']) {
+		if ($kodebrg == $q['kode_brg'] && $nmsupp == $s['nama_supp']) {
 			$kode = $q['kode_brg'];
-			// $jum = $q['jumlah'];
+			$jum = $q['jumlah'];
 			// $j = $q['hrg_jual'];
 			$tmbh = $jum + $jmlh;
 			
 			$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh', hrg_beli='$beli', hrg_jual='$jual' WHERE kode_brg='$kode'");
 
-			// if ($jual == $j) {
-			// 	$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh', hrg_beli='$beli' WHERE kode_brg='$kode'");
-			// } else {
-			// 	$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh', hrg_beli='$beli', hrg_jual='$jual' WHERE kode_brg='$kode'");
-			// }
+			$sql = mysqli_query($dbconnect, "INSERT INTO 
+			brg_masuk (id,kode_brg,id_supp,tgl_masuk,nama_supp,nama_brg,jumlah,hrg_satuan, hrg_jual, total) 
+			VALUES ('', '$kodebrg','$idsupp','$tgl','$nmsupp','$nmbrg','$jmlh','$beli','$jual','$ttl')");
 
-		} else if ($kodebrg == $q['kode_brg'] && $nmsupp !== $q['nama_supp']) {
+			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&accordion=on&active=yes&success=tambah-data"</script>';
+		} else if ($kodebrg == $q['kode_brg'] && $nmsupp !== $s['nama_supp']) {
 			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&pesan=unique"</script>';
-		} else {
+		} else if ($kodebrg !== $q['kode_brg'] && $nmsupp == $s['nama_supp']) {
 			$sql1 = mysqli_query($dbconnect, "INSERT INTO 
 			stok_brg (kode_brg,nama_supp,nama_brg,jumlah,hrg_beli,hrg_jual) 
 			VALUES ('$kodebrg','$nmsupp','$nmbrg','$jmlh','$beli','$jual')");
-		}		
-		echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&accordion=on&active=yes&success=tambah-data"</script>';
+
+			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&accordion=on&active=yes&success=tambah-data"</script>';
+		} else {
+			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&pesan=nullsupp"</script>';
+		}
 	}	
 	if(!empty($_GET['barangkmbl'])){
 		$idsupp = $_POST['idsupp'];

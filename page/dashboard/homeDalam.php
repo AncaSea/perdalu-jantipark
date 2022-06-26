@@ -133,7 +133,7 @@
                       <th> Tgl Penjualan</th> -->
                       <!-- <th> Nama Pesanan</th> -->
                       <th style="width:20%;"> jenis</th>
-                      <th style="width:20%;"> Jumlah</th>
+                      <th style="width:20%;"> Jumlah Terjual</th>
                       <!-- <th> Harga Jual</th> -->
                       <!-- <th> Harga</th> -->
                     </tr>
@@ -155,35 +155,34 @@
                               $no=1;
                               $omset = 0;
                               $jumlah = 0;
-                              // $bayar = 0;
-                              $cekdata = $lihat -> minggu_jualdlm($tgl1, $tgl2);
+                              $cekdata = $lihat -> liveminggu_jualdlm($tgl1, $tgl2);
                               if (!empty($cekdata)) {
                                 $hasil = $cekdata;
                               } else {
                                 $hasil = [];
                               }
-                              $transaksi = $lihat -> laptransminggudlm($tgl1, $tgl2);
+                              $transaksi = $lihat -> livelaptransminggudlm($tgl1, $tgl2);
                           } else {
                             $no=1; 
                             $jumlah = 0;
                             $omset = 0;
-                            $cekdata = $lihat -> hari_jualdlm($tgl1);
+                            $cekdata = $lihat -> livehari_jualdlm($tgl1);
                             // print_r($cekdata);
                             if (!empty($cekdata)) {
                               $hasil = $cekdata;
                             } else {
                               $hasil = [];
                             }
-                            $transaksi = $lihat -> laptransharidlm($tgl1);
+                            $transaksi = $lihat -> livelaptransharidlm($tgl1);
                           }
                       } else {
-                        $cekdata = $lihat -> lapjualdlm();
+                        $cekdata = $lihat -> livejualdlm();
                         if (!empty($cekdata)) {
                           $hasil = $cekdata;
                         } else {
                           $hasil = [];
                         }
-                        $transaksi = $lihat -> laptransdlm();
+                        $transaksi = $lihat -> livetransdlm();
                       }
                     ?>
                     <?php 
@@ -192,7 +191,7 @@
                       // error_reporting(E_ERROR | E_PARSE);
                       foreach($hasil as $isi){
                         // print_r($isi);
-                        $omset += $isi[10];
+                        // $omset += $isi[10];
                         // $modal += $isi['harga_beli']* $isi['jumlah'];
                         // $jumlah += $isi['jumlah'];
                     ?>
@@ -202,8 +201,8 @@
                       <!-- <td><?php echo $isi[3];?></td> -->
                       <!-- <td><?php echo $isi[4];?> </td> -->
                       <!-- <td><?php echo $isi[5];?> </td> -->
-                      <td><?php echo $isi[7];?> </td>
-                      <td><?php echo $isi[8];?> </td>
+                      <td><?php echo $isi[0];?> </td>
+                      <td><?php echo $isi[1];?> </td>
                       <!-- <td>Rp.<?php echo number_format($isi[10]);?>,-</td> -->
                       <!-- <td>Rp.<?php echo number_format($isi[11]);?>,-</td> -->
                     </tr>
