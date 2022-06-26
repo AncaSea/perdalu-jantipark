@@ -205,12 +205,12 @@ $lihat = new view($dbconnect);
 							  <thead>
 								  <tr style="background:#FFF000;color:#333;">
 									  <th> No.</th>
-									  <th style="width:10%;"> No Nota</th>
+									  <th> No Nota</th>
 									  <th> Nama Kasir</th>
 									  <th> Tgl Penjualan</th>
 									  <th> Nama Pesanan</th>
-									  <th style="width:10%;"> jenis</th>
-									  <th style="width:10%;"> Jumlah</th>
+									  <th> jenis</th>
+									  <th> Jumlah</th>
 									  <th> Harga Jual</th>
 									  <th> Harga</th>
 								  </tr>
