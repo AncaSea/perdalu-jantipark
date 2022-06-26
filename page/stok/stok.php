@@ -78,9 +78,9 @@
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 											<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>">
-											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
-											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
+											<!-- <a href="../fungsi/hapus/hapus.php?stok=hapus&id=<?php echo $isi[0];?>">
+												<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
+											</a> -->
 										</td>
 									</tr>
 								<?php 
@@ -128,7 +128,7 @@
 														</tr>
 														<tr>
 															<td>Nama Barang</td>
-															<td><input id="nmbrg" type="text" readonly placeholder="Nama Barang" value="" required class="form-control" name="nmbrg"></td>
+															<td><input id="nmbrg" type="text" placeholder="Nama Barang" value="" required class="form-control" name="nmbrg"></td>
 														</tr>
 														<tr>
 															<td>Jumlah Stok</td>
