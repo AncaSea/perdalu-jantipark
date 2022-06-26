@@ -153,6 +153,7 @@ if(isset($_GET['pesan'])){
                 </div>
               </div>
             </div><!-- /col-lg-9 END SECTION MIDDLE -->
+            <a href="scout.php" class="btn btn-warning btn-md " style="margin-left: 2em ;">Kembali</a>    
                 
     <!-- **********************************************************************************************************************************************************
     RIGHT SIDEBAR CONTENT
