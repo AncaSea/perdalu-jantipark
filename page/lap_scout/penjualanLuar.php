@@ -62,7 +62,7 @@
 				<script type="text/javascript">
 
 					swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
-						window.location = "admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes";
+						window.location = "scout.php?page=lap_scout/penjualanLuar&accordion=on&active=yes";
 					});
 
 				</script>
@@ -88,7 +88,7 @@
 						<hr>
 
 						<h4>Cari Laporan</h4>
-						<form method="post" action="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&cari=ok">
+						<form method="post" action="scout.php?page=lap_scout/penjualanLuar&accordion=on&active=yes&cari=ok">
 							<table class="table table-striped">
 								<tr>
 									<th>
@@ -106,7 +106,7 @@
 										<button class="btn btn-primary">
 											<i class="fa fa-search"></i> Cari
 										</button>
-										<a href="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes" class="btn btn-success">
+										<a href="scout.php?page=lap_scout/penjualanLuar&accordion=on&active=yes" class="btn btn-success">
 											<i class="fa fa-refresh"></i> Refresh</a>
 											
 										<?php if(!empty($_GET['cari'])){?>

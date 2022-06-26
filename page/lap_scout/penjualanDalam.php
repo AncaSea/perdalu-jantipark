@@ -54,7 +54,7 @@
 				<script type="text/javascript">
 
 					swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
-						window.location = "admin.php?page=lap_scout/penjualanDalam";
+						window.location = "scout.php?page=lap_scout/penjualanDalam";
 					});
 
 				</script>

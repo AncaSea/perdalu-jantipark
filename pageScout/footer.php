@@ -27,8 +27,8 @@
     <script src="assets/js/jquery.sparkline.js"></script>
 
     <!-- Datatable Script -->
-	<script src="assets/datatables/jquery.dataTables.min.js"></script>
-	<script src="assets/datatables/dataTables.bootstrap.min.js"></script>
+	<!-- <script src="assets/datatables/jquery.dataTables.min.js"></script> -->
+	<!-- <script src="assets/datatables/dataTables.bootstrap.min.js"></script> -->
 
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
