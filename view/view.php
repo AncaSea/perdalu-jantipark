@@ -682,7 +682,7 @@
 				$mnggAwl = date('Y-m-d', strtotime($tgl1));
 				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
 
-				$sql = mysqli_query($dbconnect, "SELECT SELECT SUM(total) AS modal FROM brg_masuk WHERE tgl_masuk BETWEEN '$mnggAwl' AND '$mnggAkhr'");
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total) AS modal FROM brg_masuk WHERE tgl_masuk BETWEEN '$mnggAwl' AND '$mnggAkhr'");
 				// $row =  $sql);
 				$row = mysqli_fetch_array($sql);
 				// print_r($sql123);
@@ -733,6 +733,39 @@
 				$now = date('Y-m-d', strtotime($tgl1));
 
 				$sql = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan WHERE tgl_penjualan = '$now'");
+				$row = mysqli_fetch_array($sql);
+				// print_r($sql123);
+				if ($row['omset']<=0) {
+					$hasil = 0;
+				}else{
+					$hasil = $row['omset'];
+				}
+				return $hasil;
+			}
+
+			function liveScoutIncomeMingguDalam($tgl1, $tgl2){
+				include 'db_con.php';
+
+				$mnggAwl = date('Y-m-d', strtotime($tgl1));
+				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan_dalam WHERE tgl_penjualan BETWEEN '$mnggAwl' AND '$mnggAkhr'");
+				$row = mysqli_fetch_array($sql);
+				// print_r($sql123);
+				if ($row['omset']<=0) {
+					$hasil = 0;
+				}else{
+					$hasil = $row['omset'];
+				}
+				return $hasil;
+			}
+
+			function liveScoutIncomeHariDalam($tgl1){
+				include 'db_con.php';
+
+				$now = date('Y-m-d', strtotime($tgl1));
+
+				$sql = mysqli_query($dbconnect, "SELECT SUM(hrg) AS omset FROM penjualan_dalam WHERE tgl_penjualan = '$now'");
 				$row = mysqli_fetch_array($sql);
 				// print_r($sql123);
 				if ($row['omset']<=0) {
