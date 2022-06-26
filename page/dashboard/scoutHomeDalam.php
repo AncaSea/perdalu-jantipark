@@ -136,7 +136,7 @@ if(isset($_GET['pesan'])){
                   </div>
                   <div class="col-lg-12">
                       <div class="modal-view">
-                        <table class="table table-bordered" id="example1">
+                        <table class="table table-striped table-bordered nowrap" style="width: 100%;" id="example1">
                             <thead>
                             <tr style="background:#FFF000;color:#333;">
                                 <th style="width:10%;"> No.</th>
@@ -186,6 +186,7 @@ if(isset($_GET['pesan'])){
                             </tr>
                             </tfoot>
                         </table>
+                        <a href="scout.php" class="btn btn-warning btn-md">Kembali</a>
                       </div>
                   </div>
                 </div>
