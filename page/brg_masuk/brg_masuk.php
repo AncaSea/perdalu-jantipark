@@ -3,6 +3,9 @@ if(isset($_GET['pesan'])){
 	if($_GET['pesan'] == "unique") {
 			$_SESSION['error'] = 'Masukkan Nama Barang Unik';
 	}
+	if($_GET['pesan'] == "nullsupp") {
+		$_SESSION['error'] = 'Masukkan Supplier Terlebih Dahulu';
+	}
 }
 ?>
  <!--sidebar end-->
