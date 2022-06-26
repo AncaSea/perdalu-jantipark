@@ -28,7 +28,7 @@ if(!empty($_SESSION['namaadmin'])){
 
 		$updb =  "UPDATE supplier SET nama_supp='$nmsupp', no_hp='$nohp', alamat='$almt' WHERE id_supp='$idsupp'";
 		$query = mysqli_query($dbconnect, $updb);
-		
+		//babi
 		if ($query) {
 			echo '<script>window.location="../../admin.php?page=supplier/supplier&accordion=on&active=yes&success-edit=edit-data"</script>';
 		} else {

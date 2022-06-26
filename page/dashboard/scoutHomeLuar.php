@@ -112,11 +112,11 @@ if(isset($_GET['pesan'])){
                             $Y = date("Y",strtotime($tgl1));
                             // echo $tgl1;
                                 if ($D1 !== $D2) {
-                                        $modal = $lihat -> minggu_jualdlm($tgl1, $tgl2);
-                                        $income = $lihat -> laptransminggudlm($tgl1, $tgl2);
+                                        $modal = $lihat -> liveScoutModalMinggu($tgl1, $tgl2);
+                                        $income = $lihat -> liveScoutIncomeMinggu($tgl1, $tgl2);
                                 } else {
-                                    $modal = $lihat -> hari_jualdlm($tgl1);
-                                    $income = $lihat -> laptransharidlm($tgl1);
+                                    $modal = $lihat -> liveScoutModalHari($tgl1);
+                                    $income = $lihat -> liveScoutIncomeHari($tgl1);
                                 }
                         } else {
                             $modal = $lihat -> modal();
