@@ -127,7 +127,10 @@
 <section id="container">
       <header class="header black-bg">
                 <!--logo start-->
-                <a href="admin.php" class="logo"><b>Janti Park</b> <small style="padding-left:5px;font-size:13px;">Ngendo, Janti, Kecamatan Polanharjo, Kabupaten Klaten, Jawa Tengah 57474</small></a>
+                <a href="scout.php" class="logo">
+                  <b>Janti Park</b>
+                  <!-- <small style="padding-left:5px;font-size:13px;">Ngendo, Janti, Kecamatan Polanharjo, Kabupaten Klaten, Jawa Tengah 57474</small> -->
+                </a>
                 <!--logo end-->
                 <!-- <div class="nav notify-row" id="top_menu">
                 </div> -->

@@ -19,7 +19,7 @@
                         <!-- <center><h1><?php print_r ($supp);?></h1></center> -->
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='scout.php?page=lap_scout/penjualanLuar'>Laporan  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='scout.php?page=dashboard/scoutHomeLuar'>Dashboard  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div>
                   </div>
@@ -34,7 +34,7 @@
                         <!-- <center><h1><?php echo ($stok);?></h1></center> -->
                       </div>
                       <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='scout.php?page=lap_scout/penjualanDalam'>Laporan  <i class='fa fa-angle-double-right'></i></a></h4>
+                        <h4 style="font-size:15px;font-weight:700;"><a href='scout.php?page=dashboard/scoutHomeDalam'>Dashboard  <i class='fa fa-angle-double-right'></i></a></h4>
                       </div>
                     </div>
                   </div>
