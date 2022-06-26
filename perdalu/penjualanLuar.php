@@ -12,37 +12,53 @@ $lihat = new view($dbconnect);
 	<head>
 		<title>Kasir Perdagangan Dalam</title>
 
-			<!-- Bootstrap core CSS -->
-			<!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-			<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-			rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-			crossorigin="anonymous">
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+		<!-- Bootstrap core CSS -->
+		<!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.2.4/css/fixedHeader.bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css">
+		
+		<!--external css-->
+		<link href="assets/font-awesome/css/all.css" rel="stylesheet" />
+		<link href="assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
+		<!-- <link rel="stylesheet" type="text/css" href="assets/datatables/dataTables.bootstrap.css"/> -->
+		<link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+		
+		<!-- SweetAlert Popup -->
+			<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
-			<!--external css-->
-			<link href="../assets/font-awesome/css/all.css" rel="stylesheet" />
-			<link href="../assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
-			<link rel="stylesheet" type="text/css" href="../assets/datatables/dataTables.bootstrap.css"/>
-			<link rel="stylesheet" type="text/css" href="../assets/lineicons/style.css">
+		<!-- Custom styles for this template -->
+		<link href="assets/css/style.css" rel="stylesheet">
+		<!-- <link href="assets/css/style-responsive.css" rel="stylesheet"> -->
+			
+			<!-- <script type="text/javascript" src="assets/js/bootstrap.min.js"></script> -->
+			<!-- <script type="text/javascript" src="assets/datatables/jquery.dataTables.js"></script>
+			<script type="text/javascript" src="assets/datatables/dataTables.bootstrap.js"></script> -->
+			<!-- <script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script> -->
 
-			<!-- SweetAlert Popup -->
-				<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
-				<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+		<!--  jQuery -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.2.4/js/dataTables.fixedHeader.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
+		
+		<!-- Date Range Picker -->
+		<!-- Include Required Prerequisites -->
+		<!-- <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script> -->
+		<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" /> -->
+		<!-- Include Date Range Picker -->
+		<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
-			<!-- Custom styles for this template -->
-			<!-- <link href="../assets/css/style.css" rel="stylesheet"> -->
-			<!-- <link href="assets/css/style-responsive.css" rel="stylesheet"> -->
-				
-				<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-				<script type="text/javascript" src="../assets/datatables/jquery.dataTables.js"></script>
-				<script type="text/javascript" src="../assets/datatables/dataTables.bootstrap.js"></script>
-				<script type="text/javascript" src="../assets/js/jquery-2.2.3.min.js"></script>
-
-			<!--  jQuery -->
-			<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<!-- pretty-checkbox -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
 
 		<style>
 			.bd-placeholder-img {
@@ -312,15 +328,18 @@ $lihat = new view($dbconnect);
 	<script type="text/javascript">
 		// datatable
 		$(function () {
-			$("#example1").DataTable({
+			var table1 = $("#example1").DataTable({
 				responsive: true
 			});
-			$('#example2').DataTable({
+            new $.fn.dataTable.FixedHeader( table1 );
+			var table2 = $('#example2').DataTable({
 				responsive: true
 			});
-			$('#example3').DataTable({
+            new $.fn.dataTable.FixedHeader( table2 );
+			var table3 = $('#example3').DataTable({
 				responsive: true
 			});
+            new $.fn.dataTable.FixedHeader( table3 );
 		});
     </script>
 	<script>
