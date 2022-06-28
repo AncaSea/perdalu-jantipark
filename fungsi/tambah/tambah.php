@@ -2,16 +2,7 @@
 session_start();
 // if(!empty($_SESSION['admin'])){
 	require '../../db_con.php';
-	// if(!empty($_GET['kategori'])){
-	// 	$nama= $_POST['kategori'];
-	// 	$tgl= date("j F Y, G:i");
-	// 	$data[] = $nama;
-	// 	$data[] = $tgl;
-	// 	$sql = 'INSERT INTO kategori (nama_kategori,tgl_input) VALUES(?,?)';
-	// 	$row = $config -> prepare($sql);
-	// 	$row -> execute($data);
-	// 	echo '<script>window.location="../../index.php?page=kategori&success=tambah-data"</script>';
-	// }
+
 	if(!empty($_GET['supplier'])){
 		$idsupp = $_POST['idsupp'];
 		$nmsupp = $_POST['nmsupp'];
@@ -175,18 +166,5 @@ session_start();
 		} else {
 			echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&pesan=nulldata"</script>';
 		}
-
-		// $sql = mysqli_query($dbconnect, "INSERT INTO 
-		// brg_kembali (id,kode_brg,id_supp,nama_supp,sisa_brg,tgl_kembali) 
-		// VALUES ('', '$kodebrg','$idsupp','$nmsupp','$jmlh','$tgl')");
-
-		// $cekdb =  mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrg'");
-		// $q = mysqli_fetch_array($cekdb);
-		// $kode = $q['kode_brg'];
-		// $jum = $q['jumlah'];
-		// $tmbh = $jum - $jmlh;
-		// $sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
-
-		// echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&success-kmbl=tambah-data"</script>';
 	}
 ?>
