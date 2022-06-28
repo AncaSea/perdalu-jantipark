@@ -37,6 +37,12 @@ if (isset($_POST['masuk'])) {
         
                 header('location:admin.php?page=dashboard/home');
             }
+        } else {
+            $_SESSION['namaadmin'] = $data['nama_admin'];
+            $_SESSION['user'] = $data['username'];
+            $_SESSION['pwd'] = $data['password'];
+    
+            header('location:scout.php');
         }
     } else if ($kasir -> num_rows > 0){
         $cekrole = mysqli_fetch_assoc($kasir);
