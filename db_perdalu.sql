@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Jun 2022 pada 17.50
+-- Waktu pembuatan: 28 Jun 2022 pada 14.03
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -63,7 +63,8 @@ CREATE TABLE `brg_kembali` (
 
 INSERT INTO `brg_kembali` (`id`, `kode_brg`, `id_supp`, `nama_supp`, `sisa_brg`, `tgl_kembali`) VALUES
 (1, 'kb0015', 'sp0142', 'wakidi', 100, '2022-05-20\r\n'),
-(2, 'kb0055', 'sp0001', 'mukidi', 10, '2022-05-26');
+(2, 'kb0055', 'sp0001', 'mukidi', 10, '2022-05-26'),
+(6, 'kb0015', 'sp0142', 'wakidi', 3, '2022-06-28');
 
 -- --------------------------------------------------------
 
@@ -117,7 +118,8 @@ INSERT INTO `brg_masuk` (`id`, `kode_brg`, `id_supp`, `tgl_masuk`, `nama_supp`, 
 (64, 'sp3482', 'sp0005', '2022-06-20', 'andika', 'getuk', 1, 1000, 2000, 1000),
 (66, 'sp3482', 'sp0009', '2022-06-26', 'reka', 'getuk', 3, 2000, 4000, 6000),
 (67, 'sp3482', 'sp0009', '2022-06-26', 'reka', 'getuk', 2, 2000, 4000, 4000),
-(68, 'sp3482', 'sp0009', '2022-06-26', 'reka', 'getuk', 2, 2000, 4000, 4000);
+(68, 'sp3482', 'sp0009', '2022-06-26', 'reka', 'getuk', 2, 2000, 4000, 4000),
+(70, 'kb0071', 'sp0051', '2022-06-28', 'pudidi', 'sweater', 5, 20000, 25000, 100000);
 
 -- --------------------------------------------------------
 
@@ -280,7 +282,8 @@ INSERT INTO `penjualan` (`id_nota`, `no_nota`, `username`, `nama_kasir`, `tgl_pe
 (100, 560801, 'admin', 'admin1', '2022-06-20', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
 (101, 885626, 'admin', 'admin1', '2022-06-20', 'kb0015', 'baju polo', 1, 25000, 25000, 40000),
 (102, 885626, 'admin', 'admin1', '2022-06-20', 'kb0055', 'celana pendek', 1, 15000, 15000, 40000),
-(103, 377053, '', '', '2022-06-23', 'kb0015', 'baju polo', 1, 21000, 21000, 21000);
+(103, 377053, '', '', '2022-06-23', 'kb0015', 'baju polo', 1, 21000, 21000, 21000),
+(104, 784533, 'admin', 'admin1', '2022-06-28', 'kb0055', 'celana pendek', 1, 15000, 15000, 15000);
 
 -- --------------------------------------------------------
 
@@ -392,10 +395,10 @@ CREATE TABLE `stok_brg` (
 --
 
 INSERT INTO `stok_brg` (`kode_brg`, `nama_supp`, `nama_brg`, `jumlah`, `hrg_beli`, `hrg_jual`) VALUES
-('kb0015', 'wakidi', 'baju polo', 9978, 10000, 15000),
-('kb0055', 'mukidi', 'celana pendek', 10032, 10000, 15000),
+('kb0015', 'wakidi', 'baju polo', 9975, 10000, 15000),
+('kb0055', 'mukidi', 'celana pendek', 10031, 10000, 15000),
 ('kb0057', 'odin', 'kaos', 9992, 15000, 20000),
-('kb0071', 'pudidi', 'sweater', 9977, 20000, 25000),
+('kb0071', 'pudidi', 'sweater', 9980, 20000, 25000),
 ('kb0083', 'yudi', 'jeans', 9992, 30000, 35000),
 ('sp2854', 'andika', 'arem arem', 50, 7000, 8000),
 ('sp3482', 'reka', 'getuk', 7, 2000, 4000),
@@ -427,7 +430,8 @@ INSERT INTO `supplier` (`id`, `id_supp`, `nama_supp`, `no_hp`, `alamat`) VALUES
 (4, 'sp0067', 'yudi', 85463642472, 'tulung\r\n'),
 (5, 'sp0142', 'wakidi', 81351463153, 'cabeyan'),
 (7, 'sp0009', 'reka', 746775735852, 'delanggu'),
-(9, 'sp0005', 'andika', 36454677, 'kts');
+(9, 'sp0005', 'andika', 36454677, 'kts'),
+(13, 'sp7448', 'ade', 358163481, 'grogol');
 
 --
 -- Indexes for dumped tables
@@ -526,13 +530,13 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT untuk tabel `brg_kembali`
 --
 ALTER TABLE `brg_kembali`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `brg_masuk`
 --
 ALTER TABLE `brg_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT untuk tabel `makanan`
@@ -562,7 +566,7 @@ ALTER TABLE `paket_barbar`
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan_dalam`
@@ -586,7 +590,7 @@ ALTER TABLE `role_akun`
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
