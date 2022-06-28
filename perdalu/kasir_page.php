@@ -129,7 +129,7 @@ if(isset($_GET['pesan'])){
     </style>
 	</head>
 	<body>
-		<div class="container" style="margin-top: 2em;">
+		<div  style="margin:2em;" content="width=device-width, initial-scale=1.0">
         <?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
             <script type="text/javascript">
 

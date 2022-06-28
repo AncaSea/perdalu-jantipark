@@ -143,7 +143,7 @@ $lihat = new view($dbconnect);
 	<?php }
 			$_SESSION['error'] = '';
 	?>
-	<div class="container" style="margin-top: 2em;">
+	<div style="margin:2em;" content="width=device-width, initial-scale=1.0">
 		<div class="row">
 			<div class="col-lg-12 main-chart"><h4 style="float: right; display: inline-block;margin-top:1em"><?php echo date('d F Y'); ?></h4>
 				<h3>
