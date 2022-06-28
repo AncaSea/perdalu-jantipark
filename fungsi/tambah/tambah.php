@@ -115,7 +115,7 @@ session_start();
 
 		// print_r($kode);
 		
-		if ($kodebrg == $q['kode_brg'] && $nmsupp == $s['nama_supp']) {
+		if ($kodebrg == $q['kode_brg'] && $nmsupp == $q['nama_supp']) {
 			$kode = $q['kode_brg'];
 			$jum = $q['jumlah'];
 			// $j = $q['hrg_jual'];
@@ -127,15 +127,15 @@ session_start();
 			brg_masuk (id,kode_brg,id_supp,tgl_masuk,nama_supp,nama_brg,jumlah,hrg_satuan, hrg_jual, total) 
 			VALUES ('', '$kodebrg','$idsupp','$tgl','$nmsupp','$nmbrg','$jmlh','$beli','$jual','$ttl')");
 
-			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&accordion=on&active=yes&success=tambah-data"</script>';
-		} else if ($kodebrg == $q['kode_brg'] && $nmsupp !== $s['nama_supp']) {
+			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&success=tambah-data"</script>';
+		} else if ($kodebrg == $q['kode_brg'] && $nmsupp !== $q['nama_supp']) {
 			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&pesan=unique"</script>';
 		} else if ($kodebrg !== $q['kode_brg'] && $nmsupp == $s['nama_supp']) {
 			$sql1 = mysqli_query($dbconnect, "INSERT INTO 
 			stok_brg (kode_brg,nama_supp,nama_brg,jumlah,hrg_beli,hrg_jual) 
 			VALUES ('$kodebrg','$nmsupp','$nmbrg','$jmlh','$beli','$jual')");
 
-			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&accordion=on&active=yes&success=tambah-data"</script>';
+			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&success=tambah-data"</script>';
 		} else {
 			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&pesan=nullsupp"</script>';
 		}
@@ -150,51 +150,43 @@ session_start();
 		$beli = $_POST['beli'];
 		$ttl = $beli * $jmlh;
 
-		$sql = mysqli_query($dbconnect, "INSERT INTO 
-		brg_kembali (id,kode_brg,id_supp,nama_supp,sisa_brg,tgl_kembali) 
-		VALUES ('', '$kodebrg','$idsupp','$nmsupp','$jmlh','$tgl')");
-
 		$cekdb =  mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrg'");
 		$q = mysqli_fetch_array($cekdb);
-		$kode = $q['kode_brg'];
-		$jum = $q['jumlah'];
-		$tmbh = $jum - $jmlh;
-		$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
 
-		echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&success-kmbl=tambah-data"</script>';
-	}
-
-	// if(!empty($_GET['jual'])){
-	// 	$id = $_GET['id'];
+		$ceksupp =  mysqli_query($dbconnect, "SELECT * FROM supplier WHERE id_supp = '$idsupp'");
+		$s = mysqli_fetch_array($ceksupp);
 		
-	// 	// get tabel barang id_barang 
-	// 	$sql = 'SELECT * FROM barang WHERE id_barang = ?';
-	// 	$row = $config->prepare($sql);
-	// 	$row->execute(array($id));
-	// 	$hsl = $row->fetch();
-
-	// 	if($hsl['stok'] > 0)
-	// 	{
-	// 		$kasir =  $_GET['id_kasir'];
-	// 		$jumlah = 1;
-	// 		$total = $hsl['harga_jual'];
-	// 		$tgl = date("j F Y, G:i");
+		if ($kodebrg == $q['kode_brg'] && $nmsupp == $q['nama_supp']) {
+			$kode = $q['kode_brg'];
+			$jum = $q['jumlah'];
+			$tmbh = $jum - $jmlh;
 			
-	// 		$data1[] = $id;
-	// 		$data1[] = $kasir;
-	// 		$data1[] = $jumlah;
-	// 		$data1[] = $total;
-	// 		$data1[] = $tgl;
-			
-	// 		$sql1 = 'INSERT INTO penjualan (id_barang,id_member,jumlah,total,tanggal_input) VALUES (?,?,?,?,?)';
-	// 		$row1 = $config -> prepare($sql1);
-	// 		$row1 -> execute($data1);
+			$sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
 
-	// 		echo '<script>window.location="../../index.php?page=jual&success=tambah-data"</script>';
+			$sql = mysqli_query($dbconnect, "INSERT INTO 
+			brg_kembali (id,kode_brg,id_supp,nama_supp,sisa_brg,tgl_kembali) 
+			VALUES ('', '$kodebrg','$idsupp','$nmsupp','$jmlh','$tgl')");
 
-	// 	}else{
-	// 		echo '<script>alert("Stok Barang Anda Telah Habis !");
-	// 				window.location="../../index.php?page=jual#keranjang"</script>';
-	// 	}
-	// }
-// }
+			echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&accordion=on&active=yes&success-kmbl=tambah-data"</script>';
+		} else if ($kodebrg == $q['kode_brg'] && $nmsupp !== $q['nama_supp']) {
+			echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&accordion=on&active=yes&pesan=nullbrg"</script>';
+		} else if ($kodebrg !== $q['kode_brg'] && $nmsupp == $s['nama_supp']) {
+			echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&pesan=nullsupp"</script>';
+		} else {
+			echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&pesan=nulldata"</script>';
+		}
+
+		// $sql = mysqli_query($dbconnect, "INSERT INTO 
+		// brg_kembali (id,kode_brg,id_supp,nama_supp,sisa_brg,tgl_kembali) 
+		// VALUES ('', '$kodebrg','$idsupp','$nmsupp','$jmlh','$tgl')");
+
+		// $cekdb =  mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrg'");
+		// $q = mysqli_fetch_array($cekdb);
+		// $kode = $q['kode_brg'];
+		// $jum = $q['jumlah'];
+		// $tmbh = $jum - $jmlh;
+		// $sql1 = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah='$tmbh' WHERE kode_brg='$kode'");
+
+		// echo '<script>window.location="../../admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&success-kmbl=tambah-data"</script>';
+	}
+?>
