@@ -34,10 +34,8 @@
 
 			function barangmsk(){
 				include 'db_con.php';
-				// $sql = mysqli_query($dbconnect, "SELECT brg_masuk.*, stok_brg.kode_brg, stok_brg.hrg_jual
-				// 					 FROM brg_masuk INNER JOIN stok_brg on brg_masuk.kode_brg=stok_brg.kode_brg 
-				// 					 ORDER BY nama_brg ASC");
-				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk ORDER BY nama_brg ASC");
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk ORDER BY tgl_masuk DESC");
 				if ($sql -> num_rows > 0) {
 					while ($row = mysqli_fetch_all($sql)) {
 						$hasil = $row;
@@ -47,11 +45,44 @@
 				}
 			}
 
+			function minggu_jualbrgmsk($tgl1, $tgl2){
+				include 'db_con.php';
+
+				$mnggAwl = date('Y-m-d', strtotime($tgl1));
+				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk WHERE tgl_masuk BETWEEN '$mnggAwl' AND '$mnggAkhr' ORDER BY kode_brg ASC");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
+			function hari_jualbrgmsk($tgl1){
+				include 'db_con.php';
+
+				$now = date('Y-m-d', strtotime($tgl1));
+
+				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk WHERE tgl_masuk = '$now' ORDER BY kode_brg ASC");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
 			function barangkmbl(){
 				include 'db_con.php';
 				$sql = mysqli_query($dbconnect, "SELECT brg_kembali.*, stok_brg.kode_brg, stok_brg.hrg_beli, stok_brg.nama_brg
-									 FROM brg_kembali INNER JOIN stok_brg on brg_kembali.kode_brg=stok_brg.kode_brg 
-									 ORDER BY nama_brg ASC");
+									 FROM brg_kembali INNER JOIN stok_brg on brg_kembali.kode_brg=stok_brg.kode_brg
+									 ORDER BY tgl_kembali DESC");
 				if ($sql -> num_rows > 0) {
 					while ($row = mysqli_fetch_all($sql)) {
 						$hasil = $row;
@@ -61,6 +92,43 @@
 				}
 			}
 			
+			function minggu_jualbrgkmbl($tgl1, $tgl2){
+				include 'db_con.php';
+
+				$mnggAwl = date('Y-m-d', strtotime($tgl1));
+				$mnggAkhr = date('Y-m-d', strtotime($tgl2));
+
+				$sql = mysqli_query($dbconnect, "SELECT brg_kembali.*, stok_brg.kode_brg, stok_brg.hrg_beli, stok_brg.nama_brg
+									FROM brg_kembali INNER JOIN stok_brg on brg_kembali.kode_brg=stok_brg.kode_brg
+									WHERE tgl_kembali BETWEEN '$mnggAwl' AND '$mnggAkhr' ORDER BY kode_brg ASC");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
+			function hari_jualbrgkmbl($tgl1){
+				include 'db_con.php';
+
+				$now = date('Y-m-d', strtotime($tgl1));
+
+				$sql = mysqli_query($dbconnect, "SELECT brg_kembali.*, stok_brg.kode_brg, stok_brg.hrg_beli, stok_brg.nama_brg
+									FROM brg_kembali INNER JOIN stok_brg on brg_kembali.kode_brg=stok_brg.kode_brg
+									WHERE tgl_kembali = '$now' ORDER BY stok_brg.kode_brg ASC");
+				// $row =  $sql);
+				if ($sql -> num_rows > 0) {
+					while ($lap = mysqli_fetch_all($sql)) {
+						$hasil = $lap;
+						// print_r($hasil);
+						return $hasil;
+					}
+				}
+			}
+
 			function barang_id(){
 				include 'db_con.php';
 				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk ORDER BY id ASC");
@@ -304,7 +372,7 @@
 			function lapjual(){
 				include 'db_con.php';
 
-				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan ORDER BY no_nota ASC");
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan ORDER BY tgl_penjualan DESC");
 				if ($sql -> num_rows > 0) {
 					while ($row = mysqli_fetch_all($sql)) {
 						$hasil = $row;
@@ -418,7 +486,7 @@
 				// $mnggAkhr = date('Y-m-"%'.$tgl2.'%"');
 				// $mnggAkhr = date('Y-m-d', strtotime($tgl2));
 
-				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE tgl_penjualan = '$now' GROUP BY no_nota");
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE tgl_penjualan = '$now' ORDER BY no_nota ASC");
 				// $row =  $sql);
 				if ($sql -> num_rows > 0) {
 					while ($lap = mysqli_fetch_all($sql)) {
@@ -481,7 +549,7 @@
 
 				$now = date('Y-m-d', strtotime($tgl1));
 
-				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE tgl_penjualan = '$now' GROUP BY no_nota");
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE tgl_penjualan = '$now' ORDER BY no_nota ASC");
 				// $row =  $sql);
 				if ($sql -> num_rows > 0) {
 					while ($lap = mysqli_fetch_all($sql)) {
@@ -508,7 +576,7 @@
 			function lapjualdlm(){
 				include 'db_con.php';
 
-				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam ORDER BY no_nota ASC");
+				$sql = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam ORDER BY tgl_penjualan DESC");
 				if ($sql -> num_rows > 0) {
 					while ($row = mysqli_fetch_all($sql)) {
 						$hasil = $row;
