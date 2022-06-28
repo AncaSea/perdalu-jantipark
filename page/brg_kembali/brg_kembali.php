@@ -12,8 +12,32 @@ if(isset($_GET['pesan'])){
 	if($_GET['pesan'] == "nulldata") {
 		$_SESSION['error'] = 'Data Tidak Ada';
 	}
+	if($_GET['pesan'] == "error1") {
+		$_SESSION['error'] = 'Pilih Tanggal dan Tahun';
+	}
+
+	if($_GET['pesan'] == "error2") {
+		$_SESSION['error'] = 'Pilih Tanggal Awal dan Tanggal Akhir';
+	}
 }
 ?>
+<script>
+	$(document).ready(function () {
+		$('#demo').daterangepicker({
+			// locale: {
+			// 	format: 'YYYY-MM-DD'
+			// },
+			"showDropdowns": true,
+			"autoApply": true,
+			"startDate": new Date(),
+			"endDate": new Date(),
+			"opens": "right",
+			"drops": "auto"
+		}, function(start, end, label) {
+			console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+		});
+	});
+</script>
  <!--sidebar end-->
       
       <!-- **********************************************************************************************************************************************************
@@ -52,15 +76,60 @@ if(isset($_GET['pesan'])){
 
 						<!-- Trigger the modal with a button -->
 						
-						<button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
+						<!-- <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
 							<i class="fa fa-plus"></i> Insert Data</button>
 							<a href="admin.php?page=brg_kembali/brg_kembali" style="margin-right :0.5pc;" 
 								class="btn btn-success btn-md pull-right">
-								<i class="fa fa-refresh"></i> Refresh Data</a>
+								<i class="fa fa-refresh"></i> Refresh Data</a> -->
 						<!-- <a href="login_admin.php?page=barang&stok=yes" style="margin-right :0.5pc;" 
 							class="btn btn-warning btn-md pull-right">
 							<i class="fa fa-list"></i> Sortir Stok Kurang</a> -->
 						<div class="clearfix"></div>
+						<div class="clearfix" style="margin-top:1em;"></div>
+						
+						<h4>Cari Laporan</h4>
+						<form method="post" action="admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes&cari=ok">
+							<table class="table table-striped">
+								<tr>
+									<th>
+										Pilih Tanggal
+									</th>
+									<th>
+										Aksi
+									</th>
+								</tr>
+								<tr>
+									<td>
+										<input name="cari" type="text" id="demo" class="form-control">
+									</td>
+									<td>
+										<input type="hidden" name="periode" value="ya">
+										<button class="btn btn-primary">
+											<i class="fa fa-search"></i> Cari
+										</button>
+										<a href="admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes" class="btn btn-success">
+											<i class="fa fa-refresh"></i> Refresh</a>
+											
+										<?php if(!empty($_GET['cari'])){?>
+											<a href="../../excel.php?cari=<?php echo $_POST['cari'];?>&lap=kmbl" class="btn btn-info"><i class="fa fa-download"></i>
+											Excel</a>
+										<?php }else{?>
+											<a href="../../excel.php?lap=kmbl" class="btn btn-info"><i class="fa fa-download"></i>
+											Excel</a>
+										<?php }?>
+										<button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
+											<i class="fa fa-plus"></i> Insert Data</button>
+										<!-- <a href="admin.php?page=brg_kembali/brg_kembali" style="margin-right :0.5pc;" 
+											class="btn btn-success btn-md pull-right">
+											<i class="fa fa-refresh"></i> Refresh Data</a> -->
+									</td>
+								</tr>
+							</table>
+						</form>
+
+						<div class="clearfix" style="margin-top:1em;"></div>
+						
+						<div class="clearfix" style="border-top:1px solid #ccc;"></div>
 						<br/>
 						
 						<!-- view barang -->	
@@ -81,13 +150,52 @@ if(isset($_GET['pesan'])){
 									</tr>
 								</thead>
 								<tbody>
-
 								<?php 
+									$no=1;
 									$totalBeli = 0;
 									$totalJual = 0;
 									$totalStok = 0;
-									$hasil = $lihat -> barangkmbl();
-									$no=1;
+									if(!empty($_GET['cari'])) {
+										$ranges = explode(' - ', $_POST['cari']);
+										$tgl1 = $ranges[0];
+										$tgl2 = $ranges[1];
+										$D1 = date("d",strtotime($tgl1));
+										$D2 = date("d",strtotime($tgl2));
+										$M1 = date("m",strtotime($tgl1));
+										$M2 = date("m",strtotime($tgl2));
+										$Y = date("Y",strtotime($tgl1));
+										// echo $tgl1;
+											if ($D1 !== $D2) {
+													$cekdata = $lihat -> minggu_jualbrgkmbl($tgl1, $tgl2);
+													if (!empty($cekdata)) {
+														$hasil = $cekdata;
+													} else {
+														$hasil = [];
+													}
+													// $transaksi = $lihat -> laptransminggudlm($tgl1, $tgl2);
+											} else {
+												$cekdata = $lihat -> hari_jualbrgkmbl($tgl1);
+												// print_r($cekdata);
+												if (!empty($cekdata)) {
+													$hasil = $cekdata;
+												} else {
+													$hasil = [];
+												}
+												// $transaksi = $lihat -> laptransharidlm($tgl1);
+											}
+									} else {
+										// $cekdata = $lihat -> lapjualdlm();
+										$cekdata = $lihat -> barangkmbl();
+										if (!empty($cekdata)) {
+											$hasil = $cekdata;
+										} else {
+											$hasil = [];
+										}
+										// $transaksi = $lihat -> laptransdlm();
+									}
+								?>
+								<?php 
+									// $no=1;
 									foreach($hasil as $isi) {
 										$_SESSION['id'] = $isi[0];
 								?>

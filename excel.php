@@ -28,13 +28,25 @@
                 <?php }else{?>
                     Data Laporan Penjualan Dalam <?= date('Y');?>
                 <?php }?>
-            <?php }else{?>
+            <?php }else if ($_GET['lap'] == 'luar') {?>
                 <?php if(!empty($_GET['cari'])){?>
                     Data Laporan Penjualan Luar <?= $_GET['cari'];?>
                 <?php }else{?>
                     Data Laporan Penjualan Luar <?= date('Y');?>
                 <?php }?>
-            <?php }?>
+            <?php } else if ($_GET['lap'] == 'msk') {?>
+                <?php if(!empty($_GET['cari'])){?>
+                    Data Laporan Barang Masuk <?= $_GET['cari'];?>
+                <?php }else{?>
+                    Data Laporan Barang Masuk <?= date('Y');?>
+                <?php }?>
+            <?php } else { ?>
+                <?php if(!empty($_GET['cari'])){?>
+                    Data Laporan Barang Kembali <?= $_GET['cari'];?>
+                <?php }else{?>
+                    Data Laporan Barang Kembali <?= date('Y');?>
+                <?php }?>
+            <?php } ?>
         </h3>
         <?php if($_GET['lap'] == 'dalam'){?>
             <table border="1" width="100%" cellpadding="3" cellspacing="4">
@@ -133,7 +145,7 @@
                     </tr>
                 </tfoot>
             </table>
-        <?php }else{?>
+        <?php }else if($_GET['lap'] == 'luar'){?>
             <table border="1" width="100%" cellpadding="3" cellspacing="4">
                 <thead>
                     <tr style="background:#FFF000;color:#333;">
@@ -245,7 +257,206 @@
                     </tr>
                 </tfoot>
             </table>
-        <?php }?>
+        <?php } else if($_GET['lap'] == 'msk'){?>
+            <table border="1" width="100%" cellpadding="3" cellspacing="4">
+                <thead>
+                    <tr style="background:#fff000;color:#333;">
+                        <th>No.</th>
+                        <th>ID Supplier</th>
+                        <th>Nama Supplier</th>
+                        <th>Kode Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Tanggal Masuk</th>
+                        <th>Jumlah</th>
+                        <th>Harga Beli</th>
+                        <th>Harga Jual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                    $no=1;
+                    $totalBeli = 0;
+                    $totalJual = 0;
+                    $totalStok = 0;
+                    if(!empty($_GET['cari'])) {
+                        $ranges = explode(' - ', $_GET['cari']);
+                        $tgl1 = $ranges[0];
+                        $tgl2 = $ranges[1];
+                        $D1 = date("d",strtotime($tgl1));
+                        $D2 = date("d",strtotime($tgl2));
+                        $M1 = date("m",strtotime($tgl1));
+                        $M2 = date("m",strtotime($tgl2));
+                        $Y = date("Y",strtotime($tgl1));
+                        // echo $tgl1;
+                            if ($D1 !== $D2) {
+                                    $cekdata = $lihat -> minggu_jualbrgmsk($tgl1, $tgl2);
+                                    if (!empty($cekdata)) {
+                                        $hasil = $cekdata;
+                                    } else {
+                                        $hasil = [];
+                                    }
+                                    // $transaksi = $lihat -> laptransminggubrgmsk($tgl1, $tgl2);
+                            } else {
+                                $no=1; 
+                                $jumlah = 0;
+                                $omset = 0;
+                                $cekdata = $lihat -> hari_jualbrgmsk($tgl1);
+                                // print_r($cekdata);
+                                if (!empty($cekdata)) {
+                                    $hasil = $cekdata;
+                                } else {
+                                    $hasil = [];
+                                }
+                                // $transaksi = $lihat -> laptransharidlm($tgl1);
+                            }
+                    } else {
+                        // $cekdata = $lihat -> lapjualdlm();
+                        $cekdata = $lihat -> barangmsk();
+                        if (!empty($cekdata)) {
+                            $hasil = $cekdata;
+                        } else {
+                            $hasil = [];
+                        }
+                        // $transaksi = $lihat -> laptransdlm();
+                    }
+                ?>
+                <?php 
+                    // $no=1;
+                    foreach($hasil as $isi) {
+                        $_SESSION['id'] = $isi[0];
+                        // echo($_SESSION['id']);
+                ?>
+                    <tr>
+                        <td><?php echo $no;?></td>
+                        <td><?php echo $isi[2];?></td>
+                        <td><?php echo $isi[4];?></td>
+                        <td><?php echo $isi[1];?></td>
+                        <td><?php echo $isi[5];?></td>
+                        <td><?php echo $isi[3];?></td>
+                        <td><?php echo $isi[6];?></td>
+                        <!-- <td>
+                            <?php if($isi[3] == '0'){?>
+                                <button class="btn btn-danger"> Habis</button>
+                            <?php }else{?>
+                                <?php echo $isi[3];?>
+                            <?php }?>
+                        </td> -->
+                        <td>Rp.<?php echo number_format($isi[7]);?>,-</td>
+                        <td>Rp.<?php echo number_format($isi[8]);?>,-</td>
+                    </tr>
+                <?php 
+                        $no++; 
+                        $totalBeli += $isi[6] * $isi[7]; 
+                        $totalJual += $isi[6] * $isi[8];
+                        // $totalStok += $isi['3'];
+                    }
+                ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="6">Total </td>
+                        <th style="background:red;color:#fff;">Modal</th>
+                        <th style="background:red;color:#fff;">Rp.<?php echo number_format($totalBeli);?>,-</td>
+                        <th>Rp.<?php echo number_format($totalJual);?>,-</td>
+                        <!-- <th colspan="1" style="background:#ddd"></th> -->
+                    </tr>
+                </tfoot>
+            </table>
+        <?php } else { ?>
+            <table border="1" width="100%" cellpadding="3" cellspacing="4">
+                <thead>
+                    <tr style="background:#FFF000;color:#333;">
+                        <th>No.</th>
+                        <th>ID Supplier</th>
+                        <th>Nama Supplier</th>
+                        <th>Kode Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Tanggal Masuk</th>
+                        <th>Sisa Barang</th>
+                        <th>Harga Supplier</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                    $no=1;
+                    $totalBeli = 0;
+                    $totalJual = 0;
+                    $totalStok = 0;
+                    if(!empty($_GET['cari'])) {
+                        $ranges = explode(' - ', $_GET['cari']);
+                        $tgl1 = $ranges[0];
+                        $tgl2 = $ranges[1];
+                        $D1 = date("d",strtotime($tgl1));
+                        $D2 = date("d",strtotime($tgl2));
+                        $M1 = date("m",strtotime($tgl1));
+                        $M2 = date("m",strtotime($tgl2));
+                        $Y = date("Y",strtotime($tgl1));
+                        // echo $tgl1;
+                            if ($D1 !== $D2) {
+                                    $cekdata = $lihat -> minggu_jualbrgkmbl($tgl1, $tgl2);
+                                    if (!empty($cekdata)) {
+                                        $hasil = $cekdata;
+                                    } else {
+                                        $hasil = [];
+                                    }
+                                    // $transaksi = $lihat -> laptransminggudlm($tgl1, $tgl2);
+                            } else {
+                                $cekdata = $lihat -> hari_jualbrgkmbl($tgl1);
+                                // print_r($cekdata);
+                                if (!empty($cekdata)) {
+                                    $hasil = $cekdata;
+                                } else {
+                                    $hasil = [];
+                                }
+                                // $transaksi = $lihat -> laptransharidlm($tgl1);
+                            }
+                    } else {
+                        // $cekdata = $lihat -> lapjualdlm();
+                        $cekdata = $lihat -> barangkmbl();
+                        if (!empty($cekdata)) {
+                            $hasil = $cekdata;
+                        } else {
+                            $hasil = [];
+                        }
+                        // $transaksi = $lihat -> laptransdlm();
+                    }
+                ?>
+                <?php 
+                    // $no=1;
+                    foreach($hasil as $isi) {
+                        $_SESSION['id'] = $isi[0];
+                ?>
+                    <tr>
+                        <td><?php echo $no;?></td>
+                        <td><?php echo $isi[2];?></td>
+                        <td><?php echo $isi[3];?></td>
+                        <td><?php echo $isi[1];?></td>
+                        <td><?php echo $isi[8];?></td>
+                        <td><?php echo $isi[5];?></td>
+                        <td><?php echo $isi[4];?></td>
+
+                        <td>Rp.<?php echo number_format($isi[7]);?>,-</td>
+                        <td>Rp.<?php echo number_format($isi[4] * $isi[7]);?>,-</td>
+                    </tr>
+                <?php 
+                        $no++; 
+                        $totalBeli += $isi[4] * $isi[7]; 
+                        // $totalJual += $isi[10];
+                        // $totalStok += $isi['3'];
+                    }
+                ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="8">Total </td>
+                        <th>Rp.<?php echo number_format($totalBeli);?>,-</td>
+                        <!-- <th>Rp.<?php echo number_format($totalJual);?>,-</td> -->
+                        <!-- <th colspan="1" style="background:#ddd"></th> -->
+                    </tr>
+                </tfoot>
+            </table>
+        <?php } ?>
     </div>
 </body>
 </html>
