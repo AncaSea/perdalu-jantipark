@@ -206,10 +206,10 @@
 											<i class="fa fa-refresh"></i> Refresh</a>
 											
 										<?php if(!empty($_GET['cari'])){?>
-											<a href="excel.php?cari=yes&bln=" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="../../excel.php?cari=<?php echo $_POST['cari'];?>&lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }else{?>
-											<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="../../excel.php?lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }?>
 									</td>

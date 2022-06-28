@@ -3,7 +3,7 @@ require '../db_con.php';
 session_start();
 // include 'authcheckkasir.php';
 
-include $viewksrdlm;
+include $viewksr;
 $lihat = new view($dbconnect);
 
 ?>

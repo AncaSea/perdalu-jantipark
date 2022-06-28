@@ -1,4 +1,19 @@
-
+<?php
+if(isset($_GET['pesan'])){
+	if($_GET['pesan'] == "unique") {
+			$_SESSION['error'] = 'Masukkan Nama Barang Unik';
+	}
+	if($_GET['pesan'] == "nullsupp") {
+		$_SESSION['error'] = 'Supplier Tidak Ada';
+	}
+	if($_GET['pesan'] == "nullbrg") {
+		$_SESSION['error'] = 'Barang Tidak Ada';
+	}
+	if($_GET['pesan'] == "nulldata") {
+		$_SESSION['error'] = 'Data Tidak Ada';
+	}
+}
+?>
  <!--sidebar end-->
       
       <!-- **********************************************************************************************************************************************************
@@ -13,7 +28,17 @@
 				  <h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
 						<h3>Data Barang Kembali</h3>
 						<hr/>
+						<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
+							<script type="text/javascript">
 
+							swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
+								window.location = "admin.php?page=brg_kembali/brg_kembali&accordion=on&active=yes";
+							});
+
+							</script>
+						<?php }
+							$_SESSION['error'] = '';
+						?>
 						<?php if(isset($_GET['success-kmbl'])){?>
 						<div class="alert alert-success">
 							<p>Tambah Data Berhasil !</p>

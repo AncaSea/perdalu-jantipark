@@ -55,7 +55,7 @@
 					console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 				});
 			});
-		  </script>
+		</script>
       <section id="main-content">
           <section class="wrapper">
 			<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
@@ -83,70 +83,6 @@
 						</h3>
 						<hr>
 						
-						
-
-						<!-- <h4>Cari Laporan Per Bulan</h4>
-						<form method="post" action="admin.php?page=lap_penjualan/penjualan&bulan=ok">
-							<table class="table table-striped">
-								<tr>
-									<th>
-										Pilih Bulan
-									</th>
-									<th>
-										Pilih Tahun
-									</th>
-									<th>
-										Aksi
-									</th>
-								</tr>
-								<tr>
-								<td>
-								<select name="bln" class="form-control">
-									<option selected="selected">Bulan</option>
-									<?php
-										$bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
-										$jlh_bln=count($bulan);
-										$bln1 = array('01','02','03','04','05','06','07','08','09','10','11','12');
-										$no=1;
-										for($c=0; $c<$jlh_bln; $c+=1){
-											echo"<option value='$bln1[$c]'> $bulan[$c] </option>";
-										$no++;}
-									?>
-									</select>
-								</td>
-								<td>
-								<?php
-									$now=date('Y');
-									echo "<select required name='thn' class='form-control'>";
-									echo '
-									<option selected="selected">Tahun</option>';
-									for ($a=2017;$a<=$now;$a++)
-									{
-										echo "<option value='$a'>$a</option>";
-									}
-									echo "</select>";
-									?>
-								</td>
-								<td>
-									<input type="hidden" name="periode" value="ya">
-									<button class="btn btn-primary">
-										<i class="fa fa-search"></i> Cari
-									</button>
-									<a href="admin.php?page=lap_penjualan/penjualan" class="btn btn-success">
-										<i class="fa fa-refresh"></i> Refresh</a>
-										
-									<?php if(!empty($_GET['cari'])){?>
-										<a href="excel.php?cari=yes&bln=<?=$_POST['bln'];?>&thn=<?=$_POST['thn'];?>" class="btn btn-info"><i class="fa fa-download"></i>
-										Excel</a>
-									<?php }else{?>
-										<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
-										Excel</a>
-									<?php }?>
-								</td>
-								</tr>
-							</table>
-						</form> -->
-						
 						<div class="clearfix" style="margin-top:1em;"></div>
 						
 						<h4>Cari Laporan</h4>
@@ -156,9 +92,6 @@
 									<th>
 										Pilih Tanggal
 									</th>
-									<!-- <th>
-										Pilih Tanggal Akhir
-									</th> -->
 									<th>
 										Aksi
 									</th>
@@ -176,10 +109,10 @@
 											<i class="fa fa-refresh"></i> Refresh</a>
 											
 										<?php if(!empty($_GET['cari'])){?>
-											<a href="excel.php?cari=yes&bln=" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="../../excel.php?cari=<?php echo $_POST['cari'];?>&lap=dalam" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }else{?>
-											<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="../../excel.php?lap=dalam" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }?>
 									</td>
@@ -188,41 +121,6 @@
 						</form>
 
 						<div class="clearfix" style="margin-top:1em;"></div>
-						
-						<!-- <h4>Cari Laporan Per Hari</h4>
-						<form method="post" action="admin.php?page=lap_penjualan/penjualan&hari=cek">
-							<table class="table table-striped">
-								<tr>
-									<th>
-										Pilih Hari
-									</th>
-									<th>
-										Aksi
-									</th>
-								</tr>
-								<tr>
-								<td>
-									<input type="date" value="<?= date('Y-m-d');?>" class="form-control" name="hari">
-								</td>
-								<td>
-									<input type="hidden" name="periode" value="ya">
-									<button class="btn btn-primary">
-										<i class="fa fa-search"></i> Cari
-									</button>
-									<a href="admin.php?page=lap_penjualan/penjualan" class="btn btn-success">
-										<i class="fa fa-refresh"></i> Refresh</a>
-										
-									<?php if(!empty($_GET['hari'])){?>
-										<a href="excel.php?hari=cek&tgl=<?= $_POST['hari'];?>" class="btn btn-info"><i class="fa fa-download"></i>
-										Excel</a>
-									<?php }else{?>
-										<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
-										Excel</a>
-									<?php }?>
-								</td>
-								</tr>
-							</table>
-						</form> -->
 						
 						<div class="clearfix" style="border-top:1px solid #ccc;"></div>
 	
