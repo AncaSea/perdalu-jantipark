@@ -87,8 +87,8 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				<th>===== Layanan Konsumen ====</th>
 			</tr>
 			<tr>
-				<th>WA : 085895986529 <br> 
-					IG : jantipark_klaten <br></th>
+				<th>WA : 0812-1500-7979 <br> 
+					IG : jantipark.klaten <br></th>
 			</tr>
 		</table>
 	</div>

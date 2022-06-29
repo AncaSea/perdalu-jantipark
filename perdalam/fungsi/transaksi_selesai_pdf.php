@@ -83,7 +83,7 @@ $trx = mysqli_fetch_assoc($data);
 				<th>===== Layanan Konsumen ====</th>
 			</tr>
 			<tr>
-				<th>SMS/CALL 085895986529 </th>
+				<th>SMS/CALL 0812-1500-7979 </th>
 			</tr>
 		</table>
 	</div>
