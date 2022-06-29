@@ -134,7 +134,7 @@ if(isset($_GET['pesan'])){
             <script type="text/javascript">
 
 				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
-					window.location = "admin.php?page=kasir/kasirLuar&accordion=on&active=yes";
+					window.location = "kasir_page.php";
 				});
 
             </script>

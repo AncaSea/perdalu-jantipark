@@ -94,7 +94,7 @@ if (isset($_POST['nama_brg'])) {
             // krsort($_SESSION['cart']);
         }
     }else{
-        header("location../../../../:admin.php?page=kasir/kasirLuar&accordion=on&active=yes&pesan=notindatabase");
+        header("location:../../../../admin.php?page=kasir/kasirLuar&accordion=on&active=yes&pesan=notindatabase");
     }
 
 }

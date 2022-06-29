@@ -74,6 +74,8 @@ if (isset($_POST['nama_pesan'])) {
                 }else{
                     header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=notindatabase");
                 }
+            } else {
+                header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=notindatabase");
             }
         }
 	}
