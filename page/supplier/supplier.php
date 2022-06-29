@@ -162,7 +162,7 @@ if(isset($_GET['pesan'])){
 												</tr>
 												<tr>
 													<td>No. HP</td>
-													<td><input id="nohp" type="number" placeholder="nohp" required class="form-control" name="nohp"></td>
+													<td><input id="nohp" type="tel" placeholder="nohp" required class="form-control" name="nohp"></td>
 												</tr>
 												<tr>
 													<td>Alamat</td>
@@ -201,11 +201,11 @@ if(isset($_GET['pesan'])){
 												</tr>
 												<tr>
 													<td>No. HP</td>
-													<td><input id="nohp2" type="number" placeholder="nohp" required class="form-control" name="nohp2"></td>
+													<td><input id="nohp2" type="tel" placeholder="nohp" required class="form-control" name="nohp2"></td>
 												</tr>
 												<tr>
 													<td>Alamat</td>
-													<td><input id="almt2" type="text" placeholder="alamat" required class="form-control"  name="almt2"></td>
+													<td><input id="almt2" type="text" placeholder="alamat" required class="form-control" name="almt2"></td>
 												</tr>
 											</table>
 										</div>
@@ -220,6 +220,11 @@ if(isset($_GET['pesan'])){
               	</div>
           	</section>
 		  <script type="text/javascript">
+			function phoneMask() { 
+				var num = $(this).val().replace(/\D/g,''); 
+				$(this).val(num.substring(0,3) + '-' + num.substring(3,6) + '-' + num.substring(6,9) + '-' + num.substring(9,12)); 
+			}
+			$('[type="tel"]').keyup(phoneMask);
 			$(document).ready(function () {
 				$(document).on("click",".li-modal",function(){  
                 // var kd = $(this).attr('data-id');  

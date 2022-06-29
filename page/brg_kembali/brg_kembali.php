@@ -164,7 +164,8 @@ if(isset($_GET['pesan'])){
 										$M1 = date("m",strtotime($tgl1));
 										$M2 = date("m",strtotime($tgl2));
 										$Y = date("Y",strtotime($tgl1));
-										// echo $tgl1;
+										echo $_POST['cari'];
+										// echo $tgl2;
 											if ($D1 !== $D2) {
 													$cekdata = $lihat -> minggu_jualbrgkmbl($tgl1, $tgl2);
 													if (!empty($cekdata)) {

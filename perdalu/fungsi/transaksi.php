@@ -12,7 +12,7 @@ $bayar = preg_replace('/\D/', '', $_SESSION['byr']);
 $tanggal_waktu = date('Y-m-d');
 $nomor = rand(111111,999999);
 $total = $_SESSION['ttl'];
-$nama = $_SESSION['namaadmin'];
+$nama = $_SESSION['namakasir'];
 $kembali = (int)$bayar - (int)$total;
 $_SESSION['kmbl'] = $kembali;
 
@@ -25,7 +25,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
 	$hrgjual = $value['harga'];
 	$hrg = (int)$hrgjual*(int)$jmlh;
 	
-	$dataadmin = mysqli_query($dbconnect, "SELECT * FROM admin_acc WHERE nama_admin='$nama'");
+	$dataadmin = mysqli_query($dbconnect, "SELECT * FROM kasir_acc WHERE nama_kasir='$nama'");
 	$getadmin = mysqli_fetch_array($dataadmin);
 	$user = $getadmin['username'];
 
