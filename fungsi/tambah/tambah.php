@@ -122,6 +122,10 @@ session_start();
 		} else if ($kodebrg == $q['kode_brg'] && $nmsupp !== $q['nama_supp']) {
 			echo '<script>window.location="../../admin.php?page=brg_masuk/brg_masuk&accordion=on&active=yes&pesan=unique"</script>';
 		} else if ($kodebrg !== $q['kode_brg'] && $nmsupp == $s['nama_supp']) {
+			$sql = mysqli_query($dbconnect, "INSERT INTO 
+			brg_masuk (id,kode_brg,id_supp,tgl_masuk,nama_supp,nama_brg,jumlah,hrg_satuan, hrg_jual, total) 
+			VALUES ('', '$kodebrg','$idsupp','$tgl','$nmsupp','$nmbrg','$jmlh','$beli','$jual','$ttl')");
+			
 			$sql1 = mysqli_query($dbconnect, "INSERT INTO 
 			stok_brg (kode_brg,nama_supp,nama_brg,jumlah,hrg_beli,hrg_jual) 
 			VALUES ('$kodebrg','$nmsupp','$nmbrg','$jmlh','$beli','$jual')");
