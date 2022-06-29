@@ -54,7 +54,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
 $_SESSION['cart'] = [];
 
 //redirect ke halaman transaksi selesai
-header("location:../../../../page/keranjangLuar/transaksi_selesai.php?idtrx=".$nomor);
+header("location:transaksi_selesai.php?idtrx=".$nomor);
 
 
 

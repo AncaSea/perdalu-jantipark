@@ -29,7 +29,8 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 </head>
 <body onload="window.print(); self.close();">
 	<div align="center">
-		<table width="500" border="0" cellpadding="1" cellspacing="0">
+		<div class="clearfix" style="margin-top:1em;"></div>
+		<table width="250" border="0" cellpadding="1" cellspacing="0">
 			<tr>
 				<th>Janti Park<br>
 				NGENDO, JANTI, KECAMATAN POLANHARJO, <br>
@@ -41,11 +42,11 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 			</tr>
 			<tr><td><hr></td></tr>
 		</table>
-		<table width="500" border="0" cellpadding="3" cellspacing="0">
+		<table width="250" border="0" cellpadding="3" cellspacing="0">
 			<?php while ($row = mysqli_fetch_array($detailbrg)) { ?>
 			<tr>
 				<td valign="top">
-					<?=$row['nama_pesanan']?>
+					<?=$row['nama_brg']?>
 					<!-- <?php if ($row['diskon'] > 0): ?>
 					<br>
 					<small>Diskon</small>
@@ -78,18 +79,19 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				<td align="right">Rp. <?=number_format($kembali)?></td>
 			</tr>
 		</table>
-		<table width="500" border="0" cellpadding="1" cellspacing="0">
+		<table width="250" border="0" cellpadding="1" cellspacing="0">
 			<tr><td><hr></td></tr>
 			<tr>
-				<th>Terimkasih, Selamat Belanja Kembali</th>
+				<th>Terimakasih, Selamat Belanja Kembali</th>
 			</tr>
 			<tr>
-				<th>===== Layanan Konsumen ====</th>
+				<th>== Layanan Konsumen ==</th>
 			</tr>
 			<tr>
 				<th>WA : 085895986529 <br> 
 					IG : jantipark_klaten <br></th>
 			</tr>
+			<tr><td><hr></td></tr>
 		</table>
 	</div>
 </body>
