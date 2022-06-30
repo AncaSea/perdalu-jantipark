@@ -325,10 +325,25 @@
 					return $hasil;
 				}
 			}
+			
+			function livemodalhari(){
+				include 'db_con.php';
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total) AS modal FROM brg_masuk WHERE CAST(tgl_masuk AS DATE) = CAST(NOW() AS DATE)");
+				$row = mysqli_fetch_array($sql);
+				// if ($row = mysqli_query($dbconnect, $sql)) {
+					// print_r($result);
+					if ($row['modal']<=0) {
+						$hasil = 0;
+					}else{
+						$hasil = $row['modal'];
+					}
+					return $hasil;
+				// }
+			}
 
 			function modal(){
 				include 'db_con.php';
-				$sql = mysqli_query($dbconnect, "SELECT SUM(total) AS modal FROM brg_masuk WHERE CAST(tgl_masuk AS DATE) = CAST(NOW() AS DATE)");
+				$sql = mysqli_query($dbconnect, "SELECT SUM(total) AS modal FROM brg_masuk");
 				$row = mysqli_fetch_array($sql);
 				// if ($row = mysqli_query($dbconnect, $sql)) {
 					// print_r($result);
