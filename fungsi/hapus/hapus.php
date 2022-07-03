@@ -3,11 +3,11 @@ session_start();
 if(!empty($_SESSION['namaadmin'])){
 	include '../../db_con.php';
 	if(!empty($_GET['supplier'])){
-		$id= $_SESSION['id'];
+		$id= $_GET['id'];
 		// $data[] = $id;
 		$sql = "DELETE FROM supplier WHERE id='$id'";
 		$del = mysqli_query($dbconnect, $sql);
-		echo '<script>window.location="../../admin.php?page=supplier/supplier&accordion2=on&active=yes&remove=hapus-data"</script>';
+		echo '<script>window.location="../../admin.php?page=supplier/supplier&accordion=on&active=yes&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['barangmsk'])){
 		 $id= $_GET['id'] ;

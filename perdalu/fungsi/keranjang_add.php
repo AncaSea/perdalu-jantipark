@@ -11,7 +11,7 @@ if (isset($_POST['nama_brg'])) {
     //menampilkan data barang
     $data = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE nama_brg='$nama_brg'");
     $b = mysqli_fetch_assoc($data);
-
+    // print_r($b);
     // //cek diskon barang
     // $disbarang = mysqli_query($dbconnect, "SELECT * FROM disbarang WHERE barang_id='$b[id_barang]'");
     // $disb = mysqli_fetch_assoc($disbarang);
@@ -30,32 +30,7 @@ if (isset($_POST['nama_brg'])) {
             
             if ($key !== false) {
 
-                header("location:../../../../perdalu/kasir_page.php&pesan=sameitem");
-                
-                // //jika ada data yang sesuai di keranjang akan ditambahkan jumlah nya
-                // $c_qty = $_SESSION['cart'][$key]['qty'];
-                // $_SESSION['cart'][$key]['qty'] = $c_qty;
-                    
-                    
-                // //cek jika ada potongan dan cek jumlah barang lebih besar sama dengan minimum order potongan
-                // if ($disb['qty'] && $_SESSION['cart'][$key]['qty'] >= $disb['qty']) {
-        
-                //     //cek kelipatan jumlah barang dengan batas minimum order
-                //     $mod = $_SESSION['cart'][$key]['qty'] % $disb['qty'];
-        
-                //     if ($mod == 0) {
-        
-                    //         //Jika benar jumlah barang kelipatan batas minimum order
-                    //         $d = $_SESSION['cart'][$key]['qty'] / $disb['qty'];
-                    //     } else {
-                        
-                        //         //Simpan jumlah potongan yang didapat
-                        //         $d = ($_SESSION['cart'][$key]['qty'] - $mod) / $disb['qty'];
-                        //     }
-                        
-                        //     //Simpan diskon dengan jumlah kelipatan dikali potongan barang
-                        //     $_SESSION['cart'][$key]['diskon'] = $d * $disb['potongan'];
-                        // }
+                header("location:../../../../perdalu/kasir_page.php?pesan=sameitem");
                         
             } else {
                         
@@ -93,8 +68,8 @@ if (isset($_POST['nama_brg'])) {
             //merubah urutan tampil pada keranjang
             // krsort($_SESSION['cart']);
         }
-    }else{
-        header("location../../../../perdalu/kasir_page.php&pesan=notindatabase");
+    }else {
+        header("location:../../../../perdalu/kasir_page.php?pesan=notindatabase");
     }
 
 }

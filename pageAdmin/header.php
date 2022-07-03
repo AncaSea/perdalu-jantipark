@@ -113,7 +113,7 @@
         z-index: 2;
         background-color:#feb101;
         /* margin-left: -1em; */}
-      .form-group {
+      /* .form-group {
         border: 1px solid #ced4da;
         padding: 5px;
         border-radius: 6px;
@@ -124,7 +124,7 @@
         display: inline-block;
         width: auto;
         border: none;
-      }
+      } */
       .header{
         background:#000000;
         color:#F0F8FF;}

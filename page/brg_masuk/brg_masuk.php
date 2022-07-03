@@ -27,7 +27,10 @@ if(isset($_GET['pesan'])){
 			"startDate": new Date(),
 			"endDate": new Date(),
 			"opens": "right",
-			"drops": "auto"
+			"drops": "auto",
+			locale: {
+				cancelLabel: 'Clear'
+			}
 		}, function(start, end, label) {
 			console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 		});

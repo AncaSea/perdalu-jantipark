@@ -12,13 +12,13 @@ if (isset($_POST['nama_pesan'])) {
     $data = mysqli_query($dbconnect, 
     "SELECT makanan.id, makanan.nama, makanan.role, makanan.jenis, 1 AS jumlah, makanan.harga FROM makanan UNION
      SELECT minuman.id, minuman.nama, minuman.role, minuman.jenis, 1 AS jumlah, minuman.harga FROM minuman UNION
-     SELECT * FROM paket_barbar");
-	if ($data -> num_rows > 0) {
-		while ($row = mysqli_fetch_assoc($data)) {
+     SELECT * FROM paket_barbar  WHERE nama='$nama_psn'");
+	// if ($data -> num_rows > 0) {
+	// 	while ($row = mysqli_fetch_assoc($data)) {
 			// $hasil = $row;
 			// print_r($row);
 		
-            if ($nama_psn == $row['nama']) {
+            // if ($nama_psn == $row['nama']) {
                 $sql = mysqli_query($dbconnect, "SELECT makanan.id, makanan.nama, makanan.role, makanan.jenis, 1 AS jumlah, makanan.harga FROM makanan WHERE nama='$nama_psn' UNION
                                                  SELECT minuman.id, minuman.nama, minuman.role, minuman.jenis, 1 AS jumlah, minuman.harga FROM minuman WHERE nama='$nama_psn' UNION
                                                  SELECT * FROM paket_barbar WHERE nama='$nama_psn'");
@@ -74,9 +74,11 @@ if (isset($_POST['nama_pesan'])) {
                 }else{
                     header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=notindatabase");
                 }
-            }
-        }
-	}
+            // } else {
+            //     header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=notindatabase");
+            // }
+    //     }
+	// }
 
     // $data2 = mysqli_query($dbconnect, "SELECT * FROM minuman");
     // $b2 = mysqli_fetch_array($data2);

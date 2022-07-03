@@ -41,7 +41,7 @@ if(isset($_GET['pesan'])){
                 $_SESSION['error'] = '';
         ?>
         <div class="wrapper">
-            <div class="logo"> <img src="img/janti.png" alt=""> </div>
+            <div class="logo"> <img src="assets/img/user/logo.png" alt=""> </div>
             <form class="p-3 mt-4" method="post" action="proses_login.php" >
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-user"></span> 
@@ -54,10 +54,14 @@ if(isset($_GET['pesan'])){
                 <!-- <button class="btn mt-3" name="masuk" >Login</button> -->
                 <input type="submit" name="masuk" value="Login" class="btn btn-lg btn-primary btn-block"/>
             </form>
-            <div class="text-center mt-4 kknt"> 
-                Powered  <br>
-                KKNT STMIK SINUS
+            <div class="text-center mt-3 uper"> 
+                UNIT PERDAGANGAN <br>
+                JANTI PARK
             </div>
+        </div>
+        <div class="text-center mt-4 kknt"> 
+            Powered  <br>
+            KKNT STMIK SINUS
         </div>
     </body>
 </html>

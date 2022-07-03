@@ -114,7 +114,7 @@ if(isset($_GET['pesan'])){
 										<!-- <td>Rp.<?php echo number_format($isi[10]);?>,-</td> -->
 										<td class="text-center">
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
-											<a href="../fungsi/hapus/hapus.php?supplier=hapus&id=<?php $_SESSION['id'];?>">
+											<a href="../fungsi/hapus/hapus.php?supplier=hapus&id=<?php echo $isi[0];?>">
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
 									</tr>

@@ -25,36 +25,37 @@ $trx = mysqli_fetch_assoc($data);
 </head>
 <body>
 	<div align="center">
-		<table width="500" border="0" cellpadding="1" cellspacing="0">
+		<div class="clearfix" style="margin-top:1em;"></div>
+		<table width="250" border="0" cellpadding="1" cellspacing="0">
 			<tr>
 				<th>Janti Park<br>
-					Jl Rokan Kiri 28 Bowongan Arjowinangun <br>
-				Pacitan, Jawa Timur, 60822</th>
+				NGENDO, JANTI, KECAMATAN POLANHARJO, <br>
+				KABUPATEN KLATEN, JAWA TENGAH 57474</th>
 			</tr>
 			<tr align="center"><td><hr></td></tr>
 			<tr>
-				<td>#<?=$trx['no_nota']?> | <?=date('d-m-Y H:i:s', strtotime($trx['tgl_penjualan']))?> <?=$trx['nama_kasir']?></td>
+				<td>#<?=$trx['no_nota']?> | <?=$datetime?> <?=$trx['nama_kasir']?></td>
 			</tr>
 			<tr><td><hr></td></tr>
 		</table>
-		<table width="500" border="0" cellpadding="3" cellspacing="0">
-			<?php while ($row = mysqli_fetch_array($detail)) { ?>
+		<table width="250" border="0" cellpadding="3" cellspacing="0">
+			<?php while ($row = mysqli_fetch_array($detailbrg)) { ?>
 			<tr>
 				<td valign="top">
 					<?=$row['nama_brg']?>
-					<?php if ($row['diskon'] > 0): ?>
+					<!-- <?php if ($row['diskon'] > 0): ?>
 					<br>
 					<small>Diskon</small>
-					<?php endif; ?>
+					<?php endif; ?> -->
 				</td>
 				<td valign="top"><?=$row['jumlah']?></td>
-				<td  valign="top" align="right"><?=number_format($row['harga'])?></td>
+				<td  valign="top" align="right"><?=number_format($row['hrg_jual'])?></td>
 				<td valign="top" align="right">
-					<?=number_format($row['total'])?>
-					<?php if ($row['diskon'] > 0): ?>
+					<?=number_format($row['hrg'])?>
+					<!-- <?php if ($row['diskon'] > 0): ?>
 					<br>
 					<small>-<?=number_format($row['diskon'])?></small>
-					<?php endif; ?>
+					<?php endif; ?> -->
 				</td>
 			</tr>
 			<?php } ?>
@@ -63,28 +64,30 @@ $trx = mysqli_fetch_assoc($data);
 			</tr>
 			<tr>
 				<td align="right" colspan="3">Total</td>
-				<td align="right"><?=number_format($trx['total'])?></td>
+				<td align="right">Rp. <?=number_format($trx['total'])?></td>
 			</tr>
 			<tr>
 				<td align="right" colspan="3">Bayar</td>
-				<td align="right"><?=number_format($bayar)?></td>
+				<td align="right"><?=($bayar)?></td>
 			</tr>
 			<tr>
 				<td align="right" colspan="3">Kembali</td>
-				<td align="right"><?=number_format($kembali)?></td>
+				<td align="right">Rp. <?=number_format($kembali)?></td>
 			</tr>
 		</table>
-		<table width="500" border="0" cellpadding="1" cellspacing="0">
+		<table width="250" border="0" cellpadding="1" cellspacing="0">
 			<tr><td><hr></td></tr>
 			<tr>
-				<th>Terimkasih, Selamat Belanja Kembali</th>
+				<th>Terimakasih, Selamat Belanja Kembali</th>
 			</tr>
 			<tr>
-				<th>===== Layanan Konsumen ====</th>
+				<th>== Layanan Konsumen ==</th>
 			</tr>
 			<tr>
-				<th>SMS/CALL 0812-1500-7979 </th>
+				<th>WA : 0812-1500-7979 <br> 
+					IG : jantipark.klaten <br></th>
 			</tr>
+			<tr><td><hr></td></tr>
 		</table>
 	</div>
 </body>

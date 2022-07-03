@@ -136,7 +136,7 @@ if(isset($_GET['pesan'])){
             <script type="text/javascript">
 
 				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
-					window.location = "perdalam/kasir_page.php";
+					window.location = "kasir_page.php";
 				});
 
             </script>
