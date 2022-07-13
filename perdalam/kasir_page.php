@@ -156,7 +156,7 @@ if(isset($_GET['pesan'])){
 				<hr>
 				<tr>
 					<td class="text-center" colspan="2">
-						<div id="checkcont" class="checkbox-group required">
+						<div id="checkcont" class="checkbox-group required" style="font-size: x-large;">
 							<div class="pretty p-icon p-round p-jelly">
 							<input type="radio" id="menupkt" class="menu" name="menu" value="paket lele goreng"/>
 								<div class="state p-success">
