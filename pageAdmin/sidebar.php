@@ -47,10 +47,10 @@
                                     <i class="fa fa-user-group <?php if ($_GET['page']=='user/user') echo 'fa-fade';?>"></i><span>User</span></a></li>
                     </ul>
                 </li>
-                  <li class="sub-menu">
+                <li class="sub-menu">
                     <a href="javascript:void(0);" class="<?php echo isset($_GET['accordion2']) ? $_GET['accordion2']=='on' ? 'active' : '' : ''; ?>">
-                      <i class="fa fa-desktop"></i>
-                      <span> Perdagangan Dalam <span style="padding-left:2px;"> <i class="fa fa-angle-down"></i></span></span>
+                        <i class="fa fa-desktop"></i>
+                        <span> Perdagangan Dalam <span style="padding-left:2px;"> <i class="fa fa-angle-down"></i></span></span>
                     </a>
                     <ul class="sub">
                         <li>
@@ -75,15 +75,20 @@
                                     <i class='fas fa-balance-scale <?php if ($_GET['page']=='lap_penjualan/penjualanDalam') echo 'fa-fade';?>'></i><span>Laporan Penjualan</span></a></li>
                     </ul>
                 </li>
-                <!-- <li class="sub-menu">
-                    <a href="javascript:;" >
-                        <i class="fa fa-cog"></i>
-                        <span>Setting <span style="padding-left:2px;"> <i class="fa fa-angle-down"></i></span></span>
+                <li class="sub-menu">
+                    <a href="javascript:void(0);" class="<?php echo isset($_GET['accordion3']) ? $_GET['accordion3']=='on' ? 'active' : '' : ''; ?>">
+                        <i class="fa fa-gears"></i>
+                        <span> Backup and Restore <span style="padding-left:2px;"> <i class="fa fa-angle-down"></i></span></span>
                     </a>
                     <ul class="sub">
-                        <li><a href="admin_page?page=pengaturan">Pengaturan Toko</a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='backuprestore/backup-data' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
+                                href="admin.php?page=backuprestore/backup-data&accordion3=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
+                                    <i class="fa-solid fa-download" <?php if ($_GET['page']=='backuprestore/restore-data') echo 'fa-fade';?>"></i><span>Backup Database</span></a></li>
+                        <li><a class="<?php echo isset($_GET['page']) ? $_GET['page']=='backuprestore/restore-data' ? $_GET['active']=='yes' ? 'active' : '' : '' : '' ; ?>" 
+                                href="admin.php?page=backuprestore/restore-data&accordion3=on&active=yes"style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
+                                    <i class="fa-solid fa-upload <?php if ($_GET['page']=='backuprestore/restore-data') echo 'fa-fade';?>"></i><span>Restore Database</span></a></li>
                     </ul>
-                </li> -->
+                </li>
             </ul>
             <!-- sidebar menu end-->
         </div>
