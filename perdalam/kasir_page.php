@@ -310,7 +310,7 @@ if (isset($_GET['pesan'])) {
 							</div>
 						</div>
 						<br><b>Minuman :</b> <br>
-						<div id="checkcont2" class="btn-group" style="text-align:center ;">
+						<div id="checkcont3" class="btn-group" style="text-align:center ;">
 							<div class="btn-group mr-2" role="group" aria-label="First group">
 								<input type="radio" class="menu" name="rb" id="cb1.3" value="es teh" />
 								<label class="nmmenu" for="cb1.3" style="background: #E9967A ; border:#feb101;">Es Teh</label>
@@ -487,6 +487,13 @@ if (isset($_GET['pesan'])) {
 				});
 			});
 			$("#checkcont2").click(function() {
+				// var search = $(this).val();
+				$('input[type="radio"]:checked').each(function() { // $(':checkbox:checked')
+					$('#nama_pesan').val(this.value);
+					// $(this).val()
+				});
+			});
+			$("#checkcont3").click(function() {
 				// var search = $(this).val();
 				$('input[type="radio"]:checked').each(function() { // $(':checkbox:checked')
 					$('#nama_pesan').val(this.value);
