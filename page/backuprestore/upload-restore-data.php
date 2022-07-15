@@ -1,20 +1,23 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "db_perdalu");
-if (isset($_POST['backup_file'])) {
+if (!empty($_GET["backup_file"]["name"])) {
     // Validating SQL file type by extensions
-    if (!in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
+    if (! in_array(strtolower(pathinfo($_FILES($_GET["backup_file"]["name"]), PATHINFO_EXTENSION)), array(
         "sql"
     ))) {
         $response = array(
             "type" => "error",
             "message" => "Invalid File Type"
         );
+        header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
     } else {
-        if (is_uploaded_file($_FILES["backup_file"]["tmp_name"])) {
-            move_uploaded_file($_FILES["backup_file"]["tmp_name"], $_FILES["backup_file"]["name"]);
-            $response = restoreMysqlDB($_FILES["backup_file"]["name"], $conn);
+        if (is_uploaded_file($_FILES($_GET["backup_file"]["tmp_name"]))) {
+            move_uploaded_file($_FILES($_GET["backup_file"]["tmp_name"]), $_FILES($_GET["backup_file"]["name"]));
+            $response = restoreMysqlDB($_FILES($_GET["backup_file"]["name"]), $conn);
         }
     }
+} else {
+    header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
 }
 
 function restoreMysqlDB($filePath, $conn)
@@ -44,16 +47,16 @@ function restoreMysqlDB($filePath, $conn)
         } // end foreach
         
         if ($error) {
-            $response = array(
-                "type" => "error",
-                "message" => $error
-            );
-            header('location:../../../../admin.php?page=backuprestore/backup-data&accordion3=on&active=yes&pesan=failed-backup');
+            // $response = array(
+            //     "type" => "error",
+            //     "message" => $error
+            // );
+            header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
         } else {
-            $response = array(
-                "type" => "success",
-                "message" => "Database Restore Completed Successfully."
-            );
+            // $response = array(
+            //     "type" => "success",
+            //     "message" => "Database Restore Completed Successfully."
+            // );
             header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=success-restore');
         }
     }
