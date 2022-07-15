@@ -8,6 +8,9 @@ if (isset($_GET['pesan'])) {
     if ($_GET['pesan'] == "failed-restore") {
         $_SESSION['error'] = 'Gagal Restore Database';
     }
+    if ($_GET['pesan'] == "invalid-restore") {
+        $_SESSION['error'] = 'File bukan SQL';
+    }
 }
 ?>
 <section id="main-content">
@@ -37,12 +40,12 @@ if (isset($_GET['pesan'])) {
                     <div class="row sat">
                         <form method="post" action="page/backuprestore/upload-restore-data.php" enctype="multipart/form-data" id="frm-restore">
                             <div class="form-row">
-                                <div>Choose Backup File</div>
+                                <div>Pilih Backup File</div>
                                 <div>
-                                    <input type="file" name="backup_file" class="input-file" />
+                                    <input type="file" name="backup_file" class="input-file" id="backup_file" />
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-success">Masukan</button>
+                                    <button type="submit" name="submit" value="Upload Data" class="btn btn-success">Restore</button>
                                 </div>
                             </div>
                         </form>
@@ -57,65 +60,3 @@ if (isset($_GET['pesan'])) {
         </div>
         <! --/row -->
     </section>
-    <?php
-    $conn = mysqli_connect("localhost", "root", "", "db_perdalu");
-    if (!empty($_FILES)) {
-        // Validating SQL file type by extensions
-        if (!in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
-            "sql"
-        ))) {
-            $response = array(
-                "type" => "error",
-                "message" => "Invalid File Type"
-            );
-            header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
-        } else {
-            if (is_uploaded_file($_FILES["backup_file"]["tmp_name"])) {
-                move_uploaded_file($_FILES["backup_file"]["tmp_name"], $_FILES["backup_file"]["name"]);
-                $response = restoreMysqlDB($_FILES["backup_file"]["name"], $conn);
-            }
-        }
-    }
-
-    function restoreMysqlDB($filePath, $conn)
-    {
-        $sql = '';
-        $error = '';
-
-        if (file_exists($filePath)) {
-            $lines = file($filePath);
-
-            foreach ($lines as $line) {
-
-                // Ignoring comments from the SQL script
-                if (substr($line, 0, 2) == '--' || $line == '') {
-                    continue;
-                }
-
-                $sql .= $line;
-
-                if (substr(trim($line), -1, 1) == ';') {
-                    $result = mysqli_query($conn, $sql);
-                    if (!$result) {
-                        $error .= mysqli_error($conn) . "\n";
-                    }
-                    $sql = '';
-                }
-            } // end foreach
-
-            if ($error) {
-                // $response = array(
-                //     "type" => "error",
-                //     "message" => $error
-                // );
-                header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
-            } else {
-                // $response = array(
-                //     "type" => "success",
-                //     "message" => "Database Restore Completed Successfully."
-                // );
-                header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=success-restore');
-            }
-        }
-    }
-    ?>

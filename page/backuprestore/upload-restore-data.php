@@ -1,19 +1,17 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "db_perdalu");
-if (!empty($_GET["backup_file"]["name"])) {
+if (isset($_POST["submit"])) {
     // Validating SQL file type by extensions
-    if (! in_array(strtolower(pathinfo($_FILES($_GET["backup_file"]["name"]), PATHINFO_EXTENSION)), array(
-        "sql"
-    ))) {
-        $response = array(
-            "type" => "error",
-            "message" => "Invalid File Type"
-        );
-        header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
+    if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array("sql"))) {
+        // $response = array(
+        //     "type" => "error",
+        //     "message" => "Invalid File Type"
+        // );
+        header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=invalid-restore');
     } else {
-        if (is_uploaded_file($_FILES($_GET["backup_file"]["tmp_name"]))) {
-            move_uploaded_file($_FILES($_GET["backup_file"]["tmp_name"]), $_FILES($_GET["backup_file"]["name"]));
-            $response = restoreMysqlDB($_FILES($_GET["backup_file"]["name"]), $conn);
+        if (is_uploaded_file($_FILES["backup_file"]["tmp_name"])) {
+            move_uploaded_file($_FILES["backup_file"]["tmp_name"], $_FILES["backup_file"]["name"]);
+            $response = restoreMysqlDB($_FILES["backup_file"]["name"], $conn);
         }
     }
 } else {
