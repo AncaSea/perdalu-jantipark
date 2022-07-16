@@ -200,7 +200,7 @@ if (isset($_GET['pesan'])) {
 									<ul class="auto-result" id="search-result"></ul>
 								</div>
 								<div class="col-md-4">
-									<input type="number" name="jumlah" min="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+									<input type="number" name="jumlah" min="1" value="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
 								</div>
 								<div class="col-md-4">
 									<button type="submit" class="btn btn-success">Masukan</button>

@@ -41,16 +41,16 @@ if (isset($_GET['pesan'])) {
                         <form method="post" action="page/backuprestore/upload-restore-data.php" enctype="multipart/form-data" id="frm-restore">
                             <div class="form-row">
                                 <div style="margin-left: 30px ;">
-                                    <b style="color:red;">PERINGATAN !!! <br>Sebelum melakukan upload database pastikan telah DISETUJUI OLEH DIREKTUR BUMDES dan telah melakukan BACKUP DATABASE Terlebih dahulu !! </b> <br><br> Pilih Backup File Database
-                                </div>
+                                    <b style="color:red;">PERINGATAN !!! <br>Sebelum melakukan upload database pastikan telah DISETUJUI OLEH DIREKTUR BUMDES dan telah melakukan BACKUP DATABASE Terlebih dahulu !! </b> <br><br> &ensp;&ensp; Pilih Backup File Database
+                                </div><br>
+                                <div style="margin-left: 30px ;" class="col-md-8">
 
-                                <div style="margin-left: 30px ;">
-                                    <input type="file" name="backup_file" class="input-file" id="backup_file" />
+                                    <input type="file" name="backup_file" class="input-file" id="backup_file" style=" 	display: block; border: 1px solid #d6d7d6;background: #FFF;	border-radius: 4px;	width: 100%;height: 36px; line-height: 36px;padding: 0px 10px 2px 10px; overflow: hidden; position: relative; " />
                                 </div>
                                 <br>
-                                <div class="col-md-4" style="margin-left: 110px ;">
-                                    <button type="submit" name="submit" value="Upload Data" class="btn btn-success fa-solid fa-cloud-arrow-up">&ensp; UPLOAD</button>
-                                </div>
+                                <!-- <div class="col-md-4" style="margin-left: 110px ;"> -->
+                                <button type="submit" name="submit" value="Upload Data" class="btn btn-success fa-solid fa-cloud-arrow-up" style="margin: -15px 0px 0px -10px  ;">&ensp; UPLOAD</button>
+                                <!-- </div> -->
                             </div>
                         </form>
                     </div>

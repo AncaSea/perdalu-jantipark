@@ -27,9 +27,9 @@ if (isset($_GET['pesan'])) {
           <?php }
           $_SESSION['error'] = '';
           ?>
-          <b>Silahkan klik tombol download dibawah untuk melakukan Backup file database</b>
-          <div class="row sat" style="margin-left: 200px ;"> <br>
-            <a href="page/backuprestore/download-backup-data.php?nama_file=<?php echo $file; ?>" class="btn btn-success">
+          <div class="row sat" style="margin-left: 200px ; font-size:20px;"> <br>
+            <b>Silahkan klik tombol download dibawah untuk melakukan Backup file database</b> <br>
+            <a style="margin: 40px 0px 0px 300px ;" href="page/backuprestore/download-backup-data.php?nama_file=<?php echo $file; ?>" class="btn btn-success">
               <i class="fa fa-download"></i> Download</a>
           </div>
         </div>
