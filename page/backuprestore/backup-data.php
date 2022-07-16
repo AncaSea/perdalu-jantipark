@@ -32,6 +32,10 @@ if (isset($_GET['pesan'])) {
             <a style="margin: 40px 0px 0px 300px ;" href="page/backuprestore/download-backup-data.php?nama_file=<?php echo $file; ?>" class="btn btn-success">
               <i class="fa fa-download"></i> Download</a>
           </div>
+
+          <div style="margin: 40px 0px 0px 400px ;color:red;">
+            <b>Saran : Lakukan Backup Database 1 minggu sekali !!</b>
+          </div>
         </div>
       </div>
 

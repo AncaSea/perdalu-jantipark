@@ -4,6 +4,10 @@ if (!empty($_GET['nama_file'])) {
   $user = 'root';
   $pass = '';
   $db = 'db_perdalu';
+  // $host = 'sql104.epizy.com';
+  // $user = 'epiz_32045382';
+  // $pass = 'a0PKmrAokT';
+  // $db = 'epiz_32053978_db_perdalu';
   $nama_file = $_GET['nama_file'];
   $connection = mysqli_connect("$host", "$user", "$pass", "$db");
   $tables = array();

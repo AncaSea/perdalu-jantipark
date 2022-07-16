@@ -1,8 +1,9 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "db_perdalu");
+// $conn = mysqli_connect("sql104.epizy.com", "epiz_32045382", "a0PKmrAokT", "epiz_32053978_db_perdalu");
 if (isset($_POST["submit"])) {
     // Validating SQL file type by extensions
-    if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array("sql"))) {
+    if (!in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array("sql"))) {
         // $response = array(
         //     "type" => "error",
         //     "message" => "Invalid File Type"
@@ -22,28 +23,28 @@ function restoreMysqlDB($filePath, $conn)
 {
     $sql = '';
     $error = '';
-    
+
     if (file_exists($filePath)) {
         $lines = file($filePath);
-        
+
         foreach ($lines as $line) {
-            
+
             // Ignoring comments from the SQL script
             if (substr($line, 0, 2) == '--' || $line == '') {
                 continue;
             }
-            
+
             $sql .= $line;
-            
-            if (substr(trim($line), - 1, 1) == ';') {
+
+            if (substr(trim($line), -1, 1) == ';') {
                 $result = mysqli_query($conn, $sql);
-                if (! $result) {
+                if (!$result) {
                     $error .= mysqli_error($conn) . "\n";
                 }
                 $sql = '';
             }
         } // end foreach
-        
+
         if ($error) {
             // $response = array(
             //     "type" => "error",
@@ -59,4 +60,3 @@ function restoreMysqlDB($filePath, $conn)
         }
     }
 }
-?>
