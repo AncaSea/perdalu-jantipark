@@ -40,12 +40,16 @@ if (isset($_GET['pesan'])) {
                     <div class="row sat">
                         <form method="post" action="page/backuprestore/upload-restore-data.php" enctype="multipart/form-data" id="frm-restore">
                             <div class="form-row">
-                                <div>Pilih Backup File</div>
-                                <div>
+                                <div style="margin-left: 30px ;">
+                                    <b style="color:red;">PERINGATAN !!! <br>Sebelum melakukan upload database pastikan telah DISETUJUI OLEH DIREKTUR BUMDES dan telah melakukan BACKUP DATABASE Terlebih dahulu !! </b> <br><br> Pilih Backup File Database
+                                </div>
+
+                                <div style="margin-left: 30px ;">
                                     <input type="file" name="backup_file" class="input-file" id="backup_file" />
                                 </div>
-                                <div class="col-md-4">
-                                    <button type="submit" name="submit" value="Upload Data" class="btn btn-success">Restore</button>
+                                <br>
+                                <div class="col-md-4" style="margin-left: 110px ;">
+                                    <button type="submit" name="submit" value="Upload Data" class="btn btn-success fa-solid fa-cloud-arrow-up">&ensp; UPLOAD</button>
                                 </div>
                             </div>
                         </form>
