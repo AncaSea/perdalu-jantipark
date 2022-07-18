@@ -150,6 +150,25 @@ if (isset($_GET['pesan'])) {
 		<?php }
 		$_SESSION['error'] = '';
 		?>
+		<script>
+			function getFullscreenElement() {
+				return document.fullscreenElement
+				return document.webkitFullscreenElement
+				return document.mozFullscreenElement
+				return document.msFullscreenElement;
+			}
+
+			function togleFullscreen() {
+				if (getFullscreenElement()) {
+					document.exitFullscreen();
+				} else {
+					document.documentElement.requestFullscreen().catch(console.log);
+				}
+			}
+			document.addEventListener("dblclick", () => {
+				togleFullscreen();
+			});
+		</script>
 		<div class="row" style="margin-bottom: 20px;">
 			<div class="col-md-12">
 				<h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
