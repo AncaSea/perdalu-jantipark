@@ -146,10 +146,39 @@ if (isset($_GET['pesan'])) {
 				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
 					window.location = "kasir_page.php";
 				});
+
+				function toggleFullScreen() {
+					if (!document.fullscreenElement) {
+						document.documentElement.requestFullscreen();
+					} else {
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+					}
+				}
 			</script>
 		<?php }
 		$_SESSION['error'] = '';
 		?>
+		<script>
+			function getFullscreenElement() {
+				return document.fullscreenElement
+				return document.webkitFullscreenElement
+				return document.mozFullscreenElement
+				return document.msFullscreenElement;
+			}
+
+			function togleFullscreen() {
+				if (getFullscreenElement()) {
+					document.exitFullscreen();
+				} else {
+					document.documentElement.requestFullscreen().catch(console.log);
+				}
+			}
+			document.addEventListener("dblclick", () => {
+				togleFullscreen();
+			});
+		</script>
 		<div class="row" style="margin-bottom: 20px;">
 			<div class="col-md-12">
 				<h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
@@ -316,6 +345,7 @@ if (isset($_GET['pesan'])) {
 			$("#search-result").hide();
 		});
 	</script>
+<<<<<<< HEAD
 	<script>
 		$(document).ready(function() {
 			$(".jum").keyup(function() {
@@ -358,6 +388,8 @@ if (isset($_GET['pesan'])) {
 			});
 		});
 	</script>
+=======
+>>>>>>> 517fbdbb1f4cc1ef5a29e27fa04a147efdc9623b
 </body>
 
 </html>

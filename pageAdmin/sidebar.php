@@ -72,7 +72,7 @@
                     <li><a class="<?php echo isset($_GET['page']) ? $_GET['page'] == 'backuprestore/backup-data' ? $_GET['active'] == 'yes' ? 'active' : '' : '' : ''; ?>" href="admin.php?page=backuprestore/backup-data&accordion3=on&active=yes" style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
                             <i class="fa-solid fa-download" <?php if ($_GET['page'] == 'backuprestore/restore-data') echo 'fa-fade'; ?>"></i><span>Backup Database</span></a></li>
                     <li><a class="<?php echo isset($_GET['page']) ? $_GET['page'] == 'backuprestore/restore-data' ? $_GET['active'] == 'yes' ? 'active' : '' : '' : ''; ?>" href="admin.php?page=backuprestore/restore-data&accordion3=on&active=yes" style="padding-top: 1px;margin-right: 0.5em;  border-style: ridge;border-width:1px;border-color: #9b6d02;">
-                            <i class="fa-solid fa-upload <?php if ($_GET['page'] == 'backuprestore/restore-data') echo 'fa-fade'; ?>"></i><span>Restore Database</span></a></li>
+                            <i class="fa-solid fa-cloud-arrow-up <?php if ($_GET['page'] == 'backuprestore/restore-data') echo 'fa-fade'; ?>"></i><span>Restore Database</span></a></li>
                 </ul>
             </li>
         </ul>
