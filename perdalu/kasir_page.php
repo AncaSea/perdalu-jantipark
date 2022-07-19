@@ -146,6 +146,16 @@ if (isset($_GET['pesan'])) {
 				swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
 					window.location = "kasir_page.php";
 				});
+
+				function toggleFullScreen() {
+					if (!document.fullscreenElement) {
+						document.documentElement.requestFullscreen();
+					} else {
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+					}
+				}
 			</script>
 		<?php }
 		$_SESSION['error'] = '';
