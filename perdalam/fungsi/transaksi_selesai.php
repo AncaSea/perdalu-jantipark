@@ -57,19 +57,11 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				<tr>
 					<td valign="top">
 						<?= $row['nama_pesanan'] ?>
-						<!-- <?php if ($row['diskon'] > 0) : ?>
-					<br>
-					<small>Diskon</small>
-					<?php endif; ?> -->
 					</td>
 					<td valign="top"><?= $row['jumlah'] ?></td>
 					<td valign="top" align="right"><?= number_format($row['hrg_jual']) ?></td>
 					<td valign="top" align="right">
 						<?= number_format($row['hrg']) ?>
-						<!-- <?php if ($row['diskon'] > 0) : ?>
-					<br>
-					<small>-<?= number_format($row['diskon']) ?></small>
-					<?php endif; ?> -->
 					</td>
 				</tr>
 			<?php } ?>

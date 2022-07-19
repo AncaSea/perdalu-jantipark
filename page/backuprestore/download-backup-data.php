@@ -1,9 +1,13 @@
 <?php
 if (!empty($_GET['nama_file'])) {
-  $host = 'localhost';
-  $user = 'root';
-  $pass = '';
-  $db = 'db_perdalu';
+    $host = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $db = 'db_perdalu';
+  // $host = 'sql100.epizy.com';
+  // $user = 'epiz_32053978';
+  // $pass = 'MxhGF4sbHkebG';
+  // $db = 'epiz_32053978_db_perdalu';
   $nama_file = $_GET['nama_file'];
   $connection = mysqli_connect("$host", "$user", "$pass", "$db");
   $tables = array();
@@ -39,11 +43,35 @@ if (!empty($_GET['nama_file'])) {
     }
     $return .= "\n\n\n";
   }
-  //save file
-  $handle = fopen(getenv('HOMEDRIVE') . getenv('HOMEPATH') . '\Downloads\ ' . $nama_file, 'w+');
-  fwrite($handle, $return);
-  fclose($handle);
-  header('location:../../../../admin.php?page=backuprestore/backup-data&accordion3=on&active=yes&pesan=success-backup');
+  // save as .sql file
+  //give additional description
+  // $content_="\n-- Database Janti Park Backup --\n";
+  // $content_ .="-- Ver. : 1.0.1\n";
+  // $content_ .="-- Host : app.infinityfree.net/\n";
+  // $content_ .="-- Generating Tim~e : ".date("M d").", ".date("Y")." at ".date("H:i:s:").date("A")."\n";
+  // $content_ .=$content;
+  //save the file
+  // $backup_file_name = $db_name." ".date("Y-m-d H-i-s").".sql";
+  $fp = fopen($nama_file, 'w+');
+  $result = fwrite($fp, $return);
+  fclose($fp);
+  //download file directly from browser
+  $file_path = $nama_file;
+  if (!empty($file_path) && file_exists($file_path)) {
+    header("Pragma:public");
+    header("Expired:0");
+    header("Cache-Control:must-revalidate");
+    header("Content-Control:public");
+    header("Content-Description: File Transfer");
+    header("Content-Type: application/octet-stream");
+    header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+    header("Content-Transfer-Encoding:binary");
+    header("Content-Length:" . filesize($file_path));
+    flush();
+    readfile($file_path);
+    exit();
+    // header('location:../../../../admin.php?page=backuprestore/backup-data&accordion3=on&active=yes&pesan=success-backup');
+  }
 } else {
   header('location:../../../../admin.php?page=backuprestore/backup-data&accordion3=on&active=yes&pesan=failed-backup');
 }
