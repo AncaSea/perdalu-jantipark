@@ -211,47 +211,48 @@ if (isset($_GET['pesan'])) {
 					</div>
 				</div>
 				<br>
-				<!-- <form method="post" action="fungsi/keranjang_update.php"> -->
-				<table class="table table-bordered">
-					<tr>
-						<th>Nama</th>
-						<th>Harga</th>
-						<th>Qty</th>
-						<th>Sub Total</th>
-						<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
-					</tr>
-					<?php
-					print_r($_SESSION['cart'][0]);
-					if (isset($_SESSION['cart'])) : ?>
-						<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
-							<tr id="tr">
-								<td>
-									<?= $value['nama'] ?>
-									<!-- <?php if ($value['diskon'] > 0) : ?>
+				<?php print_r($_SESSION['cart']) ?>
+				<form method="post" action="">
+					<table class="table table-bordered">
+						<tr>
+							<th>Nama</th>
+							<th>Harga</th>
+							<th>Qty</th>
+							<th>Sub Total</th>
+							<th class="text-center"><i class="fa fa-cog fa-spin"></i> Aksi</th>
+						</tr>
+						<?php
+						// print_r($_SESSION['cart'][0]);
+						if (isset($_SESSION['cart'])) : ?>
+							<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+								<tr id="tr">
+									<td>
+										<?= $value['nama'] ?>
+										<!-- <?php if ($value['diskon'] > 0) : ?>
 										<br><small class="label label-danger">Diskon <?= number_format($value['diskon']) ?></small>
 									<?php endif; ?> -->
-								</td>
-								<td align="right"><?= number_format($value['harga']) ?></td>
-								<td class="col-md-2">
-									<input type="number" id="qty[<?= $key ?>]" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum" max="<?= $value['stok'] ?>">
-								</td>
-								<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
-								<?php
-								$qty = intval(preg_replace('/[^0-9]/', '', $value['qty']));
-								?>
-								<td align="right" class="subttl" id="qty[<?= $key ?>]"><span><?= number_format(($qty * $value['harga'])) ?></span></td>
-								<td class="text-center">
-									<a href="fungsi/keranjang_hapus.php?kd=<?= $value['kd'] ?>">
-										<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
-										</button>
-									</a>
-								</td>
-							</tr>
-						<?php } ?>
-					<?php endif; ?>
-				</table>
-				<!-- <button type="submit" class="btn btn-success">Perbaruhi</button> -->
-				<!-- </form> -->
+									</td>
+									<td align="right"><?= number_format($value['harga']) ?></td>
+									<td class="col-md-2">
+										<input type="number" id="qty[<?= $key ?>]" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum" max="<?= $value['stok'] ?>">
+									</td>
+									<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
+									<?php
+									$qty = intval(preg_replace('/[^0-9]/', '', $value['qty']));
+									?>
+									<td align="right" class="subttl" id="qty[<?= $key ?>]"><span><?= number_format(($qty * $value['harga'])) ?></span></td>
+									<td class="text-center">
+										<a href="fungsi/keranjang_hapus.php?kd=<?= $value['kd'] ?>">
+											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
+											</button>
+										</a>
+									</td>
+								</tr>
+							<?php } ?>
+						<?php endif; ?>
+					</table>
+					<!-- <button type="submit" class="btn btn-success">Perbaruhi</button> -->
+				</form>
 			</div>
 			<div class="col-md-4">
 				<h3 id="byr" style="margin:0px 0px 38px 0px">
@@ -345,51 +346,56 @@ if (isset($_GET['pesan'])) {
 			$("#search-result").hide();
 		});
 	</script>
-<<<<<<< HEAD
 	<script>
 		$(document).ready(function() {
-			$(".jum").keyup(function() {
+			$(".jum").change(function() {
 				// var subttl = $(".subttl").text();
 				// console.log(this.subttl);
 
 				// $(".tr").on("keyup", "tr:nth-child(4)", function() {
 				var jum = $(this);
 				var jumnow = $(this).val();
-				var harga = <?php echo (json_encode($value['harga'])); ?>;
-				var sum = jumnow * harga;
+				// var sum = jumnow * harga;
 				console.log(jumnow);
+
 				// $(".subttl").each(function() {
 				// console.log($(this));
 				// var $this = $(this);
-				let sumtext = sum.toString();
+				// let sumtext = sum.toString();
 				// $(this).closest('tr').children('td:eq(3)').text(formatRupiah(sumtext));
 				// var byr = $('#byr').text();
 				// console.log(byr);
 				// console.log(search);
-				if (jumnow !== "") {
-					$.ajax({
-						url: "fungsi/keranjang_update.php",
-						type: "POST",
-						cache: false,
-						data: {
-							qty: jumnow
-						},
-						success: function(data) {
-							console.log(data);
-							$.each(data, function(key, value) {
-								// console.log(value['nama']);
-								jum.closest('tr').children('td:eq(3)').text(value['qty'] * value['harga']);
-							});
-							// $("#search-result").html(data);
-							// $("#search-result").fadeIn();
-						},
-					});
-				}
+				var cart = <?php echo json_encode($_SESSION['cart']); ?>;
+				$.each(cart, function(key, value) {
+					console.log(value)
+					// var kd = value['kd'];
+					var harga = value['harga'];
+					console.log(harga);
+					if (jumnow !== "") {
+						$.ajax({
+							url: "fungsi/keranjang_update.php",
+							type: "POST",
+							cache: false,
+							data: {
+								// kd: kd,
+								qty: jumnow
+							},
+							success: function(data) {
+								console.log(data);
+								// $.each(data, function(key, value) {
+								// 	// console.log(value['nama']);
+								// jum.closest('tr').children('td:eq(3)').text(formatRupiah(sumtext));
+								// });
+								// $("#search-result").html(data);
+								// $("#search-result").fadeIn();
+							},
+						});
+					}
+				});
 			});
 		});
 	</script>
-=======
->>>>>>> 517fbdbb1f4cc1ef5a29e27fa04a147efdc9623b
 </body>
 
 </html>

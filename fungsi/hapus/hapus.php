@@ -95,12 +95,38 @@ if(!empty($_SESSION['namaadmin'])){
 	// 	$row -> execute();
 	// 	echo '<script>window.location="../../index.php?page=jual"</script>';
 	// }
-	// if(!empty($_GET['laporan'])){
-		
-	// 	$sql = 'DELETE FROM nota';
-	// 	$row = $config -> prepare($sql);
-	// 	$row -> execute();
-	// 	echo '<script>window.location="../../index.php?page=laporan&remove=hapus"</script>';
-	// }
+	if(!empty($_GET['lapluar'])){
+		$nota = $_GET['nota'];
+
+		$sqllapluar = mysqli_query($dbconnect, "SELECT * FROM penjualan WHERE no_nota = '$nota'");
+		if ($sqllapluar->num_rows > 0) {
+			while ($row = mysqli_fetch_assoc($sqllapluar)) {
+				// foreach ($row as $value) {
+					$stokkmbl = $row['jumlah'];
+					$kodebrgkmbl = $row['kode_brg'];
+					$sqlstok = mysqli_query($dbconnect, "SELECT * FROM stok_brg WHERE kode_brg = '$kodebrgkmbl'");
+					$stok = mysqli_fetch_assoc($sqlstok);
+					$stokold = $stok['jumlah'];
+					$jumstok = (int)$stokkmbl + (int)$stokold;
+					// echo($jumstok);
+					$updtstok = mysqli_query($dbconnect, "UPDATE stok_brg SET jumlah = '$jumstok' WHERE kode_brg='$kodebrgkmbl'");
+				// }
+			}
+		}
+
+		$sql = "DELETE FROM penjualan WHERE no_nota='$nota'";
+		$del = mysqli_query($dbconnect, $sql);
+
+		echo '<script>window.location="../../admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes&remove=hapus-data"</script>';
+	}
+
+	if (!empty($_GET['lapdlm'])) {
+		$nota = $_GET['nota'];
+
+		$sql = "DELETE FROM penjualan_dalam WHERE no_nota='$nota'";
+		$del = mysqli_query($dbconnect, $sql);
+
+		echo '<script>window.location="../../admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes&remove=hapus-data"</script>';
+	}
 }
 
