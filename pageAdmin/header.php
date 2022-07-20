@@ -181,6 +181,8 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 3px 0 0 #000;
+      font-size: 13px;
+      width: 170px;
     }
 
     .nmmenu::after {
