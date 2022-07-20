@@ -52,6 +52,7 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				</td>
 			</tr>
 		</table>
+		<!-- jipuk pangangan -->
 		<table width="250" border="0" cellpadding="3" cellspacing="0">
 			<?php while ($row = mysqli_fetch_array($detailbrg)) { ?>
 				<tr>
@@ -73,8 +74,21 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 					</td>
 				</tr>
 			<?php } ?>
+		</table>
+		<!-- jipuk ombe  -->
+		<table width="250" border="0" cellpadding="3" cellspacing="0">
 			<tr>
-				<td colspan="4">
+				<td>
+					<hr>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<b>jatahmu rek ombennan ro Keterangan kene deleh e</b>
+		</table>
+		<table width="250" border="0" cellpadding="3" cellspacing="0">
+			<tr>
+				<td colspan="5">
 					<hr>
 				</td>
 			</tr>

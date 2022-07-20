@@ -167,6 +167,7 @@ if (isset($_GET['pesan'])) {
 			position: relative;
 			overflow: hidden;
 			box-shadow: 0 3px 0 0 #000;
+			font-size: 17px;
 		}
 
 		.nmmenu::after {
@@ -189,6 +190,10 @@ if (isset($_GET['pesan'])) {
 		.nmmenu:active {
 			top: 3px;
 			box-shadow: none;
+		}
+
+		.container {
+			max-width: 1400px;
 		}
 	</style>
 </head>

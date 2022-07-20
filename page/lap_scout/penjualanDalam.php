@@ -196,10 +196,11 @@
  									<td>Rp.<?php echo number_format($isi[10]); ?>,-</td>
  									<td>Rp.<?php echo number_format($isi[11]); ?>,-</td>
  									<td class="text-center">
- 										<a href="fungsi/keranjang_hapus.php?kd=<?= $value['kd'] ?>">
- 											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
- 											</button>
- 										</a>
+ 										<li>
+ 											<a href="fungsi/keranjang_hapus.php?kd=<?= $value['kd'] ?>">
+ 												<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
+ 											</a>
+ 										</li>
  									</td>
  								</tr>
  							<?php $no++;

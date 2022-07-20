@@ -213,7 +213,6 @@
  									<td class="text-center">
  										<a href="fungsi/keranjang_hapus.php?kd=<?= $value['kd'] ?>">
  											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
- 											</button>
  										</a>
  									</td>
  								</tr>
