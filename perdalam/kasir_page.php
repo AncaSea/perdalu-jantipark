@@ -422,9 +422,11 @@ if (isset($_GET['pesan'])) {
 				<h3 style="margin:0px 0px 8px 0px">Total Rp. <?= number_format($sum) ?></h3>
 				<form action="fungsi/keranjang_update.php" method="POST">
 					<input type="hidden" name="total" value="<?= $sum ?>">
-					<div class="form-group" style="margin-bottom: 1em;">
-						<label>Bayar</label>
-						<input type="text" id="bayar" name="bayar" class="form-control" required>
+					<div class="form-group" style="margin-bottom: 1em; margin-top:2em;">
+						<!-- <label>Bayar</label>
+						<input type="text" id="bayar" name="bayar" class="form-control" required> -->
+						<input type="text" id="bayar" name="bayar" class="form-control" placeholder="Bayar" required><br>
+						<input type="nama_pemesan" name="jumlah" class="form-control" placeholder="Nama Pemesan & Tempat" autofocus required>
 					</div>
 					<button type="submit" class="btn btn-primary" onkeypress="">Selesai</button>
 				</form>

@@ -39,7 +39,7 @@ if (isset($_GET['pesan'])) {
 }
 
 ?>
-<section id="main-content">
+<section id="main-content" style="position: sticky; width:100%;">
 	<section class="wrapper">
 		<div class="container" style="margin-top: 2em;">
 			<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
@@ -175,12 +175,12 @@ if (isset($_GET['pesan'])) {
 
 									<input type="radio" class="menu" name="rb" id="cb5.3" value="es lemontea" />
 									<label class="nmmenu" for="cb5.3" style="background: #6B8E23 ; border:#feb101;">Es Lemontea</label>
-
+									<!-- 
 									<input type="radio" class="menu" name="rb" id="cb5.2" value="nasi ceting" />
 									<label class="nmmenu" for="cb5.2" style="background:#FFFF00 ; border:#feb101;">Nasi Ceting</label>
 
 									<input type="radio" class="menu" name="rb" id="cb6.2" value="sambel+lalap" />
-									<label class="nmmenu" for="cb6.2" style="background: #FF69B4 ; border:#feb101;">Sambel+Lalap</label>
+									<label class="nmmenu" for="cb6.2" style="background: #FF69B4 ; border:#feb101;">Sambel+Lalap</label> -->
 								</div>
 							</div>
 						</div>
@@ -246,9 +246,11 @@ if (isset($_GET['pesan'])) {
 					<h3 style="margin:0px 0px 15px 0px">Total Rp. <?= number_format($sum) ?></h3>
 					<form action="../page/keranjangDalam/keranjang_update.php" method="POST">
 						<input type="hidden" name="total" value="<?= $sum ?>">
-						<div class="form-group" style="margin-bottom: 1em;">
-							<label>Bayar</label>
-							<input type="text" id="bayar" name="bayar" class="form-control" required>
+						<div class="form-group" style="margin-bottom: 1em; margin-top:3em;">
+							<!-- <label>Bayar</label> -->
+							<input type="text" id="bayar" name="bayar" class="form-control" placeholder="Bayar" required><br>
+							<input type="nama_pemesan" name="jumlah" class="form-control" placeholder="Nama Pemesan & Tempat" autofocus required>
+
 						</div>
 						<button type="submit" class="btn btn-primary" onkeypress="">Selesai</button>
 					</form>
