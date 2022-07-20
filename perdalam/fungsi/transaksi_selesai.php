@@ -52,19 +52,41 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				</td>
 			</tr>
 		</table>
+		<!-- jipuk pangangan  -->
 		<table width="250" border="0" cellpadding="3" cellspacing="0">
 			<?php while ($row = mysqli_fetch_array($detailbrg)) { ?>
 				<tr>
 					<td valign="top">
 						<?= $row['nama_pesanan'] ?>
+						<!-- <?php if ($row['diskon'] > 0) : ?>
+					<br>
+					<small>Diskon</small>
+					<?php endif; ?> -->
 					</td>
 					<td valign="top"><?= $row['jumlah'] ?></td>
 					<td valign="top" align="right"><?= number_format($row['hrg_jual']) ?></td>
 					<td valign="top" align="right">
 						<?= number_format($row['hrg']) ?>
+						<!-- <?php if ($row['diskon'] > 0) : ?>
+					<br>
+					<small>-<?= number_format($row['diskon']) ?></small>
+					<?php endif; ?> -->
 					</td>
 				</tr>
 			<?php } ?>
+		</table>
+		<table width="250" border="0" cellpadding="3" cellspacing="0">
+			<tr>
+				<td>
+					<hr>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<!-- jipuk ombe  keterangan +(jeneng pelanggan)-->
+			<b>jatahmu rek ombennan ro jeneng pelanggan kene deleh e</b>
+		</table>
+		<table width="250" border="0" cellpadding="3" cellspacing="0">
 			<tr>
 				<td colspan="4">
 					<hr>

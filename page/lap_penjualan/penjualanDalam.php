@@ -213,7 +213,6 @@
  									<td class="text-center">
  										<a href="../fungsi/hapus/hapus.php?lapdlm=hapus&nota=<?= $isi[1] ?>">
  											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
- 											</button>
  										</a>
  									</td>
  								</tr>
