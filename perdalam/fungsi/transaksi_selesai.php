@@ -12,6 +12,13 @@ $kembali = $_SESSION['kmbl'];
 $detail = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_nota='$id_trx'");
 $trx = mysqli_fetch_assoc($detail);
 
+$mknclust = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam AS pd WHERE EXISTS(
+									SELECT mkn.nama FROM makanan AS mkn WHERE pd.nama_pesanan = mkn.nama UNION 
+									SELECT pkt.nama FROM paket_barbar AS pkt WHERE pd.nama_pesanan = pkt.nama) 
+									AND pd.no_nota = '$id_trx'");
+
+$mnmclust = mysqli_query($dbconnect, "SELECT pd.* FROM penjualan_dalam AS pd INNER JOIN minuman AS mnm ON pd.nama_pesanan = mnm.nama AND pd.no_nota = '$id_trx'");
+// $nmmnm = mysqli_fetch_assoc($mnmclust);
 // $detailbrg = mysqli_query($dbconnect, "SELECT penjualan_dalam.*, stok_brg.nama_brg FROM `penjualan` INNER JOIN stok_brg ON penjualan.kode_brg=stok_brg.kode_brg WHERE penjualan.no_nota='$id_trx'");
 $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_nota='$id_trx'");
 
@@ -52,43 +59,54 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				</td>
 			</tr>
 		</table>
-		<!-- jipuk pangangan  -->
+		<!-- jipuk pangangan -->
 		<table width="250" border="0" cellpadding="3" cellspacing="0">
-			<?php while ($row = mysqli_fetch_array($detailbrg)) { ?>
+			<?php while ($row = mysqli_fetch_assoc($mknclust)) { ?>
 				<tr>
 					<td valign="top">
 						<?= $row['nama_pesanan'] ?>
-						<!-- <?php if ($row['diskon'] > 0) : ?>
-					<br>
-					<small>Diskon</small>
-					<?php endif; ?> -->
 					</td>
 					<td valign="top"><?= $row['jumlah'] ?></td>
 					<td valign="top" align="right"><?= number_format($row['hrg_jual']) ?></td>
 					<td valign="top" align="right">
 						<?= number_format($row['hrg']) ?>
-						<!-- <?php if ($row['diskon'] > 0) : ?>
-					<br>
-					<small>-<?= number_format($row['diskon']) ?></small>
-					<?php endif; ?> -->
 					</td>
 				</tr>
 			<?php } ?>
 		</table>
+		<!-- jipuk ombe  -->
 		<table width="250" border="0" cellpadding="3" cellspacing="0">
+			<tr align="center">
+				<td>
+					<b>---------------------------------------------</b>
+				</td>
+			</tr>
+			<tr>
+				<td>#<?= $trx['no_nota'] ?> | <?= $datetime ?> <?= $trx['nama_kasir'] ?></td>
+			</tr>
 			<tr>
 				<td>
 					<hr>
 				</td>
 			</tr>
 		</table>
-		<table>
-			<!-- jipuk ombe  keterangan +(jeneng pelanggan)-->
-			<b>jatahmu rek ombennan ro jeneng pelanggan kene deleh e</b>
+		<table width="250" border="0" cellpadding="3" cellspacing="0">
+			<?php while ($row = mysqli_fetch_array($mnmclust)) { ?>
+				<tr>
+					<td valign="top">
+						<?= $row['nama_pesanan'] ?>
+					</td>
+					<td valign="top"><?= $row['jumlah'] ?></td>
+					<td valign="top" align="right"><?= number_format($row['hrg_jual']) ?></td>
+					<td valign="top" align="right">
+						<?= number_format($row['hrg']) ?>
+					</td>
+				</tr>
+			<?php } ?>
 		</table>
 		<table width="250" border="0" cellpadding="3" cellspacing="0">
 			<tr>
-				<td colspan="4">
+				<td colspan="5">
 					<hr>
 				</td>
 			</tr>
