@@ -27,6 +27,7 @@ if (!empty($_SESSION['cartdlm'])) {
             // $_SESSION['Qty'] = $qty;
 
             $_SESSION['byrdlm'] = $_POST['bayar'];
+            $_SESSION['identity'] = $_POST['identitas'];
             $_SESSION['ttl'] = $_POST['total'];
             
             // $stoksekarang = $getdata['jumlah'];

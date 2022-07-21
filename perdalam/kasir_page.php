@@ -426,7 +426,7 @@ if (isset($_GET['pesan'])) {
 						<!-- <label>Bayar</label>
 						<input type="text" id="bayar" name="bayar" class="form-control" required> -->
 						<input type="text" id="bayar" name="bayar" class="form-control" placeholder="Bayar" required><br>
-						<input type="nama_pemesan" name="jumlah" class="form-control" placeholder="Nama Pemesan & Tempat" autofocus required>
+						<input type="text" name="identitas" class="form-control" placeholder="Nama Pemesan & Tempat" autofocus required>
 					</div>
 					<button type="submit" class="btn btn-primary" onkeypress="">Selesai</button>
 				</form>

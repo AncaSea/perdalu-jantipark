@@ -7,6 +7,7 @@ date_default_timezone_set('Asia/Jakarta');
 $datetime = date('d-m-Y H:i:s');
 $id_trx = $_GET['idtrx'];
 $bayar = $_SESSION['byrdlm'];
+$identitas = $_SESSION['identity'];
 $kembali = $_SESSION['kmbl'];
 
 $detail = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_nota='$id_trx'");
@@ -51,7 +52,7 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				</td>
 			</tr>
 			<tr>
-				<td>#<?= $trx['no_nota'] ?> | <?= $datetime ?> <?= $trx['nama_kasir'] ?></td>
+				<td>#<?= $trx['no_nota'] ?> | <?= $identitas ?> | <?= $datetime ?> | <?= $trx['nama_kasir'] ?></td>
 			</tr>
 			<tr>
 				<td>
