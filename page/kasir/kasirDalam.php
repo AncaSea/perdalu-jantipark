@@ -254,8 +254,7 @@ if (isset($_GET['pesan'])) {
 						<div class="form-group" style="margin-bottom: 1em; margin-top:3em;">
 							<!-- <label>Bayar</label> -->
 							<input type="text" id="bayar" name="bayar" class="form-control" placeholder="Bayar" required><br>
-							<input type="nama_pemesan" name="jumlah" class="form-control" placeholder="Nama Pemesan & Tempat" autofocus required>
-
+							<input type="text" id="identitas" name="identitas" class="form-control" placeholder="Nama Pemesan & Tempat" autofocus required>
 						</div>
 						<button type="submit" class="btn btn-primary" onkeypress="">Selesai</button>
 					</form>

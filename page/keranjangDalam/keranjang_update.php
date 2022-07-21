@@ -9,7 +9,7 @@ session_start();
 
 if (!empty($_SESSION['cartdlm'])) {
     $cart = $_SESSION['cartdlm'];
-    if (isset($_POST['bayar'])) {
+    if (isset($_POST['bayar']) && isset($_POST['identitas'])) {
     
         foreach ($cart as $key => $value) {
             // $id = $value['id'];
