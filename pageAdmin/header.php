@@ -173,7 +173,7 @@
       font-size: 1rem;
       letter-spacing: 0.04rem;
       margin: 0.5em;
-      padding: 1.5rem 1rem;
+      padding: 2.5rem 1rem;
       cursor: pointer;
       border-radius: .3rem;
       border: .3rem solid #000;
@@ -181,8 +181,7 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 3px 0 0 #000;
-      font-size: 13px;
-      width: 170px;
+      font-size: 12px;
     }
 
     .nmmenu::after {
