@@ -167,7 +167,8 @@ if (isset($_GET['pesan'])) {
 			position: relative;
 			overflow: hidden;
 			box-shadow: 0 3px 0 0 #000;
-			font-size: 17px;
+			/* font-size: 17px; */
+			width: 30%;
 		}
 
 		.nmmenu::after {
@@ -233,7 +234,7 @@ if (isset($_GET['pesan'])) {
 				<h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
 				<h1>Kasir Perdagangan Dalam</h1>
 				<h2>Hai <?= $_SESSION['namakasir'] ?></h2>
-				<a href="fungsi/keranjang_reset.php" class="btn btn-warning btn-md ">Reset Keranjang</a> &ensp;
+				<a href="fungsi/keranjang_reset.php" class="btn btn-info btn-md ">Reset Keranjang</a> &ensp;
 				<a href="penjualanDalam.php" class="btn btn-info btn-md">Riwayat Transaksi </a> &ensp;
 				<a href="../logout.php" class="btn btn-danger btn-md pull-right">Logout</a>
 			</div>
@@ -291,72 +292,78 @@ if (isset($_GET['pesan'])) {
 						<div id="checkcont" class="btn-group" style="text-align:center ;">
 							<div class="btn-group mr-2" role="group" aria-label="First group">
 								<input type="radio" class="menu" name="rb" id="cb1" value="Nasi+Lele Goreng+Sambel Lalap" />
-								<label class="nmmenu" for="cb1" style="background: #FF8C00; border:#feb101;">Paket Lele Goreng</label>
+								<label class="nmmenu" for="cb1" style="background: #FFFF00; border:#feb101;">Paket Lele Goreng</label>
 
 								<input type="radio" class="menu" name="rb" id="cb3" value="Nasi+Kakap Goreng+Sambel Lalap" />
-								<label class="nmmenu" for="cb3" style="background:#00FF00; border:#feb101;">Paket Kakap Goreng</label>
+								<label class="nmmenu" for="cb3" style="background: #FFFF00; border:#feb101;">Paket Kakap Goreng</label>
 
 								<input type="radio" class="menu" name="rb" id="cb5" value="Nasi+Ayam Goreng+Sambel Lalap" />
-								<label class="nmmenu" for="cb5" style="background: 	#FFF0F5 ; border:#feb101;">Paket Ayam Goreng</label>
+								<label class="nmmenu" for="cb5" style="background: #FFFF00 ; border:#feb101;">Paket Ayam Goreng</label>
 							</div>
 							<div class="btn-group mr-2" role="group" aria-label="Second group">
 								<input type="radio" class="menu" name="rb" id="cb2" value="Nasi+Lele Bakar+Sambel Lalap" />
 								<label class="nmmenu" for="cb2" style="background: #FF8C00 ; border:#feb101;">Paket Lele Bakar</label>
 
 								<input type="radio" class="menu" name="rb" id="cb4" value="Nasi+Kakap Bakar+Sambel Lalap" />
-								<label class="nmmenu" for="cb4" style="background: #00FF00 ; border:#feb101;">Paket Kakap Bakar</label>
+								<label class="nmmenu" for="cb4" style="background: #FF8C00 ; border:#feb101;">Paket Kakap Bakar</label>
 
 								<input type="radio" class="menu" name="rb" id="cb6" value="Nasi+Ayam Bakar+Sambel Lalap" />
-								<label class="nmmenu" for="cb6" style="background: 	#FFF0F5 ; border:#feb101;">Paket Ayam Bakar</label>
+								<label class="nmmenu" for="cb6" style="background: 	#FF8C00 ; border:#feb101;">Paket Ayam Bakar</label>
 							</div>
 						</div>
 						<br><b>Paket Bar-bar :</b> <br>
 						<div id="checkcont2" class="btn-group" style="text-align:center ;">
 							<div class="btn-group mr-2" role="group" aria-label="First group">
-								<input type="radio" class="menu" name="rb" id="cb1.2" value="paket lele goreng" />
-								<label class="nmmenu" for="cb1.2" style="background: #FF8C00 ; border:#feb101;">Porsi Lele Goreng</label>
+								<input type="radio" class="menu" name="rb" id="cb1.2" value="Porsi lele goreng (isi 6)" />
+								<label class="nmmenu" for="cb1.2" style="background: #FFFF00 ; border:#feb101;">Porsi Lele Goreng (isi 6)</label>
 
-								<input type="radio" class="menu" name="rb" id="cb3.2" value="paket kakap goreng" />
-								<label class="nmmenu" for="cb3.2" style="background: #00FF00 ; border:#feb101;">Porsi Kakap Goreng</label>
+								<input type="radio" class="menu" name="rb" id="cb3.2" value="Porsi kakap goreng (isi 4)" />
+								<label class="nmmenu" for="cb3.2" style="background: #FFFF00 ; border:#feb101;">Porsi Kakap Goreng (isi 4)</label>
 
+								<input type="radio" class="menu" name="rb" id="cb2.2" value="Porsi lele bakar (isi 6)" />
+								<label class="nmmenu" for="cb2.2" style="background: #FF8C00 ; border:#feb101;">Porsi Lele Bakar (isi6)</label>
+
+								<input type="radio" class="menu" name="rb" id="cb4.2" value="Porsi kakap bakar (isi 4)" />
+								<label class="nmmenu" for="cb4.2" style="background: #FF8C00 ; border:#feb101;">Porsi Kakap Bakar (isi 4)</label>
 							</div>
 							<div class="btn-group mr-2" role="group" aria-label="Second group">
-								<input type="radio" class="menu" name="rb" id="cb2.2" value="paket lele bakar" />
-								<label class="nmmenu" for="cb2.2" style="background: #FF8C00 ; border:#feb101;">Porsi Lele Bakar</label>
-
-								<input type="radio" class="menu" name="rb" id="cb4.2" value="paket kakap bakar" />
-								<label class="nmmenu" for="cb4.2" style="background: #00FF00 ; border:#feb101;">Porsi Kakap Bakar</label>
-
-								<input type="radio" class="menu" name="rb" id="cb5.2" value="nasi ceting" />
-								<label class="nmmenu" for="cb5.2" style="background:#FFFF00 ; border:#feb101;">Nasi Ceting</label>
 
 								<input type="radio" class="menu" name="rb" id="cb6.2" value="sambel+lalap" />
-								<label class="nmmenu" for="cb6.2" style="background: #FF69B4 ; border:#feb101;">Sambel+Lalap</label>
+								<label class="nmmenu" for="cb6.2" style="background: #32CD32 ; border:#feb101;">Sambel + Lalap</label>
+
+								<input type="radio" class="menu" name="rb" id="cb7.2" value="Cah Kangkung" />
+								<label class="nmmenu" for="cb7.2" style="background: #32CD32 ; border:#feb101;">Cah Kangkung</label>
+
+								<input type="radio" class="menu" name="rb" id="cb8.2" value="Trancam" />
+								<label class="nmmenu" for="cb8.2" style="background: #32CD32 ; border:#feb101;">Trancam </label>
+
+								<input type="radio" class="menu" name="rb" id="cb5.2" value="Nasi Ceting" />
+								<label class="nmmenu" for="cb5.2" style="background: #FAF0E6 ; border:#feb101;">Nasi Ceting</label>
 							</div>
 						</div>
 						<br><b>Minuman :</b> <br>
 						<div id="checkcont3" class="btn-group" style="text-align:center ;">
 							<div class="btn-group mr-2" role="group" aria-label="First group">
-								<input type="radio" class="menu" name="rb" id="cb1.3" value="es teh" />
-								<label class="nmmenu" for="cb1.3" style="background: #E9967A ; border:#feb101;">Es Teh</label>
+								<input type="radio" class="menu" name="rb" id="cb2.3" value="Teh Panas" />
+								<label class="nmmenu" for="cb2.3" style="background: #FF1493 ; border:#feb101;">Teh Panas</label>
 
-								<input type="radio" class="menu" name="rb" id="cb2.3" value="teh anget" />
-								<label class="nmmenu" for="cb2.3" style="background: #FFA07A ; border:#feb101;">Teh Panas</label>
+								<input type="radio" class="menu" name="rb" id="cb4.3" value="Jeruk Panas" />
+								<label class="nmmenu" for="cb4.3" style="background: #FF1493 ; 	border:#feb101;">Jeruk Panas</label>
 
-								<input type="radio" class="menu" name="rb" id="cb3.3" value="es jeruk" />
-								<label class="nmmenu" for="cb3.3" style="background: #F0E68C ; border:#feb101;">Es Jeruk</label>
+								<input type="radio" class="menu" name="rb" id="cb1.3" value="Es Teh" />
+								<label class="nmmenu" for="cb1.3" style="background: #00BFFF ; border:#feb101;">Es Teh</label>
 
-								<input type="radio" class="menu" name="rb" id="cb4.3" value="jeruk anget" />
-								<label class="nmmenu" for="cb4.3" style="background: #BDB76B ; 	border:#feb101;">Jeruk Panas</label>
+								<input type="radio" class="menu" name="rb" id="cb3.3" value="Es Jeruk" />
+								<label class="nmmenu" for="cb3.3" style="background: #00BFFF ; border:#feb101;">Es Jeruk</label>
 
-								<input type="radio" class="menu" name="rb" id="cb5.3" value="es lemontea" />
-								<label class="nmmenu" for="cb5.3" style="background: #6B8E23 ; border:#feb101;">Es Lemontea</label>
+								<input type="radio" class="menu" name="rb" id="cb5.3" value="Es Lemon Tea" />
+								<label class="nmmenu" for="cb5.3" style="background: #00BFFF ; border:#feb101;">Es Lemontea</label>
 
-								<input type="radio" class="menu" name="rb" id="cb6.3" value="es nutrisari" />
-								<label class="nmmenu" for="cb6.3" style="background: 	#32CD32 ; border:#feb101;">ES Nutrisari</label>
+								<input type="radio" class="menu" name="rb" id="cb6.3" value="Es Nutrisari" />
+								<label class="nmmenu" for="cb6.3" style="background:#00BFFF; border:#feb101;">ES Nutrisari</label>
 
-								<input type="radio" class="menu" name="rb" id="cb7.3" value="kopi" />
-								<label class="nmmenu" for="cb7.3" style="background: #A0522D ; border:#feb101;">KOPI</label>
+								<input type="radio" class="menu" name="rb" id="cb7.3" value="Es Susu Coklat" />
+								<label class="nmmenu" for="cb7.3" style="background: #00BFFF ; border:#feb101;">Es Susu Coklat</label>
 							</div>
 						</div>
 					</div>

@@ -41,9 +41,9 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 		<div class="clearfix" style="margin-top:1em;"></div>
 		<table width="250" border="0" cellpadding="1" cellspacing="0">
 			<tr>
-				<th>Janti Park<br>
-					NGENDO, JANTI, KECAMATAN POLANHARJO, <br>
-					KABUPATEN KLATEN, JAWA TENGAH 57474</th>
+				<th>UNIT PERDAGANGAN<br>
+					JANTI PARK<br>
+				</th>
 			</tr>
 			<tr align="center">
 				<td>
