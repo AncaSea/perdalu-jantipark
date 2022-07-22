@@ -220,12 +220,6 @@
  									<td><?php echo $isi[7]; ?> </td>
  									<td>Rp.<?php echo number_format($isi[8]); ?>,-</td>
  									<td>Rp.<?php echo number_format($isi[9]); ?>,-</td>
- 									<td class="text-center">
- 										<a href="../fungsi/hapus/hapus.php?lapluar=hapus&nota=<?= $isi[1] ?>">
- 											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
- 											</button>
- 										</a>
- 									</td>
  								</tr>
  							<?php $no++;
 								} ?>

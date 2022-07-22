@@ -195,13 +195,6 @@
  									<td><?php echo $isi[8]; ?> </td>
  									<td>Rp.<?php echo number_format($isi[10]); ?>,-</td>
  									<td>Rp.<?php echo number_format($isi[11]); ?>,-</td>
- 									<td class="text-center">
- 										<li>
- 											<a href="../fungsi/hapus/hapus.php?lapdlm=hapus&nota=<?= $isi[1] ?>">
- 												<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
- 											</a>
- 										</li>
- 									</td>
  								</tr>
  							<?php $no++;
 								} ?>

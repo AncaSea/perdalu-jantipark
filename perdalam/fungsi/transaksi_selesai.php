@@ -83,7 +83,7 @@ $detailbrg = mysqli_query($dbconnect, "SELECT * FROM penjualan_dalam WHERE no_no
 				</td>
 			</tr>
 			<tr>
-				<td>#<?= $trx['no_nota'] ?> | <?= $datetime ?> <?= $trx['nama_kasir'] ?> | <?= $identitas ?> </td>
+				<td>#<?= $trx['no_nota'] ?> | <?= $datetime ?> | <?= $trx['nama_kasir'] ?> | <?= $identitas ?> </td>
 			</tr>
 			<tr>
 				<td>

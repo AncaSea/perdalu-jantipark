@@ -296,8 +296,8 @@ $lihat = new view($dbconnect);
 									<td>Rp.<?php echo number_format($isi[10]); ?>,-</td>
 									<td>Rp.<?php echo number_format($isi[11]); ?>,-</td>
 									<td class="text-center">
-										<a href="../fungsi/hapus/hapus.php?lapdlm=hapus&nota=<?= $isi[1] ?>">
-											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+										<a href="../fungsi/hapus/hapus.php?lapdlmksr=hapus&nota=<?= $isi[1] ?>">
+											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</a>
 									</td>
 								</tr>
@@ -308,8 +308,6 @@ $lihat = new view($dbconnect);
 							<tr>
 								<th colspan="7">Total Terjual</td>
 								<th><?php echo $transaksi; ?></td>
-									<!-- <th>Rp.<?php echo number_format($modal); ?>,-</th>
-									  <th>Rp.<?php echo number_format($bayar); ?>,-</th> -->
 								<th style="background:#0bb365;color:#fff;">Omset</th>
 								<th style="background:#0bb365;color:#fff;">
 									Rp.<?php echo number_format($omset); ?>,-</th>

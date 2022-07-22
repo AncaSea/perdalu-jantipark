@@ -297,7 +297,11 @@
 				include 'db_con.php';
 				$sql = mysqli_query($dbconnect, "SELECT SUM(jumlah) AS jmlh FROM stok_brg");
 				$row = mysqli_fetch_array($sql);
-				$hasil = $row['jmlh'];
+				if ($row['jmlh'] === 0) {
+					$hasil = 0;
+				} else {
+					$hasil = $row['jmlh'];
+				}
 				return $hasil;
 			}
 
@@ -311,6 +315,10 @@
 						// print_r($row);
 						return $hasil;
 					}
+				} else {
+					$hasil = 0;
+					// print_r($row);
+					return $hasil;
 				}
 			}
 

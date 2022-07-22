@@ -36,7 +36,7 @@ if (!empty($_SESSION['cartdlm'])) {
             // $updatedata = mysqli_query($dbconnect, "UPDATE stok_brg set jumlah = '$updatestok' WHERE kode_brg='$kode'");
 
             // if ($updatedata) {
-            header('location:../../../../page/keranjangDalam/transaksi.php');
+            header('location:transaksi.php');
             // } else {
             //     header("location:../../../../admin.php?page=kasir/kasirDalam&pesan=updatefailed");
             // }
@@ -79,8 +79,8 @@ if (!empty($_SESSION['cartdlm'])) {
             //     }
             // }
         }
-        header('location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes');
+        header('location:../../../../perdalam/kasir_page.php');
     }
 } else {
-    header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=emptycart");
+    header("location:../../../../perdalam/kasir_page.php&pesan=emptycart");
 }
