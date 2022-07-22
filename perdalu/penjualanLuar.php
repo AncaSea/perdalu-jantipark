@@ -23,17 +23,17 @@ $lihat = new view($dbconnect);
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css">
 
 	<!--external css-->
-	<link href="assets/font-awesome/css/all.css" rel="stylesheet" />
-	<link href="assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
+	<link href="../assets/font-awesome/css/all.css" rel="stylesheet" />
+	<link href="../assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
 	<!-- <link rel="stylesheet" type="text/css" href="assets/datatables/dataTables.bootstrap.css"/> -->
-	<link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+	<link rel="stylesheet" type="text/css" href="../assets/lineicons/style.css">
 
 	<!-- SweetAlert Popup -->
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
 	<!-- Custom styles for this template -->
-	<link href="assets/css/style.css" rel="stylesheet">
+	<link href="../assets/css/style.css" rel="stylesheet">
 	<!-- <link href="assets/css/style-responsive.css" rel="stylesheet"> -->
 
 	<!-- <script type="text/javascript" src="assets/js/bootstrap.min.js"></script> -->
@@ -278,7 +278,7 @@ $lihat = new view($dbconnect);
 									<td>Rp.<?php echo number_format($isi[9]); ?>,-</td>
 									<td class="text-center">
 										<a href="../fungsi/hapus/hapus.php?lapluar=hapus&nota=<?= $isi[1] ?>">
-											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
+											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash-can"></i></button>
 											</button>
 										</a>
 									</td>
@@ -288,7 +288,7 @@ $lihat = new view($dbconnect);
 						</tbody>
 						<tfoot>
 							<tr>
-								<th colspan="6">Total Terjual</td>
+								<th colspan="7">Total Terjual</td>
 								<th><?php echo $transaksi; ?></td>
 									<!-- <th>Rp.<?php echo number_format($modal); ?>,-</th>
 								<th>Rp.<?php echo number_format($bayar); ?>,-</th> -->

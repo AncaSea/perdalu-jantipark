@@ -205,7 +205,7 @@ if (isset($_GET['pesan'])) {
 									<ul class="auto-result" id="search-result"></ul>
 								</div>
 								<div class="col-md-4">
-									<input type="number" name="jumlah" min="1" value="1" class="form-control" placeholder="Masukkan Jumlah Barang" autofocus required>
+									<input type="number" name="jumlah" min="1" value="1" class="form-control jumlah" placeholder="Masukkan Jumlah Barang" autofocus required>
 								</div>
 								<div class="col-md-4">
 									<button type="submit" class="btn btn-success">Masukan</button>
@@ -230,7 +230,7 @@ if (isset($_GET['pesan'])) {
 										</td>
 										<td align="right"><?= number_format($value['harga']) ?></td>
 										<td class="col-md-2">
-											<input type="number" min="1" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control">
+											<input type="number" min="1" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum">
 										</td>
 										<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
 										<td align="right"><?= number_format(($value['qty'] * $value['harga'])) ?></td>
@@ -262,7 +262,6 @@ if (isset($_GET['pesan'])) {
 			</div>
 		</div>
 
-
 		<script type="text/javascript">
 			//inisialisasi inputan
 			var bayar = document.getElementById('bayar');
@@ -273,6 +272,14 @@ if (isset($_GET['pesan'])) {
 				// calculate(harga,service.value);
 			});
 
+			$(".jumlah").keyup(function() {
+				$('.jumlah').val(formatRupiah(this.value));
+			});
+
+			$(".jum").keyup(function() {
+				var $this = $(this);
+				$this.val(formatRupiah($this.val()));
+			});
 			//generate dari inputan angka menjadi format rupiah
 
 			function formatRupiah(angka, prefix) {
@@ -356,6 +363,26 @@ if (isset($_GET['pesan'])) {
 						// $(this).val()
 					});
 				});
+
+				// var number = 1
+				// var antrian = ''
+				// $('#aib').click(function() {
+				// 	number++
+				// 	var format = number.toString().length
+				// 	if (format === 1) {
+				// 		antrian = '000' + number
+				// 		$('#ai').val(antrian);
+				// 	} else if (format === 2) {
+				// 		antrian = '00' + number
+				// 		$('#ai').val(antrian);
+				// 	} else if (format === 3) {
+				// 		antrian = '0' + number
+				// 		$('#ai').val(antrian);
+				// 	} else {
+				// 		antrian = number
+				// 		$('#ai').val(antrian);
+				// 	}
+				// });
 			});
 		</script>
 	</section>

@@ -39,7 +39,7 @@
       }
       else if ($sql->num_rows != 1) {
         $rand = mt_rand(0000,9999);
-        $randid = 'sp'.$rand.'';
+        $randid = 'kb'.$rand.'';
         $arrid = array('kode_brg'=>"$randid");
         foreach ($arrid as $row) {
           array_push($result_array, array('kode_brg'=>"$randid"));

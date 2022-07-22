@@ -1,5 +1,7 @@
 <?php
 include '../../db_con.php';
+include $viewnota;
+$lihat = new view($dbconnect);
 session_start();
 // include "authcheckkasir.php";
 
@@ -10,7 +12,9 @@ $bayar = preg_replace('/\D/', '', $_SESSION['byr']);
 // print_r($_SESSION['cart']) ;
 
 $tanggal_waktu = date('Y-m-d');
-$nomor = rand(111111,999999);
+// $nomor = rand(111111,999999);
+$antrian = $lihat->nota_id();
+$nomor = date('dmY') . '/' . $antrian;
 $total = $_SESSION['ttl'];
 $nama = $_SESSION['namaadmin'];
 $kembali = (int)$bayar - (int)$total;

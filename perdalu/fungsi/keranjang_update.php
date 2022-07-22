@@ -49,7 +49,7 @@ if (!empty($_SESSION['cart'])) {
             header("Content-type: application/json");
             echo json_encode($cartbarang);
         }
-        // header('location:../../../../perdalu/kasir_page.php');
+        header('location:../../../../perdalu/kasir_page.php');
     }               
 } else {
     header("location:../../../../perdalu/kasir_page.php&pesan=emptycart");

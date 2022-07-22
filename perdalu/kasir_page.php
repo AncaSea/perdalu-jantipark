@@ -211,8 +211,8 @@ if (isset($_GET['pesan'])) {
 					</div>
 				</div>
 				<br>
-				<?php print_r($_SESSION['cart']) ?>
-				<form method="post" action="">
+				<!-- <?php print_r($_SESSION['cart']) ?> -->
+				<form method="post" action="fungsi/keranjang_update.php">
 					<table class="table table-bordered">
 						<tr>
 							<th>Nama</th>
@@ -251,7 +251,7 @@ if (isset($_GET['pesan'])) {
 							<?php } ?>
 						<?php endif; ?>
 					</table>
-					<!-- <button type="submit" class="btn btn-success">Perbaruhi</button> -->
+					<button type="submit" class="btn btn-success">Perbaruhi</button>
 				</form>
 			</div>
 			<div class="col-md-4">
@@ -346,7 +346,7 @@ if (isset($_GET['pesan'])) {
 			$("#search-result").hide();
 		});
 	</script>
-	<script>
+	<!-- <script>
 		$(document).ready(function() {
 			$(".jum").change(function() {
 				// var subttl = $(".subttl").text();
@@ -395,7 +395,7 @@ if (isset($_GET['pesan'])) {
 				});
 			});
 		});
-	</script>
+	</script> -->
 </body>
 
 </html>

@@ -19,3 +19,4 @@ if ($dbconnect-> connect_error) {
 
 $view = 'view/view.php';
 $viewksr = '../view/view.php';
+$viewnota = '../../view/view.php';

@@ -129,6 +129,43 @@
 				}
 			}
 
+			function nota_id() {
+				include '../../db_con.php';
+				// $sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk ORDER BY id ASC");
+				$sql = mysqli_query($dbconnect, "SELECT max(no_nota) as maxNota FROM penjualan_dalam where CAST(tgl_penjualan AS DATE) = CAST(NOW() AS DATE)");
+				$row = mysqli_fetch_assoc($sql);
+				// $hasil = $row;
+
+				if ($row === null) {
+					$urut = 1;
+					$number = (int) $urut++;
+					if (strlen($number) === 1) {
+						$antrian = '000'.$number;
+					} else if (strlen($number) === 2) {
+						$antrian = '00'.$number;
+					} else if (strlen($number) === 3) {
+						$antrian = '0'.$number;
+					} else {
+						$antrian = $number;
+					}
+				} else {
+					// $expld = explode(date('dmY').'/', $row['maxNota']);
+					$urut = (int) substr($row['maxNota'], 9);
+					$urut++;
+					// $number = ;
+					if (strlen($urut) === 1) {
+						$antrian = '000'. $urut;
+					} else if (strlen($urut) === 2) {
+						$antrian = '00'. $urut;
+					} else if (strlen($urut) === 3) {
+						$antrian = '0'. $urut;
+					} else {
+						$antrian = $urut;
+					}
+				}
+				return $antrian;
+			}
+
 			function barang_id(){
 				include 'db_con.php';
 				$sql = mysqli_query($dbconnect, "SELECT * FROM brg_masuk ORDER BY id ASC");
