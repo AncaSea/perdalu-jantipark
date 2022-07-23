@@ -221,7 +221,7 @@
  						</tbody>
  						<tfoot>
  							<tr>
- 								<th colspan="6">Total Terjual</td>
+ 								<th colspan="7">Total Terjual</td>
  								<th><?php echo $transaksi; ?></td>
  									<!-- <th>Rp.<?php echo number_format($modal); ?>,-</th>
 										<th>Rp.<?php echo number_format($bayar); ?>,-</th> -->
