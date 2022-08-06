@@ -213,7 +213,7 @@ if (isset($_GET['pesan'])) {
 							</form>
 						</div>
 					</div>
-					<form method="post" action="../page/keranjangDalam/keranjang_update.php">
+					<form method="post" action="">
 						<table class="table table-bordered">
 							<tr>
 								<th>Nama</th>
@@ -244,7 +244,7 @@ if (isset($_GET['pesan'])) {
 								<?php } ?>
 							<?php endif; ?>
 						</table>
-						<button type="submit" class="btn btn-success">Perbaruhi</button>
+						<!-- <button type="submit" class="btn btn-success">Perbaruhi</button> -->
 					</form>
 				</div>
 				<div class="col-md-4">
