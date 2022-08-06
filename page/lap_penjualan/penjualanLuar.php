@@ -219,6 +219,7 @@
  				</form>
 
  				<div class="clearfix" style="margin-top:1em;"></div>
+				
  				<?php if (isset($_GET['success-stok'])) { ?>
  					<div class="alert alert-success">
  						<p>Tambah Stok Berhasil !</p>
@@ -384,11 +385,13 @@
  						</tbody>
  						<tfoot>
  							<tr>
- 								<th colspan="7">Total Terjual</td>
+ 								<th colspan="6">Total Terjual</td>
  								<th><?php echo $transaksi; ?></td>
  								<th style="background:#0bb365;color:#fff;">Omset</th>
  								<th style="background:#0bb365;color:#fff;">
- 									Rp.<?php echo number_format($omset); ?>,-</th>
+ 									Rp.<?php echo number_format($omset); ?>,-
+								</th>
+								<th></th>
  							</tr>
  						</tfoot>
  					</table>

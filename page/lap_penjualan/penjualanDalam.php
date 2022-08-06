@@ -196,7 +196,7 @@
 								// error_reporting(E_ERROR | E_PARSE);
 								foreach ($hasil as $isi) {
 									// print_r($isi);
-									$omset += $isi[10];
+									$omset += $isi[11];
 									// $modal += $isi['harga_beli']* $isi['jumlah'];
 									// $jumlah += $isi['jumlah'];
 								?>
@@ -221,13 +221,15 @@
  						</tbody>
  						<tfoot>
  							<tr>
- 								<th colspan="7">Total Terjual</td>
+ 								<th colspan="6">Total Terjual</td>
  								<th><?php echo $transaksi; ?></td>
  									<!-- <th>Rp.<?php echo number_format($modal); ?>,-</th>
 										<th>Rp.<?php echo number_format($bayar); ?>,-</th> -->
  								<th style="background:#0bb365;color:#fff;">Omset</th>
  								<th style="background:#0bb365;color:#fff;">
- 									Rp.<?php echo number_format($omset); ?>,-</th>
+ 									Rp.<?php echo number_format($omset); ?>,-
+								</th>
+								<th></th>
  							</tr>
  						</tfoot>
  					</table>

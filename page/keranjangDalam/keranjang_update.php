@@ -43,46 +43,34 @@ if (!empty($_SESSION['cartdlm'])) {
         }
         
     } else {
-    $qty = $_POST['qty'];
-    
-    foreach ($cart as $key => $value) {
-        $_SESSION['cartdlm'][$key]['qty'] = $qty[$key];
-    
-        $idbarang = $_SESSION['cartdlm'][$key]['id'];
-        // //cek diskon barang
-        // $disbarang = mysqli_query($dbconnect, "SELECT * FROM disbarang WHERE barang_id='$idbarang'");
-        // $disb = mysqli_fetch_assoc($disbarang);
-        
-        // //cek jika di keranjang sudah ada barang yang masuk
-        // $key = array_search($idbarang, array_column($_SESSION['cart'], 'id'));
-        // // return var_dump($key);
-        // if ($key !== false) {
-            //     // return var_dump($_SESSION['cart']);
-            
-            //     //cek jika ada potongan dan cek jumlah barang lebih besar sama dengan minimum order potongan
-            //     if ($disb['qty'] && $_SESSION['cart'][$key]['qty'] >= $disb['qty']) {
-                
-                //         //cek kelipatan jumlah barang dengan batas minimum order
-                //         $mod = $_SESSION['cart'][$key]['qty'] % $disb['qty'];
-                
-                //         if ($mod == 0) {
-                    
-                    //             //Jika benar jumlah barang kelipatan batas minimum order
-                    //             $d = $_SESSION['cart'][$key]['qty'] / $disb['qty'];
-                    //         } else {
-                        
-                        //             //Simpan jumlah potongan yang didapat
-                        //             $d = ($_SESSION['cart'][$key]['qty'] - $mod) / $disb['qty'];
-                        //         }
-                        
-                        //         //Simpan diskon dengan jumlah kelipatan dikali potongan barang
-                        //         $_SESSION['cart'][$key]['diskon'] = $d * $disb['potongan'];
-                        //     }
-                        // }
-                    }
-                    header('location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes');
-                }
-                
+        $qty = $_POST['qty'];
+        $id = $_POST['id'];
+
+        foreach ($cart as $key => $value) {
+            if ($_SESSION['cartdlm'][$key]['id'] === $id) {
+                $harga = $value['harga'];
+                $sum = $qty * $harga;
+                // $sumtext = sum.toString();
+
+
+                $item = [
+                    'id' => $value['id'],
+                    'nama' => $value['nama'],
+                    'role' => $value['role'],
+                    'jenis' => $value['jenis'],
+                    'harga' => $value['harga'],
+                    'qty' => $qty,
+                ];
+
+                $_SESSION['cartdlm'][$key] = $item;
+                header("Content-type: application/json");
+                echo json_encode($_SESSION['cartdlm']);
+            } else {
+                // $cartold = $_SESSION['cart'][$key]['qty'];
+                // $_SESSION['cart'][$key]['qty'] === $cartold;
+            }
+        }               // header('location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes');
+    }            
 } else {
     header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=emptycart");
 }

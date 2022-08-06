@@ -212,7 +212,7 @@ if (isset($_GET['pesan'])) {
 				</div>
 				<br>
 				<!-- <?php print_r($_SESSION['cart']) ?> -->
-				<form method="post" action="fungsi/keranjang_update.php">
+				<form method="post" action="">
 					<table class="table table-bordered">
 						<tr>
 							<th>Nama</th>
@@ -225,7 +225,7 @@ if (isset($_GET['pesan'])) {
 						// print_r($_SESSION['cart'][0]);
 						if (isset($_SESSION['cart'])) : ?>
 							<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
-								<tr id="tr">
+								<tr class="<?= $key ?>">
 									<td>
 										<?= $value['nama'] ?>
 										<!-- <?php if ($value['diskon'] > 0) : ?>
@@ -234,13 +234,13 @@ if (isset($_GET['pesan'])) {
 									</td>
 									<td align="right"><?= number_format($value['harga']) ?></td>
 									<td class="col-md-2">
-										<input type="number" id="qty[<?= $key ?>]" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum" max="<?= $value['stok'] ?>">
+										<input type="number" id="<?= $value['kd'] ?>" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum" max="<?= $value['stok'] ?>">
 									</td>
 									<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
 									<?php
-									$qty = intval(preg_replace('/[^0-9]/', '', $value['qty']));
+									// $qty = intval(preg_replace('/[^0-9]/', '', $value['qty']));
 									?>
-									<td align="right" class="subttl" id="qty[<?= $key ?>]"><span><?= number_format(($qty * $value['harga'])) ?></span></td>
+									<td align="right" class="subttl" id="$value['kd']"><?= number_format(($value['qty'] * $value['harga'])) ?></td>
 									<td class="text-center">
 										<a href="fungsi/keranjang_hapus.php?kd=<?= $value['kd'] ?>">
 											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
@@ -250,16 +250,21 @@ if (isset($_GET['pesan'])) {
 								</tr>
 							<?php } ?>
 						<?php endif; ?>
+						<?php
+						// foreach ($_SESSION['cart'] as $value) {
+						// 	print_r($value['kd']);
+						// }
+						?>
 					</table>
-					<button type="submit" class="btn btn-success">Perbaruhi</button>
+					<!-- <button type="submit" class="btn btn-success">Perbaruhi</button> -->
 				</form>
 			</div>
 			<div class="col-md-4">
 				<h3 id="byr" style="margin:0px 0px 38px 0px">
-					<p>Total Rp. <?= number_format($sum) ?></p>
+					Total Rp. <?= number_format($sum) ?>
 				</h3>
 				<form action="fungsi/keranjang_update.php" method="POST">
-					<input type="hidden" name="total" value="<?= $sum ?>">
+					<input type="hidden" id="total" name="total" value="<?= $sum ?>">
 					<div class="form-group" style="margin-bottom: 1em;">
 						<label>Bayar</label>
 						<input type="text" id="bayar" name="bayar" class="form-control">
@@ -311,6 +316,18 @@ if (isset($_GET['pesan'])) {
 			return clean;
 			// console.log(clean);
 		}
+
+		function formatNumber(nStr) {
+			nStr += '';
+			x = nStr.split('.');
+			x1 = x[0];
+			x2 = x.length > 1 ? '.' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
+			while (rgx.test(x1)) {
+				x1 = x1.replace(rgx, '$1' + ',' + '$2');
+			}
+			return x1 + x2;
+		}
 	</script>
 	<script>
 		$(document).ready(function() {
@@ -346,56 +363,60 @@ if (isset($_GET['pesan'])) {
 			$("#search-result").hide();
 		});
 	</script>
-	<!-- <script>
+	<script>
 		$(document).ready(function() {
-			$(".jum").change(function() {
-				// var subttl = $(".subttl").text();
-				// console.log(this.subttl);
-
-				// $(".tr").on("keyup", "tr:nth-child(4)", function() {
-				var jum = $(this);
-				var jumnow = $(this).val();
-				// var sum = jumnow * harga;
-				console.log(jumnow);
-
-				// $(".subttl").each(function() {
-				// console.log($(this));
-				// var $this = $(this);
-				// let sumtext = sum.toString();
-				// $(this).closest('tr').children('td:eq(3)').text(formatRupiah(sumtext));
-				// var byr = $('#byr').text();
-				// console.log(byr);
-				// console.log(search);
+			$(".jum").keyup(function() {
+				var row = $(this);
+				var kdmenu = $(this).attr('id');
+				var valmenu = $(this).val();
+				var sumttl = 0;
+				// console.log(jum);
+				// console.log(jumnow);
 				var cart = <?php echo json_encode($_SESSION['cart']); ?>;
+				// console.log(cart)
 				$.each(cart, function(key, value) {
-					console.log(value)
-					// var kd = value['kd'];
-					var harga = value['harga'];
-					console.log(harga);
-					if (jumnow !== "") {
+					// console.log(value)
+
+					var kd = value['kd'];
+					if (kd === kdmenu) {
+						var qty = valmenu;
+						// console.log(kd);
+						// console.log(qty);
+						var subttl = row.closest('tr').find('.subttl').attr('id');
+						// console.log(subttl);
 						$.ajax({
 							url: "fungsi/keranjang_update.php",
 							type: "POST",
 							cache: false,
 							data: {
-								// kd: kd,
-								qty: jumnow
+								kd: kd,
+								qty: qty
 							},
 							success: function(data) {
-								console.log(data);
-								// $.each(data, function(key, value) {
-								// 	// console.log(value['nama']);
-								// jum.closest('tr').children('td:eq(3)').text(formatRupiah(sumtext));
-								// });
-								// $("#search-result").html(data);
-								// $("#search-result").fadeIn();
+								// console.log(data);
+								$.each(data, function(key, value) {
+									// console.log(value['kd']);
+									sumttl += parseInt(value['harga']) * parseInt(value['qty']);
+									let sumttltext = sumttl.toString();
+									// console.log(sumttl);
+									$('#byr').text('Total Rp. ' + formatNumber(sumttltext));
+									$('#total').val(sumttltext);
+									if (value['kd'] === kd) {
+										var jumlah = value['qty'];
+										var harga = value['harga'];
+										var sum = jumlah * harga;
+										let sumtext = sum.toString();
+										// console.log(sumtext);
+										row.closest('tr').children('td:eq(3)').text(formatNumber(sumtext));
+									}
+								});
 							},
 						});
 					}
 				});
 			});
 		});
-	</script> -->
+	</script>
 </body>
 
 </html>

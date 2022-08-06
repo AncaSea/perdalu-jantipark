@@ -39,33 +39,35 @@
               </div>
             </div>
 
-            <!-- <div class="col-md-3">
-                    <div class="panel panel-info">
-                      <div class="panel-heading">
-                        <h5><i class="fa fa-desktop"></i> Penjualan Hari ini</h5>
-                      </div>
-                      <div class="panel-body">
-                        <center><h1><?php echo ($jual); ?></h1></center>
-                      </div>
-                      <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;font-weight:700;"><a href='admin.php?page=lap_penjualan/penjualan'>Tabel laporan  <i class='fa fa-angle-double-right'></i></a></h4>
-                      </div>
-                    </div>
-                  </div> -->
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h5><i class="fa fa-ticket"></i> Reservasi</h5>
+                </div>
+                <div class=" text-center panel-body">
+                  <i class="fa fa-ticket" style="font-size: 5em;"></i>
+                  <!-- <center><h1><?php echo ($jual); ?></h1></center> -->
+                </div>
+                <div class="panel-footer">
+                  <h4 style="font-size:15px;font-weight:700;font-weight:700;"><a href='admin.php?page=reservasi/reservasi'>Go to Page <i class='fa fa-angle-double-right'></i></a></h4>
+                </div>
+              </div>
+            </div>
 
-            <!-- <div class="col-md-3">
-                    <div class="panel panel-danger">
-                      <div class="panel-heading">
-                        <h5><i class="fa fa-desktop"></i> Income Hari ini</h5>
-                      </div>
-                      <div class="panel-body">
-                        <center><h1><?php echo ($income); ?></h1></center>
-                      </div>
-                      <div class="panel-footer">
-                        <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=lap_penjualan/penjualan'>Tabel Laporan  <i class='fa fa-angle-double-right'></i></a></h4>
-                      </div>
-                    </div>
-                  </div> -->
+            <div class="col-md-3">
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  <h5><i class="fa fa-gears"></i> Backup & Restore</h5>
+                </div>
+                <div class="text-center panel-body">
+                  <i class="fa fa-gears" style="font-size: 5em;"></i>
+                  <!-- <center><h1><?php echo ($income); ?></h1></center> -->
+                </div>
+                <div class="panel-footer">
+                  <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=backuprestore/backup-data&accordion3=on&active=yes'>Go to Page <i class='fa fa-angle-double-right'></i></a></h4>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

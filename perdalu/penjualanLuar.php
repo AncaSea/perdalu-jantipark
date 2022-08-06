@@ -61,6 +61,24 @@ $lihat = new view($dbconnect);
 	<!-- pretty-checkbox -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css" />
 
+	<script>
+		$(document).ready(function() {
+			$('#demo').daterangepicker({
+				// locale: {
+				// 	format: 'YYYY-MM-DD'
+				// },
+				"showDropdowns": true,
+				"autoApply": true,
+				"startDate": new Date(),
+				"endDate": new Date(),
+				"opens": "right",
+				"drops": "auto"
+			}, function(start, end, label) {
+				console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+			});
+		});
+	</script>
+
 	<style>
 		.bd-placeholder-img {
 			font-size: 1.125rem;
@@ -77,18 +95,23 @@ $lihat = new view($dbconnect);
 			}
 		}
 
-		/* .daterangepicker .input-mini.active {
+		.daterangepicker .input-mini.active {
 			background-color: #faf37b;
-			}
-			.daterangepicker td.in-range {
+		}
+
+		.daterangepicker td.in-range {
 			background-color: #faf37b;
-			}
-			.daterangepicker td.active, .daterangepicker td.active:hover {
+		}
+
+		.daterangepicker td.active,
+		.daterangepicker td.active:hover {
 			background-color: #feb101;
-			}
-			.btn:focus {
-				outline: none;
-			} */
+		}
+
+		.btn:focus {
+			outline: none;
+		}
+
 		.pretty {
 			margin-right: 2.5em;
 			margin-left: 2.5em;
@@ -148,7 +171,7 @@ $lihat = new view($dbconnect);
 	<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
 		<script type="text/javascript">
 			swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
-				window.location = "admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes";
+				window.location = "penjualanLuar.php";
 			});
 		</script>
 	<?php }
@@ -173,6 +196,64 @@ $lihat = new view($dbconnect);
 					<?php } ?>
 				</h3>
 				<hr>
+
+				<div class="clearfix" style="margin-top:1em;"></div>
+
+				<h4>Cari Laporan</h4>
+				<form method="post" action="penjualanLuar.php?cari=ok">
+					<table class="table table-striped">
+						<tr>
+							<th>
+								Pilih Tanggal
+							</th>
+							<!-- <th>
+										Pilih Tanggal Akhir
+									</th> -->
+							<th>
+								Aksi
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<input name="cari" type="text" id="demo" class="form-control">
+							</td>
+							<td>
+								<input type="hidden" name="periode" value="ya">
+								<button class="btn btn-primary">
+									<i class="fa fa-search"></i> Cari
+								</button>
+								<a href="penjualanLuar.php" class="btn btn-success">
+									<i class="fa fa-refresh"></i> Refresh</a>
+
+								<!-- <?php if (!empty($_GET['cari'])) { ?>
+									<a href="../../excel.php?cari=<?php echo $_POST['cari']; ?>&lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
+										Excel</a>
+								<?php } else { ?>
+									<a href="../../excel.php?lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
+										Excel</a>
+								<?php } ?> -->
+							</td>
+						</tr>
+					</table>
+				</form>
+
+				<div class="clearfix" style="margin-top:1em;"></div>
+
+				<?php if (isset($_GET['success-stok'])) { ?>
+					<div class="alert alert-success">
+						<p>Tambah Stok Berhasil !</p>
+					</div>
+				<?php } ?>
+				<?php if (isset($_GET['success'])) { ?>
+					<div class="alert alert-success">
+						<p>Tambah Data Berhasil !</p>
+					</div>
+				<?php } ?>
+				<?php if (isset($_GET['remove'])) { ?>
+					<div class="alert alert-danger">
+						<p>Hapus Data Berhasil !</p>
+					</div>
+				<?php } ?>
 
 				<div class="clearfix" style="margin-top:1em;"></div>
 
@@ -212,50 +293,50 @@ $lihat = new view($dbconnect);
 							// 	}
 							// } else 
 
-							// if(!empty($_GET['cari'])) {
-							// 	$ranges = explode(' - ', $_POST['cari']);
-							// 	$tgl1 = $ranges[0];
-							// 	$tgl2 = $ranges[1];
-							// 	$D1 = date("d",strtotime($tgl1));
-							// 	$D2 = date("d",strtotime($tgl2));
-							// 	$M1 = date("m",strtotime($tgl1));
-							// 	$M2 = date("m",strtotime($tgl2));
-							// 	$Y = date("Y",strtotime($tgl1));
-							// 	// echo $tgl1;
-							// 		if ($D1 !== $D2) {
-							// 				$no=1;
-							// 				$omset = 0;
-							// 				$jumlah = 0;
-							// 				// $bayar = 0;
-							// 				$cekdata = $lihat -> minggu_jual($tgl1, $tgl2);
-							// 				if (!empty($cekdata)) {
-							// 					$hasil = $cekdata;
-							// 				} else {
-							// 					$hasil = [];
-							// 				}
-							// 				$transaksi = $lihat -> laptransminggu($tgl1, $tgl2);
-							// 		} else {
-							// 			$no=1; 
-							// 			$jumlah = 0;
-							// 			$omset = 0;
-							// 			$cekdata = $lihat -> hari_jual($tgl1);
-							// 			// print_r($cekdata);
-							// 			if (!empty($cekdata)) {
-							// 				$hasil = $cekdata;
-							// 			} else {
-							// 				$hasil = [];
-							// 			}
-							// 			$transaksi = $lihat -> laptranshari($tgl1);
-							// 		}
-							// } else {
-							$cekdata = $lihat->lapjualksrluar();
-							if (!empty($cekdata)) {
-								$hasil = $cekdata;
+							if (!empty($_GET['cari'])) {
+								$ranges = explode(' - ', $_POST['cari']);
+								$tgl1 = $ranges[0];
+								$tgl2 = $ranges[1];
+								$D1 = date("d", strtotime($tgl1));
+								$D2 = date("d", strtotime($tgl2));
+								$M1 = date("m", strtotime($tgl1));
+								$M2 = date("m", strtotime($tgl2));
+								$Y = date("Y", strtotime($tgl1));
+								// echo $tgl1;
+								if ($D1 !== $D2) {
+									$no = 1;
+									$omset = 0;
+									$jumlah = 0;
+									// $bayar = 0;
+									$cekdata = $lihat->minggu_jualksrluar($tgl1, $tgl2);
+									if (!empty($cekdata)) {
+										$hasil = $cekdata;
+									} else {
+										$hasil = [];
+									}
+									$transaksi = $lihat->laptransmingguksrluar($tgl1, $tgl2);
+								} else {
+									$no = 1;
+									$jumlah = 0;
+									$omset = 0;
+									$cekdata = $lihat->hari_jualksrluar($tgl1);
+									// print_r($cekdata);
+									if (!empty($cekdata)) {
+										$hasil = $cekdata;
+									} else {
+										$hasil = [];
+									}
+									$transaksi = $lihat->laptranshariksrluar($tgl1);
+								}
 							} else {
-								$hasil = [];
+								$cekdata = $lihat->lapjualksrluar();
+								if (!empty($cekdata)) {
+									$hasil = $cekdata;
+								} else {
+									$hasil = [];
+								}
+								$transaksi = $lihat->laptransksrluar();
 							}
-							$transaksi = $lihat->laptransksrluar();
-							// }
 							?>
 							<?php
 							$omset = 0;
@@ -287,13 +368,15 @@ $lihat = new view($dbconnect);
 						</tbody>
 						<tfoot>
 							<tr>
-								<th colspan="7">Total Terjual</td>
+								<th colspan="6">Total Terjual</td>
 								<th><?php echo $transaksi; ?></td>
 									<!-- <th>Rp.<?php echo number_format($modal); ?>,-</th>
 								<th>Rp.<?php echo number_format($bayar); ?>,-</th> -->
 								<th style="background:#0bb365;color:#fff;">Omset</th>
 								<th style="background:#0bb365;color:#fff;">
-									Rp.<?php echo number_format($omset); ?>,-</th>
+									Rp.<?php echo number_format($omset); ?>,-
+								</th>
+								<th></th>
 							</tr>
 						</tfoot>
 					</table>

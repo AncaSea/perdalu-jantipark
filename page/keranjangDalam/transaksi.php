@@ -13,7 +13,7 @@ $bayar = preg_replace('/\D/', '', $_SESSION['byrdlm']);
 
 $tanggal_waktu = date('Y-m-d');
 // $number = 0	;
-$antrian = $lihat -> nota_id();
+$antrian = $lihat -> nota_idDlm();
 // $nomor = rand(111111,999999);
 $nomor = date('dmY').'/'.$antrian;
 $total = $_SESSION['ttl'];

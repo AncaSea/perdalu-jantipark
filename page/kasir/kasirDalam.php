@@ -230,7 +230,7 @@ if (isset($_GET['pesan'])) {
 										</td>
 										<td align="right"><?= number_format($value['harga']) ?></td>
 										<td class="col-md-2">
-											<input type="number" min="1" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum">
+											<input type="number" id="<?= $value['id'] ?>" min="1" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum">
 										</td>
 										<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
 										<td align="right"><?= number_format(($value['qty'] * $value['harga'])) ?></td>
@@ -248,9 +248,9 @@ if (isset($_GET['pesan'])) {
 					</form>
 				</div>
 				<div class="col-md-4">
-					<h3 style="margin:0px 0px 15px 0px">Total Rp. <?= number_format($sum) ?></h3>
+					<h3 id="byr" style="margin:0px 0px 15px 0px">Total Rp. <?= number_format($sum) ?></h3>
 					<form action="../page/keranjangDalam/keranjang_update.php" method="POST">
-						<input type="hidden" name="total" value="<?= $sum ?>">
+						<input type="hidden" id="total" name="total" value="<?= $sum ?>">
 						<div class="form-group" style="margin-bottom: 1em; margin-top:3em;">
 							<!-- <label>Bayar</label> -->
 							<input type="text" id="bayar" name="bayar" class="form-control" placeholder="Bayar" required><br>
@@ -296,6 +296,18 @@ if (isset($_GET['pesan'])) {
 
 				rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
 				return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+			}
+
+			function formatNumber(nStr) {
+				nStr += '';
+				x = nStr.split('.');
+				x1 = x[0];
+				x2 = x.length > 1 ? '.' + x[1] : '';
+				var rgx = /(\d+)(\d{3})/;
+				while (rgx.test(x1)) {
+					x1 = x1.replace(rgx, '$1' + ',' + '$2');
+				}
+				return x1 + x2;
 			}
 
 			//generate dari inputan rupiah menjadi angka
@@ -363,26 +375,60 @@ if (isset($_GET['pesan'])) {
 						// $(this).val()
 					});
 				});
+			});
+		</script>
+		<script>
+			$(document).ready(function() {
+				$(".jum").keyup(function() {
+					var row = $(this);
+					var idmenu = $(this).attr('id');
+					var valmenu = $(this).val();
+					var sumttl = 0;
+					// console.log(idmenu);
+					// console.log(jumnow);
+					var cart = <?php echo json_encode($_SESSION['cartdlm']); ?>;
+					// console.log(cart)
+					$.each(cart, function(key, value) {
+						// console.log(value)
 
-				// var number = 1
-				// var antrian = ''
-				// $('#aib').click(function() {
-				// 	number++
-				// 	var format = number.toString().length
-				// 	if (format === 1) {
-				// 		antrian = '000' + number
-				// 		$('#ai').val(antrian);
-				// 	} else if (format === 2) {
-				// 		antrian = '00' + number
-				// 		$('#ai').val(antrian);
-				// 	} else if (format === 3) {
-				// 		antrian = '0' + number
-				// 		$('#ai').val(antrian);
-				// 	} else {
-				// 		antrian = number
-				// 		$('#ai').val(antrian);
-				// 	}
-				// });
+						var id = value['id'];
+						if (id === idmenu) {
+							var qty = valmenu;
+							// console.log(id);
+							// console.log(qty);
+							var subttl = row.closest('tr').find('.subttl').attr('id');
+							// console.log(subttl);
+							$.ajax({
+								url: "../page/keranjangDalam/keranjang_update.php",
+								type: "POST",
+								cache: false,
+								data: {
+									id: id,
+									qty: qty
+								},
+								success: function(data) {
+									// console.log(data);
+									$.each(data, function(key, value) {
+										// console.log(value['kd']);
+										sumttl += parseInt(value['harga']) * parseInt(value['qty']);
+										let sumttltext = sumttl.toString();
+										// console.log(sumttl);
+										$('#byr').text('Total Rp. ' + formatNumber(sumttltext));
+										$('#total').val(sumttltext);
+										if (value['id'] === id) {
+											var jumlah = value['qty'];
+											var harga = value['harga'];
+											var sum = jumlah * harga;
+											let sumtext = sum.toString();
+											// console.log(sumtext);
+											row.closest('tr').children('td:eq(3)').text(formatNumber(sumtext));
+										}
+									});
+								},
+							});
+						}
+					});
+				});
 			});
 		</script>
 	</section>

@@ -43,11 +43,31 @@ if (!empty($_SESSION['cartdlm'])) {
         }
     } else {
         $qty = $_POST['qty'];
-
+        $id = $_POST['id'];
+    
         foreach ($cart as $key => $value) {
-            $_SESSION['cartdlm'][$key]['qty'] = $qty[$key];
+            if ($_SESSION['cartdlm'][$key]['id'] === $id) {
+                $harga = $value['harga'];
+                $sum = $qty * $harga;
+                // $sumtext = sum.toString();
 
-            $idbarang = $_SESSION['cartdlm'][$key]['id'];
+
+                $item = [
+                    'id' => $value['id'],
+                    'nama' => $value['nama'],
+                    'role' => $value['role'],
+                    'jenis' => $value['jenis'],
+                    'harga' => $value['harga'],
+                    'qty' => $qty,
+                ];
+
+                $_SESSION['cartdlm'][$key] = $item;
+                header("Content-type: application/json");
+                echo json_encode($_SESSION['cartdlm']);
+            } else {
+                // $cartold = $_SESSION['cart'][$key]['qty'];
+                // $_SESSION['cart'][$key]['qty'] === $cartold;
+            }
             // //cek diskon barang
             // $disbarang = mysqli_query($dbconnect, "SELECT * FROM disbarang WHERE barang_id='$idbarang'");
             // $disb = mysqli_fetch_assoc($disbarang);
@@ -79,7 +99,7 @@ if (!empty($_SESSION['cartdlm'])) {
             //     }
             // }
         }
-        header('location:../../../../perdalam/kasir_page.php');
+        // header('location:../../../../perdalam/kasir_page.php');
     }
 } else {
     header("location:../../../../perdalam/kasir_page.php&pesan=emptycart");

@@ -222,7 +222,7 @@ if(isset($_GET['pesan'])){
 		  <script type="text/javascript">
 			function phoneMask() { 
 				var num = $(this).val().replace(/\D/g,''); 
-				$(this).val(num.substring(0,3) + '-' + num.substring(3,6) + '-' + num.substring(6,9) + '-' + num.substring(9,12)); 
+				$(this).val(num.substring(0,4) + '-' + num.substring(4,8) + '-' + num.substring(8,12)); 
 			}
 			$('[type="tel"]').keyup(phoneMask);
 			$(document).ready(function () {

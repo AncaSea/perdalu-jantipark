@@ -98,10 +98,10 @@ if (isset($_GET['pesan'])) {
 										</td>
 										<td align="right"><?= number_format($value['harga']) ?></td>
 										<td class="col-md-2">
-											<input type="number" min="1" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum" max="<?= $value['stok'] ?>">
+											<input type="number" id="<?= $value['kd'] ?>" min="1" name="qty[<?= $key ?>]" value="<?= $value['qty'] ?>" class="form-control jum" max="<?= $value['stok'] ?>">
 										</td>
 										<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
-										<td align="right"><?= number_format(($value['qty'] * $value['harga'])) ?></td>
+										<td class="subttl" id="$value['kd']" align="right"><?= number_format(($value['qty'] * $value['harga'])) ?></td>
 										<td class="text-center">
 											<a href="../page/keranjangLuar/keranjang_hapus.php?kd=<?= $value['kd'] ?>">
 												<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
@@ -116,9 +116,9 @@ if (isset($_GET['pesan'])) {
 					</form>
 				</div>
 				<div class="col-md-4">
-					<h3 style="margin:0px 0px 15px 0px">Total Rp. <?= number_format($sum) ?></h3>
+					<h3 id="byr" style="margin:0px 0px 15px 0px">Total Rp. <?= number_format($sum) ?></h3>
 					<form action="../page/keranjangLuar/keranjang_update.php" method="POST">
-						<input type="hidden" name="total" value="<?= $sum ?>">
+						<input type="hidden" id="total" name="total" value="<?= $sum ?>">
 						<div class="form-group" style="margin-bottom: 1em;">
 							<label>Bayar</label>
 							<input type="text" id="bayar" name="bayar" class="form-control" required>
@@ -166,6 +166,17 @@ if (isset($_GET['pesan'])) {
 				return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
 			}
 
+			function formatNumber(nStr) {
+				nStr += '';
+				x = nStr.split('.');
+				x1 = x[0];
+				x2 = x.length > 1 ? '.' + x[1] : '';
+				var rgx = /(\d+)(\d{3})/;
+				while (rgx.test(x1)) {
+					x1 = x1.replace(rgx, '$1' + ',' + '$2');
+				}
+				return x1 + x2;
+			}
 			//generate dari inputan rupiah menjadi angka
 
 			function cleanRupiah(rupiah) {
@@ -206,6 +217,60 @@ if (isset($_GET['pesan'])) {
 			}
 			$(document).click(function() {
 				$("#search-result").hide();
+			});
+		</script>
+		<script>
+			$(document).ready(function() {
+				$(".jum").keyup(function() {
+					var row = $(this);
+					var kdmenu = $(this).attr('id');
+					var valmenu = $(this).val();
+					var sumttl = 0;
+					// console.log(jum);
+					// console.log(jumnow);
+					var cart = <?php echo json_encode($_SESSION['cart']); ?>;
+					// console.log(cart)
+					$.each(cart, function(key, value) {
+						// console.log(value)
+
+						var kd = value['kd'];
+						if (kd === kdmenu) {
+							var qty = valmenu;
+							// console.log(kd);
+							// console.log(qty);
+							var subttl = row.closest('tr').find('.subttl').attr('id');
+							// console.log(subttl);
+							$.ajax({
+								url: "../page/keranjangLuar/keranjang_update.php",
+								type: "POST",
+								cache: false,
+								data: {
+									kd: kd,
+									qty: qty
+								},
+								success: function(data) {
+									// console.log(data);
+									$.each(data, function(key, value) {
+										// console.log(value['kd']);
+										sumttl += parseInt(value['harga']) * parseInt(value['qty']);
+										let sumttltext = sumttl.toString();
+										// console.log(sumttl);
+										$('#byr').text('Total Rp. ' + formatNumber(sumttltext));
+										$('#total').val(sumttltext);
+										if (value['kd'] === kd) {
+											var jumlah = value['qty'];
+											var harga = value['harga'];
+											var sum = jumlah * harga;
+											let sumtext = sum.toString();
+											// console.log(sumtext);
+											row.closest('tr').children('td:eq(3)').text(formatNumber(sumtext));
+										}
+									});
+								},
+							});
+						}
+					});
+				});
 			});
 		</script>
 	</section>

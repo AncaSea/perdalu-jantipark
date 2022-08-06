@@ -62,6 +62,23 @@ $lihat = new view($dbconnect);
 	<!-- pretty-checkbox -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css" />
 
+	<script>
+		$(document).ready(function() {
+			$('#demo').daterangepicker({
+				// locale: {
+				// 	format: 'YYYY-MM-DD'
+				// },
+				"showDropdowns": true,
+				"autoApply": true,
+				"startDate": new Date(),
+				"endDate": new Date(),
+				"opens": "right",
+				"drops": "auto"
+			}, function(start, end, label) {
+				console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+			});
+		});
+	</script>
 	<style>
 		.bd-placeholder-img {
 			font-size: 1.125rem;
@@ -78,18 +95,23 @@ $lihat = new view($dbconnect);
 			}
 		}
 
-		/* .daterangepicker .input-mini.active {
+		.daterangepicker .input-mini.active {
 			background-color: #faf37b;
-			}
-			.daterangepicker td.in-range {
+		}
+
+		.daterangepicker td.in-range {
 			background-color: #faf37b;
-			}
-			.daterangepicker td.active, .daterangepicker td.active:hover {
+		}
+
+		.daterangepicker td.active,
+		.daterangepicker td.active:hover {
 			background-color: #feb101;
-			}
-			.btn:focus {
-				outline: none;
-			} */
+		}
+
+		.btn:focus {
+			outline: none;
+		}
+
 		.pretty {
 			margin-right: 2.5em;
 			margin-left: 2.5em;
@@ -149,7 +171,7 @@ $lihat = new view($dbconnect);
 	<?php if (isset($_SESSION['error']) && $_SESSION['error'] != '') { ?>
 		<script type="text/javascript">
 			swal("ERROR!", "<?php echo $_SESSION['error']; ?>", "error").then(function() {
-				window.location = "admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes";
+				window.location = "penjualanDalam.php";
 			});
 		</script>
 	<?php }
@@ -171,44 +193,44 @@ $lihat = new view($dbconnect);
 				</h3>
 				<hr>
 
-				<!-- <div class="clearfix" style="margin-top:1em;"></div> -->
+				<div class="clearfix" style="margin-top:1em;"></div>
 
-				<!-- <h4>Cari Laporan</h4>
-					  <form method="post" action="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes&cari=ok">
-						  <table class="table table-striped">
-							  <tr>
-								  <th>
-									  Pilih Tanggal
-								  </th>
-								  <th>
-									  Aksi
-								  </th>
-							  </tr>
-							  <tr>
-								  <td>
-									  <input name="cari" type="text" id="demo" class="form-control">
-								  </td>
-								  <td>
-									  <input type="hidden" name="periode" value="ya">
-									  <button class="btn btn-primary">
-										  <i class="fa fa-search"></i> Cari
-									  </button>
-									  <a href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes" class="btn btn-success">
-										  <i class="fa fa-refresh"></i> Refresh</a>
-										  
-									  <?php if (!empty($_GET['cari'])) { ?>
-										  <a href="excel.php?cari=yes&bln=" class="btn btn-info"><i class="fa fa-download"></i>
-										  Excel</a>
-									  <?php } else { ?>
-										  <a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
-										  Excel</a>
-									  <?php } ?>
-								  </td>
-							  </tr>
-						  </table>
-					  </form> -->
+				<h4>Cari Laporan</h4>
+				<form method="post" action="penjualanDalam.php?cari=ok">
+					<table class="table table-striped">
+						<tr>
+							<th>
+								Pilih Tanggal
+							</th>
+							<th>
+								Aksi
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<input name="cari" type="text" id="demo" class="form-control">
+							</td>
+							<td>
+								<input type="hidden" name="periode" value="ya">
+								<button class="btn btn-primary">
+									<i class="fa fa-search"></i> Cari
+								</button>
+								<a href="penjualanDalam.php" class="btn btn-success">
+									<i class="fa fa-refresh"></i> Refresh</a>
 
-				<!-- <div class="clearfix" style="border-top:1px solid #ccc;"></div> -->
+								<!-- <?php if (!empty($_GET['cari'])) { ?>
+									<a href="excel.php?cari=yes&bln=" class="btn btn-info"><i class="fa fa-download"></i>
+										Excel</a>
+								<?php } else { ?>
+									<a href="excel.php" class="btn btn-info"><i class="fa fa-download"></i>
+										Excel</a>
+								<?php } ?> -->
+							</td>
+						</tr>
+					</table>
+				</form>
+
+				<div class="clearfix" style="border-top:1px solid #ccc;"></div>
 
 				<!-- view barang -->
 				<div class="modal-view">
@@ -245,25 +267,25 @@ $lihat = new view($dbconnect);
 									$omset = 0;
 									$jumlah = 0;
 									// $bayar = 0;
-									$cekdata = $lihat->minggu_jualdlm($tgl1, $tgl2);
+									$cekdata = $lihat->minggu_jualdlmksr($tgl1, $tgl2);
 									if (!empty($cekdata)) {
 										$hasil = $cekdata;
 									} else {
 										$hasil = [];
 									}
-									$transaksi = $lihat->laptransminggudlm($tgl1, $tgl2);
+									$transaksi = $lihat->laptransminggudlmksr($tgl1, $tgl2);
 								} else {
 									$no = 1;
 									$jumlah = 0;
 									$omset = 0;
-									$cekdata = $lihat->hari_jualdlm($tgl1);
+									$cekdata = $lihat->hari_jualdlmksr($tgl1);
 									// print_r($cekdata);
 									if (!empty($cekdata)) {
 										$hasil = $cekdata;
 									} else {
 										$hasil = [];
 									}
-									$transaksi = $lihat->laptransharidlm($tgl1);
+									$transaksi = $lihat->laptransharidlmksr($tgl1);
 								}
 							} else {
 								$cekdata = $lihat->lapjualksrdlm();
@@ -281,7 +303,7 @@ $lihat = new view($dbconnect);
 							// error_reporting(E_ERROR | E_PARSE);
 							foreach ($hasil as $isi) {
 								// print_r($isi);
-								$omset += $isi[10];
+								$omset += $isi[11];
 								// $modal += $isi['harga_beli']* $isi['jumlah'];
 								// $jumlah += $isi['jumlah'];
 							?>
@@ -306,11 +328,12 @@ $lihat = new view($dbconnect);
 						</tbody>
 						<tfoot>
 							<tr>
-								<th colspan="7">Total Terjual</td>
+								<th colspan="6">Total Terjual</td>
 								<th><?php echo $transaksi; ?></td>
 								<th style="background:#0bb365;color:#fff;">Omset</th>
 								<th style="background:#0bb365;color:#fff;">
 									Rp.<?php echo number_format($omset); ?>,-</th>
+								<th></th>
 							</tr>
 						</tfoot>
 					</table>

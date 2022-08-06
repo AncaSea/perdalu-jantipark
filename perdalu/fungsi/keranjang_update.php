@@ -41,15 +41,33 @@ if (!empty($_SESSION['cart'])) {
         
     } else {
         $qty = $_POST['qty'];
+        $kd = $_POST['kd'];
     
         foreach ($cart as $key => $value) {
-            $_SESSION['cart'][$key]['qty'] = $qty[$key];
-        
-            $cartbarang = $_SESSION['cart'];
-            header("Content-type: application/json");
-            echo json_encode($cartbarang);
+            if ($_SESSION['cart'][$key]['kd'] === $kd) {
+                $harga = $value['harga'];
+                $sum = $qty * $harga;
+                // $sumtext = sum.toString();
+
+
+                $item = [
+                    'kd' => $value['kd'],
+                    'nama' => $value['nama'],
+                    'harga' => $value['harga'],
+                    'stok' => $value['stok'],
+                    'qty' => $qty,
+                    'diskon' => 0,
+                ];
+
+                $_SESSION['cart'][$key] = $item;
+                header("Content-type: application/json");
+                echo json_encode($_SESSION['cart']);
+            } else {
+                // $cartold = $_SESSION['cart'][$key]['qty'];
+                // $_SESSION['cart'][$key]['qty'] === $cartold;
+            }
         }
-        header('location:../../../../perdalu/kasir_page.php');
+        // header('location:../../../../perdalu/kasir_page.php');
     }               
 } else {
     header("location:../../../../perdalu/kasir_page.php&pesan=emptycart");
