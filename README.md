@@ -1,4 +1,5 @@
-# Perdalu
+# Perdalu (nama sebelumnya yang hanya bagian perdagangan luar)
+# Setelah beberapa usulan dan tambahan maka seharusnya namanya UnitPerdagangan (males ganti nama)
 
 
 
