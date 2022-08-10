@@ -42,7 +42,7 @@ if(!empty($_SESSION['namaadmin']) || !empty($_SESSION['namakasir'])){
 		// $data[] = $id;
 		$sql = "DELETE FROM role WHERE id_role='$id'";
 		$del = mysqli_query($dbconnect, $sql);
-		echo '<script>window.location="../../admin.php?page=user/user&accordion2=on&active=yes&remove=hapus-data"</script>';
+		echo '<script>window.location="../../admin.php?page=role/role&accordion2=on&active=yes&remove=hapus-data"</script>';
 	}
 	if(!empty($_GET['mkn'])){
 		$id= $_GET['id'];

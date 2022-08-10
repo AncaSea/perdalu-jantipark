@@ -152,7 +152,7 @@
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit User Admin</h4>
 									</div>
 									<div id="modalForm">
-										<form enctype="application/x-www-form-urlencoded" action="../../fungsi/edit/edit.php" method="POST">
+										<form enctype="application/x-www-form-urlencoded" action="fungsi/edit/edit.php" method="POST">
 											<div class="modal-body">
 												<table class="table table-striped bordered">
 													<tr>
@@ -192,7 +192,7 @@
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit User Kasir</h4>
 									</div>
 									<div id="modalForm">
-										<form enctype="application/x-www-form-urlencoded" action="../../fungsi/edit/edit.php" method="POST">
+										<form enctype="application/x-www-form-urlencoded" action="fungsi/edit/edit.php" method="POST">
 											<div class="modal-body">
 												<table class="table table-striped bordered">
 													<tr>

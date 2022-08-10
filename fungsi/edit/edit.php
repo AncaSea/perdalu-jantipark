@@ -57,7 +57,7 @@ if(!empty($_SESSION['namaadmin'])){
 		$user = $_POST['user'];
 		$pwd = $_POST['pwd'];
 		
-		$updb =  "UPDATE Kasir_acc SET username='$user', password='$pwd' WHERE nama_admin='$nama'";
+		$updb =  "UPDATE admin_acc SET username='$user', password='$pwd' WHERE nama_admin='$nama'";
 		$query = mysqli_query($dbconnect, $updb);
 		
 		if ($query) {
@@ -94,7 +94,7 @@ if(!empty($_SESSION['namaadmin'])){
 		$clust = mysqli_fetch_assoc($cluster);
 		$jenis = $clust['jenis'];
 		if ($cluster->num_rows == 1) {
-			if ($branch == 'mkn') {
+			if ($branch === 'mkn') {
 				$updb =  "UPDATE makanan SET nama='$nmmenu', role='$idrole', jenis='$jenis', harga='$hrg' WHERE id ='$id'";
 				$query = mysqli_query($dbconnect, $updb);
 				
@@ -103,7 +103,7 @@ if(!empty($_SESSION['namaadmin'])){
 				} else {
 					echo '<script>window.location="../../admin.php?page=menu/menu&accordion2=on&active=yes&error-edit=edit-data"</script>';
 				}
-			} else if ($branch == 'mnm') {
+			} else if ($branch === 'mnm') {
 				$updb =  "UPDATE minuman SET nama='$nmmenu', role='$idrole', jenis='$jenis', harga='$hrg' WHERE id='$id'";
 				$query = mysqli_query($dbconnect, $updb);
 				

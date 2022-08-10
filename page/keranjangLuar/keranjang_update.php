@@ -69,5 +69,5 @@ if (!empty($_SESSION['cart'])) {
         // header('location:../../../../perdalu/kasir_page.php');
     }
 } else {
-    header("location:../../../../perdalu/kasir_page.php&pesan=emptycart");
+    header("location:../../admin.php?page=kasir/kasirLuar&accordion=on&active=yes&pesan=emptycart");
 }

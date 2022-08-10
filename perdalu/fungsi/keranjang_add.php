@@ -30,7 +30,7 @@ if (isset($_POST['nama_brg'])) {
             
             if ($key !== false) {
 
-                header("location:../../../../perdalu/kasir_page.php?pesan=sameitem");
+                header("location:../../perdalu/kasir_page.php?pesan=sameitem");
                         
             } else {
                         
@@ -47,7 +47,7 @@ if (isset($_POST['nama_brg'])) {
         
                 $_SESSION['cart'][] = $barang;
                 
-                header('location:../../../../perdalu/kasir_page.php');
+                header('location:../../perdalu/kasir_page.php');
                         
             }
         } else {
@@ -64,12 +64,12 @@ if (isset($_POST['nama_brg'])) {
 
             $_SESSION['cart'][] = $barang;
             
-            header('location:../../../../perdalu/kasir_page.php');
+            header('location:../../perdalu/kasir_page.php');
             //merubah urutan tampil pada keranjang
             // krsort($_SESSION['cart']);
         }
     }else {
-        header("location:../../../../perdalu/kasir_page.php?pesan=notindatabase");
+        header("location:../../perdalu/kasir_page.php?pesan=notindatabase");
     }
 
 }

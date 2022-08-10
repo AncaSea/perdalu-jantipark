@@ -115,7 +115,7 @@
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Barang</h4>
 									</div>
 									<div id="modalForm">
-										<form enctype="application/x-www-form-urlencoded" action="../../fungsi/edit/edit.php" method="POST">
+										<form enctype="application/x-www-form-urlencoded" action="fungsi/edit/edit.php" method="POST">
 											<div class="modal-body">
 													<table class="table table-striped bordered">
 														<tr>

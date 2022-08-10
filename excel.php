@@ -36,7 +36,7 @@ $lihat = new view($dbconnect);
                 <?php } else { ?>
                     Data Laporan Penjualan Luar <?= date('Y'); ?>
                 <?php } ?>
-            <?php } else if ($_GET['lap'] == 'msk') { ?>
+            <?php } else if ($_GET['lap'] === 'msk') { ?>
                 <?php if (!empty($_GET['cari'])) { ?>
                     Data Laporan Barang Masuk <?= $_GET['cari']; ?>
                 <?php } else { ?>

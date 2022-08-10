@@ -103,7 +103,7 @@ if (isset($_GET['pesan'])) {
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2"><i class="fa-solid fa-pen"></i></button>
 										<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 										<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-										<a href="../fungsi/hapus/hapus.php?mkn=hapus&id=<?php echo $isi[0]; ?>">
+										<a href="fungsi/hapus/hapus.php?mkn=hapus&id=<?php echo $isi[0]; ?>">
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 									</td>
@@ -175,7 +175,7 @@ if (isset($_GET['pesan'])) {
 												<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2"><i class="fa-solid fa-pen"></i></button>
 												<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 												<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-												<a href="../fungsi/hapus/hapus.php?mnm=hapus&id=<?php echo $isi[0]; ?>">
+												<a href="fungsi/hapus/hapus.php?mnm=hapus&id=<?php echo $isi[0]; ?>">
 													<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 													<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 											</td>
@@ -249,7 +249,7 @@ if (isset($_GET['pesan'])) {
 														<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#pktModal2"><i class="fa-solid fa-pen"></i></button>
 														<!-- <button id="li-modal" type="button" class="btn btn-primary btn-xs li-modal">Edit</button> -->
 														<!-- <a href="../page/stok/edit.php" type="button" data-toggle="modal" data-target="#myModal2" class="li-modal"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-														<a href="../fungsi/hapus/hapus.php?pkt=hapus&id=<?php echo $isi[0]; ?>">
+														<a href="fungsi/hapus/hapus.php?pkt=hapus&id=<?php echo $isi[0]; ?>">
 															<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 															<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 													</td>
@@ -387,7 +387,7 @@ if (isset($_GET['pesan'])) {
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Supplier</h4>
 											</div>
-											<form enctype="application/x-www-form-urlencoded" action="../../fungsi/edit/edit.php" method="POST">
+											<form enctype="application/x-www-form-urlencoded" action="fungsi/edit/edit.php" method="POST">
 												<div class="modal-body">
 
 													<table class="table table-striped bordered">
@@ -421,7 +421,7 @@ if (isset($_GET['pesan'])) {
 													</table>
 												</div>
 												<div class="modal-footer">
-													<button type="submit" name="updateMenupkt" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
+													<button type="submit" name="updateMenupkt" id="updateMenupkt" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
 													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 												</div>
 											</form>
@@ -437,7 +437,7 @@ if (isset($_GET['pesan'])) {
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Menu</h4>
 											</div>
-											<form enctype="application/x-www-form-urlencoded" action="../../fungsi/edit/edit.php" method="POST">
+											<form enctype="application/x-www-form-urlencoded" action="fungsi/edit/edit.php" method="POST">
 												<div class="modal-body">
 
 													<table class="table table-striped bordered">
@@ -487,7 +487,7 @@ if (isset($_GET['pesan'])) {
 													</table>
 												</div>
 												<div class="modal-footer">
-													<button type="submit" name="updateMenu" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
+													<button type="submit" name="updateMenu" id="updateMenu" class="btn btn-primary"><i class="fa fa-plus"></i> Update Data</button>
 													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 												</div>
 											</form>

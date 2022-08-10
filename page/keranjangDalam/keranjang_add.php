@@ -34,7 +34,7 @@ if (isset($_POST['nama_pesan'])) {
 
             if ($key !== false) {
 
-                header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=sameitem");
+                header("location:../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=sameitem");
             } else {
                 // return var_dump($b);
                 //Jika tidak ada yang sesuai akan menjadi barang baru dikeranjang
@@ -50,7 +50,7 @@ if (isset($_POST['nama_pesan'])) {
 
                 $_SESSION['cartdlm'][] = $barangdlm;
 
-                header('location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes');
+                header('location:../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes');
             }
         } else {
             // return var_dump($b);
@@ -67,12 +67,12 @@ if (isset($_POST['nama_pesan'])) {
 
             $_SESSION['cartdlm'][] = $barangdlm;
 
-            header('location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes');
+            header('location:../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes');
             //merubah urutan tampil pada keranjang
             // krsort($_SESSION['cart']);
         }
     } else {
-        header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=notindatabase");
+        header("location:../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=notindatabase");
     }
     // } else {
     //     header("location:../../../../admin.php?page=kasir/kasirDalam&accordion2=on&active=yes&pesan=notindatabase");

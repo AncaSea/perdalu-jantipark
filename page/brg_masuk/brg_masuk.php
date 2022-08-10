@@ -114,10 +114,10 @@ if(isset($_GET['pesan'])){
 											<i class="fa fa-refresh"></i> Refresh</a>
 											
 										<?php if(!empty($_GET['cari'])){?>
-											<a href="../../excel.php?cari=<?php echo $_POST['cari'];?>&lap=msk" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="excel.php?cari=<?php echo $_POST['cari'];?>&lap=msk" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }else{?>
-											<a href="../../excel.php?lap=msk" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="excel.php?lap=msk" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }?>
 										<button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
@@ -226,7 +226,7 @@ if(isset($_GET['pesan'])){
 										<td class="text-center">
 										<!-- <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Edit</button> -->
 											<!-- <a href="index.php?page=barang/edit&barang=<?php echo $isi[2];?>" data-toggle="modal" data-target="myModal2"><button class="btn btn-warning btn-xs">Edit</button></a> -->
-											<a href="../fungsi/hapus/hapus.php?barangmsk=hapus&id=<?php echo $isi[0];?>">
+											<a href="fungsi/hapus/hapus.php?barangmsk=hapus&id=<?php echo $isi[0];?>">
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
@@ -269,7 +269,7 @@ if(isset($_GET['pesan'])){
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Barang</h4>
 									</div>										
-									<form enctype="application/x-www-form-urlencoded" action="../../fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
+									<form enctype="application/x-www-form-urlencoded" action="fungsi/tambah/tambah.php?barangmsk=tambah" method="POST">
 										<div class="modal-body">
 											<table class="table table-striped bordered">
 												<tr>

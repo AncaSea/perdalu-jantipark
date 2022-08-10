@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
         //     "type" => "error",
         //     "message" => "Invalid File Type"
         // );
-        header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=invalid-restore');
+        header('location:../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=invalid-restore');
     } else {
         if (is_uploaded_file($_FILES["backup_file"]["tmp_name"])) {
             move_uploaded_file($_FILES["backup_file"]["tmp_name"], $_FILES["backup_file"]["name"]);
@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
         }
     }
 } else {
-    header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
+    header('location:../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
 }
 
 function restoreMysqlDB($filePath, $conn)
@@ -50,13 +50,13 @@ function restoreMysqlDB($filePath, $conn)
             //     "type" => "error",
             //     "message" => $error
             // );
-            header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
+            header('location:../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=failed-restore');
         } else {
             // $response = array(
             //     "type" => "success",
             //     "message" => "Database Restore Completed Successfully."
             // );
-            header('location:../../../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=success-restore');
+            header('location:../../admin.php?page=backuprestore/restore-data&accordion3=on&active=yes&pesan=success-restore');
         }
     }
 }

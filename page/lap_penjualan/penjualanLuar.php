@@ -207,10 +207,10 @@
  									<i class="fa fa-refresh"></i> Refresh</a>
 
  								<?php if (!empty($_GET['cari'])) { ?>
- 									<a href="../../excel.php?cari=<?php echo $_POST['cari']; ?>&lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
+ 									<a href="excel.php?cari=<?php echo $_POST['cari']; ?>&lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
  										Excel</a>
  								<?php } else { ?>
- 									<a href="../../excel.php?lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
+ 									<a href="excel.php?lap=luar" class="btn btn-info"><i class="fa fa-download"></i>
  										Excel</a>
  								<?php } ?>
  							</td>
@@ -374,7 +374,7 @@
  									<td>Rp.<?php echo number_format($isi[8]); ?>,-</td>
  									<td>Rp.<?php echo number_format($isi[9]); ?>,-</td>
  									<td class="text-center">
- 										<a href="../fungsi/hapus/hapus.php?lapluar=hapus&nota=<?= $isi[1] ?>">
+ 										<a href="fungsi/hapus/hapus.php?lapluar=hapus&nota=<?= $isi[1] ?>">
  											<button type="button" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
  											</button>
  										</a>

@@ -89,7 +89,7 @@ if(isset($_GET['pesan'])){
 										<td><?php echo $isi[2];?></td>
 										<td class="text-center">
 										<button id="li-modal" type="button" class="btn btn-warning btn-md li-modal" data-toggle="modal" data-target="#myModal2" ><i class="fa-solid fa-pen"></i></button>
-											<a href="../fungsi/hapus/hapus.php?role=hapus&id=<?php $_SESSION['id'];?>">
+											<a href="fungsi/hapus/hapus.php?role=hapus&id=<?php echo $_SESSION['id'];?>">
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>
 									</tr>
@@ -155,7 +155,7 @@ if(isset($_GET['pesan'])){
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h4 class="modal-title"><i class="fa fa-plus"></i> Edit Role</h4>
 									</div>										
-									<form enctype="application/x-www-form-urlencoded" action="../../fungsi/edit/edit.php" method="POST">
+									<form enctype="application/x-www-form-urlencoded" action="fungsi/edit/edit.php" method="POST">
 										<div class="modal-body">
 									
 											<table class="table table-striped bordered">

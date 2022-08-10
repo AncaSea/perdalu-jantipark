@@ -102,5 +102,5 @@ if (!empty($_SESSION['cartdlm'])) {
         // header('location:../../../../perdalam/kasir_page.php');
     }
 } else {
-    header("location:../../../../perdalam/kasir_page.php&pesan=emptycart");
+    header("location:../kasir_page.php?pesan=emptycart");
 }

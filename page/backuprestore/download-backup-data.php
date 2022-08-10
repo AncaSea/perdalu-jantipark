@@ -73,5 +73,5 @@ if (!empty($_GET['nama_file'])) {
     // header('location:../../../../admin.php?page=backuprestore/backup-data&accordion3=on&active=yes&pesan=success-backup');
   }
 } else {
-  header('location:../../../../admin.php?page=backuprestore/backup-data&accordion3=on&active=yes&pesan=failed-backup');
+  header('location:../../admin.php?page=backuprestore/backup-data&accordion3=on&active=yes&pesan=failed-backup');
 }

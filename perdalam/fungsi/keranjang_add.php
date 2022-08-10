@@ -32,7 +32,7 @@ if (isset($_POST['nama_pesan'])) {
 
             if ($key !== false) {
 
-                header("location:../../../../perdalam/kasir_page.php?pesan=sameitem");
+                header("location:../../perdalam/kasir_page.php?pesan=sameitem");
             } else {
                 // return var_dump($b);
                 //Jika tidak ada yang sesuai akan menjadi barang baru dikeranjang
@@ -48,7 +48,7 @@ if (isset($_POST['nama_pesan'])) {
 
                 $_SESSION['cartdlm'][] = $barangdlm;
 
-                header('location:../../../../perdalam/kasir_page.php');
+                header('location:../../perdalam/kasir_page.php');
             }
         } else {
             // return var_dump($b);
@@ -65,12 +65,12 @@ if (isset($_POST['nama_pesan'])) {
 
             $_SESSION['cartdlm'][] = $barangdlm;
 
-            header('location:../../../../perdalam/kasir_page.php');
+            header('location:../../perdalam/kasir_page.php');
             //merubah urutan tampil pada keranjang
             // krsort($_SESSION['cart']);
         }
     } else {
-        header("location:../../../../perdalam/kasir_page.php?pesan=notindatabase");
+        header("location:../../perdalam/kasir_page.php?pesan=notindatabase");
     }
     // } else {
     //     header("location:../../../../perdalam/kasir_page.php?pesan=notindatabase");

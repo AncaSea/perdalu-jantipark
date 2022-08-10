@@ -111,10 +111,10 @@ if(isset($_GET['pesan'])){
 											<i class="fa fa-refresh"></i> Refresh</a>
 											
 										<?php if(!empty($_GET['cari'])){?>
-											<a href="../../excel.php?cari=<?php echo $_POST['cari'];?>&lap=kmbl" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="excel.php?cari=<?php echo $_POST['cari'];?>&lap=kmbl" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }else{?>
-											<a href="../../excel.php?lap=kmbl" class="btn btn-info"><i class="fa fa-download"></i>
+											<a href="excel.php?lap=kmbl" class="btn btn-info"><i class="fa fa-download"></i>
 											Excel</a>
 										<?php }?>
 										<button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#myModal">
@@ -212,7 +212,7 @@ if(isset($_GET['pesan'])){
 										<td>Rp.<?php echo number_format($isi[7]);?>,-</td>
 										<td>Rp.<?php echo number_format($isi[4] * $isi[7]);?>,-</td>
 										<td class="aksi text-center">
-											<a href="../fungsi/hapus/hapus.php?barangkmbl=hapus&id=<?php echo $_SESSION['id']; ?>">
+											<a href="fungsi/hapus/hapus.php?barangkmbl=hapus&id=<?php echo $_SESSION['id']; ?>">
 											<!-- <button class="btn btn-danger btn-xs">Hapus</button></a> -->
 											<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 										</td>

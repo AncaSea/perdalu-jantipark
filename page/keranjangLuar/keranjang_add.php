@@ -89,12 +89,12 @@ if (isset($_POST['nama_brg'])) {
 
             $_SESSION['cart'][] = $barang;
             
-            header('location:../../../../admin.php?page=kasir/kasirLuar&accordion=on&active=yes');
+            header('location:../../admin.php?page=kasir/kasirLuar&accordion=on&active=yes');
             //merubah urutan tampil pada keranjang
             // krsort($_SESSION['cart']);
         }
     }else{
-        header("location:../../../../admin.php?page=kasir/kasirLuar&accordion=on&active=yes&pesan=notindatabase");
+        header("location:../../admin.php?page=kasir/kasirLuar&accordion=on&active=yes&pesan=notindatabase");
     }
 
 }

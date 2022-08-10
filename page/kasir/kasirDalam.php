@@ -58,7 +58,7 @@ if (isset($_GET['pesan'])) {
 					<h1>Kasir</h1>
 					<!-- <h2>Hai <?= $_SESSION['namakasir'] ?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
-					<a href="../../page/keranjangDalam/keranjang_reset.php" class="btn btn-info btn-md pull-left">Reset Keranjang</a> &ensp;
+					<a href="page/keranjangDalam/keranjang_reset.php" class="btn btn-info btn-md pull-left">Reset Keranjang</a> &ensp;
 					<a href="admin.php?page=lap_penjualan/penjualanDalam&accordion2=on&active=yes" class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>
 				</div>
 				&ensp;
@@ -197,7 +197,7 @@ if (isset($_GET['pesan'])) {
 				<div class="col-md-8">
 					<div class="form-group" style="margin-bottom: 30px;">
 						<div class="row">
-							<form method="post" action="../page/keranjangDalam/keranjang_add.php">
+							<form method="post" action="page/keranjangDalam/keranjang_add.php">
 								<div class="col-md-4">
 									<input id="nama_pesan" type="text" name="nama_pesan" class="form-control" placeholder="Masukkan Nama Pesanan" autofocus required>
 									<!-- KI LHO HEEENNNNNN JATAHMUUU-->
@@ -235,7 +235,7 @@ if (isset($_GET['pesan'])) {
 										<!-- line 67 stlh $value['harga']) "-$value['diskon']" -->
 										<td align="right"><?= number_format(($value['qty'] * $value['harga'])) ?></td>
 										<td class="text-center">
-											<a href="../page/keranjangDalam/keranjang_hapus.php?id=<?= $value['id'] ?>">
+											<a href="page/keranjangDalam/keranjang_hapus.php?id=<?= $value['id'] ?>">
 												<button type="button" class="btn btn-md btn-danger"><i class="fa-solid fa-trash"></i></button>
 												</button>
 											</a>
@@ -249,7 +249,7 @@ if (isset($_GET['pesan'])) {
 				</div>
 				<div class="col-md-4">
 					<h3 id="byr" style="margin:0px 0px 15px 0px">Total Rp. <?= number_format($sum) ?></h3>
-					<form action="../page/keranjangDalam/keranjang_update.php" method="POST">
+					<form action="page/keranjangDalam/keranjang_update.php" method="POST">
 						<input type="hidden" id="total" name="total" value="<?= $sum ?>">
 						<div class="form-group" style="margin-bottom: 1em; margin-top:3em;">
 							<!-- <label>Bayar</label> -->
@@ -399,7 +399,7 @@ if (isset($_GET['pesan'])) {
 							var subttl = row.closest('tr').find('.subttl').attr('id');
 							// console.log(subttl);
 							$.ajax({
-								url: "../page/keranjangDalam/keranjang_update.php",
+								url: "page/keranjangDalam/keranjang_update.php",
 								type: "POST",
 								cache: false,
 								data: {
