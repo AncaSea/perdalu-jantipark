@@ -16,7 +16,6 @@
                 </div>
                 <div class="text-center panel-body">
                   <i class="fa fa-desktop" style="font-size: 5em;"></i>
-                  <!-- <center><h1><?php print_r($supp); ?></h1></center> -->
                 </div>
                 <div class="panel-footer">
                   <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=dashboard/homeLuar&accordion=on&active=yes'>Dashboard <i class='fa fa-angle-double-right'></i></a></h4>
@@ -31,7 +30,6 @@
                 </div>
                 <div class="text-center panel-body">
                   <i class="fa fa-desktop" style="font-size: 5em;"></i>
-                  <!-- <center><h1><?php echo ($stok); ?></h1></center> -->
                 </div>
                 <div class="panel-footer">
                   <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=dashboard/homeDalam&accordion2=on&active=yes'>Dashboard <i class='fa fa-angle-double-right'></i></a></h4>
@@ -46,7 +44,6 @@
                 </div>
                 <div class=" text-center panel-body">
                   <i class="fa fa-ticket" style="font-size: 5em;"></i>
-                  <!-- <center><h1><?php echo ($jual); ?></h1></center> -->
                 </div>
                 <div class="panel-footer">
                   <h4 style="font-size:15px;font-weight:700;font-weight:700;"><a href='admin.php?page=reservasi/reservasi'>Go to Page <i class='fa fa-angle-double-right'></i></a></h4>
@@ -61,7 +58,6 @@
                 </div>
                 <div class="text-center panel-body">
                   <i class="fa fa-gears" style="font-size: 5em;"></i>
-                  <!-- <center><h1><?php echo ($income); ?></h1></center> -->
                 </div>
                 <div class="panel-footer">
                   <h4 style="font-size:15px;font-weight:700;"><a href='admin.php?page=backuprestore/backup-data&accordion3=on&active=yes'>Go to Page <i class='fa fa-angle-double-right'></i></a></h4>

@@ -1,6 +1,6 @@
 <?php
 include 'db_con.php';
-session_start();
+// session_start();
 // include 'authcheckkasir.php';
 
 
@@ -52,7 +52,6 @@ if (isset($_GET['pesan'])) {
 				<div class="col-md-12">
 					<h4 style="float: right; display: inline-block; margin-top: 2pc"><?php echo date('d F Y'); ?></h4>
 					<h1>Kasir</h1>
-					<!-- <h2>Hai <?= $_SESSION['namakasir'] ?></h2> -->
 					<!-- <a href="logout.php">Logout</a> | -->
 					<a href="page/keranjangLuar/keranjang_reset.php" class="btn btn-danger btn-md pull-left">Reset Keranjang</a> &ensp;
 					<a href="admin.php?page=lap_penjualan/penjualanLuar&accordion=on&active=yes" class="btn btn-info btn-md margin-left 50px">Riwayat Transaksi </a>

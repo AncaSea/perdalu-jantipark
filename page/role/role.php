@@ -98,14 +98,6 @@ if(isset($_GET['pesan'])){
 									}
 								?>
 								</tbody>
-								<!-- <tfoot>
-									<tr>
-										<th colspan="7">Total </td>
-										<th>Rp.<?php echo number_format($totalBeli);?>,-</td>
-										<th>Rp.<?php echo number_format($totalJual);?>,-</td>
-										<th colspan="2" style="background:#ddd"></th>
-									</tr>
-								</tfoot> -->
 							</table>
 						</div>
 						<div class="clearfix" style="margin-top:7pc;"></div>

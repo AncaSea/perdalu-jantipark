@@ -223,8 +223,6 @@
  							<tr>
  								<th colspan="6">Total Terjual</td>
  								<th><?php echo $transaksi; ?></td>
- 									<!-- <th>Rp.<?php echo number_format($modal); ?>,-</th>
-										<th>Rp.<?php echo number_format($bayar); ?>,-</th> -->
  								<th style="background:#0bb365;color:#fff;">Omset</th>
  								<th style="background:#0bb365;color:#fff;">
  									Rp.<?php echo number_format($omset); ?>,-
