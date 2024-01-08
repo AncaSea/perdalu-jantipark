@@ -9,7 +9,7 @@ $db = 'db_perdalu';
 // $pass = 'a0PKmrAokT';
 // $db = 'epiz_32045382_db_perdalu';
 
-$dbconnect = new mysqli("$host", "$user", "$pass", "$db");
+$dbconnect = new \MySQLi("$host", "$user", "$pass", "$db");
 
 if ($dbconnect-> connect_error) {
     echo 'Koneksi gagal -> ' . $dbconnect->connect_error;
